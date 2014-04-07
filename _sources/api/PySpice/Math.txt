@@ -1,0 +1,10 @@
+*************
+ :mod:`Math`
+*************
+
+.. automodule:: PySpice.Math
+   :members:
+   :show-inheritance:
+
+
+.. End

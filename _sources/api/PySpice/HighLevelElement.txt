@@ -1,0 +1,10 @@
+*************************
+ :mod:`HighLevelElement`
+*************************
+
+.. automodule:: PySpice.HighLevelElement
+   :members:
+   :show-inheritance:
+
+
+.. End

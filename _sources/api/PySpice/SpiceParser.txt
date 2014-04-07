@@ -1,0 +1,10 @@
+********************
+ :mod:`SpiceParser`
+********************
+
+.. automodule:: PySpice.SpiceParser
+   :members:
+   :show-inheritance:
+
+
+.. End

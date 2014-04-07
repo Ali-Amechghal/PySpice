@@ -1,0 +1,654 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PySpice.Netlist &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="PySpice" href="../PySpice.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li>
+          <li><a href="../PySpice.html" accesskey="U">PySpice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for PySpice.Netlist</h1><div class="highlight"><pre>
+<span class="c">####################################################################################################</span>
+<span class="c"># </span>
+<span class="c"># PySpice - A Spice package for Python</span>
+<span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c"># </span>
+<span class="c">####################################################################################################</span>
+
+<span class="c">####################################################################################################</span>
+<span class="c">#</span>
+<span class="c"># Graph:</span>
+<span class="c">#   dipole</span>
+<span class="c">#   n-pole: transistor (be, bc) ?</span>
+<span class="c">#</span>
+<span class="c"># circuit -&gt; element -&gt; node</span>
+<span class="c">#   circuit.Q1.b</span>
+<span class="c">#   Element -&gt; ElementQ</span>
+<span class="c">#   use prefix?</span>
+<span class="c">#</span>
+<span class="c">####################################################################################################</span>
+
+<span class="c">####################################################################################################</span>
+
+<span class="c"># import networkx</span>
+
+<span class="c">####################################################################################################</span>
+
+<span class="kn">from</span> <span class="nn">.Tools.StringTools</span> <span class="kn">import</span> <span class="n">join_lines</span><span class="p">,</span> <span class="n">join_list</span><span class="p">,</span> <span class="n">join_dict</span>
+
+<span class="c">####################################################################################################</span>
+
+<div class="viewcode-block" id="DeviceModel"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.DeviceModel">[docs]</a><span class="k">class</span> <span class="nc">DeviceModel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">modele_type</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">modele_type</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="o">**</span><span class="n">parameters</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="DeviceModel.name"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.DeviceModel.name">[docs]</a>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="DeviceModel.model_type"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.DeviceModel.model_type">[docs]</a>    <span class="k">def</span> <span class="nf">model_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_type</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="s">&quot;.model {} {} ({})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_type</span><span class="p">,</span> <span class="n">join_dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">))</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="Pin"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Pin">[docs]</a><span class="k">class</span> <span class="nc">Pin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">element</span> <span class="o">=</span> <span class="n">element</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="n">node</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="s">&quot;Pin {} of {} on node {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="Pin.add_current_probe"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Pin.add_current_probe">[docs]</a>    <span class="k">def</span> <span class="nf">add_current_probe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
+
+        <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="s">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">,</span> <span class="s">&#39;0&#39;</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="Element"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">prefix</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pins</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pins</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dict_parameters</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Element.name"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Element.name">[docs]</a>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Element.pins"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Element.pins">[docs]</a>    <span class="k">def</span> <span class="nf">pins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pins</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Element.nodes"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Element.nodes">[docs]</a>    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">pin</span><span class="o">.</span><span class="n">node</span> <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pins</span><span class="p">]</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Element.parameters"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Element.parameters">[docs]</a>    <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Element.dict_parameters"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Element.dict_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">dict_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict_parameters</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="s">&quot;{} {} {} {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                    <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">),</span>
+                                    <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">),</span>
+                                    <span class="n">join_dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict_parameters</span><span class="p">),</span>
+                                   <span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="SubCircuitElement"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.SubCircuitElement">[docs]</a><span class="k">class</span> <span class="nc">SubCircuitElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;X&#39;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">subcircuit_name</span><span class="p">,</span> <span class="o">*</span><span class="n">nodes</span><span class="p">):</span>
+
+        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">]</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">SubCircuitElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="n">subcircuit_name</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="TwoPortElement"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.TwoPortElement">[docs]</a><span class="k">class</span> <span class="nc">TwoPortElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="n">pins</span> <span class="o">=</span> <span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;plus&#39;</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;minus&#39;</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">))</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="TwoPortElement.plus"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.TwoPortElement.plus">[docs]</a>    <span class="k">def</span> <span class="nf">plus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="TwoPortElement.minus"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.TwoPortElement.minus">[docs]</a>    <span class="k">def</span> <span class="nf">minus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="Node"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Node">[docs]</a><span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;Node {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Node.name"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Node.name">[docs]</a>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Node.elements"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Node.elements">[docs]</a>    <span class="k">def</span> <span class="nf">elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Node.add_element"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Node.add_element">[docs]</a>    <span class="k">def</span> <span class="nf">add_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> 
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="Netlist"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Netlist">[docs]</a><span class="k">class</span> <span class="nc">Netlist</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ground</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_models</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dirty</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="c"># self._nodes = set()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c"># self._graph = networkx.Graph()</span>
+
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="Netlist.element_iterator"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Netlist.element_iterator">[docs]</a>    <span class="k">def</span> <span class="nf">element_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Netlist.model_iterator"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Netlist.model_iterator">[docs]</a>    <span class="k">def</span> <span class="nf">model_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">netlist</span> <span class="o">=</span> <span class="n">join_lines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">element_iterator</span><span class="p">())</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">:</span>
+            <span class="n">netlist</span> <span class="o">+=</span> <span class="n">join_lines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_iterator</span><span class="p">())</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">return</span> <span class="n">netlist</span>
+
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="Netlist._add_element"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Netlist._add_element">[docs]</a>    <span class="k">def</span> <span class="nf">_add_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">[</span><span class="n">element</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">element</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dirty</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;Element name {} is already defined&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Netlist.model"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Netlist.model">[docs]</a>    <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">modele_type</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters</span><span class="p">):</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DeviceModel</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">modele_type</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Netlist.nodes"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Netlist.nodes">[docs]</a>    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dirty</span><span class="p">:</span>
+            <span class="c"># nodes = set()</span>
+            <span class="c"># for element in self.element_iterator():</span>
+            <span class="c">#     nodes |= set(element.nodes)</span>
+            <span class="c"># if self._ground is not None:</span>
+            <span class="c">#     nodes -= set((self._ground,))</span>
+            <span class="c"># self._nodes = nodes</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_iterator</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">node_name</span> <span class="ow">in</span> <span class="n">element</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">node_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
+                        <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">node_name</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">[</span><span class="n">node_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">[</span><span class="n">node_name</span><span class="p">]</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute_name</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">attribute_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">attribute_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">attribute_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">attribute_name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="n">attribute_name</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute_name</span><span class="p">):</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__getitem__</span><span class="p">(</span><span class="n">attribute_name</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">attribute_name</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="Netlist.X"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Netlist.X">[docs]</a>    <span class="k">def</span> <span class="nf">X</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_element</span><span class="p">(</span><span class="n">SubCircuitElement</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">))</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="SubCircuit"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.SubCircuit">[docs]</a><span class="k">class</span> <span class="nc">SubCircuit</span><span class="p">(</span><span class="n">Netlist</span><span class="p">):</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">nodes</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_external_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="SubCircuit.check_nodes"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.SubCircuit.check_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">check_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_external_nodes</span><span class="p">)</span>
+        <span class="n">connected_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_iterator</span><span class="p">():</span>
+            <span class="n">connected_nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nodes</span> <span class="o">&amp;</span> <span class="n">element</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="n">not_connected_nodes</span> <span class="o">=</span> <span class="n">nodes</span> <span class="o">-</span> <span class="n">connected_nodes</span>
+        <span class="k">if</span> <span class="n">not_connected_nodes</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;SubCircuit Nodes {} are not connected&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">not_connected_nodes</span><span class="p">))</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">netlist</span> <span class="o">=</span> <span class="s">&#39;.subckt {} {}</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_external_nodes</span><span class="p">))</span>
+        <span class="n">netlist</span> <span class="o">+=</span> <span class="nb">super</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span>
+        <span class="n">netlist</span> <span class="o">+=</span> <span class="s">&#39;.ends</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">return</span> <span class="n">netlist</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="Circuit"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Circuit">[docs]</a><span class="k">class</span> <span class="nc">Circuit</span><span class="p">(</span><span class="n">Netlist</span><span class="p">):</span>
+
+    <span class="c"># .lib</span>
+    <span class="c"># .func</span>
+    <span class="c"># .csparam</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span>
+                 <span class="n">ground</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">global_nodes</span><span class="o">=</span><span class="p">(),</span>
+             <span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Circuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ground</span> <span class="o">=</span> <span class="n">ground</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_global_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">global_nodes</span><span class="p">)</span> <span class="c"># .global</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_includes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c"># .include</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="p">{}</span> <span class="c"># .param</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Circuit.gnd"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Circuit.gnd">[docs]</a>    <span class="k">def</span> <span class="nf">gnd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ground</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Circuit.include"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Circuit.include">[docs]</a>    <span class="k">def</span> <span class="nf">include</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_includes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Circuit.parameter"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Circuit.parameter">[docs]</a>    <span class="k">def</span> <span class="nf">parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">expression</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Circuit.subcircuit"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Circuit.subcircuit">[docs]</a>    <span class="k">def</span> <span class="nf">subcircuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subcircuit</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">subcircuit</span><span class="o">.</span><span class="n">name</span><span class="p">)]</span> <span class="o">=</span> <span class="n">subcircuit</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Circuit.subcircuit_iterator"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Circuit.subcircuit_iterator">[docs]</a>    <span class="k">def</span> <span class="nf">subcircuit_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">netlist</span> <span class="o">=</span> <span class="s">&#39;.title {}</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_includes</span><span class="p">:</span>
+            <span class="n">netlist</span> <span class="o">+=</span> <span class="n">join_lines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_includes</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s">&#39;.include &#39;</span><span class="p">)</span>  <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_nodes</span><span class="p">:</span>
+            <span class="n">netlist</span> <span class="o">+=</span> <span class="s">&#39;.global &#39;</span> <span class="o">+</span> <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_global_nodes</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">:</span>
+            <span class="n">netlist</span> <span class="o">+=</span> <span class="n">join_lines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s">&#39;.param &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span><span class="p">:</span>
+            <span class="n">netlist</span> <span class="o">+=</span> <span class="n">join_lines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subcircuit_iterator</span><span class="p">())</span>
+        <span class="n">netlist</span> <span class="o">+=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Circuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span>
+        <span class="n">netlist</span> <span class="o">+=</span> <span class="s">&#39;.end</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">return</span> <span class="n">netlist</span>
+
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="Circuit.simulation"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.Circuit.simulation">[docs]</a>    <span class="k">def</span> <span class="nf">simulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">CircuitSimulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="CircuitSimulation"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.CircuitSimulation">[docs]</a><span class="k">class</span> <span class="nc">CircuitSimulation</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">,</span>
+                 <span class="n">temperature</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+                 <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+                 <span class="n">pipe</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                <span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span> <span class="o">=</span> <span class="n">circuit</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="p">{}</span> <span class="c"># .options</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_saved_nodes</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nominal_temperature</span> <span class="o">=</span> <span class="n">nominal_temperature</span>
+
+        <span class="k">if</span> <span class="n">pipe</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="s">&#39;NOINIT&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s">&#39;binary&#39;</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="CircuitSimulation.options"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.CircuitSimulation.options">[docs]</a>    <span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s">&#39;TEMP&#39;</span><span class="p">]</span>
+
+    <span class="nd">@temperature.setter</span>
+<div class="viewcode-block" id="CircuitSimulation.temperature"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.CircuitSimulation.temperature">[docs]</a>    <span class="k">def</span> <span class="nf">temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s">&#39;TEMP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nominal_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s">&#39;TNOM&#39;</span><span class="p">]</span>
+
+    <span class="nd">@nominal_temperature.setter</span>
+<div class="viewcode-block" id="CircuitSimulation.nominal_temperature"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.CircuitSimulation.nominal_temperature">[docs]</a>    <span class="k">def</span> <span class="nf">nominal_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s">&#39;TNOM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="CircuitSimulation.save"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.CircuitSimulation.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_saved_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="CircuitSimulation.operating_point"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.CircuitSimulation.operating_point">[docs]</a>    <span class="k">def</span> <span class="nf">operating_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;op&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="CircuitSimulation.dc_sensitivity"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.CircuitSimulation.dc_sensitivity">[docs]</a>    <span class="k">def</span> <span class="nf">dc_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_variable</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        .sens outvar</span>
+<span class="sd">        .sens outvar ac dec nd fstart fstop</span>
+<span class="sd">        .sens outvar ac oct no fstart fstop</span>
+<span class="sd">        .sens outvar ac lin np fstart fstop</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;sens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">output_variable</span><span class="p">,)</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="CircuitSimulation.dc"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.CircuitSimulation.dc">[docs]</a>    <span class="k">def</span> <span class="nf">dc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; .dc srcnam vstart vstop vincr [ src2 start2 stop2 incr2 ] &quot;&quot;&quot;</span>
+
+        <span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">source_name</span><span class="p">,</span> <span class="n">voltage_slice</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="n">parameters</span> <span class="o">+=</span> <span class="p">[</span><span class="n">source_name</span><span class="p">,</span> <span class="n">voltage_slice</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">voltage_slice</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">voltage_slice</span><span class="o">.</span><span class="n">step</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="CircuitSimulation.transient"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.CircuitSimulation.transient">[docs]</a>    <span class="k">def</span> <span class="nf">transient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        .tran tstep tstop &lt;tstart &lt;tmax&gt;&gt; &lt;uic&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;tran&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">step_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">netlist</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">netlist</span> <span class="o">+=</span> <span class="s">&#39;.options {} = {}</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">netlist</span> <span class="o">+=</span> <span class="s">&#39;.options {}</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_saved_nodes</span><span class="p">:</span>
+            <span class="n">netlist</span> <span class="o">+=</span> <span class="s">&#39;.save &#39;</span> <span class="o">+</span> <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_saved_nodes</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">for</span> <span class="n">analysis</span><span class="p">,</span> <span class="n">analysis_parameters</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="n">netlist</span> <span class="o">+=</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">analysis</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">join_list</span><span class="p">(</span><span class="n">analysis_parameters</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">return</span> <span class="n">netlist</span>
+
+<span class="c">####################################################################################################</span>
+<span class="c"># </span>
+<span class="c"># End</span>
+<span class="c"># </span>
+<span class="c">####################################################################################################</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li>
+          <li><a href="../PySpice.html" >PySpice</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

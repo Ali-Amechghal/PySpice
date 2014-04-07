@@ -1,0 +1,10 @@
+*************
+ :mod:`Pipe`
+*************
+
+.. automodule:: PySpice.Pipe
+   :members:
+   :show-inheritance:
+
+
+.. End

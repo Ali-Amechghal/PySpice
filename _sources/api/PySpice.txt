@@ -1,0 +1,23 @@
+****************
+ :mod:`PySpice`
+****************
+
+.. toctree::
+  PySpice/Config
+  PySpice/HighLevelElement
+  PySpice/Logging
+  PySpice/Math
+  PySpice/Netlist
+  PySpice/Pipe
+  PySpice/RawFile
+  PySpice/SpiceElement
+  PySpice/SpiceLibrary
+  PySpice/SpiceParser
+  PySpice/Tools
+  PySpice/Units
+
+.. automodule:: PySpice
+   :members:
+   :show-inheritance:
+
+.. End

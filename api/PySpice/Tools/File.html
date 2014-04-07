@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.11.1. File &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
+    <link rel="up" title="1.11. Tools" href="../Tools.html" />
+    <link rel="next" title="1.11.2. Path" href="Path.html" />
+    <link rel="prev" title="1.11. Tools" href="../Tools.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Path.html" title="1.11.2. Path"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Tools.html" title="1.11. Tools"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../../PySpice.html" >1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
+          <li><a href="../Tools.html" accesskey="U">1.11. <tt class="docutils literal"><span class="pre">Tools</span></tt></a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-PySpice.Tools.File">
+<span id="file"></span><h1>1.11.1. <tt class="xref py py-mod docutils literal"><span class="pre">File</span></tt><a class="headerlink" href="#module-PySpice.Tools.File" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="PySpice.Tools.File.Directory">
+<em class="property">class </em><tt class="descclassname">PySpice.Tools.File.</tt><tt class="descname">Directory</tt><big>(</big><em>path</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Tools.File.Path" title="PySpice.Tools.File.Path"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Tools.File.Path</span></tt></a></p>
+<dl class="method">
+<dt id="PySpice.Tools.File.Directory.iter_directories">
+<tt class="descname">iter_directories</tt><big>(</big><em>followlinks=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Directory.iter_directories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Directory.iter_directories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Directory.iter_file">
+<tt class="descname">iter_file</tt><big>(</big><em>followlinks=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Directory.iter_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Directory.iter_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Directory.join_directory">
+<tt class="descname">join_directory</tt><big>(</big><em>directory</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Directory.join_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Directory.join_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Directory.join_filename">
+<tt class="descname">join_filename</tt><big>(</big><em>filename</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Directory.join_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Directory.join_filename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Tools.File.File">
+<em class="property">class </em><tt class="descclassname">PySpice.Tools.File.</tt><tt class="descname">File</tt><big>(</big><em>filename</em>, <em>path=''</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#File"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.File" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Tools.File.Path" title="PySpice.Tools.File.Path"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Tools.File.Path</span></tt></a></p>
+<dl class="method">
+<dt id="PySpice.Tools.File.File.compute_shasum">
+<tt class="descname">compute_shasum</tt><big>(</big><em>algorithm=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#File.compute_shasum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.File.compute_shasum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Tools.File.File.default_shasum_algorithm">
+<tt class="descname">default_shasum_algorithm</tt><em class="property"> = 256</em><a class="headerlink" href="#PySpice.Tools.File.File.default_shasum_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Tools.File.File.directory">
+<tt class="descname">directory</tt><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#File.directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.File.directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Tools.File.File.extension">
+<tt class="descname">extension</tt><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#File.extension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.File.extension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Tools.File.File.filename">
+<tt class="descname">filename</tt><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#File.filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.File.filename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Tools.File.File.shasum">
+<tt class="descname">shasum</tt><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#File.shasum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.File.shasum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Tools.File.Path">
+<em class="property">class </em><tt class="descclassname">PySpice.Tools.File.</tt><tt class="descname">Path</tt><big>(</big><em>path</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.absolut">
+<tt class="descname">absolut</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.absolut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.absolut" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.clone_for_path">
+<tt class="descname">clone_for_path</tt><big>(</big><em>path</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.clone_for_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.clone_for_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Tools.File.Path.creation_time">
+<tt class="descname">creation_time</tt><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.creation_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.creation_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.directory_part">
+<tt class="descname">directory_part</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.directory_part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.directory_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.expand_vars_and_user">
+<tt class="descname">expand_vars_and_user</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.expand_vars_and_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.expand_vars_and_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.filename_part">
+<tt class="descname">filename_part</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.filename_part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.filename_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Tools.File.Path.inode">
+<tt class="descname">inode</tt><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.inode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.inode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.is_absolut">
+<tt class="descname">is_absolut</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.is_absolut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.is_absolut" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.is_directory">
+<tt class="descname">is_directory</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.is_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.is_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.is_file">
+<tt class="descname">is_file</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.is_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.is_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.normalise">
+<tt class="descname">normalise</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.normalise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.normalise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.normalise_case">
+<tt class="descname">normalise_case</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.normalise_case"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.normalise_case" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Tools.File.Path.path">
+<tt class="descname">path</tt><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.real_path">
+<tt class="descname">real_path</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.real_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.real_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.relative_to">
+<tt class="descname">relative_to</tt><big>(</big><em>directory</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.relative_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.relative_to" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Tools.File.Path.split">
+<tt class="descname">split</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#Path.split"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.Path.split" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="PySpice.Tools.File.file_extension">
+<tt class="descclassname">PySpice.Tools.File.</tt><tt class="descname">file_extension</tt><big>(</big><em>filename</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#file_extension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.file_extension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PySpice.Tools.File.file_name_has_extension">
+<tt class="descclassname">PySpice.Tools.File.</tt><tt class="descname">file_name_has_extension</tt><big>(</big><em>file_name</em>, <em>extension</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#file_name_has_extension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.file_name_has_extension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PySpice.Tools.File.run_shasum">
+<tt class="descclassname">PySpice.Tools.File.</tt><tt class="descname">run_shasum</tt><big>(</big><em>filename</em>, <em>algorithm=1</em>, <em>text=False</em>, <em>binary=False</em>, <em>portable=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/File.html#run_shasum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.File.run_shasum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Tools.html"
+                        title="previous chapter">1.11. <tt class="docutils literal"><span class="pre">Tools</span></tt></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Path.html"
+                        title="next chapter">1.11.2. <tt class="docutils literal"><span class="pre">Path</span></tt></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/api/PySpice/Tools/File.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Path.html" title="1.11.2. Path"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Tools.html" title="1.11. Tools"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../../PySpice.html" >1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
+          <li><a href="../Tools.html" >1.11. <tt class="docutils literal"><span class="pre">Tools</span></tt></a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
