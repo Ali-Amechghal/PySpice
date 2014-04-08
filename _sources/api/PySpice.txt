@@ -10,7 +10,6 @@
   PySpice/Netlist
   PySpice/Pipe
   PySpice/RawFile
-  PySpice/RawFile-tmp1
   PySpice/SpiceElement
   PySpice/SpiceLibrary
   PySpice/SpiceParser
