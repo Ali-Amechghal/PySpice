@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.6.6. RawFile &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
+    <link rel="up" title="1.6. Spice" href="../Spice.html" />
+    <link rel="next" title="1.6.7. Server" href="Server.html" />
+    <link rel="prev" title="1.6.5. Parser" href="Parser.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Server.html" title="1.6.7. Server"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Parser.html" title="1.6.5. Parser"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../../PySpice.html" >1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
+          <li><a href="../Spice.html" accesskey="U">1.6. <tt class="docutils literal"><span class="pre">Spice</span></tt></a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-PySpice.Spice.RawFile">
+<span id="rawfile"></span><h1>1.6.6. <tt class="xref py py-mod docutils literal"><span class="pre">RawFile</span></tt><a class="headerlink" href="#module-PySpice.Spice.RawFile" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="PySpice.Spice.RawFile.RawFile">
+<em class="property">class </em><tt class="descclassname">PySpice.Spice.RawFile.</tt><tt class="descname">RawFile</tt><big>(</big><em>stdout</em>, <em>number_of_points</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>This class parse the stdout of ngspice and the raw data output.</p>
+<p>Public Attributes:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><tt class="xref py py-attr docutils literal"><span class="pre">circuit</span></tt></dt>
+<dd>same as title</dd>
+</dl>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">data</span></tt></p>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">date</span></tt></p>
+<dl class="docutils">
+<dt><tt class="xref py py-attr docutils literal"><span class="pre">flags</span></tt></dt>
+<dd>&#8216;real&#8217; or &#8216;complex&#8217;</dd>
+</dl>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">number_of_points</span></tt></p>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">number_of_variables</span></tt></p>
+<dl class="docutils">
+<dt><tt class="xref py py-attr docutils literal"><span class="pre">plot_name</span></tt></dt>
+<dd>AC Analysis, Operating Point, Sensitivity Analysis, DC transfer characteristic</dd>
+</dl>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">temperature</span></tt></p>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">title</span></tt></p>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">variables</span></tt></p>
+</div></blockquote>
+<dl class="attribute">
+<dt id="PySpice.Spice.RawFile.RawFile._logger">
+<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x450d290&gt;</em><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._logger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile._read_header">
+<tt class="descname">_read_header</tt><big>(</big><em>stdout</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._read_header"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._read_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the header</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile._read_header_field_line">
+<tt class="descname">_read_header_field_line</tt><big>(</big><em>header_line_iterator</em>, <em>expected_label</em>, <em>has_value=True</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._read_header_field_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._read_header_field_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read an header line and check it starts with <em>expected_label</em>.</p>
+<p>Return the values next to the label if the flag <em>has_value</em> is set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile._read_header_line">
+<tt class="descname">_read_header_line</tt><big>(</big><em>header_line_iterator</em>, <em>head_line</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._read_header_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._read_header_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read an header line and check it starts with <em>head_line</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile._read_line">
+<tt class="descname">_read_line</tt><big>(</big><em>header_line_iterator</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._read_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._read_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the next line</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile._read_variable_data">
+<tt class="descname">_read_variable_data</tt><big>(</big><em>raw_data</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._read_variable_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._read_variable_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the raw data and set the variable values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile._to_ac_analysis">
+<tt class="descname">_to_ac_analysis</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._to_ac_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._to_ac_analysis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile._to_dc_analysis">
+<tt class="descname">_to_dc_analysis</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._to_dc_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._to_dc_analysis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile._to_operating_point_analysis">
+<tt class="descname">_to_operating_point_analysis</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._to_operating_point_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._to_operating_point_analysis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile._to_sensitivity_analysis">
+<tt class="descname">_to_sensitivity_analysis</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._to_sensitivity_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._to_sensitivity_analysis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile._to_transient_analysis">
+<tt class="descname">_to_transient_analysis</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._to_transient_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._to_transient_analysis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile.branches">
+<tt class="descname">branches</tt><big>(</big><em>to_float=False</em>, <em>abscissa=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile.branches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile.branches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile.elements">
+<tt class="descname">elements</tt><big>(</big><em>abscissa=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile.elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile.elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile.nodes">
+<tt class="descname">nodes</tt><big>(</big><em>to_float=False</em>, <em>abscissa=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile.nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile.to_analysis">
+<tt class="descname">to_analysis</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile.to_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile.to_analysis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Spice.RawFile.Variable">
+<em class="property">class </em><tt class="descclassname">PySpice.Spice.RawFile.</tt><tt class="descname">Variable</tt><big>(</big><em>index</em>, <em>name</em>, <em>unit</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>This class implements a variable or probe in a Spice simulation output.</p>
+<p>Public Attributes:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><tt class="xref py py-attr docutils literal"><span class="pre">index</span></tt></dt>
+<dd>index in the array</dd>
+</dl>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">name</span></tt></p>
+<p><tt class="xref py py-attr docutils literal"><span class="pre">unit</span></tt></p>
+</div></blockquote>
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.Variable.is_branch_current">
+<tt class="descname">is_branch_current</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.is_branch_current"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.is_branch_current" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.Variable.is_node_voltage">
+<tt class="descname">is_node_voltage</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.is_node_voltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.is_node_voltage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.RawFile.Variable.simplified_name">
+<tt class="descname">simplified_name</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.simplified_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.simplified_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.RawFile.Variable.to_waveform">
+<tt class="descname">to_waveform</tt><big>(</big><em>abscissa=None</em>, <em>to_real=False</em>, <em>to_float=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.to_waveform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.to_waveform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Parser.html"
+                        title="previous chapter">1.6.5. <tt class="docutils literal"><span class="pre">Parser</span></tt></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Server.html"
+                        title="next chapter">1.6.7. <tt class="docutils literal"><span class="pre">Server</span></tt></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/api/PySpice/Spice/RawFile.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Server.html" title="1.6.7. Server"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Parser.html" title="1.6.5. Parser"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../../PySpice.html" >1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
+          <li><a href="../Spice.html" >1.6. <tt class="docutils literal"><span class="pre">Spice</span></tt></a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

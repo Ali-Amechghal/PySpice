@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PySpice.Spice.HighLevelElement &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
+    <link rel="up" title="PySpice.Spice" href="../Spice.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li>
+          <li><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for PySpice.Spice.HighLevelElement</h1><div class="highlight"><pre>
+<span class="c">####################################################################################################</span>
+<span class="c"># </span>
+<span class="c"># PySpice - A Spice package for Python</span>
+<span class="c"># Copyright (C) Salvaire Fabrice 2014</span>
+<span class="c"># </span>
+<span class="c">####################################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot; This module implements high level elements built on Spice elements. &quot;&quot;&quot;</span>
+
+<span class="c"># Fixme: these waveforms can be current sources as well</span>
+
+<span class="c">####################################################################################################</span>
+
+<span class="kn">from</span> <span class="nn">..Math</span> <span class="kn">import</span> <span class="n">rms_to_amplitude</span><span class="p">,</span> <span class="n">amplitude_to_rms</span>
+<span class="kn">from</span> <span class="nn">..Tools.StringTools</span> <span class="kn">import</span> <span class="n">join_list</span>
+<span class="kn">from</span> <span class="nn">..Unit.Units</span> <span class="kn">import</span> <span class="n">Frequency</span><span class="p">,</span> <span class="n">Period</span>
+<span class="kn">from</span> <span class="nn">.BasicElement</span> <span class="kn">import</span> <span class="n">VoltageSource</span>
+
+<span class="c">####################################################################################################</span>
+
+<div class="viewcode-block" id="Sinusoidal"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Sinusoidal">[docs]</a><span class="k">class</span> <span class="nc">Sinusoidal</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">):</span>
+
+    <span class="sd">r&quot;&quot;&quot; This class implements a sinusoidal waveform.</span>
+
+<span class="sd">    The shape of the waveform is described by the following formula:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        V(t) = \begin{cases}</span>
+<span class="sd">          V_o &amp; \text{if}\ 0 \leq t &lt; T_d, \\</span>
+<span class="sd">          V_o + V_a e^{-D_f(t-T_d)} \sin\left(2\pi f (t-T_d)\right) &amp; \text{if}\ T_d \leq t &lt; T_{stop}.</span>
+<span class="sd">        \end{cases}</span>
+
+<span class="sd">    Spice syntax::</span>
+
+<span class="sd">        SIN ( Voffset Vamplitude Freq Tdelay DampingFactor )</span>
+
+<span class="sd">    Public Attributes:</span>
+
+<span class="sd">      :attr:`amplitude`</span>
+
+<span class="sd">      :attr:`damping_factor`</span>
+
+<span class="sd">      :attr:`dc_offset`</span>
+
+<span class="sd">      :attr:`delay`</span>
+
+<span class="sd">      :attr:`frequency`</span>
+
+<span class="sd">      :attr:`offset`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span>
+                 <span class="n">dc_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                 <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">damping_factor</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sinusoidal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dc_offset</span> <span class="o">=</span> <span class="n">dc_offset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">=</span> <span class="n">amplitude</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="n">Frequency</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span> <span class="c"># Fixme: protect by setter?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="n">delay</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damping_factor</span> <span class="o">=</span> <span class="n">damping_factor</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Sinusoidal.rms_voltage"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Sinusoidal.rms_voltage">[docs]</a>    <span class="k">def</span> <span class="nf">rms_voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">amplitude_to_rms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Sinusoidal.period"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Sinusoidal.period">[docs]</a>    <span class="k">def</span> <span class="nf">period</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">period</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Sinusoidal.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Sinusoidal.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">join_list</span><span class="p">((</span><span class="s">&#39;DC {}V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dc_offset</span><span class="p">),</span>
+                          <span class="s">&#39;AC SIN({}V {}V {}Hz {}s {})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span><span class="p">,</span>
+                                                               <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay</span><span class="p">,</span>
+                                                               <span class="bp">self</span><span class="o">.</span><span class="n">damping_factor</span><span class="p">)))</span>
+        
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="AcLine"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.AcLine">[docs]</a><span class="k">class</span> <span class="nc">AcLine</span><span class="p">(</span><span class="n">Sinusoidal</span><span class="p">):</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span> <span class="n">rms_voltage</span><span class="o">=</span><span class="mi">230</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">AcLine</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span>
+                                     <span class="n">amplitude</span><span class="o">=</span><span class="n">rms_to_amplitude</span><span class="p">(</span><span class="n">rms_voltage</span><span class="p">),</span>
+                                     <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="Pulse"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Pulse">[docs]</a><span class="k">class</span> <span class="nc">Pulse</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;This class implements a pulse waveform.</span>
+
+<span class="sd">    Nomenclature:</span>
+
+<span class="sd">    +----+---------------+</span>
+<span class="sd">    | V1 | initial_value |</span>
+<span class="sd">    +----+---------------+</span>
+<span class="sd">    | V2 | pulsed_value  |</span>
+<span class="sd">    +----+---------------+</span>
+<span class="sd">    | Pw | pulse_width   |</span>
+<span class="sd">    +----+---------------+</span>
+<span class="sd">    | Td | delay_time    |</span>
+<span class="sd">    +----+---------------+</span>
+<span class="sd">    | Tr | rise_time     |</span>
+<span class="sd">    +----+---------------+</span>
+<span class="sd">    | Tf | fall_time     |</span>
+<span class="sd">    +----+---------------+</span>
+
+<span class="sd">    Spice Syntax::</span>
+<span class="sd">    </span>
+<span class="sd">        PULSE ( V1 V2 Td Tr Tf Pw Period )</span>
+<span class="sd">    </span>
+<span class="sd">    A single pulse so specified is described by the following table:</span>
+<span class="sd">    </span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Time        | Value |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | 0           | V1    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Td          | V1    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Td+Tr       | V2    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Td+Tr+Pw    | V2    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Td+Tr+Pw+Tf | V1    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    | Tstop       | V1    |</span>
+<span class="sd">    +-------------+-------+</span>
+<span class="sd">    </span>
+<span class="sd">    Note: default value in Spice for rise and fall time is the simulation transient step, pulse</span>
+<span class="sd">    width and period is the simulation stop time.</span>
+
+<span class="sd">    Public Attributes:</span>
+
+<span class="sd">      :attr:`delay_time`</span>
+
+<span class="sd">      :attr:`fall_time`</span>
+
+<span class="sd">      :attr:`initial_value`</span>
+
+<span class="sd">      :attr:`period`</span>
+
+<span class="sd">      :attr:`pulse_width`</span>
+
+<span class="sd">      :attr:`pulsed_value`</span>
+
+<span class="sd">      :attr:`rise_time`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span>
+                 <span class="n">initial_value</span><span class="p">,</span> <span class="n">pulsed_value</span><span class="p">,</span>
+                 <span class="n">pulse_width</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span>
+                 <span class="n">delay_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rise_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fall_time</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+                 <span class="c"># delay_time=.0,</span>
+                 <span class="c"># rise_time=None, fall_time=None, pulse_width=None, period=None):</span>
+
+        <span class="c"># Fixme: default</span>
+        <span class="c">#  rise_time, fall_time = Tstep</span>
+        <span class="c">#  pulse_width, period = Tstop</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Pulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_value</span> <span class="o">=</span> <span class="n">initial_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pulsed_value</span> <span class="o">=</span> <span class="n">pulsed_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span> <span class="o">=</span> <span class="n">delay_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rise_time</span> <span class="o">=</span> <span class="n">rise_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fall_time</span> <span class="o">=</span> <span class="n">fall_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pulse_width</span> <span class="o">=</span> <span class="n">pulse_width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">period</span> <span class="o">=</span> <span class="n">Period</span><span class="p">(</span><span class="n">period</span><span class="p">)</span> <span class="c"># Fixme: protect by setter?</span>
+
+        <span class="c"># # Fixme: to func?</span>
+        <span class="c"># # Check parameters</span>
+        <span class="c"># found_none = False</span>
+        <span class="c"># for parameter in (&#39;rise_time&#39;, &#39;fall_time&#39;, &#39;pulse_width&#39;, &#39;period&#39;):</span>
+        <span class="c">#     parameter_value = getattr(self, parameter)</span>
+        <span class="c">#     if found_none:</span>
+        <span class="c">#         if parameter_value is not None:</span>
+        <span class="c">#             raise ValueError(&quot;Parameter {} is set but some previous parameters was not set&quot;.format(parameter))</span>
+        <span class="c">#     else:</span>
+        <span class="c">#         found_none = parameter_value is None</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Pulse.frequency"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Pulse.frequency">[docs]</a>    <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="o">.</span><span class="n">frequency</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Pulse.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Pulse.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">&#39;PULSE(&#39;</span> <span class="o">+</span> \
+                <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulsed_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span><span class="p">,</span> 
+                           <span class="bp">self</span><span class="o">.</span><span class="n">rise_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fall_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulse_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">))</span> <span class="o">+</span> \
+                <span class="s">&#39;)&#39;</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+<span class="c"># </span>
+<span class="c"># End</span>
+<span class="c"># </span>
+<span class="c">####################################################################################################</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li>
+          <li><a href="../Spice.html" >PySpice.Spice</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

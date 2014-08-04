@@ -1,0 +1,590 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PySpice.Unit.Units &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for PySpice.Unit.Units</h1><div class="highlight"><pre>
+<span class="c">####################################################################################################</span>
+<span class="c"># </span>
+<span class="c"># PySpice - A Spice package for Python</span>
+<span class="c"># Copyright (C) Salvaire Fabrice 2014</span>
+<span class="c"># </span>
+<span class="c">####################################################################################################</span>
+
+<span class="c">####################################################################################################</span>
+<span class="c">#</span>
+<span class="c">#  - unit suffix</span>
+<span class="c">#  - simplify .001</span>
+<span class="c">#</span>
+<span class="c">####################################################################################################</span>
+
+<span class="c">####################################################################################################</span>
+
+<span class="kn">import</span> <span class="nn">numbers</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c">####################################################################################################</span>
+
+<div class="viewcode-block" id="Unit"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit">[docs]</a><span class="k">class</span> <span class="nc">Unit</span><span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">Real</span><span class="p">):</span>
+
+    <span class="n">__power__</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">__spice_suffix__</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">__unit_suffix__</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Unit</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__power__</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">__power__</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">_value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span>  <span class="n">value</span> <span class="c"># to keep as int</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Unit.power"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.power">[docs]</a>    <span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__power__</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Unit.scale"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.scale">[docs]</a>    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">10</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">__power__</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Unit.value"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.value">[docs]</a>    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Unit.clone"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Unit.is_same_scale"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.is_same_scale">[docs]</a>    <span class="k">def</span> <span class="nf">is_same_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Unit</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__power__</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">__power__</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Unit.convert_value"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.convert_value">[docs]</a>    <span class="k">def</span> <span class="nf">convert_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_same_scale</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">_value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Unit.convert"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.convert">[docs]</a>    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">))</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__float__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__spice_suffix__</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__nonzero__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;True if self != 0. Called for bool(self).&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">!=</span> <span class="mi">0</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self + other&quot;&quot;&quot;</span>
+
+        <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">new_obj</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;other + self&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;-self&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__pos__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;+self&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self - other&quot;&quot;&quot;</span>
+
+        <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">new_obj</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;other - self&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self * other&quot;&quot;&quot;</span>
+
+        <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">*=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">new_obj</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;other * self&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self / other without __future__ division</span>
+
+<span class="sd">        May promote to float.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">/=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">new_obj</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__rdiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;other / self without __future__ division&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self / other with __future__ division.</span>
+
+<span class="sd">        Should promote to float when necessary.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;other / self with __future__ division&quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exponent</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self**exponent; should promote to float or complex when necessary.&quot;&quot;&quot;</span>
+
+        <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">**=</span> <span class="nb">float</span><span class="p">(</span><span class="n">exponent</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">new_obj</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__rpow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;base ** self&quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Returns the Real distance from 0. Called for abs(self).&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">))</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self == other&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self != other&quot;&quot;&quot;</span>
+
+        <span class="c"># The default __ne__ doesn&#39;t negate __eq__ until 3.0.</span>
+
+        <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__trunc__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;trunc(self): Truncates self to an Integral.</span>
+
+<span class="sd">        Returns an Integral i such that:</span>
+<span class="sd">          * i&gt;0 iff self&gt;0;</span>
+<span class="sd">          * abs(i) &lt;= abs(self);</span>
+<span class="sd">          * for any Integral j satisfying the first two conditions,</span>
+<span class="sd">            abs(i) &gt;= abs(j) [i.e. i has &quot;maximal&quot; abs among those].</span>
+<span class="sd">        i.e. &quot;truncate towards 0&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__divmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;divmod(self, other): The pair (self // other, self % other).</span>
+
+<span class="sd">        Sometimes this can be computed faster than the pair of</span>
+<span class="sd">        operations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span> <span class="o">//</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span> <span class="o">%</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__rdivmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;divmod(other, self): The pair (self // other, self % other).</span>
+
+<span class="sd">        Sometimes this can be computed faster than the pair of</span>
+<span class="sd">        operations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">other</span> <span class="o">//</span> <span class="bp">self</span><span class="p">,</span> <span class="n">other</span> <span class="o">%</span> <span class="bp">self</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self // other: The floor() of self/other.&quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__rfloordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;other // self: The floor() of other/self.&quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self % other&quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__rmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;other % self&quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self &lt; other</span>
+
+<span class="sd">        &lt; on Reals defines a total ordering, except perhaps for NaN.&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self &lt;= other&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="Unit.inverse"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">the_class</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+        <span class="n">inverse</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">the_class</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="n">inverse</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span> <span class="c"># Fixme: to func?</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">the_class</span><span class="p">(</span><span class="n">inverse</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Unit.canonise"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.canonise">[docs]</a>    <span class="k">def</span> <span class="nf">canonise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c"># log10(10**n) = n    log10(1) = 0   log10(10**-n) = -n   log10(0) = -oo</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">abs_value</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">abs_value</span><span class="p">)</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+            <span class="c"># if abs_value &gt;= 1:</span>
+            <span class="c">#     power = 3 * int(log)</span>
+            <span class="c"># else:</span>
+            <span class="c">#     if log - int(log): # frac</span>
+            <span class="c">#         power = 3 * (int(log) -1)</span>
+            <span class="c">#     else:</span>
+            <span class="c">#         power = 3 * int(log)</span>
+            <span class="n">power</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">abs_value</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="p">(</span><span class="n">log</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">log</span><span class="p">)):</span>
+                <span class="n">power</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">power</span> <span class="o">*=</span> <span class="mi">3</span>
+            <span class="n">unit</span> <span class="o">=</span> <span class="n">__power_to_unit__</span><span class="p">[</span><span class="n">power</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">unit</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="n">power</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="tera"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.tera">[docs]</a><span class="k">class</span> <span class="nc">tera</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; T Tera 1e12 &quot;&quot;&quot;</span>
+    <span class="n">__power__</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="n">__spice_suffix__</span> <span class="o">=</span> <span class="s">&#39;T&#39;</span>
+</div>
+<div class="viewcode-block" id="giga"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.giga">[docs]</a><span class="k">class</span> <span class="nc">giga</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; G Giga 1e9 &quot;&quot;&quot;</span>
+    <span class="n">__power__</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="n">__spice_suffix__</span> <span class="o">=</span> <span class="s">&#39;G&#39;</span>
+</div>
+<div class="viewcode-block" id="mega"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.mega">[docs]</a><span class="k">class</span> <span class="nc">mega</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Meg Mega 1e6 &quot;&quot;&quot;</span>
+    <span class="n">__power__</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">__spice_suffix__</span> <span class="o">=</span> <span class="s">&#39;Meg&#39;</span>
+</div>
+<div class="viewcode-block" id="kilo"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.kilo">[docs]</a><span class="k">class</span> <span class="nc">kilo</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; K Kilo 1e3 &quot;&quot;&quot;</span>
+    <span class="n">__power__</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">__spice_suffix__</span> <span class="o">=</span> <span class="s">&#39;k&#39;</span>
+</div>
+<div class="viewcode-block" id="milli"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.milli">[docs]</a><span class="k">class</span> <span class="nc">milli</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; m milli 1e-3 &quot;&quot;&quot;</span>
+    <span class="n">__power__</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+    <span class="n">__spice_suffix__</span> <span class="o">=</span> <span class="s">&#39;m&#39;</span>
+</div>
+<div class="viewcode-block" id="micro"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.micro">[docs]</a><span class="k">class</span> <span class="nc">micro</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; u micro 1e-6 &quot;&quot;&quot;</span>
+    <span class="n">__power__</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>
+    <span class="n">__spice_suffix__</span> <span class="o">=</span> <span class="s">&#39;u&#39;</span>
+</div>
+<div class="viewcode-block" id="nano"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.nano">[docs]</a><span class="k">class</span> <span class="nc">nano</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; n nano 1e-9 &quot;&quot;&quot;</span>
+    <span class="n">__power__</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span>
+    <span class="n">__spice_suffix__</span> <span class="o">=</span> <span class="s">&#39;n&#39;</span>
+</div>
+<div class="viewcode-block" id="pico"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.pico">[docs]</a><span class="k">class</span> <span class="nc">pico</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; p pico 1e-12 &quot;&quot;&quot;</span>
+    <span class="n">__power__</span> <span class="o">=</span> <span class="o">-</span><span class="mi">12</span>
+    <span class="n">__spice_suffix__</span> <span class="o">=</span> <span class="s">&#39;p&#39;</span>
+</div>
+<div class="viewcode-block" id="femto"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.femto">[docs]</a><span class="k">class</span> <span class="nc">femto</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; f femto 1e-15 &quot;&quot;&quot;</span>
+    <span class="n">__power__</span> <span class="o">=</span> <span class="o">-</span><span class="mi">15</span>
+    <span class="n">__spice_suffix__</span> <span class="o">=</span> <span class="s">&#39;f&#39;</span>
+
+<span class="c"># class mil(Unit):</span>
+<span class="c">#     &quot;&quot;&quot; mil Mil 25.4e-6 &quot;&quot;&quot;</span>
+<span class="c">#     __scale__ = 25.4e-6</span>
+<span class="c">#     __spice_suffix__ = &#39;mil&#39;</span>
+
+</div>
+<span class="n">__units__</span> <span class="o">=</span> <span class="p">(</span><span class="n">tera</span><span class="p">,</span>
+             <span class="n">giga</span><span class="p">,</span>
+             <span class="n">mega</span><span class="p">,</span>
+             <span class="n">kilo</span><span class="p">,</span>
+             <span class="n">Unit</span><span class="p">,</span>
+             <span class="n">milli</span><span class="p">,</span>
+             <span class="n">micro</span><span class="p">,</span>
+             <span class="n">nano</span><span class="p">,</span>
+             <span class="n">pico</span><span class="p">,</span>
+             <span class="n">femto</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">__power_to_unit__</span> <span class="o">=</span> <span class="p">{</span><span class="n">unit</span><span class="o">.</span><span class="n">__power__</span><span class="p">:</span><span class="n">unit</span> <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">__units__</span><span class="p">}</span>
+
+<span class="c">####################################################################################################</span>
+
+<div class="viewcode-block" id="Frequency"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Frequency">[docs]</a><span class="k">class</span> <span class="nc">Frequency</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Frequency.period"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Frequency.period">[docs]</a>    <span class="k">def</span> <span class="nf">period</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">Period</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Frequency.pulsation"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Frequency.pulsation">[docs]</a>    <span class="k">def</span> <span class="nf">pulsation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="Period"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Period">[docs]</a><span class="k">class</span> <span class="nc">Period</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Period.frequency"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Period.frequency">[docs]</a>    <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">Frequency</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Period.pulsation"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Period.pulsation">[docs]</a>    <span class="k">def</span> <span class="nf">pulsation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">pulsation</span>
+
+<span class="c">####################################################################################################</span>
+<span class="c"># </span>
+<span class="c"># End</span>
+<span class="c"># </span>
+<span class="c">####################################################################################################</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

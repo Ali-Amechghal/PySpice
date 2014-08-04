@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.5.2. WaveForm &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
+    <link rel="up" title="1.5. Probe" href="../Probe.html" />
+    <link rel="next" title="1.6. Spice" href="../Spice.html" />
+    <link rel="prev" title="1.5.1. Plot" href="Plot.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../Spice.html" title="1.6. Spice"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Plot.html" title="1.5.1. Plot"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../../PySpice.html" >1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
+          <li><a href="../Probe.html" accesskey="U">1.5. <tt class="docutils literal"><span class="pre">Probe</span></tt></a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-PySpice.Probe.WaveForm">
+<span id="waveform"></span><h1>1.5.2. <tt class="xref py py-mod docutils literal"><span class="pre">WaveForm</span></tt><a class="headerlink" href="#module-PySpice.Probe.WaveForm" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="PySpice.Probe.WaveForm.AcAnalysis">
+<em class="property">class </em><tt class="descclassname">PySpice.Probe.WaveForm.</tt><tt class="descname">AcAnalysis</tt><big>(</big><em>frequency</em>, <em>nodes</em>, <em>branches</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#AcAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.AcAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Probe.WaveForm.Analysis" title="PySpice.Probe.WaveForm.Analysis"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Probe.WaveForm.Analysis</span></tt></a></p>
+<dl class="attribute">
+<dt id="PySpice.Probe.WaveForm.AcAnalysis.frequency">
+<tt class="descname">frequency</tt><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#AcAnalysis.frequency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.AcAnalysis.frequency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Probe.WaveForm.Analysis">
+<em class="property">class </em><tt class="descclassname">PySpice.Probe.WaveForm.</tt><tt class="descname">Analysis</tt><big>(</big><em>nodes=()</em>, <em>branches=()</em>, <em>elements=()</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#Analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.Analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Probe.WaveForm.DcAnalysis">
+<em class="property">class </em><tt class="descclassname">PySpice.Probe.WaveForm.</tt><tt class="descname">DcAnalysis</tt><big>(</big><em>v_sweep</em>, <em>nodes</em>, <em>branches</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#DcAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.DcAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Probe.WaveForm.Analysis" title="PySpice.Probe.WaveForm.Analysis"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Probe.WaveForm.Analysis</span></tt></a></p>
+<p>When the DC analysis is performed with multiple sources, v-sweep is the last source.</p>
+<p>The loop scheme is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span>  <span class="n">v1</span> <span class="ow">in</span> <span class="n">vsource1</span><span class="p">:</span> 
+     <span class="k">for</span> <span class="n">v2</span> <span class="ow">in</span> <span class="n">vsource2</span><span class="p">:</span>
+         <span class="o">...</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="PySpice.Probe.WaveForm.DcAnalysis.v_sweep">
+<tt class="descname">v_sweep</tt><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#DcAnalysis.v_sweep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.DcAnalysis.v_sweep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Probe.WaveForm.OperatingPoint">
+<em class="property">class </em><tt class="descclassname">PySpice.Probe.WaveForm.</tt><tt class="descname">OperatingPoint</tt><big>(</big><em>nodes=()</em>, <em>branches=()</em>, <em>elements=()</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#OperatingPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.OperatingPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Probe.WaveForm.Analysis" title="PySpice.Probe.WaveForm.Analysis"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Probe.WaveForm.Analysis</span></tt></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Probe.WaveForm.SensitivityAnalysis">
+<em class="property">class </em><tt class="descclassname">PySpice.Probe.WaveForm.</tt><tt class="descname">SensitivityAnalysis</tt><big>(</big><em>elements</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#SensitivityAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.SensitivityAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Probe.WaveForm.Analysis" title="PySpice.Probe.WaveForm.Analysis"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Probe.WaveForm.Analysis</span></tt></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Probe.WaveForm.TransientAnalysis">
+<em class="property">class </em><tt class="descclassname">PySpice.Probe.WaveForm.</tt><tt class="descname">TransientAnalysis</tt><big>(</big><em>time</em>, <em>nodes</em>, <em>branches</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#TransientAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.TransientAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Probe.WaveForm.Analysis" title="PySpice.Probe.WaveForm.Analysis"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Probe.WaveForm.Analysis</span></tt></a></p>
+<dl class="attribute">
+<dt id="PySpice.Probe.WaveForm.TransientAnalysis.time">
+<tt class="descname">time</tt><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#TransientAnalysis.time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.TransientAnalysis.time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="PySpice.Probe.WaveForm.WaveForm">
+<em class="property">class </em><tt class="descclassname">PySpice.Probe.WaveForm.</tt><tt class="descname">WaveForm</tt><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#WaveForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.WaveForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></p>
+<dl class="method">
+<dt id="PySpice.Probe.WaveForm.WaveForm.str_data">
+<tt class="descname">str_data</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Probe/WaveForm.html#WaveForm.str_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Probe.WaveForm.WaveForm.str_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Plot.html"
+                        title="previous chapter">1.5.1. <tt class="docutils literal"><span class="pre">Plot</span></tt></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Spice.html"
+                        title="next chapter">1.6. <tt class="docutils literal"><span class="pre">Spice</span></tt></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/api/PySpice/Probe/WaveForm.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../Spice.html" title="1.6. Spice"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Plot.html" title="1.5.1. Plot"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../../PySpice.html" >1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
+          <li><a href="../Probe.html" >1.5. <tt class="docutils literal"><span class="pre">Probe</span></tt></a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

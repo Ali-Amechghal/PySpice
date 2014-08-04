@@ -217,7 +217,7 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="TwoPortElement"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.TwoPortElement">[docs]</a><span class="k">class</span> <span class="nc">TwoPortElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+<div class="viewcode-block" id="TwoPinElement"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.TwoPinElement">[docs]</a><span class="k">class</span> <span class="nc">TwoPinElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
 
     <span class="c">##############################################</span>
 
@@ -225,18 +225,18 @@
 
         <span class="n">pins</span> <span class="o">=</span> <span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;plus&#39;</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;minus&#39;</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">))</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
 
     <span class="nd">@property</span>
-<div class="viewcode-block" id="TwoPortElement.plus"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.TwoPortElement.plus">[docs]</a>    <span class="k">def</span> <span class="nf">plus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TwoPinElement.plus"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.TwoPinElement.plus">[docs]</a>    <span class="k">def</span> <span class="nf">plus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
 </div>
     <span class="nd">@property</span>
-<div class="viewcode-block" id="TwoPortElement.minus"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.TwoPortElement.minus">[docs]</a>    <span class="k">def</span> <span class="nf">minus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TwoPinElement.minus"><a class="viewcode-back" href="../../api/PySpice/Netlist.html#PySpice.Netlist.TwoPinElement.minus">[docs]</a>    <span class="k">def</span> <span class="nf">minus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c">####################################################################################################</span>

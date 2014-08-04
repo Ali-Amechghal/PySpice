@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1.2. HighLevelElement &mdash; PySpice 0.1.0 documentation</title>
+    <title>HighLevelElement &mdash; PySpice 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -25,10 +23,7 @@
     <script type="text/javascript" src="../../static/jquery.js"></script>
     <script type="text/javascript" src="../../static/underscore.js"></script>
     <script type="text/javascript" src="../../static/doctools.js"></script>
-    <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
-    <link rel="up" title="1. PySpice" href="../PySpice.html" />
-    <link rel="next" title="1.3. Logging" href="Logging.html" />
-    <link rel="prev" title="1.1.1. ConfigInstall" href="Config/ConfigInstall.html" /> 
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,14 +35,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="Logging.html" title="1.3. Logging"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="Config/ConfigInstall.html" title="1.1.1. ConfigInstall"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../PySpice.html" accesskey="U">1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li> 
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -56,62 +44,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="module-PySpice.HighLevelElement">
-<span id="highlevelelement"></span><h1>1.2. <tt class="xref py py-mod docutils literal"><span class="pre">HighLevelElement</span></tt><a class="headerlink" href="#module-PySpice.HighLevelElement" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="PySpice.HighLevelElement.AcLine">
-<em class="property">class </em><tt class="descclassname">PySpice.HighLevelElement.</tt><tt class="descname">AcLine</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>rms_voltage=230</em>, <em>frequency=50</em><big>)</big><a class="reference internal" href="../../_modules/PySpice/HighLevelElement.html#AcLine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.HighLevelElement.AcLine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.HighLevelElement.Sinusoidal" title="PySpice.HighLevelElement.Sinusoidal"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.HighLevelElement.Sinusoidal</span></tt></a></p>
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.HighLevelElement.Pulse">
-<em class="property">class </em><tt class="descclassname">PySpice.HighLevelElement.</tt><tt class="descname">Pulse</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>initial_value</em>, <em>pulsed_value</em>, <em>pulse_width</em>, <em>period</em>, <em>delay_time=0</em>, <em>rise_time=0</em>, <em>fall_time=0</em><big>)</big><a class="reference internal" href="../../_modules/PySpice/HighLevelElement.html#Pulse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.HighLevelElement.Pulse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="SpiceElement.html#PySpice.SpiceElement.VoltageSource" title="PySpice.SpiceElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.SpiceElement.VoltageSource</span></tt></a></p>
-<p>PULSE ( V1 V2 TD TR TF PW PER )</p>
-<p>A single pulse so specified is described by the following table:</p>
-<p>|| Time        || Value ||
-|| 0           || V1    ||
-|| TD          || V1    ||
-|| TD+TR       || V2    ||
-|| TD+TR+PW    || V2    ||
-|| TD+TR+PW+TF || V1    ||
-|| TSTOP       || V1    ||</p>
-<p>default value for rise and fall time in the transient step, period is stop time.</p>
-<dl class="attribute">
-<dt id="PySpice.HighLevelElement.Pulse.frequency">
-<tt class="descname">frequency</tt><a class="reference internal" href="../../_modules/PySpice/HighLevelElement.html#Pulse.frequency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.HighLevelElement.Pulse.frequency" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="PySpice.HighLevelElement.Pulse.parameters">
-<tt class="descname">parameters</tt><a class="reference internal" href="../../_modules/PySpice/HighLevelElement.html#Pulse.parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.HighLevelElement.Pulse.parameters" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.HighLevelElement.Sinusoidal">
-<em class="property">class </em><tt class="descclassname">PySpice.HighLevelElement.</tt><tt class="descname">Sinusoidal</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>dc_offset=0</em>, <em>offset=0</em>, <em>amplitude=1</em>, <em>frequency=50</em>, <em>delay=0</em>, <em>damping_factor=0</em><big>)</big><a class="reference internal" href="../../_modules/PySpice/HighLevelElement.html#Sinusoidal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.HighLevelElement.Sinusoidal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="SpiceElement.html#PySpice.SpiceElement.VoltageSource" title="PySpice.SpiceElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.SpiceElement.VoltageSource</span></tt></a></p>
-<p>SIN ( VO VA FREQ TD THETA )</p>
-<dl class="attribute">
-<dt id="PySpice.HighLevelElement.Sinusoidal.parameters">
-<tt class="descname">parameters</tt><a class="reference internal" href="../../_modules/PySpice/HighLevelElement.html#Sinusoidal.parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.HighLevelElement.Sinusoidal.parameters" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="PySpice.HighLevelElement.Sinusoidal.period">
-<tt class="descname">period</tt><a class="reference internal" href="../../_modules/PySpice/HighLevelElement.html#Sinusoidal.period"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.HighLevelElement.Sinusoidal.period" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="PySpice.HighLevelElement.Sinusoidal.rms_voltage">
-<tt class="descname">rms_voltage</tt><a class="reference internal" href="../../_modules/PySpice/HighLevelElement.html#Sinusoidal.rms_voltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.HighLevelElement.Sinusoidal.rms_voltage" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="highlevelelement">
+<h1><tt class="xref py py-mod docutils literal"><span class="pre">HighLevelElement</span></tt><a class="headerlink" href="#highlevelelement" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -120,12 +54,6 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="Config/ConfigInstall.html"
-                        title="previous chapter">1.1.1. <tt class="docutils literal"><span class="pre">ConfigInstall</span></tt></a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="Logging.html"
-                        title="next chapter">1.3. <tt class="docutils literal"><span class="pre">Logging</span></tt></a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../_sources/api/PySpice/HighLevelElement.txt"
@@ -157,19 +85,12 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="Logging.html" title="1.3. Logging"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="Config/ConfigInstall.html" title="1.1.1. ConfigInstall"
-             >previous</a> |</li>
-        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../PySpice.html" >1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li> 
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
