@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.3.5.1. Capacitor Inductor &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2.3.5. Passive" href="index.html" />
+    <link rel="next" title="2.3.6. Power Supply" href="../power-supply/index.html" />
+    <link rel="prev" title="2.3.5. Passive" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../power-supply/index.html" title="2.3.6. Power Supply"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="2.3.5. Passive"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2.3.5. Passive</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="capacitor-inductor">
+<h1>2.3.5.1. Capacitor Inductor<a class="headerlink" href="#capacitor-inductor" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+
+
+<span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
+
+
+<span class="kn">from</span> <span class="nn">PySpice.Probe.Plot</span> <span class="kn">import</span> <span class="n">plot</span>
+<span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="c"># Warning: the capacitor/inductor return current in the generator</span>
+<span class="c">#  could use switches instead</span>
+
+<span class="k">for</span> <span class="n">element_type</span> <span class="ow">in</span> <span class="s">&#39;capacitor&#39;</span><span class="p">,</span> <span class="s">&#39;inductor&#39;</span><span class="p">:</span>
+
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">element_type</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
+    <span class="c"># Fixme: compute value</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">Pulse</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+                           <span class="n">initial_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pulsed_value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                           <span class="n">pulse_width</span><span class="o">=</span><span class="n">milli</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">period</span><span class="o">=</span><span class="n">milli</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s">&#39;capacitor&#39;</span><span class="p">:</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">C</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c"># F</span>
+        <span class="c"># tau = RC = 1 ms</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">L</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># H</span>
+        <span class="c"># tau = L/R = 1 ms</span>
+    <span class="n">element</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="c"># circuit.R(2, &#39;out&#39;, circuit.gnd, kilo(1)) # for debug</span>
+
+    <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s">&#39;capacitor&#39;</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;tau = &#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">circuit</span><span class="p">[</span><span class="s">&#39;R1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">circuit</span><span class="p">[</span><span class="s">&#39;C1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">capacitance</span> <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;tau = &#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">circuit</span><span class="p">[</span><span class="s">&#39;L1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">inductance</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">circuit</span><span class="p">[</span><span class="s">&#39;R1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
+
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">end_time</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">period</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span>
+                                   <span class="n">probes</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;V(in)&#39;</span><span class="p">,</span> <span class="s">&#39;V(out)&#39;</span><span class="p">))</span>
+
+    <span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s">&#39;capacitor&#39;</span><span class="p">:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Capacitor: voltage is constant&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Inductor: current is constant&quot;</span>
+    <span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">current_scale</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;in&#39;</span><span class="p">])</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;out&#39;</span><span class="p">])</span>
+    <span class="c"># Fixme: resistor current, scale</span>
+    <span class="n">plot</span><span class="p">((</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;in&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">circuit</span><span class="p">[</span><span class="s">&#39;R1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span><span class="o">*</span><span class="n">current_scale</span><span class="p">)</span>
+    <span class="n">axe</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+    <span class="n">axe</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
+    <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;[V]&#39;</span><span class="p">)</span>
+    <span class="n">axe</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Vin [V]&#39;</span><span class="p">,</span> <span class="s">&#39;Vout [V]&#39;</span><span class="p">,</span> <span class="s">&#39;I&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">2.3.5. Passive</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../power-supply/index.html"
+                        title="next chapter">2.3.6. Power Supply</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/examples/passive/capacitor-inductor.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../power-supply/index.html" title="2.3.6. Power Supply"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="2.3.5. Passive"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li><a href="index.html" >2.3.5. Passive</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

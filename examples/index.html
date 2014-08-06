@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. Examples &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../index.html" />
+    <link rel="next" title="2.3.1. Diode" href="diode/index.html" />
+    <link rel="prev" title="1.8.2. Units" href="../api/PySpice/Unit/Units.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="diode/index.html" title="2.3.1. Diode"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../api/PySpice/Unit/Units.html" title="1.8.2. Units"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PySpice 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="examples">
+<h1>2. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>This section gives an overwiew of what we can do with PySpice. These examples are inspired from
+classical circuits and can serve as learning material.</p>
+<p>Usually these examples don&#8217;t involve advanced Python programming. You just need to know basic Python
+programming and how to use the Numpy and Matplotlib framework. However the code to make complexe
+figures can require advanced Matplotlib topics.</p>
+<div class="section" id="how-to-learn-python">
+<h2>2.1. How to Learn Python<a class="headerlink" href="#how-to-learn-python" title="Permalink to this headline">¶</a></h2>
+<p>Some links to learn about Python programming and Scientific Framework:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2.7/tutorial/index.html">The Python Tutorial</a></li>
+<li><a class="reference external" href="http://matplotlib.org/users/pyplot_tutorial.html">Pyplot tutorial</a></li>
+<li><a class="reference external" href="https://scipy-lectures.github.io/">Python Scientific Lecture Notes</a></li>
+<li><a class="reference external" href="http://nbviewer.ipython.org/github/jrjohansson/scientific-python-lectures/tree/master/">Scientific Python Lectures</a></li>
+</ul>
+</div>
+<div class="section" id="how-to-run-theses-examples">
+<h2>2.2. How to Run theses Examples<a class="headerlink" href="#how-to-run-theses-examples" title="Permalink to this headline">¶</a></h2>
+<p>A Linux desktop is the best platform to work with PySpice. Indeed it is easier to get NgSpice
+running and install Python.</p>
+<p>There is several ways to run the examples: as a script from the console, in the Ipython interactive
+environment or in a web browser using the Ipython Notebook. Each has their advantages and drawbacks.
+A script is best when we want to work on a file using an editor. And an interactive environment is
+best when we want to play with code in live.</p>
+<p>To run an example from the console, execute this command:</p>
+<div class="highlight-sh"><div class="highlight"><pre>python examples/.../foo.py
+</pre></div>
+</div>
+<p>To start the interactive IPython environment:</p>
+<div class="highlight-sh"><div class="highlight"><pre>ipython --matplotlib       <span class="c"># enable matplotlib integration</span>
+ipython --matplotlib-qt    <span class="c"># enable matplotlib integration with qt4 backend</span>
+ipython qtconsole          <span class="c"># start the qtconsole GUI application</span>
+</pre></div>
+</div>
+<p>then run an example using the magic command:</p>
+<div class="highlight-py"><div class="highlight"><pre><span class="o">%</span><span class="n">run</span> <span class="n">examples</span><span class="o">/../</span><span class="n">foo</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>To start the IPython notebook in your web browser:</p>
+<div class="highlight-sh"><div class="highlight"><pre>ipython notebook
+</pre></div>
+</div>
+<p>When we use IPython notebook it is convenient to use a matplotlib backend that outputs the graphics
+embedded in the notebook file. To activate this backend, somewhere in the beginning on the notebook,
+you must add:</p>
+<div class="highlight-py"><div class="highlight"><pre><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+<p>Then you can copy-paste code blocks and execute them.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Notice for security reason, web browsers don&#8217;t offer a simple way to copy-paste a code block
+(i.e. fill the clipboard using a button and some javascript behind the scene). You must select and
+copy by hand the code.</p>
+</div>
+</div>
+<div class="section" id="tables-of-contents">
+<h2>2.3. Tables of Contents<a class="headerlink" href="#tables-of-contents" title="Permalink to this headline">¶</a></h2>
+<p>The examples are classified by topics:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="diode/index.html">2.3.1. Diode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electricity/index.html">2.3.2. Electricity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter/index.html">2.3.3. Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operational-amplifier/index.html">2.3.4. Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passive/index.html">2.3.5. Passive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power-supply/index.html">2.3.6. Power Supply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resistor/index.html">2.3.7. Resistor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformer/index.html">2.3.8. Transformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transistor/index.html">2.3.9. Transistor</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Examples</a><ul>
+<li><a class="reference internal" href="#how-to-learn-python">2.1. How to Learn Python</a></li>
+<li><a class="reference internal" href="#how-to-run-theses-examples">2.2. How to Run theses Examples</a></li>
+<li><a class="reference internal" href="#tables-of-contents">2.3. Tables of Contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../api/PySpice/Unit/Units.html"
+                        title="previous chapter">1.8.2. <tt class="docutils literal"><span class="pre">Units</span></tt></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="diode/index.html"
+                        title="next chapter">2.3.1. Diode</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/examples/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="diode/index.html" title="2.3.1. Diode"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../api/PySpice/Unit/Units.html" title="1.8.2. Units"
+             >previous</a> |</li>
+        <li><a href="../index.html">PySpice 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

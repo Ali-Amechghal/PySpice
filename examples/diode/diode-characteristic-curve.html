@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.3.1.1. Diode Characteristic Curve &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2.3.1. Diode" href="index.html" />
+    <link rel="next" title="2.3.1.2. Diode Recovery Time" href="diode-recovery-time.html" />
+    <link rel="prev" title="2.3.1. Diode" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="diode-recovery-time.html" title="2.3.1.2. Diode Recovery Time"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="2.3.1. Diode"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2.3.1. Diode</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="diode-characteristic-curve">
+<h1>2.3.1.1. Diode Characteristic Curve<a class="headerlink" href="#diode-characteristic-curve" title="Permalink to this headline">¶</a></h1>
+<p>This example show how to simulate and plot the characteristic curve of a diode.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+
+
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="kn">as</span> <span class="nn">ticker</span>
+
+
+<span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
+
+
+<span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">PySpice.Spice.Library</span> <span class="kn">import</span> <span class="n">SpiceLibrary</span>
+<span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PySpice.Physics.SemiConductor</span> <span class="kn">import</span> <span class="n">ShockleyDiode</span>
+
+
+<span class="n">libraries_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;PySpice_examples_path&#39;</span><span class="p">],</span> <span class="s">&#39;libraries&#39;</span><span class="p">)</span>
+<span class="n">spice_library</span> <span class="o">=</span> <span class="n">SpiceLibrary</span><span class="p">(</span><span class="n">libraries_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For this purpose, we use the common high-speed diode 1N4148.  The diode is driven by a variable
+voltage source through a limiting current resistance.  And We will simulate the circuit at these
+temperatures: 0, 25 and 100 °C.</p>
+<img alt="../../images/diode-characteristic-curve-circuit.png" src="../../_images/diode-characteristic-curve-circuit.png" />
+<div class="highlight-python"><div class="highlight"><pre><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Diode Characteristic Curve&#39;</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">spice_library</span><span class="p">[</span><span class="s">&#39;1N4148&#39;</span><span class="p">])</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;10V&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c"># not required for simulation</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s">&#39;D1&#39;</span><span class="p">,</span> <span class="s">&#39;1N4148&#39;</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">)</span>
+
+<span class="n">temperatures</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">analyses</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">temperature</span> <span class="ow">in</span> <span class="n">temperatures</span><span class="p">:</span>
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">)</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vinput</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">))</span>
+    <span class="n">analyses</span><span class="p">[</span><span class="n">temperature</span><span class="p">]</span> <span class="o">=</span> <span class="n">analysis</span>
+
+<span class="c"># Fixme: i(vinput) -&gt; analysis.vinput</span>
+</pre></div>
+</div>
+<p>We plot the characteristic curve and compare them to the Shockley diode model:</p>
+<div class="math">
+<p><img src="../../images/math/73f4d31d16e14b7caa952d8eab09ff9edf4b70fa.png" alt="I_d = I_s \left( e^{\frac{V_d}{n V_t}} - 1 \right)"/></p>
+</div><p>where <img class="math" src="../../images/math/2c4194c53699c5c9c932dc46e73d462b32929a87.png" alt="V_t = \frac{k T}{q}"/></p>
+<p>In order to scale the reverse biased region, we have to do some hack with Matplotlib.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">silicon_forward_voltage_threshold</span> <span class="o">=</span> <span class="o">.</span><span class="mi">7</span>
+
+<span class="n">shockley_diode</span> <span class="o">=</span> <span class="n">ShockleyDiode</span><span class="p">(</span><span class="n">Is</span><span class="o">=</span><span class="mf">4e-9</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">two_scales_tick_formatter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;{} mA&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;{} nA&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">two_scales_tick_formatter</span><span class="p">)</span>
+
+<span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;1N4148 Characteristic Curve &#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Current&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">silicon_forward_voltage_threshold</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">silicon_forward_voltage_threshold</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span> <span class="mi">750</span><span class="p">)</span> <span class="c"># Fixme: round</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">Vd</span> <span class="o">=</span> <span class="n">analyses</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span><span class="o">.</span><span class="n">out</span>
+<span class="c"># compute scale for reverse and forward region</span>
+<span class="n">forward_region</span> <span class="o">=</span> <span class="n">Vd</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="n">reverse_region</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">forward_region</span><span class="p">)</span>
+<span class="n">scale</span> <span class="o">=</span>  <span class="n">reverse_region</span><span class="o">*</span><span class="mf">1e11</span> <span class="o">+</span> <span class="n">forward_region</span><span class="o">*</span><span class="mf">1e3</span>
+<span class="k">for</span> <span class="n">temperature</span> <span class="ow">in</span> <span class="n">temperatures</span><span class="p">:</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">analyses</span><span class="p">[</span><span class="n">temperature</span><span class="p">]</span>
+    <span class="n">axe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Vd</span><span class="p">,</span> <span class="o">-</span> <span class="n">analysis</span><span class="o">.</span><span class="n">vinput</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Vd</span><span class="p">,</span> <span class="n">shockley_diode</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="n">Vd</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">,</span> <span class="s">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">u&#39;@ {} °C&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">temperature</span> <span class="ow">in</span> <span class="n">temperatures</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s">&#39;Shockley Diode Model Is = 4 nA&#39;</span><span class="p">],</span>
+           <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">02</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">silicon_forward_voltage_threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="s">&#39;Reverse Biased Region&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">text</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="s">&#39;Forward Biased Region&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we compute and plot the static and dynamic resistance.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">u&#39;Resistance @ 25 °C&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">silicon_forward_voltage_threshold</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">silicon_forward_voltage_threshold</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">analyses</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span>
+<span class="n">static_resistance</span> <span class="o">=</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span> <span class="o">/</span> <span class="n">analysis</span><span class="o">.</span><span class="n">vinput</span>
+<span class="n">dynamic_resistance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">vinput</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">,</span> <span class="n">static_resistance</span><span class="p">,</span> <span class="n">basey</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dynamic_resistance</span><span class="p">[</span><span class="mi">10</span><span class="p">:],</span> <span class="n">basey</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">silicon_forward_voltage_threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="s">u&#39;R limitation = 1 Ω&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">u&#39;{} Resistance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s">&#39;Static&#39;</span><span class="p">,</span> <span class="s">&#39;Dynamic&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">u&#39;Resistance [Ω]&#39;</span><span class="p">)</span>
+
+<span class="n">pylab</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../../images/diode-characteristic-curve.png" src="../../_images/diode-characteristic-curve.png" />
+<p>We observe the forward voltage threshold increase with the temperature.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">2.3.1. Diode</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="diode-recovery-time.html"
+                        title="next chapter">2.3.1.2. Diode Recovery Time</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/examples/diode/diode-characteristic-curve.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="diode-recovery-time.html" title="2.3.1.2. Diode Recovery Time"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="2.3.1. Diode"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li><a href="index.html" >2.3.1. Diode</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

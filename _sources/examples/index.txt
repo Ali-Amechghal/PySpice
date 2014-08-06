@@ -1,0 +1,16 @@
+
+.. include:: ../example_index.txt
+
+
+.. toctree::
+  :maxdepth: 1
+
+  diode/index.rst
+  electricity/index.rst
+  filter/index.rst
+  operational-amplifier/index.rst
+  passive/index.rst
+  power-supply/index.rst
+  resistor/index.rst
+  transformer/index.rst
+  transistor/index.rst

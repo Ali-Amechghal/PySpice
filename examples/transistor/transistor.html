@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.3.9.1. Transistor &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2.3.9. Transistor" href="index.html" />
+    <link rel="prev" title="2.3.9. Transistor" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="2.3.9. Transistor"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2.3.9. Transistor</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="transistor">
+<h1>2.3.9.1. Transistor<a class="headerlink" href="#transistor" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+
+
+<span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
+
+
+<span class="kn">from</span> <span class="nn">PySpice.Probe.Plot</span> <span class="kn">import</span> <span class="n">plot</span>
+<span class="kn">from</span> <span class="nn">PySpice.Spice.Library</span> <span class="kn">import</span> <span class="n">SpiceLibrary</span>
+<span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="n">libraries_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s">&#39;libraries&#39;</span><span class="p">)</span>
+<span class="n">spice_library</span> <span class="o">=</span> <span class="n">SpiceLibrary</span><span class="p">(</span><span class="n">libraries_path</span><span class="p">)</span>
+
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Transistor&#39;</span><span class="p">)</span>
+
+<span class="n">Vbase</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;base&#39;</span><span class="p">,</span> <span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;base&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;base&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">Vcollector</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;collector&#39;</span><span class="p">,</span> <span class="s">&#39;2&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;collector&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;collector&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="c"># circuit.BJT(1, &#39;collector&#39;, &#39;base&#39;, circuit.gnd, &#39;generic&#39;)</span>
+<span class="c"># circuit.model(&#39;generic&#39;, &#39;npn&#39;)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">spice_library</span><span class="p">[</span><span class="s">&#39;2n2222a&#39;</span><span class="p">])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">BJT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;collector&#39;</span><span class="p">,</span> <span class="s">&#39;base&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;2n2222a&#39;</span><span class="p">)</span>
+
+
+<span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vbase</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">))</span>
+
+<span class="n">axe1</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+<span class="c"># Fixme: i(vinput) -&gt; analysis.vinput</span>
+<span class="n">axe1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">base</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vbase</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">axe1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">65</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axe1</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Base-Emitter Diode curve&#39;</span><span class="p">,),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">axe1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axe1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Vbe [V]&#39;</span><span class="p">)</span>
+<span class="n">axe1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Ib [mA]&#39;</span><span class="p">)</span>
+
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Transistor&#39;</span><span class="p">)</span>
+<span class="n">Ibase</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="s">&#39;base&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;base&#39;</span><span class="p">,</span> <span class="n">micro</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c"># take care to the orientation</span>
+<span class="n">Vcollector</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;collector&#39;</span><span class="p">,</span> <span class="s">&#39;collector&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c"># circuit.BJT(1, &#39;collector&#39;, &#39;base&#39;, circuit.gnd, &#39;generic&#39;)</span>
+<span class="c"># circuit.model(&#39;generic&#39;, &#39;npn&#39;)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">spice_library</span><span class="p">[</span><span class="s">&#39;2n2222a&#39;</span><span class="p">])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">BJT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;collector&#39;</span><span class="p">,</span> <span class="s">&#39;base&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;2n2222a&#39;</span><span class="p">)</span>
+
+<span class="c"># Fixme: ngspice doesn&#39;t support multi-sweep ???</span>
+<span class="c">#   it works in interactive mode</span>
+<span class="c"># simulator = circuit.simulator(temperature=25, nominal_temperature=25)</span>
+<span class="c"># analysis = simulator.dc(Vcollector=slice(0, 5, .1), Ibase=slice(micro(10), micro(100), micro(10)))</span>
+<span class="c"># 0 v(i-sweep)    voltage # Vcollector in fact</span>
+<span class="c"># 1 v(collector)  voltage</span>
+<span class="c"># 2 v(base)       voltage</span>
+<span class="c"># 3 i(vcollector) current</span>
+<span class="c"># 0.00000000e+00,   1.00000000e-01,   2.00000000e-01, 3.00000000e-01,   4.00000000e-01,   5.00000000e-01, 6.00000000e-01,   7.00000000e-01,   8.00000000e-01, 9.00000000e-01</span>
+<span class="c"># 0.00000000e+00,   1.00000000e-01,   2.00000000e-01, 3.00000000e-01,   4.00000000e-01,   5.00000000e-01, 6.00000000e-01,   7.00000000e-01,   8.00000000e-01, 9.00000000e-01</span>
+<span class="c"># 6.50478604e-01,   7.40522920e-01,   7.68606463e-01, 7.69192913e-01,   7.69049191e-01,   7.69050844e-01, 7.69049584e-01,   7.69049559e-01,   7.69049559e-01, 7.69049559e-01</span>
+<span class="c"># 9.90098946e-06,  -3.15540984e-04,  -9.59252614e-04, -9.99134834e-04,  -9.99982226e-04,  -1.00005097e-03, -1.00000095e-03,  -9.99999938e-04,  -9.99999927e-04, -9.99999937e-04</span>
+
+<span class="c"># analysis = simulator.dc(Vcollector=slice(0, 10, .1))</span>
+<span class="c"># 0 v(v-sweep)      voltage</span>
+<span class="c"># 1 v(collector)    voltage</span>
+<span class="c"># 2 v(base) voltage</span>
+<span class="c"># 3 i(vcollector)   current</span>
+
+<span class="c"># analysis = simulator.dc(Ibase=slice(micro(10), micro(100), micro(10)))</span>
+<span class="c"># 0 v(i-sweep)      voltage</span>
+<span class="c"># 1 v(collector)    voltage</span>
+ <span class="c"># 2 v(base) voltage</span>
+<span class="c"># 3 i(vcollector)   current</span>
+
+<span class="n">axe2</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="n">axe2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="c"># axe2.legend((&#39;Ic(Vce, Ib)&#39;,), loc=(.5,.5))</span>
+<span class="n">axe2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Vce [V]&#39;</span><span class="p">)</span>
+<span class="n">axe2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Ic [mA]&#39;</span><span class="p">)</span>
+<span class="n">axe2</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">axe3</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+<span class="n">axe3</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="c"># axe3.legend((&#39;beta(Vce)&#39;,), loc=(.5,.5))</span>
+<span class="n">axe3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Vce [V]&#39;</span><span class="p">)</span>
+<span class="n">axe3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;beta&#39;</span><span class="p">)</span>
+<span class="n">axe3</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">base_current</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">base_current</span> <span class="o">=</span> <span class="n">micro</span><span class="p">(</span><span class="n">base_current</span><span class="p">)</span>
+    <span class="n">Ibase</span><span class="o">.</span><span class="n">dc_value</span> <span class="o">=</span> <span class="n">base_current</span>
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vcollector</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">))</span>
+    <span class="c"># Fixme: lower case</span>
+    <span class="c"># add ib as text, linear and saturate region</span>
+    <span class="n">axe2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vcollector</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="c"># Plot beta</span>
+    <span class="n">axe3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vcollector</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">base_current</span><span class="p">))</span>
+    <span class="c"># # trans-resistance U = RI   R = U / I = Vce / Ie</span>
+    <span class="c"># # axe3.plot(analysis.collector, analysis.v_sweep/(float(base_current)-analysis.vcollector))</span>
+    <span class="c"># # Fixme: v_sweep is not so explicit</span>
+
+<span class="n">axe4</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+<span class="n">axe4</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axe4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Ib [uA]&#39;</span><span class="p">)</span>
+<span class="n">axe4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Ic [mA]&#39;</span><span class="p">)</span>
+
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Ibase</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">100e-6</span><span class="p">,</span> <span class="mf">10e-6</span><span class="p">))</span>
+<span class="c"># Fixme: v_sweep</span>
+<span class="n">axe4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">v_sweep</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vcollector</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">axe4</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Ic(Ib)&#39;</span><span class="p">,),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
+
+
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">2.3.9. Transistor</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/examples/transistor/transistor.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="2.3.9. Transistor"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li><a href="index.html" >2.3.9. Transistor</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

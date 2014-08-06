@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.3.2.1. Three Phase &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2.3.2. Electricity" href="index.html" />
+    <link rel="next" title="2.3.3. Filter" href="../filter/index.html" />
+    <link rel="prev" title="2.3.2. Electricity" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../filter/index.html" title="2.3.3. Filter"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="2.3.2. Electricity"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2.3.2. Electricity</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="three-phase">
+<h1>2.3.2.1. Three Phase<a class="headerlink" href="#three-phase" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#</span>
+<span class="c"># Three-phase electric power: Y and Delta configurations</span>
+<span class="c">#</span>
+
+
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+
+
+<span class="n">frequency</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">frequency</span>
+<span class="n">period</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">frequency</span>
+
+<span class="n">rms_mono</span> <span class="o">=</span> <span class="mi">230</span>
+<span class="n">rms_tri</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">rms_mono</span>
+<span class="n">amplitude_mono</span> <span class="o">=</span> <span class="n">rms_mono</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">amplitude_tri</span> <span class="o">=</span> <span class="n">rms_tri</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">period</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c"># Y configuration</span>
+<span class="n">Ph1</span> <span class="o">=</span> <span class="n">amplitude_mono</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span><span class="p">)</span> <span class="c"># Ph1 - N</span>
+<span class="n">Ph2</span> <span class="o">=</span> <span class="n">amplitude_mono</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="c"># Ph2 - N</span>
+<span class="n">Ph3</span> <span class="o">=</span> <span class="n">amplitude_mono</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="c"># Ph3 - N</span>
+
+<span class="c"># Delta configuration</span>
+<span class="n">Ph12</span> <span class="o">=</span> <span class="n">amplitude_tri</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="c"># Ph1 - Ph2</span>
+<span class="n">Ph23</span> <span class="o">=</span> <span class="n">amplitude_tri</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="c"># Ph2 - Ph3</span>
+<span class="n">Ph31</span> <span class="o">=</span> <span class="n">amplitude_tri</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="c"># Ph3 - Ph1</span>
+
+<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Ph1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Ph2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Ph3</span><span class="p">,</span>
+           <span class="c"># t, Ph12, t, Ph23, t, Ph31,</span>
+           <span class="n">t</span><span class="p">,</span> <span class="n">Ph1</span><span class="o">-</span><span class="n">Ph2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Ph2</span><span class="o">-</span><span class="n">Ph3</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Ph3</span><span class="o">-</span><span class="n">Ph1</span><span class="p">,</span>
+          <span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Three-phase electric power: Y and Delta configurations (230V Mono/400V Tri 50Hz Europe)&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Ph1-N&#39;</span><span class="p">,</span> <span class="s">&#39;Ph2-N&#39;</span><span class="p">,</span> <span class="s">&#39;Ph3-N&#39;</span><span class="p">,</span>
+              <span class="s">&#39;Ph1-Ph2&#39;</span><span class="p">,</span> <span class="s">&#39;Ph2-Ph3&#39;</span><span class="p">,</span> <span class="s">&#39;Ph3-Ph1&#39;</span><span class="p">),</span>
+             <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span><span class="o">.</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;[V]&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">rms_mono</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="n">rms_mono</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">rms_tri</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="n">rms_tri</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">2.3.2. Electricity</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../filter/index.html"
+                        title="next chapter">2.3.3. Filter</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/examples/electricity/three-phase.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../filter/index.html" title="2.3.3. Filter"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="2.3.2. Electricity"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li><a href="index.html" >2.3.2. Electricity</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
