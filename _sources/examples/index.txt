@@ -5,6 +5,7 @@
 .. toctree::
   :maxdepth: 1
 
+  data-analysis/index.rst
   diode/index.rst
   electricity/index.rst
   filter/index.rst
