@@ -9,4 +9,5 @@
 
   diode-characteristic-curve.rst
   diode-recovery-time.rst
+  voltage-multiplier.rst
   zener-characteristic-curve.rst

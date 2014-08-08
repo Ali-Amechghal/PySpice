@@ -1,5 +1,5 @@
 
-.. include:: ../example_index.txt
+.. include:: ../examples.txt
 
 
 .. toctree::
