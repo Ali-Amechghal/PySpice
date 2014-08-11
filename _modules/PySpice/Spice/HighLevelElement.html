@@ -48,6 +48,8 @@
           <div class="body">
             
   <h1>Source code for PySpice.Spice.HighLevelElement</h1><div class="highlight"><pre>
+<span class="c"># -*- coding: utf-8 -*-</span>
+
 <span class="c">####################################################################################################</span>
 <span class="c"># </span>
 <span class="c"># PySpice - A Spice package for Python</span>
@@ -62,7 +64,7 @@
 <span class="c">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">..Math</span> <span class="kn">import</span> <span class="n">rms_to_amplitude</span><span class="p">,</span> <span class="n">amplitude_to_rms</span>
-<span class="kn">from</span> <span class="nn">..Tools.StringTools</span> <span class="kn">import</span> <span class="n">join_list</span>
+<span class="kn">from</span> <span class="nn">..Tools.StringTools</span> <span class="kn">import</span> <span class="n">join_list</span><span class="p">,</span> <span class="n">join_dict</span>
 <span class="kn">from</span> <span class="nn">..Unit.Units</span> <span class="kn">import</span> <span class="n">Frequency</span><span class="p">,</span> <span class="n">Period</span>
 <span class="kn">from</span> <span class="nn">.BasicElement</span> <span class="kn">import</span> <span class="n">VoltageSource</span>
 
@@ -71,6 +73,20 @@
 <div class="viewcode-block" id="Sinusoidal"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Sinusoidal">[docs]</a><span class="k">class</span> <span class="nc">Sinusoidal</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">):</span>
 
     <span class="sd">r&quot;&quot;&quot; This class implements a sinusoidal waveform.</span>
+
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | Name + Parameter      + Default Value + Units |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | Vo   + offset         +               + V, A  |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | Va   + amplitude      +               + V, A  |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | f    + frequency      + 1 / TStop     + Hz    |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | Td   + delay          + 0.0           + sec   |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
+<span class="sd">    | Df   + damping factor + 0.01          + 1/sec |</span>
+<span class="sd">    +------+----------------+---------------+-------+</span>
 
 <span class="sd">    The shape of the waveform is described by the following formula:</span>
 
@@ -158,19 +174,23 @@
 
 <span class="sd">    Nomenclature:</span>
 
-<span class="sd">    +----+---------------+</span>
-<span class="sd">    | V1 | initial_value |</span>
-<span class="sd">    +----+---------------+</span>
-<span class="sd">    | V2 | pulsed_value  |</span>
-<span class="sd">    +----+---------------+</span>
-<span class="sd">    | Pw | pulse_width   |</span>
-<span class="sd">    +----+---------------+</span>
-<span class="sd">    | Td | delay_time    |</span>
-<span class="sd">    +----+---------------+</span>
-<span class="sd">    | Tr | rise_time     |</span>
-<span class="sd">    +----+---------------+</span>
-<span class="sd">    | Tf | fall_time     |</span>
-<span class="sd">    +----+---------------+</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Name   + Parameter     + Default Value + Units |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | V1     + initial value +               + V, A  |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | V2     + pulsed value  +               + V, A  |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Td     + delay time    + 0.0           + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Tr     + rise time     + Tstep         + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Tf     + fall time     + Tstep         + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Pw     + pulse width   + Tstop         + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
+<span class="sd">    | Period + period        + Tstop         + sec   |</span>
+<span class="sd">    +--------+---------------+---------------+-------+</span>
 
 <span class="sd">    Spice Syntax::</span>
 <span class="sd">    </span>
@@ -260,9 +280,307 @@
 <div class="viewcode-block" id="Pulse.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Pulse.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="c"># Fixme: to func?</span>
-        <span class="k">return</span> <span class="p">(</span><span class="s">&#39;PULSE(&#39;</span> <span class="o">+</span> \
-                <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulsed_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span><span class="p">,</span> 
-                           <span class="bp">self</span><span class="o">.</span><span class="n">rise_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fall_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulse_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">))</span> <span class="o">+</span> \
+        <span class="k">return</span> <span class="p">(</span><span class="s">&#39;PULSE(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulsed_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">rise_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fall_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulse_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">))</span> <span class="o">+</span>
+                <span class="s">&#39;)&#39;</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="Exponential"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Exponential">[docs]</a><span class="k">class</span> <span class="nc">Exponential</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">):</span>
+
+    <span class="sd">r&quot;&quot;&quot;This class implements a Exponential waveform.</span>
+
+<span class="sd">    Nomenclature:</span>
+
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | Name + Parameter          + Default Value + Units |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | V1   + Initial value      +               + V, A  |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | V2   + pulsed value       +               + V, A  |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | Td1  + rise delay time    + 0.0           + sec   |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | tau1 + rise time constant + Tstep         + sec   |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | Td2  + fall delay time    + Td1+Tstep     + sec   |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+<span class="sd">    | tau2 + fall time constant + Tstep         + sec   |</span>
+<span class="sd">    +------+--------------------+---------------+-------+</span>
+
+<span class="sd">    Spice Syntax::</span>
+<span class="sd">    </span>
+<span class="sd">        EXP ( V1 V2 TD1 TAU1 TD2 TAU2 )</span>
+<span class="sd">    </span>
+<span class="sd">    The shape of the waveform is described by the following formula:</span>
+
+<span class="sd">    Let V21 = V2 - V1 and V12 = V1 - V2.</span>
+<span class="sd">   </span>
+<span class="sd">    .. math::</span>
+<span class="sd">   </span>
+<span class="sd">        V(t) = \begin{cases}</span>
+<span class="sd">          V1 &amp; \text{if}\ 0 \leq t &lt; Td1, \\</span>
+<span class="sd">          V1 + V21 ( 1 − e^{-\frac{t-Td1}{\tau_1}} )</span>
+<span class="sd">          &amp; \text{if}\ Td1 \leq t &lt; Td2, \\</span>
+<span class="sd">          V1 + V21 ( 1 − e^{-\frac{t-Td1}{\tau_1}} ) + V12 ( 1 − e^{-\frac{t-Td2}{\tau_2}} )</span>
+<span class="sd">          &amp; \text{if}\ Td2 \leq t &lt; Tstop.</span>
+<span class="sd">        \end{cases}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span>
+                 <span class="n">initial_value</span><span class="p">,</span> <span class="n">pulsed_value</span><span class="p">,</span>
+                 <span class="n">rise_delay_time</span><span class="o">=.</span><span class="mi">0</span><span class="p">,</span> <span class="n">rise_time_constant</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">fall_delay_time</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fall_time_constant</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+             <span class="p">):</span>
+
+        <span class="c"># Fixme: default</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Exponential</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_value</span> <span class="o">=</span> <span class="n">initial_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pulsed_value</span> <span class="o">=</span> <span class="n">pulsed_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rise_delay_time</span> <span class="o">=</span> <span class="n">rise_delay_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rise_time_constant</span> <span class="o">=</span> <span class="n">rise_time_constant</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fall_delay_time</span> <span class="o">=</span> <span class="n">fall_delay_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fall_time_constant</span> <span class="o">=</span> <span class="n">fall_time_constant</span>
+ 
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="Exponential.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.Exponential.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">&#39;EXP(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulsed_value</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">rise_delay_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rise_time_constant</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">fall_delay_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fall_time_constant</span><span class="p">,</span>
+                       <span class="p">))</span> <span class="o">+</span>
+                <span class="s">&#39;)&#39;</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="PieceWiseLinear"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.PieceWiseLinear">[docs]</a><span class="k">class</span> <span class="nc">PieceWiseLinear</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">):</span>
+
+    <span class="sd">r&quot;&quot;&quot;This class implements a Piece-Wise Linear waveform.</span>
+
+<span class="sd">    Spice Syntax::</span>
+
+<span class="sd">        PWL( T1 V1 &lt;T2 V2 T3 V3 T4 V4 ... &gt; ) &lt;r=value&gt; &lt;td=value&gt;    </span>
+
+<span class="sd">    Each pair of values (Ti , Vi) specifies that the value of the source is Vi (in Volts or Amps) at</span>
+<span class="sd">    time = Ti . The value of the source at intermediate values of time is determined by using linear</span>
+<span class="sd">    interpolation on the input values. The parameter r determines a repeat time point. If r is not</span>
+<span class="sd">    given, the whole sequence of values (Ti , Vi ) is issued once, then the output stays at its</span>
+<span class="sd">    final value. If r = 0, the whole sequence from time = 0 to time = Tn is repeated forever. If r =</span>
+<span class="sd">    10ns, the sequence between 10ns and 50ns is repeated forever. the r value has to be one of the</span>
+<span class="sd">    time points T1 to Tn of the PWL sequence. If td is given, the whole PWL sequence is delayed by a</span>
+<span class="sd">    delay time time = td. The current source still needs to be patched, td and r are not yet</span>
+<span class="sd">    available.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span>
+                 <span class="n">values</span><span class="p">,</span>
+                 <span class="n">repeate_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">delay_time</span><span class="o">=.</span><span class="mi">0</span><span class="p">,</span>
+             <span class="p">):</span>
+
+        <span class="c"># Fixme: default</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">PieceWiseLinear</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repeate_time</span> <span class="o">=</span> <span class="n">repeate_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span> <span class="o">=</span> <span class="n">delay_time</span>
+ 
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="PieceWiseLinear.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.PieceWiseLinear.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">&#39;PWL(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">join_dict</span><span class="p">({</span><span class="s">&#39;r&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">repeate_time</span><span class="p">,</span> <span class="s">&#39;td&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span><span class="p">})</span> <span class="o">+</span> <span class="c"># OrderedDict(</span>
+                <span class="s">&#39;)&#39;</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="SingleFrequencyFM"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SingleFrequencyFM">[docs]</a><span class="k">class</span> <span class="nc">SingleFrequencyFM</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">):</span>
+
+    <span class="sd">r&quot;&quot;&quot;This class implements a Single-Frequency FM waveform.</span>
+
+<span class="sd">    Spice Syntax::</span>
+
+<span class="sd">        SFFM (VO VA FC MDI FS )</span>
+
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Name + Parameter         + Default Value + Units |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Vo   + offset            +               + V, A  |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Va   + amplitude         +               + V, A  |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Fc   + carrier frequency + 1 / Tstop     + Hz    |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Mdi  + modulation index  +               +       |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+<span class="sd">   | Fs   + signal frequency  + 1 / Tstop     + Hz    |</span>
+<span class="sd">   +------+-------------------+---------------+-------+</span>
+
+<span class="sd">    The shape of the waveform is described by the following equation:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        V(t) = Vo + Va \sin (2\pi Fc t + Mdi \sin (2\pi Fs t))</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span>
+                 <span class="n">values</span><span class="p">,</span>
+                 <span class="n">repeate_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">delay_time</span><span class="o">=.</span><span class="mi">0</span><span class="p">,</span>
+             <span class="p">):</span>
+
+        <span class="c"># Fixme: default</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">SingleFrequencyFM</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repeate_time</span> <span class="o">=</span> <span class="n">repeate_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span> <span class="o">=</span> <span class="n">delay_time</span>
+ 
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="SingleFrequencyFM.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.SingleFrequencyFM.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">&#39;PWL(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">join_dict</span><span class="p">({</span><span class="s">&#39;r&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">repeate_time</span><span class="p">,</span> <span class="s">&#39;td&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span><span class="p">})</span> <span class="o">+</span>
+                <span class="s">&#39;)&#39;</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="AmplitudeModulated"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.AmplitudeModulated">[docs]</a><span class="k">class</span> <span class="nc">AmplitudeModulated</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">):</span>
+
+    <span class="sd">r&quot;&quot;&quot;This class implements a Amplitude Modulated source.</span>
+
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Name + Parameter            + Default Value + Units |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Vo   + offset               +               + V, A  |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Va   + amplitude            +               + V, A  |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Mf   + modulating frequency +               + Hz    |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Fc   + carrier frequency    + 1 / Tstop     + Hz    |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    | Td   + signal delay         +               + s     |</span>
+<span class="sd">    +------+----------------------+---------------+-------+</span>
+<span class="sd">    </span>
+<span class="sd">    Spice Syntax::</span>
+<span class="sd">    </span>
+<span class="sd">        AM(VA VO MF FC TD)</span>
+<span class="sd">    </span>
+<span class="sd">    The shape of the waveform is described by the following equation:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">  </span>
+<span class="sd">        V(t) = Va (Vo + \sin (2\pi Mf t)) \sin (2\pi Fc t)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span>
+                 <span class="n">values</span><span class="p">,</span>
+                 <span class="n">repeate_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">delay_time</span><span class="o">=.</span><span class="mi">0</span><span class="p">,</span>
+             <span class="p">):</span>
+
+        <span class="c"># Fixme: default</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">AmplitudeModulated</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repeate_time</span> <span class="o">=</span> <span class="n">repeate_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span> <span class="o">=</span> <span class="n">delay_time</span>
+ 
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="AmplitudeModulated.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.AmplitudeModulated.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">&#39;PWL(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">join_dict</span><span class="p">({</span><span class="s">&#39;r&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">repeate_time</span><span class="p">,</span> <span class="s">&#39;td&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span><span class="p">})</span> <span class="o">+</span>
+                <span class="s">&#39;)&#39;</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="RandomVoltage"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.RandomVoltage">[docs]</a><span class="k">class</span> <span class="nc">RandomVoltage</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">):</span>
+
+    <span class="sd">r&quot;&quot;&quot;This class implements a Random Voltage source.</span>
+
+<span class="sd">    The TRRANDOM option yields statistically distributed voltage values, derived from the ngspice</span>
+<span class="sd">    random number generator. These values may be used in the transient simulation directly within a</span>
+<span class="sd">    circuit, e.g. for generating a specific noise voltage, but especially they may be used in the</span>
+<span class="sd">    con- trol of behavioral sources (B, E, G sources 5, voltage controllable A sources 12,</span>
+<span class="sd">    capacitors 3.2.8, inductors 3.2.12, or resistors 3.2.4) to simulate the circuit dependence on</span>
+<span class="sd">    statistically varying device parameters. A Monte-Carlo simulation may thus be handled in a</span>
+<span class="sd">    single simulation run.</span>
+<span class="sd">    </span>
+<span class="sd">    Spice Syntax::</span>
+<span class="sd">    </span>
+<span class="sd">        TRRANDOM( TYPE TS &lt;TD &lt;PARAM1 &lt;PARAM2&gt; &gt; &gt;)</span>
+<span class="sd">    </span>
+<span class="sd">    TYPE determines the random variates generated: 1 is uniformly distributed, 2 Gaussian, 3</span>
+<span class="sd">    exponential, 4 Poisson. TS is the duration of an individual voltage value. TD is a time delay</span>
+<span class="sd">    with 0 V output before the random voltage values start up. PARAM1 and PARAM2 depend on the type</span>
+<span class="sd">    selected.</span>
+<span class="sd">    </span>
+<span class="sd">    +------+-------------+---------------+---------+--------+---------+</span>
+<span class="sd">    | TYPE + description + PARAM1        + default + PARAM2 + default |</span>
+<span class="sd">    +------+-------------+---------------+---------+--------+---------+</span>
+<span class="sd">    | 1    + Uniform     + Range         + 1       + Offset + 0       |</span>
+<span class="sd">    +------+-------------+---------------+---------+--------+---------+</span>
+<span class="sd">    | 2    + Gaussian    + Standard Dev. + 1       + Mean   + 0       |</span>
+<span class="sd">    +------+-------------+---------------+---------+--------+---------+</span>
+<span class="sd">    | 3    + Exponential + Mean          + 1       + Offset + 0       |</span>
+<span class="sd">    +------+-------------+---------------+---------+--------+---------+</span>
+<span class="sd">    | 4    + Poisson     + Lambda        + 1       + Offset + 0       |</span>
+<span class="sd">    +------+-------------+---------------+---------+--------+---------+</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span>
+                 <span class="n">values</span><span class="p">,</span>
+                 <span class="n">repeate_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">delay_time</span><span class="o">=.</span><span class="mi">0</span><span class="p">,</span>
+             <span class="p">):</span>
+
+        <span class="c"># Fixme: default</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomVoltage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repeate_time</span> <span class="o">=</span> <span class="n">repeate_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span> <span class="o">=</span> <span class="n">delay_time</span>
+ 
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="RandomVoltage.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/HighLevelElement.html#PySpice.Spice.HighLevelElement.RandomVoltage.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c"># Fixme: to func?</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">&#39;PWL(&#39;</span> <span class="o">+</span>
+                <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">join_dict</span><span class="p">({</span><span class="s">&#39;r&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">repeate_time</span><span class="p">,</span> <span class="s">&#39;td&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">delay_time</span><span class="p">})</span> <span class="o">+</span>
                 <span class="s">&#39;)&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>

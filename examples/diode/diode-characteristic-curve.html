@@ -112,7 +112,7 @@ temperatures: 0, 25 and 100 °C.</p>
 <p>In order to scale the reverse biased region, we have to do some hack with Matplotlib.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">silicon_forward_voltage_threshold</span> <span class="o">=</span> <span class="o">.</span><span class="mi">7</span>
 
-<span class="n">shockley_diode</span> <span class="o">=</span> <span class="n">ShockleyDiode</span><span class="p">(</span><span class="n">Is</span><span class="o">=</span><span class="mf">4e-9</span><span class="p">)</span>
+<span class="n">shockley_diode</span> <span class="o">=</span> <span class="n">ShockleyDiode</span><span class="p">(</span><span class="n">Is</span><span class="o">=</span><span class="mf">4e-9</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">two_scales_tick_formatter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>

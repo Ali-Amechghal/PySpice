@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.3.3.1. Three Phase &mdash; PySpice 0.1.0 documentation</title>
+    <title>2.3.3.1. Three-phased Current: Y and Delta configurations &mdash; PySpice 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -55,17 +55,13 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="three-phase">
-<h1>2.3.3.1. Three Phase<a class="headerlink" href="#three-phase" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#</span>
-<span class="c"># Three-phase electric power: Y and Delta configurations</span>
-<span class="c">#</span>
-
-
-<span class="kn">import</span> <span class="nn">math</span>
+  <div class="section" id="three-phased-current-y-and-delta-configurations">
+<h1>2.3.3.1. Three-phased Current: Y and Delta configurations<a class="headerlink" href="#three-phased-current-y-and-delta-configurations" title="Permalink to this headline">¶</a></h1>
+<p>This examples shows the computation of the voltage for the Y and Delta configurations.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 
 <span class="n">frequency</span> <span class="o">=</span> <span class="mi">50</span>
@@ -89,24 +85,26 @@
 <span class="n">Ph23</span> <span class="o">=</span> <span class="n">amplitude_tri</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="c"># Ph2 - Ph3</span>
 <span class="n">Ph31</span> <span class="o">=</span> <span class="n">amplitude_tri</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="c"># Ph3 - Ph1</span>
 
-<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Ph1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Ph2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Ph3</span><span class="p">,</span>
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Ph1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Ph2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Ph3</span><span class="p">,</span>
            <span class="c"># t, Ph12, t, Ph23, t, Ph31,</span>
            <span class="n">t</span><span class="p">,</span> <span class="n">Ph1</span><span class="o">-</span><span class="n">Ph2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Ph2</span><span class="o">-</span><span class="n">Ph3</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Ph3</span><span class="o">-</span><span class="n">Ph1</span><span class="p">,</span>
           <span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Three-phase electric power: Y and Delta configurations (230V Mono/400V Tri 50Hz Europe)&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Ph1-N&#39;</span><span class="p">,</span> <span class="s">&#39;Ph2-N&#39;</span><span class="p">,</span> <span class="s">&#39;Ph3-N&#39;</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Three-phase electric power: Y and Delta configurations (230V Mono/400V Tri 50Hz Europe)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Ph1-N&#39;</span><span class="p">,</span> <span class="s">&#39;Ph2-N&#39;</span><span class="p">,</span> <span class="s">&#39;Ph3-N&#39;</span><span class="p">,</span>
               <span class="s">&#39;Ph1-Ph2&#39;</span><span class="p">,</span> <span class="s">&#39;Ph2-Ph3&#39;</span><span class="p">,</span> <span class="s">&#39;Ph3-Ph1&#39;</span><span class="p">),</span>
              <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span><span class="o">.</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;[V]&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">rms_mono</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="n">rms_mono</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">rms_tri</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="n">rms_tri</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;[V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">rms_mono</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="n">rms_mono</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">rms_tri</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="n">rms_tri</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<img alt="../../images/three-phase.png" src="../../images/three-phase.png" />
 </div>
 
 
