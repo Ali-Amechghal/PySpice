@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
-    <link rel="next" title="3.1.7.2. HighLevelElement" href="HighLevelElement.html" />
+    <link rel="next" title="3.1.7.2. ElementParameter" href="ElementParameter.html" />
     <link rel="prev" title="3.1.7. Spice" href="../Spice.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="HighLevelElement.html" title="3.1.7.2. HighLevelElement"
+          <a href="ElementParameter.html" title="3.1.7.2. ElementParameter"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../Spice.html" title="3.1.7. Spice"
@@ -58,7 +58,12 @@
             
   <div class="section" id="module-PySpice.Spice.BasicElement">
 <span id="basicelement"></span><h1>3.1.7.1. <tt class="xref py py-mod docutils literal"><span class="pre">BasicElement</span></tt><a class="headerlink" href="#module-PySpice.Spice.BasicElement" title="Permalink to this headline">¶</a></h1>
-<p>This module implements Spice elements.</p>
+<p>This module implements SPICE circuit elements.</p>
+<p>See Ngspice documentation for details.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Some elements are partially implemented.</p>
+</div>
 <dl class="class">
 <dt id="PySpice.Spice.BasicElement.BehavorialCapacitor">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.BasicElement.</tt><tt class="descname">BehavorialCapacitor</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/BasicElement.html#BehavorialCapacitor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialCapacitor" title="Permalink to this definition">¶</a></dt>
@@ -69,6 +74,12 @@
 CXXXXXXX n+ n- C=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.capacitance_expression" title="PySpice.Spice.BasicElement.BehavorialCapacitor.capacitance_expression"><tt class="xref py py-attr docutils literal"><span class="pre">capacitance_expression</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.tc1" title="PySpice.Spice.BasicElement.BehavorialCapacitor.tc1"><tt class="xref py py-attr docutils literal"><span class="pre">tc1</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.tc2" title="PySpice.Spice.BasicElement.BehavorialCapacitor.tc2"><tt class="xref py py-attr docutils literal"><span class="pre">tc2</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialCapacitor.alias">
 <tt class="descname">alias</tt><em class="property"> = 'BehavorialCapacitor'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.alias" title="Permalink to this definition">¶</a></dt>
@@ -81,17 +92,17 @@ CXXXXXXX n+ n- C=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialCapacitor.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('tc2', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978a10&gt;), ('tc1', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x59789d0&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('tc2', FloatKeyParameter), ('tc1', FloatKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialCapacitor.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x5978990&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [ExpressionPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialCapacitor.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('capacitance_expression', &lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x5978990&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('capacitance_expression', ExpressionPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -121,6 +132,12 @@ CXXXXXXX n+ n- C=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 LXXXXXXX n+ n- L=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialInductor.inductance_expression" title="PySpice.Spice.BasicElement.BehavorialInductor.inductance_expression"><tt class="xref py py-attr docutils literal"><span class="pre">inductance_expression</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialInductor.tc1" title="PySpice.Spice.BasicElement.BehavorialInductor.tc1"><tt class="xref py py-attr docutils literal"><span class="pre">tc1</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialInductor.tc2" title="PySpice.Spice.BasicElement.BehavorialInductor.tc2"><tt class="xref py py-attr docutils literal"><span class="pre">tc2</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialInductor.alias">
 <tt class="descname">alias</tt><em class="property"> = 'BehavorialInductor'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialInductor.alias" title="Permalink to this definition">¶</a></dt>
@@ -133,17 +150,17 @@ LXXXXXXX n+ n- L=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialInductor.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('tc2', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978d50&gt;), ('tc1', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978d10&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialInductor.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('tc2', FloatKeyParameter), ('tc1', FloatKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialInductor.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialInductor.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x5978cd0&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialInductor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [ExpressionPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialInductor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialInductor.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('inductance_expression', &lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x5978cd0&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialInductor.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('inductance_expression', ExpressionPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialInductor.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -173,6 +190,12 @@ LXXXXXXX n+ n- L=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialResistor.resistance_expression" title="PySpice.Spice.BasicElement.BehavorialResistor.resistance_expression"><tt class="xref py py-attr docutils literal"><span class="pre">resistance_expression</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialResistor.tc1" title="PySpice.Spice.BasicElement.BehavorialResistor.tc1"><tt class="xref py py-attr docutils literal"><span class="pre">tc1</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialResistor.tc2" title="PySpice.Spice.BasicElement.BehavorialResistor.tc2"><tt class="xref py py-attr docutils literal"><span class="pre">tc2</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialResistor.alias">
 <tt class="descname">alias</tt><em class="property"> = 'BehavorialResistor'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialResistor.alias" title="Permalink to this definition">¶</a></dt>
@@ -180,17 +203,17 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialResistor.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('tc2', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978550&gt;), ('tc1', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978510&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialResistor.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('tc2', FloatKeyParameter), ('tc1', FloatKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialResistor.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialResistor.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x59784d0&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialResistor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [ExpressionPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialResistor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialResistor.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('resistance_expression', &lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x59784d0&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialResistor.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('resistance_expression', ExpressionPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialResistor.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -224,6 +247,15 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <div class="highlight-python"><div class="highlight"><pre>BXXXXXXX n+ n- &lt;i=expr&gt; &lt;v=expr&gt; &lt;tc1=value&gt; &lt;tc2=value&gt; &lt;temp=value&gt; &lt;dtemp=value&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialSource.current_expression" title="PySpice.Spice.BasicElement.BehavorialSource.current_expression"><tt class="xref py py-attr docutils literal"><span class="pre">current_expression</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialSource.voltage_expression" title="PySpice.Spice.BasicElement.BehavorialSource.voltage_expression"><tt class="xref py py-attr docutils literal"><span class="pre">voltage_expression</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialSource.tc1" title="PySpice.Spice.BasicElement.BehavorialSource.tc1"><tt class="xref py py-attr docutils literal"><span class="pre">tc1</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialSource.tc2" title="PySpice.Spice.BasicElement.BehavorialSource.tc2"><tt class="xref py py-attr docutils literal"><span class="pre">tc2</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialSource.temperature" title="PySpice.Spice.BasicElement.BehavorialSource.temperature"><tt class="xref py py-attr docutils literal"><span class="pre">temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BehavorialSource.device_temperature" title="PySpice.Spice.BasicElement.BehavorialSource.device_temperature"><tt class="xref py py-attr docutils literal"><span class="pre">device_temperature</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialSource.alias">
 <tt class="descname">alias</tt><em class="property"> = 'BehavorialSource'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialSource.alias" title="Permalink to this definition">¶</a></dt>
@@ -241,7 +273,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialSource.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c550&gt;), ('device_temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c590&gt;), ('tc2', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c510&gt;), ('voltage_expression', &lt;PySpice.Spice.Netlist.ExpressionKeyParameter object at 0x597c490&gt;), ('current_expression', &lt;PySpice.Spice.Netlist.ExpressionKeyParameter object at 0x597c450&gt;), ('tc1', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c4d0&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialSource.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('temperature', FloatKeyParameter), ('device_temperature', FloatKeyParameter), ('tc2', FloatKeyParameter), ('voltage_expression', ExpressionKeyParameter), ('current_expression', ExpressionKeyParameter), ('tc1', FloatKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialSource.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -290,6 +322,18 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <div class="highlight-python"><div class="highlight"><pre>QXXXXXXX nc nb ne &lt;ns&gt; mname &lt;area=val&gt; &lt;areac=val&gt; &lt;areab=val&gt; &lt;m=val&gt; &lt;off&gt; &lt;ic=vbe,vce&gt; &lt;temp=val&gt; &lt;dtemp=val&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.model" title="PySpice.Spice.BasicElement.BipolarJunctionTransistor.model"><tt class="xref py py-attr docutils literal"><span class="pre">model</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.area" title="PySpice.Spice.BasicElement.BipolarJunctionTransistor.area"><tt class="xref py py-attr docutils literal"><span class="pre">area</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.areac" title="PySpice.Spice.BasicElement.BipolarJunctionTransistor.areac"><tt class="xref py py-attr docutils literal"><span class="pre">areac</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.areab" title="PySpice.Spice.BasicElement.BipolarJunctionTransistor.areab"><tt class="xref py py-attr docutils literal"><span class="pre">areab</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.multiplier" title="PySpice.Spice.BasicElement.BipolarJunctionTransistor.multiplier"><tt class="xref py py-attr docutils literal"><span class="pre">multiplier</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.off" title="PySpice.Spice.BasicElement.BipolarJunctionTransistor.off"><tt class="xref py py-attr docutils literal"><span class="pre">off</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.ic" title="PySpice.Spice.BasicElement.BipolarJunctionTransistor.ic"><tt class="xref py py-attr docutils literal"><span class="pre">ic</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.temperature" title="PySpice.Spice.BasicElement.BipolarJunctionTransistor.temperature"><tt class="xref py py-attr docutils literal"><span class="pre">temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.device_temperature" title="PySpice.Spice.BasicElement.BipolarJunctionTransistor.device_temperature"><tt class="xref py py-attr docutils literal"><span class="pre">device_temperature</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BipolarJunctionTransistor.alias">
 <tt class="descname">alias</tt><em class="property"> = 'BJT'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.alias" title="Permalink to this definition">¶</a></dt>
@@ -352,7 +396,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BipolarJunctionTransistor.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('off', &lt;PySpice.Spice.Netlist.FlagKeyParameter object at 0x597c9d0&gt;), ('temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597ca50&gt;), ('area', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c8d0&gt;), ('device_temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597ca90&gt;), ('areab', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c950&gt;), ('areac', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c910&gt;), ('multiplier', &lt;PySpice.Spice.Netlist.IntKeyParameter object at 0x597c990&gt;), ('ic', &lt;PySpice.Spice.Netlist.FloatPairKeyParameter object at 0x597ca10&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('off', FlagParameter), ('temperature', FloatKeyParameter), ('area', FloatKeyParameter), ('device_temperature', FloatKeyParameter), ('areab', FloatKeyParameter), ('areac', FloatKeyParameter), ('multiplier', IntKeyParameter), ('ic', FloatPairKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -362,7 +406,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BipolarJunctionTransistor.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('model', &lt;PySpice.Spice.Netlist.ModelPositionalParameter object at 0x597c890&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('model', ModelPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -391,6 +435,16 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <div class="highlight-python"><div class="highlight"><pre>CXXXXXXX n+ n- &lt;value&gt; &lt;mname&gt; &lt;m=val&gt; &lt;scale=val&gt; &lt;temp=val&gt; &lt;dtemp=val&gt; &lt;ic=init_condition&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.Capacitor.capacitance" title="PySpice.Spice.BasicElement.Capacitor.capacitance"><tt class="xref py py-attr docutils literal"><span class="pre">capacitance</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Capacitor.model" title="PySpice.Spice.BasicElement.Capacitor.model"><tt class="xref py py-attr docutils literal"><span class="pre">model</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Capacitor.multiplier" title="PySpice.Spice.BasicElement.Capacitor.multiplier"><tt class="xref py py-attr docutils literal"><span class="pre">multiplier</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Capacitor.scale" title="PySpice.Spice.BasicElement.Capacitor.scale"><tt class="xref py py-attr docutils literal"><span class="pre">scale</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Capacitor.temperature" title="PySpice.Spice.BasicElement.Capacitor.temperature"><tt class="xref py py-attr docutils literal"><span class="pre">temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Capacitor.device_temperature" title="PySpice.Spice.BasicElement.Capacitor.device_temperature"><tt class="xref py py-attr docutils literal"><span class="pre">device_temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Capacitor.initial_condition" title="PySpice.Spice.BasicElement.Capacitor.initial_condition"><tt class="xref py py-attr docutils literal"><span class="pre">initial_condition</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Capacitor.alias">
 <tt class="descname">alias</tt><em class="property"> = 'C'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Capacitor.alias" title="Permalink to this definition">¶</a></dt>
@@ -423,17 +477,17 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Capacitor.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('scale', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978650&gt;), ('temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978690&gt;), ('device_temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x59786d0&gt;), ('initial_condition', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978710&gt;), ('multiplier', &lt;PySpice.Spice.Netlist.IntKeyParameter object at 0x5978610&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Capacitor.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('scale', FloatKeyParameter), ('temperature', FloatKeyParameter), ('device_temperature', FloatKeyParameter), ('initial_condition', FloatKeyParameter), ('multiplier', IntKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Capacitor.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Capacitor.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x5978590&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Capacitor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [FloatPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Capacitor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Capacitor.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('capacitance', &lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x5978590&gt;), ('model', &lt;PySpice.Spice.Netlist.ModelPositionalParameter object at 0x59785d0&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Capacitor.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('capacitance', FloatPositionalParameter), ('model', ModelPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Capacitor.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -462,6 +516,12 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <div class="highlight-python"><div class="highlight"><pre>KXXXXXXX LYYYYYYY LZZZZZZZ value
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.CoupledInductor.inductor1" title="PySpice.Spice.BasicElement.CoupledInductor.inductor1"><tt class="xref py py-attr docutils literal"><span class="pre">inductor1</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.CoupledInductor.inductor2" title="PySpice.Spice.BasicElement.CoupledInductor.inductor2"><tt class="xref py py-attr docutils literal"><span class="pre">inductor2</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.CoupledInductor.coupling_factor" title="PySpice.Spice.BasicElement.CoupledInductor.coupling_factor"><tt class="xref py py-attr docutils literal"><span class="pre">coupling_factor</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CoupledInductor.alias">
 <tt class="descname">alias</tt><em class="property"> = 'CoupledInductor'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CoupledInductor.alias" title="Permalink to this definition">¶</a></dt>
@@ -489,12 +549,12 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CoupledInductor.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.ElementNamePositionalParameter object at 0x5978e10&gt;, &lt;PySpice.Spice.Netlist.ElementNamePositionalParameter object at 0x5978dd0&gt;, &lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x5978e50&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CoupledInductor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [ElementNamePositionalParameter, ElementNamePositionalParameter, FloatPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CoupledInductor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CoupledInductor.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('inductor2', &lt;PySpice.Spice.Netlist.ElementNamePositionalParameter object at 0x5978e10&gt;), ('inductor1', &lt;PySpice.Spice.Netlist.ElementNamePositionalParameter object at 0x5978dd0&gt;), ('coupling_factor', &lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x5978e50&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CoupledInductor.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('inductor2', ElementNamePositionalParameter), ('inductor1', ElementNamePositionalParameter), ('coupling_factor', FloatPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CoupledInductor.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -513,6 +573,11 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <div class="highlight-python"><div class="highlight"><pre>FXXXXXXX n+ n- vname value
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.CurrentControlledCurrentSource.source" title="PySpice.Spice.BasicElement.CurrentControlledCurrentSource.source"><tt class="xref py py-attr docutils literal"><span class="pre">source</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.CurrentControlledCurrentSource.current_gain" title="PySpice.Spice.BasicElement.CurrentControlledCurrentSource.current_gain"><tt class="xref py py-attr docutils literal"><span class="pre">current_gain</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentControlledCurrentSource.alias">
 <tt class="descname">alias</tt><em class="property"> = 'CCCS'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledCurrentSource.alias" title="Permalink to this definition">¶</a></dt>
@@ -530,12 +595,12 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentControlledCurrentSource.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x597c290&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledCurrentSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [ExpressionPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledCurrentSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentControlledCurrentSource.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('source', &lt;PySpice.Spice.Netlist.ElementNamePositionalParameter object at 0x597c250&gt;), ('current_gain', &lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x597c290&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledCurrentSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('source', ElementNamePositionalParameter), ('current_gain', ExpressionPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledCurrentSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -559,6 +624,12 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <div class="highlight-python"><div class="highlight"><pre>WYYYYYYY n+ n- vname model &lt;on&gt; &lt;off&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.CurrentControlledSwitch.source" title="PySpice.Spice.BasicElement.CurrentControlledSwitch.source"><tt class="xref py py-attr docutils literal"><span class="pre">source</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.CurrentControlledSwitch.model" title="PySpice.Spice.BasicElement.CurrentControlledSwitch.model"><tt class="xref py py-attr docutils literal"><span class="pre">model</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.CurrentControlledSwitch.initial_state" title="PySpice.Spice.BasicElement.CurrentControlledSwitch.initial_state"><tt class="xref py py-attr docutils literal"><span class="pre">initial_state</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentControlledSwitch.alias">
 <tt class="descname">alias</tt><em class="property"> = 'CCS'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledSwitch.alias" title="Permalink to this definition">¶</a></dt>
@@ -586,7 +657,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentControlledSwitch.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('source', &lt;PySpice.Spice.Netlist.ElementNamePositionalParameter object at 0x5978f90&gt;), ('model', &lt;PySpice.Spice.Netlist.ModelPositionalParameter object at 0x5978fd0&gt;), ('initial_state', &lt;PySpice.Spice.Netlist.InitialStatePositionalParameter object at 0x597c050&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledSwitch.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('source', ElementNamePositionalParameter), ('model', ModelPositionalParameter), ('initial_state', InitialStatePositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledSwitch.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -610,6 +681,11 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <div class="highlight-python"><div class="highlight"><pre>HXXXXXXX n+ n- vname value
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.CurrentControlledVoltageSource.source" title="PySpice.Spice.BasicElement.CurrentControlledVoltageSource.source"><tt class="xref py py-attr docutils literal"><span class="pre">source</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.CurrentControlledVoltageSource.transresistance" title="PySpice.Spice.BasicElement.CurrentControlledVoltageSource.transresistance"><tt class="xref py py-attr docutils literal"><span class="pre">transresistance</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentControlledVoltageSource.alias">
 <tt class="descname">alias</tt><em class="property"> = 'CCVS'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledVoltageSource.alias" title="Permalink to this definition">¶</a></dt>
@@ -622,12 +698,12 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentControlledVoltageSource.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x597c3d0&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledVoltageSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [ExpressionPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledVoltageSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentControlledVoltageSource.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('transresistance', &lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x597c3d0&gt;), ('source', &lt;PySpice.Spice.Netlist.ElementNamePositionalParameter object at 0x597c390&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledVoltageSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('transresistance', ExpressionPositionalParameter), ('source', ElementNamePositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentControlledVoltageSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -656,6 +732,9 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <div class="highlight-python"><div class="highlight"><pre>IYYYYYYY n+ n- &lt;&lt;dc&gt; dc/tran value&gt; &lt;ac &lt;acmag &lt;acphase&gt;&gt;&gt; &lt;distof1 &lt;f1mag &lt;f1phase&gt;&gt;&gt; &lt;distof2 &lt;f2mag &lt;f2phase&gt;&gt;&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><a class="reference internal" href="#PySpice.Spice.BasicElement.CurrentSource.dc_value" title="PySpice.Spice.BasicElement.CurrentSource.dc_value"><tt class="xref py py-attr docutils literal"><span class="pre">dc_value</span></tt></a></div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentSource.alias">
 <tt class="descname">alias</tt><em class="property"> = 'I'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentSource.alias" title="Permalink to this definition">¶</a></dt>
@@ -673,12 +752,12 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentSource.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x597c150&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [FloatPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.CurrentSource.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('dc_value', &lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x597c150&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('dc_value', FloatPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.CurrentSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -697,6 +776,17 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <div class="highlight-python"><div class="highlight"><pre>DXXXXXXX n+ n- mname &lt;area=val&gt; &lt;m=val&gt; &lt;pj=val&gt; &lt;off&gt; &lt;ic=vd&gt; &lt;temp=val&gt; &lt;dtemp=val&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.Diode.model" title="PySpice.Spice.BasicElement.Diode.model"><tt class="xref py py-attr docutils literal"><span class="pre">model</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Diode.area" title="PySpice.Spice.BasicElement.Diode.area"><tt class="xref py py-attr docutils literal"><span class="pre">area</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Diode.multiplier" title="PySpice.Spice.BasicElement.Diode.multiplier"><tt class="xref py py-attr docutils literal"><span class="pre">multiplier</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Diode.pj" title="PySpice.Spice.BasicElement.Diode.pj"><tt class="xref py py-attr docutils literal"><span class="pre">pj</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Diode.off" title="PySpice.Spice.BasicElement.Diode.off"><tt class="xref py py-attr docutils literal"><span class="pre">off</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Diode.ic" title="PySpice.Spice.BasicElement.Diode.ic"><tt class="xref py py-attr docutils literal"><span class="pre">ic</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Diode.temperature" title="PySpice.Spice.BasicElement.Diode.temperature"><tt class="xref py py-attr docutils literal"><span class="pre">temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Diode.device_temperature" title="PySpice.Spice.BasicElement.Diode.device_temperature"><tt class="xref py py-attr docutils literal"><span class="pre">device_temperature</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Diode.alias">
 <tt class="descname">alias</tt><em class="property"> = 'D'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Diode.alias" title="Permalink to this definition">¶</a></dt>
@@ -734,7 +824,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Diode.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('off', &lt;PySpice.Spice.Netlist.FlagKeyParameter object at 0x597c750&gt;), ('temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c7d0&gt;), ('area', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c690&gt;), ('device_temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c810&gt;), ('multiplier', &lt;PySpice.Spice.Netlist.IntKeyParameter object at 0x597c6d0&gt;), ('pj', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x597c710&gt;), ('ic', &lt;PySpice.Spice.Netlist.FloatPairKeyParameter object at 0x597c790&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Diode.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('off', FlagParameter), ('temperature', FloatKeyParameter), ('area', FloatKeyParameter), ('device_temperature', FloatKeyParameter), ('multiplier', IntKeyParameter), ('pj', FloatKeyParameter), ('ic', FloatPairKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Diode.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -749,7 +839,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Diode.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('model', &lt;PySpice.Spice.Netlist.ModelPositionalParameter object at 0x597c650&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Diode.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('model', ModelPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Diode.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -773,6 +863,17 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <div class="highlight-python"><div class="highlight"><pre>LYYYYYYY n+ n- &lt;value&gt; &lt;mname&gt; &lt;nt=val&gt; &lt;m=val&gt; &lt;scale=val&gt; &lt;temp=val&gt; &lt;dtemp=val&gt; &lt;ic=init_condition&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.Inductor.inductance" title="PySpice.Spice.BasicElement.Inductor.inductance"><tt class="xref py py-attr docutils literal"><span class="pre">inductance</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Inductor.model" title="PySpice.Spice.BasicElement.Inductor.model"><tt class="xref py py-attr docutils literal"><span class="pre">model</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Inductor.nt" title="PySpice.Spice.BasicElement.Inductor.nt"><tt class="xref py py-attr docutils literal"><span class="pre">nt</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Inductor.multiplier" title="PySpice.Spice.BasicElement.Inductor.multiplier"><tt class="xref py py-attr docutils literal"><span class="pre">multiplier</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Inductor.scale" title="PySpice.Spice.BasicElement.Inductor.scale"><tt class="xref py py-attr docutils literal"><span class="pre">scale</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Inductor.temperature" title="PySpice.Spice.BasicElement.Inductor.temperature"><tt class="xref py py-attr docutils literal"><span class="pre">temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Inductor.device_temperature" title="PySpice.Spice.BasicElement.Inductor.device_temperature"><tt class="xref py py-attr docutils literal"><span class="pre">device_temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Inductor.initial_condition" title="PySpice.Spice.BasicElement.Inductor.initial_condition"><tt class="xref py py-attr docutils literal"><span class="pre">initial_condition</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Inductor.alias">
 <tt class="descname">alias</tt><em class="property"> = 'L'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Inductor.alias" title="Permalink to this definition">¶</a></dt>
@@ -810,17 +911,17 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Inductor.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('scale', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978b90&gt;), ('temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978bd0&gt;), ('initial_condition', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978c50&gt;), ('device_temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978c10&gt;), ('multiplier', &lt;PySpice.Spice.Netlist.IntKeyParameter object at 0x5978b50&gt;), ('nt', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978b10&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Inductor.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('scale', FloatKeyParameter), ('temperature', FloatKeyParameter), ('initial_condition', FloatKeyParameter), ('device_temperature', FloatKeyParameter), ('multiplier', IntKeyParameter), ('nt', FloatKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Inductor.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Inductor.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x5978a90&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Inductor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [FloatPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Inductor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Inductor.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('inductance', &lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x5978a90&gt;), ('model', &lt;PySpice.Spice.Netlist.ModelPositionalParameter object at 0x5978ad0&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Inductor.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('inductance', FloatPositionalParameter), ('model', ModelPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Inductor.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -853,6 +954,7 @@ EXXXX n+ n- ( POLY (nd) ) nc1+ nc1- ( nc2+ nc2- ... ) p0 ( p1 ... )
 Laplace
 </pre></div>
 </div>
+<p>Attributes:</p>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.NonLinearVoltageSource.alias">
 <tt class="descname">alias</tt><em class="property"> = 'NonLinearVoltageSource'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.NonLinearVoltageSource.alias" title="Permalink to this definition">¶</a></dt>
@@ -889,6 +991,16 @@ Laplace
 <div class="highlight-python"><div class="highlight"><pre>RXXXXXXX n+ n- value &lt;ac=val&gt; &lt;m=val&gt; &lt;scale=val&gt; &lt;temp=val&gt; &lt;dtemp=val&gt; &lt;noisy=0|1&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.Resistor.resistance" title="PySpice.Spice.BasicElement.Resistor.resistance"><tt class="xref py py-attr docutils literal"><span class="pre">resistance</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Resistor.ac" title="PySpice.Spice.BasicElement.Resistor.ac"><tt class="xref py py-attr docutils literal"><span class="pre">ac</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Resistor.multiplier" title="PySpice.Spice.BasicElement.Resistor.multiplier"><tt class="xref py py-attr docutils literal"><span class="pre">multiplier</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Resistor.scale" title="PySpice.Spice.BasicElement.Resistor.scale"><tt class="xref py py-attr docutils literal"><span class="pre">scale</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Resistor.temperature" title="PySpice.Spice.BasicElement.Resistor.temperature"><tt class="xref py py-attr docutils literal"><span class="pre">temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Resistor.device_temperature" title="PySpice.Spice.BasicElement.Resistor.device_temperature"><tt class="xref py py-attr docutils literal"><span class="pre">device_temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.Resistor.noisy" title="PySpice.Spice.BasicElement.Resistor.noisy"><tt class="xref py py-attr docutils literal"><span class="pre">noisy</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Resistor.ac">
 <tt class="descname">ac</tt><em class="property"> = None</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.ac" title="Permalink to this definition">¶</a></dt>
@@ -911,22 +1023,22 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Resistor.noisy">
-<tt class="descname">noisy</tt><em class="property"> = False</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.noisy" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">noisy</tt><em class="property"> = None</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.noisy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Resistor.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('scale', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5951310&gt;), ('temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5951bd0&gt;), ('device_temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5957050&gt;), ('ac', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x4378910&gt;), ('multiplier', &lt;PySpice.Spice.Netlist.IntKeyParameter object at 0x4378b10&gt;), ('noisy', &lt;PySpice.Spice.Netlist.BoolKeyParameter object at 0x5978210&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('scale', FloatKeyParameter), ('temperature', FloatKeyParameter), ('device_temperature', FloatKeyParameter), ('ac', FloatKeyParameter), ('multiplier', IntKeyParameter), ('noisy', BoolKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Resistor.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x43787d0&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [FloatPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Resistor.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('resistance', &lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x43787d0&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('resistance', FloatPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -960,6 +1072,18 @@ Laplace
 <div class="highlight-python"><div class="highlight"><pre>CXXXXXXX n+ n- &lt;value&gt; &lt;mname&gt; &lt;l=length&gt; &lt;w=width&gt; &lt;m=val&gt; &lt;scale=val&gt; &lt;temp=val&gt; &lt;dtemp=val&gt; &lt;ic=init_condition&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.capacitance" title="PySpice.Spice.BasicElement.SemiconductorCapacitor.capacitance"><tt class="xref py py-attr docutils literal"><span class="pre">capacitance</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.model" title="PySpice.Spice.BasicElement.SemiconductorCapacitor.model"><tt class="xref py py-attr docutils literal"><span class="pre">model</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.length" title="PySpice.Spice.BasicElement.SemiconductorCapacitor.length"><tt class="xref py py-attr docutils literal"><span class="pre">length</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.width" title="PySpice.Spice.BasicElement.SemiconductorCapacitor.width"><tt class="xref py py-attr docutils literal"><span class="pre">width</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.multiplier" title="PySpice.Spice.BasicElement.SemiconductorCapacitor.multiplier"><tt class="xref py py-attr docutils literal"><span class="pre">multiplier</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.scale" title="PySpice.Spice.BasicElement.SemiconductorCapacitor.scale"><tt class="xref py py-attr docutils literal"><span class="pre">scale</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.temperature" title="PySpice.Spice.BasicElement.SemiconductorCapacitor.temperature"><tt class="xref py py-attr docutils literal"><span class="pre">temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.device_temperature" title="PySpice.Spice.BasicElement.SemiconductorCapacitor.device_temperature"><tt class="xref py py-attr docutils literal"><span class="pre">device_temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.initial_condition" title="PySpice.Spice.BasicElement.SemiconductorCapacitor.initial_condition"><tt class="xref py py-attr docutils literal"><span class="pre">initial_condition</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorCapacitor.alias">
 <tt class="descname">alias</tt><em class="property"> = 'SemiconductorCapacitor'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.alias" title="Permalink to this definition">¶</a></dt>
@@ -997,17 +1121,17 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorCapacitor.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('scale', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978890&gt;), ('temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x59788d0&gt;), ('device_temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978910&gt;), ('length', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x59787d0&gt;), ('width', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978810&gt;), ('multiplier', &lt;PySpice.Spice.Netlist.IntKeyParameter object at 0x5978850&gt;), ('initial_condition', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978950&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('scale', FloatKeyParameter), ('temperature', FloatKeyParameter), ('device_temperature', FloatKeyParameter), ('length', FloatKeyParameter), ('width', FloatKeyParameter), ('multiplier', IntKeyParameter), ('initial_condition', FloatKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorCapacitor.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x5978750&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [FloatPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorCapacitor.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('capacitance', &lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x5978750&gt;), ('model', &lt;PySpice.Spice.Netlist.ModelPositionalParameter object at 0x5978790&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('capacitance', FloatPositionalParameter), ('model', ModelPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1041,6 +1165,19 @@ Laplace
 <div class="highlight-python"><div class="highlight"><pre>RXXXXXXX n+ n- &lt;value&gt; &lt;mname&gt; &lt;l=length&gt; &lt;w=width&gt; &lt;temp=val&gt; &lt;dtemp=val&gt; m=&lt;val&gt; &lt;ac=val&gt; &lt;scale=val&gt; &lt;noisy=0|1&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorResistor.resistance" title="PySpice.Spice.BasicElement.SemiconductorResistor.resistance"><tt class="xref py py-attr docutils literal"><span class="pre">resistance</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorResistor.model" title="PySpice.Spice.BasicElement.SemiconductorResistor.model"><tt class="xref py py-attr docutils literal"><span class="pre">model</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorResistor.length" title="PySpice.Spice.BasicElement.SemiconductorResistor.length"><tt class="xref py py-attr docutils literal"><span class="pre">length</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorResistor.width" title="PySpice.Spice.BasicElement.SemiconductorResistor.width"><tt class="xref py py-attr docutils literal"><span class="pre">width</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorResistor.temperature" title="PySpice.Spice.BasicElement.SemiconductorResistor.temperature"><tt class="xref py py-attr docutils literal"><span class="pre">temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorResistor.device_temperature" title="PySpice.Spice.BasicElement.SemiconductorResistor.device_temperature"><tt class="xref py py-attr docutils literal"><span class="pre">device_temperature</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorResistor.multiplier" title="PySpice.Spice.BasicElement.SemiconductorResistor.multiplier"><tt class="xref py py-attr docutils literal"><span class="pre">multiplier</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorResistor.ac" title="PySpice.Spice.BasicElement.SemiconductorResistor.ac"><tt class="xref py py-attr docutils literal"><span class="pre">ac</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorResistor.scale" title="PySpice.Spice.BasicElement.SemiconductorResistor.scale"><tt class="xref py py-attr docutils literal"><span class="pre">scale</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.SemiconductorResistor.noisy" title="PySpice.Spice.BasicElement.SemiconductorResistor.noisy"><tt class="xref py py-attr docutils literal"><span class="pre">noisy</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorResistor.ac">
 <tt class="descname">ac</tt><em class="property"> = None</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.ac" title="Permalink to this definition">¶</a></dt>
@@ -1073,22 +1210,22 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorResistor.noisy">
-<tt class="descname">noisy</tt><em class="property"> = False</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.noisy" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">noisy</tt><em class="property"> = None</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.noisy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorResistor.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('scale', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978450&gt;), ('temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978350&gt;), ('width', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978310&gt;), ('device_temperature', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978390&gt;), ('multiplier', &lt;PySpice.Spice.Netlist.IntKeyParameter object at 0x59783d0&gt;), ('length', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x59782d0&gt;), ('ac', &lt;PySpice.Spice.Netlist.FloatKeyParameter object at 0x5978410&gt;), ('noisy', &lt;PySpice.Spice.Netlist.BoolKeyParameter object at 0x5978490&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict([('scale', FloatKeyParameter), ('temperature', FloatKeyParameter), ('width', FloatKeyParameter), ('device_temperature', FloatKeyParameter), ('multiplier', IntKeyParameter), ('length', FloatKeyParameter), ('ac', FloatKeyParameter), ('noisy', BoolKeyParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorResistor.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x5978250&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [FloatPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorResistor.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('resistance', &lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x5978250&gt;), ('model', &lt;PySpice.Spice.Netlist.ModelPositionalParameter object at 0x5978290&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('resistance', FloatPositionalParameter), ('model', ModelPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1123,6 +1260,13 @@ Laplace
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.BasicElement.</tt><tt class="descname">SubCircuitElement</tt><big>(</big><em>name</em>, <em>subcircuit_name</em>, <em>*nodes</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/BasicElement.html#SubCircuitElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.BasicElement.SubCircuitElement" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.Element</span></tt></a></p>
 <p>This class implements a sub-circuit.</p>
+<p>Spice syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre>XYYYYYY node1 node2 ... subcircuit_name
+</pre></div>
+</div>
+<p>Attributes:</p>
+<blockquote>
+<div><a class="reference internal" href="#PySpice.Spice.BasicElement.SubCircuitElement.subcircuit_name" title="PySpice.Spice.BasicElement.SubCircuitElement.subcircuit_name"><tt class="xref py py-attr docutils literal"><span class="pre">subcircuit_name</span></tt></a></div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SubCircuitElement.alias">
 <tt class="descname">alias</tt><em class="property"> = 'X'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SubCircuitElement.alias" title="Permalink to this definition">¶</a></dt>
@@ -1135,12 +1279,12 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SubCircuitElement.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.ElementNamePositionalParameter object at 0x4378490&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SubCircuitElement.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [ElementNamePositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SubCircuitElement.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SubCircuitElement.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('subcircuit_name', &lt;PySpice.Spice.Netlist.ElementNamePositionalParameter object at 0x4378490&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SubCircuitElement.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('subcircuit_name', ElementNamePositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SubCircuitElement.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1164,6 +1308,9 @@ Laplace
 <div class="highlight-python"><div class="highlight"><pre>GXXXXXXX n+ n- nc+ nc- value
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><a class="reference internal" href="#PySpice.Spice.BasicElement.VoltageControlledCurrentSource.transconductance" title="PySpice.Spice.BasicElement.VoltageControlledCurrentSource.transconductance"><tt class="xref py py-attr docutils literal"><span class="pre">transconductance</span></tt></a></div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageControlledCurrentSource.alias">
 <tt class="descname">alias</tt><em class="property"> = 'VCCS'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledCurrentSource.alias" title="Permalink to this definition">¶</a></dt>
@@ -1176,12 +1323,12 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageControlledCurrentSource.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x597c310&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledCurrentSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [ExpressionPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledCurrentSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageControlledCurrentSource.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('transconductance', &lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x597c310&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledCurrentSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('transconductance', ExpressionPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledCurrentSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1205,6 +1352,11 @@ Laplace
 <div class="highlight-python"><div class="highlight"><pre>SXXXXXXX n+ n- nc+ nc- model &lt;on&gt; &lt;off&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#PySpice.Spice.BasicElement.VoltageControlledSwitch.model" title="PySpice.Spice.BasicElement.VoltageControlledSwitch.model"><tt class="xref py py-attr docutils literal"><span class="pre">model</span></tt></a></p>
+<p><a class="reference internal" href="#PySpice.Spice.BasicElement.VoltageControlledSwitch.initial_state" title="PySpice.Spice.BasicElement.VoltageControlledSwitch.initial_state"><tt class="xref py py-attr docutils literal"><span class="pre">initial_state</span></tt></a></p>
+</div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageControlledSwitch.alias">
 <tt class="descname">alias</tt><em class="property"> = 'VCS'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledSwitch.alias" title="Permalink to this definition">¶</a></dt>
@@ -1232,7 +1384,7 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageControlledSwitch.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('model', &lt;PySpice.Spice.Netlist.ModelPositionalParameter object at 0x5978ed0&gt;), ('initial_state', &lt;PySpice.Spice.Netlist.InitialStatePositionalParameter object at 0x5978f10&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledSwitch.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('model', ModelPositionalParameter), ('initial_state', InitialStatePositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledSwitch.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1251,6 +1403,9 @@ Laplace
 <div class="highlight-python"><div class="highlight"><pre>EXXXXXXX n+ n- nc+ nc- value
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><a class="reference internal" href="#PySpice.Spice.BasicElement.VoltageControlledVoltageSource.voltage_gain" title="PySpice.Spice.BasicElement.VoltageControlledVoltageSource.voltage_gain"><tt class="xref py py-attr docutils literal"><span class="pre">voltage_gain</span></tt></a></div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageControlledVoltageSource.alias">
 <tt class="descname">alias</tt><em class="property"> = 'VCVS'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledVoltageSource.alias" title="Permalink to this definition">¶</a></dt>
@@ -1263,12 +1418,12 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageControlledVoltageSource.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x597c1d0&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledVoltageSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [ExpressionPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledVoltageSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageControlledVoltageSource.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('voltage_gain', &lt;PySpice.Spice.Netlist.ExpressionPositionalParameter object at 0x597c1d0&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledVoltageSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('voltage_gain', ExpressionPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageControlledVoltageSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1292,6 +1447,9 @@ Laplace
 <div class="highlight-python"><div class="highlight"><pre>VXXXXXXX n+ n- &lt;&lt;dc&gt; dc/tran value&gt; &lt;ac &lt;acmag &lt;acphase&gt;&gt;&gt; &lt;distof1 &lt;f1mag &lt;f1phase&gt;&gt;&gt; &lt;distof2 &lt;f2mag &lt;f2phase&gt;&gt;&gt;
 </pre></div>
 </div>
+<p>Attributes:</p>
+<blockquote>
+<div><a class="reference internal" href="#PySpice.Spice.BasicElement.VoltageSource.dc_value" title="PySpice.Spice.BasicElement.VoltageSource.dc_value"><tt class="xref py py-attr docutils literal"><span class="pre">dc_value</span></tt></a></div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageSource.alias">
 <tt class="descname">alias</tt><em class="property"> = 'V'</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageSource.alias" title="Permalink to this definition">¶</a></dt>
@@ -1309,12 +1467,12 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageSource.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = [&lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x597c0d0&gt;]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">parameters_from_args</tt><em class="property"> = [FloatPositionalParameter]</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageSource.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.VoltageSource.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('dc_value', &lt;PySpice.Spice.Netlist.FloatPositionalParameter object at 0x597c0d0&gt;)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict([('dc_value', FloatPositionalParameter)])</em><a class="headerlink" href="#PySpice.Spice.BasicElement.VoltageSource.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1336,8 +1494,8 @@ Laplace
   <p class="topless"><a href="../Spice.html"
                         title="previous chapter">3.1.7. <tt class="docutils literal"><span class="pre">Spice</span></tt></a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="HighLevelElement.html"
-                        title="next chapter">3.1.7.2. <tt class="docutils literal"><span class="pre">HighLevelElement</span></tt></a></p>
+  <p class="topless"><a href="ElementParameter.html"
+                        title="next chapter">3.1.7.2. <tt class="docutils literal"><span class="pre">ElementParameter</span></tt></a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../../_sources/api/PySpice/Spice/BasicElement.txt"
@@ -1370,7 +1528,7 @@ Laplace
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="HighLevelElement.html" title="3.1.7.2. HighLevelElement"
+          <a href="ElementParameter.html" title="3.1.7.2. ElementParameter"
              >next</a> |</li>
         <li class="right" >
           <a href="../Spice.html" title="3.1.7. Spice"

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.1.7.4. Netlist &mdash; PySpice 0.1.0 documentation</title>
+    <title>3.1.7.5. Netlist &mdash; PySpice 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
-    <link rel="next" title="3.1.7.5. Parser" href="Parser.html" />
-    <link rel="prev" title="3.1.7.3. Library" href="Library.html" /> 
+    <link rel="next" title="3.1.7.6. Parser" href="Parser.html" />
+    <link rel="prev" title="3.1.7.4. Library" href="Library.html" /> 
   </head>
   <body>
     <div class="related">
@@ -39,10 +39,10 @@
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Parser.html" title="3.1.7.5. Parser"
+          <a href="Parser.html" title="3.1.7.6. Parser"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Library.html" title="3.1.7.3. Library"
+          <a href="Library.html" title="3.1.7.4. Library"
              accesskey="P">previous</a> |</li>
         <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
           <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
@@ -57,29 +57,50 @@
           <div class="body">
             
   <div class="section" id="module-PySpice.Spice.Netlist">
-<span id="netlist"></span><h1>3.1.7.4. <tt class="xref py py-mod docutils literal"><span class="pre">Netlist</span></tt><a class="headerlink" href="#module-PySpice.Spice.Netlist" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.BoolKeyParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">BoolKeyParameter</tt><big>(</big><em>spice_name</em>, <em>default=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#BoolKeyParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.BoolKeyParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.ElementParameter" title="PySpice.Spice.Netlist.ElementParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.ElementParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.BoolKeyParameter.nonzero">
-<tt class="descname">nonzero</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#BoolKeyParameter.nonzero"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.BoolKeyParameter.nonzero" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span id="netlist"></span><h1>3.1.7.5. <tt class="xref py py-mod docutils literal"><span class="pre">Netlist</span></tt><a class="headerlink" href="#module-PySpice.Spice.Netlist" title="Permalink to this headline">¶</a></h1>
+<p>This modules implements circuit and subcircuit.</p>
+<p>The definition of a netlist follows the same conventions as SPICE. For example this SPICE netlist
+is translated to Python like this:</p>
+<div class="highlight-spice"><div class="highlight"><pre>.title Voltage Divider
+Vinput in 0 10V
+R1 in out 9k
+R2 out 0 1k
+.end
+</pre></div>
+</div>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>or as a class definition:</p>
+<div class="highlight-py"><div class="highlight"><pre><span class="k">class</span> <span class="nc">VoltageDivider</span><span class="p">(</span><span class="n">Circuit</span><span class="p">):</span>
 
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.BoolKeyParameter.to_str">
-<tt class="descname">to_str</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#BoolKeyParameter.to_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.BoolKeyParameter.to_str" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-</dd></dl>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyCircuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;10V&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The circuit attribute <tt class="xref py py-attr docutils literal"><span class="pre">gnd</span></tt> represents the ground of the circuit or subcircuit, usually set to
+0.</p>
+<p>We can get an element or a model using its name using these two possibilities:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">circuit</span><span class="p">[</span><span class="s">&#39;R1&#39;</span><span class="p">]</span> <span class="c"># dictionnary style</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R1</span>    <span class="c"># attribute style</span>
+</pre></div>
+</div>
+<p>The dictionnary style always works, but the attribute only works if it complies with the Python
+syntax, i.e. the element or model name is a valide attribute name starting by a letter.</p>
 <dl class="class">
 <dt id="PySpice.Spice.Netlist.Circuit">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Circuit</tt><big>(</big><em>title</em>, <em>ground=0</em>, <em>global_nodes=()</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.Netlist" title="PySpice.Spice.Netlist.Netlist"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.Netlist</span></tt></a></p>
 <p>This class implements a cicuit netlist.</p>
-<p>To get the corresponding Spice source use:</p>
+<p>To get the corresponding Spice netlist use:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
 <span class="o">...</span>
 <span class="nb">str</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
@@ -105,7 +126,8 @@
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Circuit.simulator">
 <tt class="descname">simulator</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.simulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.simulator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return a <tt class="xref py py-obj docutils literal"><span class="pre">PySpice.Simulation.CircuitSimulator</span></tt> instance.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Circuit.subcircuit">
@@ -126,6 +148,83 @@
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">DeviceModel</tt><big>(</big><em>name</em>, <em>modele_type</em>, <em>**parameters</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#DeviceModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.DeviceModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>This class implements a device model.</p>
+<p>Ngspice model types:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td rowspan="2">Code</td>
+<td rowspan="2">Model Type</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">R</td>
+<td rowspan="2">Semiconductor resistor model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">C</td>
+<td rowspan="2">Semiconductor capacitor model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">L</td>
+<td rowspan="2">Inductor model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">SW</td>
+<td rowspan="2">Voltage controlled switch</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">CSW</td>
+<td rowspan="2">Current controlled switch</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">URC</td>
+<td rowspan="2">Uniform distributed RC model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">LTRA</td>
+<td rowspan="2">Lossy transmission line model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">D</td>
+<td rowspan="2">Diode model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">NPN</td>
+<td rowspan="2">NPN BJT model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">PNP</td>
+<td rowspan="2">PNP BJT model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">NJF</td>
+<td rowspan="2">N-channel JFET model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">PJF</td>
+<td rowspan="2">P-channel JFET model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">NMOS</td>
+<td rowspan="2">N-channel MOSFET model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">PMOS</td>
+<td rowspan="2">P-channel MOSFET model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">NMF</td>
+<td rowspan="2">N-channel MESFET model</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">PMF</td>
+<td rowspan="2">P-channel MESFET model</td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.DeviceModel.model_type">
 <tt class="descname">model_type</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#DeviceModel.model_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.DeviceModel.model_type" title="Permalink to this definition">¶</a></dt>
@@ -143,15 +242,18 @@
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Element</tt><big>(</big><em>name</em>, <em>pins</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>This class implements a base class for an element.</p>
+<p>It use a metaclass machinery for the declaration of the parameters.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Element.format_node_names">
 <tt class="descname">format_node_names</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.format_node_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.format_node_names" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the formatted list of nodes.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Element.format_spice_parameters">
 <tt class="descname">format_spice_parameters</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the formatted list of parameters.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.Element.name">
@@ -171,7 +273,8 @@
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Element.parameter_iterator">
 <tt class="descname">parameter_iterator</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.parameter_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.parameter_iterator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This iterator returns the parameter in the right order.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.Element.parameters_from_args">
@@ -191,161 +294,16 @@
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.Element.prefix">
 <tt class="descname">prefix</tt><em class="property"> = None</em><a class="headerlink" href="#PySpice.Spice.Netlist.Element.prefix" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dd><p>SPICE element prefix</p>
 </dd></dl>
 
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.ElementNamePositionalParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">ElementNamePositionalParameter</tt><big>(</big><em>position</em>, <em>default=None</em>, <em>key_parameter=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ElementNamePositionalParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ElementNamePositionalParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.PositionalElementParameter" title="PySpice.Spice.Netlist.PositionalElementParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.PositionalElementParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.ElementNamePositionalParameter.validate">
-<tt class="descname">validate</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ElementNamePositionalParameter.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ElementNamePositionalParameter.validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.ElementParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">ElementParameter</tt><big>(</big><em>spice_name</em>, <em>default=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ElementParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ElementParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.ParameterDescriptor" title="PySpice.Spice.Netlist.ParameterDescriptor"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.ParameterDescriptor</span></tt></a></p>
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.Netlist.ElementParameterMetaClass">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">ElementParameterMetaClass</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ElementParameterMetaClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ElementParameterMetaClass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">type</span></tt></p>
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.ExpressionKeyParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">ExpressionKeyParameter</tt><big>(</big><em>spice_name</em>, <em>default=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ExpressionKeyParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ExpressionKeyParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.KeyValueParameter" title="PySpice.Spice.Netlist.KeyValueParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.KeyValueParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.ExpressionKeyParameter.validate">
-<tt class="descname">validate</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ExpressionKeyParameter.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ExpressionKeyParameter.validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.ExpressionPositionalParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">ExpressionPositionalParameter</tt><big>(</big><em>position</em>, <em>default=None</em>, <em>key_parameter=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ExpressionPositionalParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ExpressionPositionalParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.PositionalElementParameter" title="PySpice.Spice.Netlist.PositionalElementParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.PositionalElementParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.ExpressionPositionalParameter.validate">
-<tt class="descname">validate</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ExpressionPositionalParameter.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ExpressionPositionalParameter.validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.FlagKeyParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">FlagKeyParameter</tt><big>(</big><em>spice_name</em>, <em>default=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FlagKeyParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FlagKeyParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.ElementParameter" title="PySpice.Spice.Netlist.ElementParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.ElementParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.FlagKeyParameter.nonzero">
-<tt class="descname">nonzero</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FlagKeyParameter.nonzero"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FlagKeyParameter.nonzero" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.FlagKeyParameter.to_str">
-<tt class="descname">to_str</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FlagKeyParameter.to_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FlagKeyParameter.to_str" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.FloatKeyParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">FloatKeyParameter</tt><big>(</big><em>spice_name</em>, <em>default=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FloatKeyParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FloatKeyParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.KeyValueParameter" title="PySpice.Spice.Netlist.KeyValueParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.KeyValueParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.FloatKeyParameter.validate">
-<tt class="descname">validate</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FloatKeyParameter.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FloatKeyParameter.validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.FloatPairKeyParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">FloatPairKeyParameter</tt><big>(</big><em>spice_name</em>, <em>default=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FloatPairKeyParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FloatPairKeyParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.KeyValueParameter" title="PySpice.Spice.Netlist.KeyValueParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.KeyValueParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.FloatPairKeyParameter.str_value">
-<tt class="descname">str_value</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FloatPairKeyParameter.str_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FloatPairKeyParameter.str_value" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.FloatPairKeyParameter.validate">
-<tt class="descname">validate</tt><big>(</big><em>pair</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FloatPairKeyParameter.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FloatPairKeyParameter.validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.FloatPositionalParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">FloatPositionalParameter</tt><big>(</big><em>position</em>, <em>default=None</em>, <em>key_parameter=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FloatPositionalParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FloatPositionalParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.PositionalElementParameter" title="PySpice.Spice.Netlist.PositionalElementParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.PositionalElementParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.FloatPositionalParameter.validate">
-<tt class="descname">validate</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#FloatPositionalParameter.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.FloatPositionalParameter.validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.InitialStatePositionalParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">InitialStatePositionalParameter</tt><big>(</big><em>position</em>, <em>default=None</em>, <em>key_parameter=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#InitialStatePositionalParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.InitialStatePositionalParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.PositionalElementParameter" title="PySpice.Spice.Netlist.PositionalElementParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.PositionalElementParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.InitialStatePositionalParameter.to__str_">
-<tt class="descname">to__str_</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#InitialStatePositionalParameter.to__str_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.InitialStatePositionalParameter.to__str_" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.InitialStatePositionalParameter.validate">
-<tt class="descname">validate</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#InitialStatePositionalParameter.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.InitialStatePositionalParameter.validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.IntKeyParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">IntKeyParameter</tt><big>(</big><em>spice_name</em>, <em>default=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#IntKeyParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.IntKeyParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.KeyValueParameter" title="PySpice.Spice.Netlist.KeyValueParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.KeyValueParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.IntKeyParameter.validate">
-<tt class="descname">validate</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#IntKeyParameter.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.IntKeyParameter.validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.KeyValueParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">KeyValueParameter</tt><big>(</big><em>spice_name</em>, <em>default=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#KeyValueParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.KeyValueParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.ElementParameter" title="PySpice.Spice.Netlist.ElementParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.ElementParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.KeyValueParameter.str_value">
-<tt class="descname">str_value</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#KeyValueParameter.str_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.KeyValueParameter.str_value" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.KeyValueParameter.to_str">
-<tt class="descname">to_str</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#KeyValueParameter.to_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.KeyValueParameter.to_str" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.ModelPositionalParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">ModelPositionalParameter</tt><big>(</big><em>position</em>, <em>default=None</em>, <em>key_parameter=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ModelPositionalParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ModelPositionalParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.PositionalElementParameter" title="PySpice.Spice.Netlist.PositionalElementParameter"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.PositionalElementParameter</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.ModelPositionalParameter.validate">
-<tt class="descname">validate</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ModelPositionalParameter.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ModelPositionalParameter.validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<p>Metaclass to implements the element parameter machinery.</p>
 </dd></dl>
 
 <dl class="class">
@@ -353,6 +311,10 @@
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Netlist</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>This class implements a base class for a netlist.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is completed at running time with elements.</p>
+</div>
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.AcLine">
 <tt class="descname">AcLine</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.AcLine" title="Permalink to this definition">¶</a></dt>
@@ -506,7 +468,8 @@
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist._add_element">
 <tt class="descname">_add_element</tt><big>(</big><em>element</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist._add_element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist._add_element" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Add an element.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.element_iterator">
@@ -516,7 +479,8 @@
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.model">
 <tt class="descname">model</tt><big>(</big><em>name</em>, <em>modele_type</em>, <em>**parameters</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.model" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Add a model.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.model_iterator">
@@ -526,7 +490,8 @@
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.Netlist.nodes">
 <tt class="descname">nodes</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.nodes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the nodes.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -534,7 +499,8 @@
 <dt id="PySpice.Spice.Netlist.Node">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Node</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Node" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
-<p>This class implements a node in the circuit.</p>
+<p>This class implements a node in the circuit. It stores a reference to the elements connected to
+the node.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Node.add_element">
 <tt class="descname">add_element</tt><big>(</big><em>element</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Node.add_element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Node.add_element" title="Permalink to this definition">¶</a></dt>
@@ -553,45 +519,30 @@
 </dd></dl>
 
 <dl class="class">
-<dt id="PySpice.Spice.Netlist.ParameterDescriptor">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">ParameterDescriptor</tt><big>(</big><em>default=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ParameterDescriptor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ParameterDescriptor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.ParameterDescriptor.nonzero">
-<tt class="descname">nonzero</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ParameterDescriptor.nonzero"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ParameterDescriptor.nonzero" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.ParameterDescriptor.to_str">
-<tt class="descname">to_str</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ParameterDescriptor.to_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ParameterDescriptor.to_str" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.ParameterDescriptor.validate">
-<tt class="descname">validate</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ParameterDescriptor.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ParameterDescriptor.validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="PySpice.Spice.Netlist.Pin">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Pin</tt><big>(</big><em>element</em>, <em>name</em>, <em>node</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
-<p>This class implements a pin of an element.</p>
+<p>This class implements a pin of an element. It stores a reference to the element, the name of the
+pin and the node.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Pin.add_current_probe">
 <tt class="descname">add_current_probe</tt><big>(</big><em>circuit</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin.add_current_probe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.add_current_probe" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dd><p>Add a current probe between the node and the pin.</p>
 </dd></dl>
 
-<dl class="class">
-<dt id="PySpice.Spice.Netlist.PositionalElementParameter">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">PositionalElementParameter</tt><big>(</big><em>position</em>, <em>default=None</em>, <em>key_parameter=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#PositionalElementParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.PositionalElementParameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.ParameterDescriptor" title="PySpice.Spice.Netlist.ParameterDescriptor"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.ParameterDescriptor</span></tt></a></p>
-<dl class="method">
-<dt id="PySpice.Spice.Netlist.PositionalElementParameter.to_str">
-<tt class="descname">to_str</tt><big>(</big><em>instance</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#PositionalElementParameter.to_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.PositionalElementParameter.to_str" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Pin.element">
+<tt class="descname">element</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin.element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Pin.name">
+<tt class="descname">name</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Pin.node">
+<tt class="descname">node</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin.node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -604,7 +555,8 @@
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.SubCircuit.check_nodes">
 <tt class="descname">check_nodes</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#SubCircuit.check_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuit.check_nodes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Check for dangling nodes in the subcircuit.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.SubCircuit.gnd">
@@ -657,7 +609,10 @@
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">TwoPortElement</tt><big>(</big><em>name</em>, <em>input_node_plus</em>, <em>input_node_minus</em>, <em>output_node_plus</em>, <em>output_node_minus</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#TwoPortElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.TwoPortElement" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.Element</span></tt></a></p>
 <p>This class implements a base class for a two-port element.</p>
-<p>Input nodes comes before to output nodes contrary to Spice.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">As opposite to Spice, the input nodes are specified before the output nodes.</p>
+</div>
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.TwoPortElement.input_minus">
 <tt class="descname">input_minus</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#TwoPortElement.input_minus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.TwoPortElement.input_minus" title="Permalink to this definition">¶</a></dt>
@@ -705,10 +660,10 @@
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="Library.html"
-                        title="previous chapter">3.1.7.3. <tt class="docutils literal"><span class="pre">Library</span></tt></a></p>
+                        title="previous chapter">3.1.7.4. <tt class="docutils literal"><span class="pre">Library</span></tt></a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="Parser.html"
-                        title="next chapter">3.1.7.5. <tt class="docutils literal"><span class="pre">Parser</span></tt></a></p>
+                        title="next chapter">3.1.7.6. <tt class="docutils literal"><span class="pre">Parser</span></tt></a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../../_sources/api/PySpice/Spice/Netlist.txt"
@@ -741,10 +696,10 @@
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Parser.html" title="3.1.7.5. Parser"
+          <a href="Parser.html" title="3.1.7.6. Parser"
              >next</a> |</li>
         <li class="right" >
-          <a href="Library.html" title="3.1.7.3. Library"
+          <a href="Library.html" title="3.1.7.4. Library"
              >previous</a> |</li>
         <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
           <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>

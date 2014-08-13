@@ -55,27 +55,47 @@
 <span class="c"># </span>
 <span class="c">####################################################################################################</span>
 
-<span class="sd">&quot;&quot;&quot; This module implements Spice elements. &quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot; This module implements SPICE circuit elements.</span>
+
+<span class="sd">See Ngspice documentation for details.</span>
+
+<span class="sd">.. warning:: Some elements are partially implemented.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">..Tools.StringTools</span> <span class="kn">import</span> <span class="n">join_list</span>
-<span class="kn">from</span> <span class="nn">.Netlist</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Pin</span><span class="p">,</span> 
-                      <span class="n">FloatPositionalParameter</span><span class="p">,</span>
-                      <span class="n">ExpressionPositionalParameter</span><span class="p">,</span>
-                      <span class="n">ElementNamePositionalParameter</span><span class="p">,</span> <span class="n">ModelPositionalParameter</span><span class="p">,</span>
-                      <span class="n">InitialStatePositionalParameter</span><span class="p">,</span>
-                      <span class="n">IntKeyParameter</span><span class="p">,</span> <span class="n">FloatKeyParameter</span><span class="p">,</span> <span class="n">FloatPairKeyParameter</span><span class="p">,</span>
-                      <span class="n">FlagKeyParameter</span><span class="p">,</span> <span class="n">BoolKeyParameter</span><span class="p">,</span>
-                      <span class="n">ExpressionKeyParameter</span><span class="p">,</span>
-                      <span class="n">Element</span><span class="p">,</span> <span class="n">TwoPinElement</span><span class="p">,</span> <span class="n">TwoPortElement</span><span class="p">,</span>
-                     <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.Netlist</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">Element</span><span class="p">,</span> <span class="n">TwoPinElement</span><span class="p">,</span> <span class="n">TwoPortElement</span>
+<span class="kn">from</span> <span class="nn">.ElementParameter</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BoolKeyParameter</span><span class="p">,</span>
+    <span class="n">ElementNamePositionalParameter</span><span class="p">,</span>
+    <span class="n">ExpressionKeyParameter</span><span class="p">,</span>
+    <span class="n">ExpressionPositionalParameter</span><span class="p">,</span>
+    <span class="n">FlagParameter</span><span class="p">,</span>
+    <span class="n">FloatKeyParameter</span><span class="p">,</span>
+    <span class="n">FloatPairKeyParameter</span><span class="p">,</span>
+    <span class="n">FloatPositionalParameter</span><span class="p">,</span>
+    <span class="n">InitialStatePositionalParameter</span><span class="p">,</span>
+    <span class="n">IntKeyParameter</span><span class="p">,</span>
+    <span class="n">ModelPositionalParameter</span><span class="p">,</span>
+    <span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
 
 <div class="viewcode-block" id="SubCircuitElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SubCircuitElement">[docs]</a><span class="k">class</span> <span class="nc">SubCircuitElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot; This class implements a sub-circuit. &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; This class implements a sub-circuit.</span>
+
+<span class="sd">    Spice syntax::</span>
+
+<span class="sd">        XYYYYYY node1 node2 ... subcircuit_name</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`subcircuit_name`</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;X&#39;</span>
     <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;X&#39;</span>
@@ -99,7 +119,22 @@
 <span class="sd">    Spice syntax::</span>
 
 <span class="sd">        RXXXXXXX n+ n- value &lt;ac=val&gt; &lt;m=val&gt; &lt;scale=val&gt; &lt;temp=val&gt; &lt;dtemp=val&gt; &lt;noisy=0|1&gt;</span>
-<span class="sd">    </span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`resistance`</span>
+
+<span class="sd">      :attr:`ac`</span>
+
+<span class="sd">      :attr:`multiplier`</span>
+
+<span class="sd">      :attr:`scale`</span>
+
+<span class="sd">      :attr:`temperature`</span>
+
+<span class="sd">      :attr:`device_temperature`</span>
+
+<span class="sd">      :attr:`noisy`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -123,6 +158,28 @@
 <span class="sd">    Spice syntax::</span>
 
 <span class="sd">        RXXXXXXX n+ n- &lt;value&gt; &lt;mname&gt; &lt;l=length&gt; &lt;w=width&gt; &lt;temp=val&gt; &lt;dtemp=val&gt; m=&lt;val&gt; &lt;ac=val&gt; &lt;scale=val&gt; &lt;noisy=0|1&gt;</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`resistance`</span>
+
+<span class="sd">      :attr:`model`</span>
+
+<span class="sd">      :attr:`length`</span>
+
+<span class="sd">      :attr:`width`</span>
+
+<span class="sd">      :attr:`temperature`</span>
+
+<span class="sd">      :attr:`device_temperature`</span>
+
+<span class="sd">      :attr:`multiplier`</span>
+
+<span class="sd">      :attr:`ac`</span>
+
+<span class="sd">      :attr:`scale`</span>
+
+<span class="sd">      :attr:`noisy`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -151,6 +208,14 @@
 <span class="sd">        RXXXXXXX n+ n- &#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;</span>
 <span class="sd">        Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;</span>
 
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`resistance_expression`</span>
+
+<span class="sd">      :attr:`tc1`</span>
+
+<span class="sd">      :attr:`tc2`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavorialResistor&#39;</span>
@@ -169,6 +234,22 @@
 <span class="sd">    Spice syntax::</span>
 
 <span class="sd">        CXXXXXXX n+ n- &lt;value&gt; &lt;mname&gt; &lt;m=val&gt; &lt;scale=val&gt; &lt;temp=val&gt; &lt;dtemp=val&gt; &lt;ic=init_condition&gt;</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`capacitance`</span>
+
+<span class="sd">      :attr:`model`</span>
+
+<span class="sd">      :attr:`multiplier`</span>
+
+<span class="sd">      :attr:`scale`</span>
+
+<span class="sd">      :attr:`temperature`</span>
+
+<span class="sd">      :attr:`device_temperature`</span>
+
+<span class="sd">      :attr:`initial_condition`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -192,6 +273,26 @@
 <span class="sd">    Spice syntax::</span>
 
 <span class="sd">        CXXXXXXX n+ n- &lt;value&gt; &lt;mname&gt; &lt;l=length&gt; &lt;w=width&gt; &lt;m=val&gt; &lt;scale=val&gt; &lt;temp=val&gt; &lt;dtemp=val&gt; &lt;ic=init_condition&gt;</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`capacitance`</span>
+
+<span class="sd">      :attr:`model`</span>
+
+<span class="sd">      :attr:`length`</span>
+
+<span class="sd">      :attr:`width`</span>
+
+<span class="sd">      :attr:`multiplier`</span>
+
+<span class="sd">      :attr:`scale`</span>
+
+<span class="sd">      :attr:`temperature`</span>
+
+<span class="sd">      :attr:`device_temperature`</span>
+
+<span class="sd">      :attr:`initial_condition`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -219,6 +320,14 @@
 <span class="sd">        CXXXXXXX n+ n- &#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;</span>
 <span class="sd">        CXXXXXXX n+ n- C=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;</span>
 
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`capacitance_expression`</span>
+
+<span class="sd">      :attr:`tc1`</span>
+
+<span class="sd">      :attr:`tc2`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavorialCapacitor&#39;</span>
@@ -237,6 +346,24 @@
 <span class="sd">    Spice syntax::</span>
 
 <span class="sd">        LYYYYYYY n+ n- &lt;value&gt; &lt;mname&gt; &lt;nt=val&gt; &lt;m=val&gt; &lt;scale=val&gt; &lt;temp=val&gt; &lt;dtemp=val&gt; &lt;ic=init_condition&gt;</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`inductance`</span>
+
+<span class="sd">      :attr:`model`</span>
+
+<span class="sd">      :attr:`nt`</span>
+
+<span class="sd">      :attr:`multiplier`</span>
+
+<span class="sd">      :attr:`scale`</span>
+
+<span class="sd">      :attr:`temperature`</span>
+
+<span class="sd">      :attr:`device_temperature`</span>
+
+<span class="sd">      :attr:`initial_condition`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -263,6 +390,14 @@
 <span class="sd">        LXXXXXXX n+ n- &#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;</span>
 <span class="sd">        LXXXXXXX n+ n- L=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;</span>
 
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`inductance_expression`</span>
+
+<span class="sd">      :attr:`tc1`</span>
+
+<span class="sd">      :attr:`tc2`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavorialInductor&#39;</span>
@@ -281,6 +416,14 @@
 <span class="sd">    Spice syntax::</span>
 
 <span class="sd">        KXXXXXXX LYYYYYYY LZZZZZZZ value</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`inductor1`</span>
+
+<span class="sd">      :attr:`inductor2`</span>
+
+<span class="sd">      :attr:`coupling_factor`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -310,6 +453,12 @@
 
 <span class="sd">        SXXXXXXX n+ n- nc+ nc- model &lt;on&gt; &lt;off&gt;</span>
 
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`model`</span>
+
+<span class="sd">      :attr:`initial_state`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;VCS&#39;</span>
@@ -327,6 +476,14 @@
 <span class="sd">    Spice syntax::</span>
 
 <span class="sd">        WYYYYYYY n+ n- vname model &lt;on&gt; &lt;off&gt;</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`source`</span>
+
+<span class="sd">      :attr:`model`</span>
+
+<span class="sd">      :attr:`initial_state`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -347,6 +504,10 @@
 
 <span class="sd">        VXXXXXXX n+ n- &lt;&lt;dc&gt; dc/tran value&gt; &lt;ac &lt;acmag &lt;acphase&gt;&gt;&gt; &lt;distof1 &lt;f1mag &lt;f1phase&gt;&gt;&gt; &lt;distof2 &lt;f2mag &lt;f2phase&gt;&gt;&gt;</span>
 
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`dc_value`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;V&#39;</span>
@@ -364,6 +525,10 @@
 <span class="sd">    Spice syntax::</span>
 
 <span class="sd">       IYYYYYYY n+ n- &lt;&lt;dc&gt; dc/tran value&gt; &lt;ac &lt;acmag &lt;acphase&gt;&gt;&gt; &lt;distof1 &lt;f1mag &lt;f1phase&gt;&gt;&gt; &lt;distof2 &lt;f2mag &lt;f2phase&gt;&gt;&gt;</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`dc_value`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -383,6 +548,10 @@
 
 <span class="sd">        EXXXXXXX n+ n- nc+ nc- value</span>
 
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`voltage_gain`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;VCVS&#39;</span>
@@ -400,6 +569,12 @@
 
 <span class="sd">       FXXXXXXX n+ n- vname value</span>
 
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`source`</span>
+
+<span class="sd">      :attr:`current_gain`</span>
+<span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;CCCS&#39;</span>
@@ -418,6 +593,10 @@
 
 <span class="sd">        GXXXXXXX n+ n- nc+ nc- value</span>
 
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`transconductance`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;VCCS&#39;</span>
@@ -434,6 +613,12 @@
 <span class="sd">    Spice syntax::</span>
 
 <span class="sd">        HXXXXXXX n+ n- vname value</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`source`</span>
+
+<span class="sd">      :attr:`transresistance`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -452,6 +637,20 @@
 <span class="sd">    Spice syntax::</span>
 
 <span class="sd">        BXXXXXXX n+ n- &lt;i=expr&gt; &lt;v=expr&gt; &lt;tc1=value&gt; &lt;tc2=value&gt; &lt;temp=value&gt; &lt;dtemp=value&gt;</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`current_expression`</span>
+
+<span class="sd">      :attr:`voltage_expression`</span>
+
+<span class="sd">      :attr:`tc1`</span>
+
+<span class="sd">      :attr:`tc2`</span>
+
+<span class="sd">      :attr:`temperature`</span>
+
+<span class="sd">      :attr:`device_temperature`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -478,6 +677,8 @@
 <span class="sd">        Exxx n1 n2 TABLE {expression}=(x0,y0) (x1,y1) (x2,y2)</span>
 <span class="sd">        EXXXX n+ n- ( POLY (nd) ) nc1+ nc1- ( nc2+ nc2- ... ) p0 ( p1 ... )</span>
 <span class="sd">        Laplace</span>
+
+<span class="sd">    Attributes:</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -517,6 +718,24 @@
 
 <span class="sd">        DXXXXXXX n+ n- mname &lt;area=val&gt; &lt;m=val&gt; &lt;pj=val&gt; &lt;off&gt; &lt;ic=vd&gt; &lt;temp=val&gt; &lt;dtemp=val&gt;</span>
 
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`model`</span>
+
+<span class="sd">      :attr:`area`</span>
+
+<span class="sd">      :attr:`multiplier`</span>
+
+<span class="sd">      :attr:`pj`</span>
+
+<span class="sd">      :attr:`off`</span>
+
+<span class="sd">      :attr:`ic`</span>
+
+<span class="sd">      :attr:`temperature`</span>
+
+<span class="sd">      :attr:`device_temperature`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;D&#39;</span>
@@ -526,7 +745,7 @@
     <span class="n">area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;area&#39;</span><span class="p">)</span>
     <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
     <span class="n">pj</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;pj&#39;</span><span class="p">)</span>
-    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagKeyParameter</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
     <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatPairKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
     <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
     <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
@@ -541,6 +760,26 @@
 
 <span class="sd">         QXXXXXXX nc nb ne &lt;ns&gt; mname &lt;area=val&gt; &lt;areac=val&gt; &lt;areab=val&gt; &lt;m=val&gt; &lt;off&gt; &lt;ic=vbe,vce&gt; &lt;temp=val&gt; &lt;dtemp=val&gt;</span>
 
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`model`</span>
+
+<span class="sd">      :attr:`area`</span>
+
+<span class="sd">      :attr:`areac`</span>
+
+<span class="sd">      :attr:`areab`</span>
+
+<span class="sd">      :attr:`multiplier`</span>
+
+<span class="sd">      :attr:`off`</span>
+
+<span class="sd">      :attr:`ic`</span>
+
+<span class="sd">      :attr:`temperature`</span>
+
+<span class="sd">      :attr:`device_temperature`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c"># Fixme: off doesn&#39;t fit in kwargs !</span>
@@ -553,7 +792,7 @@
     <span class="n">areac</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;areac&#39;</span><span class="p">)</span>
     <span class="n">areab</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;areab&#39;</span><span class="p">)</span>
     <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagKeyParameter</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
     <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatPairKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
     <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
     <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
