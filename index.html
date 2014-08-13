@@ -84,7 +84,7 @@ it. PySpice could serve to easily experiment extension.</li>
 </div></blockquote>
 <p>As opposite to other SPICE derivatives, PySpice focus on programming and not on graphical user
 interface. Thus it doesn&#8217;t feature a schematic capture editor and we cannot pickup a node or an
-element and plot the associated waveform.  Moreover we can notice the Modelica language treats
+element and plot the associated waveform.  Moreover we can notice the <a class="reference external" href="http://www.modelica.org">Modelica</a> language treats
 diagrams as annotations.  A choice which I consider judicious.  Thus we can imagine to follow the
 same principle and extend PySpice later.</p>
 </div>
@@ -102,8 +102,21 @@ same principle and extend PySpice later.</p>
 </ul>
 </div></blockquote>
 <p>Since PySpice is born with a learning goal, many examples are provided with the sources.  These
-examples could serve as a learning material. A tool to generate an HTML and PDF documentation is
+examples could serve as learning materials. A tool to generate an HTML and PDF documentation is
 included in the <em>tools</em> directory. This tool could be extended to generate IPython Notebook as well.</p>
+</div>
+<div class="section" id="planned-features">
+<h1>Planned Features<a class="headerlink" href="#planned-features" title="Permalink to this headline">¶</a></h1>
+<p>These features are planned in the future:</p>
+<blockquote>
+<div><ul class="simple">
+<li>implement a SPICE to Python converted using the parser. It could be used for the following
+workflow: quick circuit sketching using <a class="reference external" href="http://www.kicad-pcb.org">Kicad</a> &gt; SPICE netlist &gt; spice2python &gt; PySpice which
+could help for complex circuit.</li>
+<li>implement a basic simulator featuring passive element like resistor, capacitor and inductor.</li>
+<li>implement a Modelica backend. <a class="reference external" href="http://www.modelica.org">Modelica</a> is a very interesting solution for transient analysis.</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="advertisements">
 <h1>Advertisements<a class="headerlink" href="#advertisements" title="Permalink to this headline">¶</a></h1>
@@ -128,6 +141,7 @@ design. Best is to cross check the simulation using an industrial grade simulato
 </div>
 <div class="section" id="documentation">
 <h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<p>The best way to know what we can do with PySpice and learn it, is to start with the examples.</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="examples/index.html#examples-page"><em>Examples</em></a></li>
@@ -150,17 +164,19 @@ design. Best is to cross check the simulation using an industrial grade simulato
 <li class="toctree-l1"><a class="reference internal" href="examples/index.html">2. Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples/index.html#how-to-learn-python">2.1. How to Learn Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/index.html#how-to-run-theses-examples">2.2. How to Run theses Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/index.html#tables-of-contents">2.3. Tables of Contents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples/data-analysis/index.html">2.3.1. Data Analysis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/diode/index.html">2.3.2. Diode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/electricity/index.html">2.3.3. Electricity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/filter/index.html">2.3.4. Filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/operational-amplifier/index.html">2.3.5. Operational Amplifier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/passive/index.html">2.3.6. Passive</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/power-supply/index.html">2.3.7. Power Supply</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/resistor/index.html">2.3.8. Resistor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/transformer/index.html">2.3.9. Transformer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/transistor/index.html">2.3.10. Transistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#how-to-write-a-netlist">2.3. How to Write a Netlist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#documentation-generator">2.4. Documentation Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#tables-of-contents">2.5. Tables of Contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/data-analysis/index.html">2.5.1. Data Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/diode/index.html">2.5.2. Diode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/electricity/index.html">2.5.3. Electricity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/filter/index.html">2.5.4. Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/operational-amplifier/index.html">2.5.5. Operational Amplifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/passive/index.html">2.5.6. Passive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/power-supply/index.html">2.5.7. Power Supply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/resistor/index.html">2.5.8. Resistor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/transformer/index.html">2.5.9. Transformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/transistor/index.html">2.5.10. Transistor</a></li>
 </ul>
 </li>
 </ul>
@@ -201,6 +217,7 @@ design. Best is to cross check the simulation using an industrial grade simulato
   <ul>
 <li><a class="reference internal" href="#">Introduction</a></li>
 <li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#planned-features">Planned Features</a></li>
 <li><a class="reference internal" href="#advertisements">Advertisements</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
