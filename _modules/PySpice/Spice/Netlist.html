@@ -50,8 +50,21 @@
   <h1>Source code for PySpice.Spice.Netlist</h1><div class="highlight"><pre>
 <span class="c">####################################################################################################</span>
 <span class="c"># </span>
-<span class="c"># PySpice - A Spice package for Python</span>
+<span class="c"># PySpice - A Spice Package for Python</span>
 <span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c">#</span>
+<span class="c"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c"># </span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU General Public License for more details.</span>
+<span class="c"># </span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;. </span>
 <span class="c"># </span>
 <span class="c">####################################################################################################</span>
 
@@ -83,11 +96,11 @@
 
 <span class="sd">          def __init__(self, **kwargs):</span>
 
-<span class="sd">              super(MyCircuit, self).__init__(title=&#39;Voltage Divider&#39;, **kwargs)</span>
+<span class="sd">              super(VoltageDivider, self).__init__(title=&#39;Voltage Divider&#39;, **kwargs)</span>
 
-<span class="sd">              self.V(&#39;input&#39;, &#39;in&#39;, circuit.gnd, &#39;10V&#39;)</span>
+<span class="sd">              self.V(&#39;input&#39;, &#39;in&#39;, self.gnd, &#39;10V&#39;)</span>
 <span class="sd">              self.R(1, &#39;in&#39;, &#39;out&#39;, kilo(9))</span>
-<span class="sd">              self.R(2, &#39;out&#39;, circuit.gnd, kilo(1))</span>
+<span class="sd">              self.R(2, &#39;out&#39;, self.gnd, kilo(1))</span>
 
 <span class="sd">The circuit attribute :attr:`gnd` represents the ground of the circuit or subcircuit, usually set to</span>
 <span class="sd">0.</span>
@@ -98,7 +111,13 @@
 <span class="sd">    circuit.R1    # attribute style</span>
 
 <span class="sd">The dictionnary style always works, but the attribute only works if it complies with the Python</span>
-<span class="sd">syntax, i.e. the element or model name is a valide attribute name starting by a letter.</span>
+<span class="sd">syntax, i.e. the element or model name is a valide attribute name (identifier), i.e. starting by a</span>
+<span class="sd">letter and not a keyword like &#39;in&#39;, cf. `Python Language Reference</span>
+<span class="sd">&lt;https://docs.python.org/2/reference/lexical_analysis.html&gt;`_.</span>
+
+<span class="sd">We can update an element parameter like this::</span>
+
+<span class="sd">    circuit.R1.resistance = kilo(1)</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -124,7 +143,9 @@
 <span class="c">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">..Tools.StringTools</span> <span class="kn">import</span> <span class="n">join_lines</span><span class="p">,</span> <span class="n">join_list</span><span class="p">,</span> <span class="n">join_dict</span>
-<span class="kn">from</span> <span class="nn">.ElementParameter</span> <span class="kn">import</span> <span class="n">PositionalElementParameter</span><span class="p">,</span> <span class="n">FlagParameter</span><span class="p">,</span> <span class="n">KeyValueParameter</span>
+<span class="kn">from</span> <span class="nn">.ElementParameter</span> <span class="kn">import</span> <span class="p">(</span><span class="n">ParameterDescriptor</span><span class="p">,</span>
+                               <span class="n">PositionalElementParameter</span><span class="p">,</span>
+                               <span class="n">FlagParameter</span><span class="p">,</span> <span class="n">KeyValueParameter</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">.Simulation</span> <span class="kn">import</span> <span class="n">CircuitSimulator</span>
 
 <span class="c">####################################################################################################</span>
@@ -219,7 +240,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_element</span> <span class="o">=</span> <span class="n">element</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_node</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_node</span> <span class="o">=</span> <span class="n">node</span> <span class="c"># Fixme: name, not a Node instance, cf. Netlist.nodes</span>
 
     <span class="c">##############################################</span>
 
@@ -249,9 +270,13 @@
 
 <div class="viewcode-block" id="Pin.add_current_probe"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Pin.add_current_probe">[docs]</a>    <span class="k">def</span> <span class="nf">add_current_probe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot; Add a current probe between the node and the pin. &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot; Add a current probe between the node and the pin.</span>
+
+<span class="sd">        The ammeter is named *ElementName_PinName*.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c"># Fixme: require a reference to circuit</span>
+        <span class="c"># Fixme: add it to a list</span>
 
         <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_node</span> <span class="o">=</span> <span class="s">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_element</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">))</span>
@@ -267,15 +292,18 @@
 
     <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
 
+        <span class="n">sorted_attributes</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">attributes</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
         <span class="n">positional_parameters</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-        <span class="n">parameters</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span> <span class="c"># not required</span>
-        <span class="k">for</span> <span class="n">attribute_name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">PositionalElementParameter</span><span class="p">):</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span> <span class="c"># not required for SPICE, but for unit test</span>
+        <span class="k">for</span> <span class="n">attribute_name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">sorted_attributes</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ParameterDescriptor</span><span class="p">):</span>
                 <span class="n">obj</span><span class="o">.</span><span class="n">attribute_name</span> <span class="o">=</span> <span class="n">attribute_name</span>
-                <span class="n">positional_parameters</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="n">FlagParameter</span><span class="p">,</span> <span class="n">KeyValueParameter</span><span class="p">)):</span>
-                <span class="n">obj</span><span class="o">.</span><span class="n">attribute_name</span> <span class="o">=</span> <span class="n">attribute_name</span>
-                <span class="n">parameters</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">PositionalElementParameter</span><span class="p">):</span>
+                    <span class="n">d</span> <span class="o">=</span> <span class="n">positional_parameters</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="n">FlagParameter</span><span class="p">,</span> <span class="n">KeyValueParameter</span><span class="p">)):</span>
+                    <span class="n">d</span> <span class="o">=</span> <span class="n">parameters</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
         <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;positional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">positional_parameters</span>
         <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;optional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters</span>
         <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;parameters_from_args&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameter</span>
@@ -691,6 +719,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_includes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c"># .include</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="p">{}</span> <span class="c"># .param</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c"># Fixme: not implemented</span>
+        <span class="c">#  .func</span>
+        <span class="c">#  .csparam</span>
+        <span class="c">#  .if</span>
 
     <span class="c">##############################################</span>
 

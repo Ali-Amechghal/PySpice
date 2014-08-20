@@ -49,8 +49,21 @@
   <h1>Source code for PySpice.Probe.WaveForm</h1><div class="highlight"><pre>
 <span class="c">####################################################################################################</span>
 <span class="c"># </span>
-<span class="c"># PySpice - A Spice package for Python</span>
-<span class="c"># Copyright (C) Salvaire Fabrice 2014</span>
+<span class="c"># PySpice - A Spice Package for Python</span>
+<span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c">#</span>
+<span class="c"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c"># </span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU General Public License for more details.</span>
+<span class="c"># </span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;. </span>
 <span class="c"># </span>
 <span class="c">####################################################################################################</span>
 
@@ -155,6 +168,8 @@
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="p">(),</span> <span class="n">branches</span><span class="o">=</span><span class="p">(),</span> <span class="n">elements</span><span class="o">=</span><span class="p">()):</span>
+
+        <span class="c"># Fixme: branches are elements in fact, and elements is not yet supported ...</span>
 
         <span class="c"># Fixme: to func?</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">=</span> <span class="p">{</span><span class="n">waveform</span><span class="o">.</span><span class="n">name</span><span class="p">:</span><span class="n">waveform</span> <span class="k">for</span> <span class="n">waveform</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">}</span>

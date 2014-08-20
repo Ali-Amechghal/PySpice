@@ -87,7 +87,7 @@
 </div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.RawFile.RawFile._logger">
-<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x44a4e50&gt;</em><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._logger" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x439ccd0&gt;</em><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._logger" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -172,7 +172,7 @@
 <dt id="PySpice.Spice.RawFile.Variable">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.RawFile.</tt><tt class="descname">Variable</tt><big>(</big><em>index</em>, <em>name</em>, <em>unit</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
-<p>This class implements a variable or probe in a Spice simulation output.</p>
+<p>This class implements a variable or probe in a SPICE simulation output.</p>
 <p>Public Attributes:</p>
 <blockquote>
 <div><dl class="docutils">
@@ -188,8 +188,8 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="PySpice.Spice.RawFile.Variable.is_node_voltage">
-<tt class="descname">is_node_voltage</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.is_node_voltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.is_node_voltage" title="Permalink to this definition">¶</a></dt>
+<dt id="PySpice.Spice.RawFile.Variable.is_voltage_node">
+<tt class="descname">is_voltage_node</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.is_voltage_node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.is_voltage_node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -200,7 +200,8 @@
 <dl class="method">
 <dt id="PySpice.Spice.RawFile.Variable.to_waveform">
 <tt class="descname">to_waveform</tt><big>(</big><em>abscissa=None</em>, <em>to_real=False</em>, <em>to_float=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.to_waveform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.to_waveform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return a <a class="reference internal" href="../Probe/WaveForm.html#module-PySpice.Probe.WaveForm" title="PySpice.Probe.WaveForm"><tt class="xref py py-obj docutils literal"><span class="pre">PySpice.Probe.WaveForm</span></tt></a> instance.</p>
+</dd></dl>
 
 </dd></dl>
 

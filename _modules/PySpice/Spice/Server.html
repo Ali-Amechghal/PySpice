@@ -50,8 +50,21 @@
   <h1>Source code for PySpice.Spice.Server</h1><div class="highlight"><pre>
 <span class="c">####################################################################################################</span>
 <span class="c"># </span>
-<span class="c"># PySpice - A Spice package for Python</span>
+<span class="c"># PySpice - A Spice Package for Python</span>
 <span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c">#</span>
+<span class="c"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c"># </span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU General Public License for more details.</span>
+<span class="c"># </span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;. </span>
 <span class="c"># </span>
 <span class="c">####################################################################################################</span>
 
@@ -73,7 +86,7 @@
 
 <div class="viewcode-block" id="SpiceServer"><a class="viewcode-back" href="../../../api/PySpice/Spice/Server.html#PySpice.Spice.Server.SpiceServer">[docs]</a><span class="k">class</span> <span class="nc">SpiceServer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot; This class wraps the execution of Spice in server mode and convert the output in Python data</span>
+    <span class="sd">&quot;&quot;&quot; This class wraps the execution of SPICE in server mode and convert the output in Python data</span>
 <span class="sd">    structure.</span>
 
 <span class="sd">    Example of usage::</span>
@@ -148,9 +161,12 @@
 </div>
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spice_input</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot; Run spice in server mode for the given input and return XXX. &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Run SPICE as a subprocess in server mode for the given input and return a</span>
+<span class="sd">        :obj:`PySpice.RawFile.RawFile` instance.</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Start server&quot;</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Start the spice subprocess&quot;</span><span class="p">)</span>
 
         <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_spice_command</span><span class="p">,</span> <span class="s">&#39;-s&#39;</span><span class="p">),</span>
                                    <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
@@ -161,7 +177,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_parse_stdout</span><span class="p">(</span><span class="n">stdout</span><span class="p">)</span>
         <span class="n">number_of_points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_stderr</span><span class="p">(</span><span class="n">stderr</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">number_of_points</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;Number of points was not found&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;The number of points was not found in the standard error buffer&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">RawFile</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">)</span>
 

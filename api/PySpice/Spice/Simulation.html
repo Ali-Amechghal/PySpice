@@ -63,8 +63,11 @@
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Simulation.</tt><tt class="descname">CircuitSimulation</tt><big>(</big><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em>, <em>pipe=True</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Define and generate the spice instruction to perform a circuit simulation.</p>
-<p>In some cases NgSpice can perform several analyses one after the other. This case is partially
-supported.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In some cases NgSpice can perform several analyses one after the other. This case</p>
+</div>
+<p>is partially supported.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.ac">
 <tt class="descname">ac</tt><big>(</big><em>start_frequency</em>, <em>stop_frequency</em>, <em>number_of_points</em>, <em>variation</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.ac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.ac" title="Permalink to this definition">¶</a></dt>
@@ -95,8 +98,10 @@ supported.</p>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.initial_condition">
-<tt class="descname">initial_condition</tt><big>(</big><em>kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.initial_condition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.initial_condition" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<tt class="descname">initial_condition</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.initial_condition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.initial_condition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set initial condition for voltage nodes.</p>
+<p>Usage: initial_condition(node_name1=value, ...)</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.nominal_temperature">
@@ -121,7 +126,22 @@ supported.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.save">
 <tt class="descname">save</tt><big>(</big><em>*args</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.save" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the list of saved vectors.</p>
+<p>If no <em>.save</em> line is given, then the default set of vectors is saved (node voltages and
+voltage source branch currents). If <em>.save</em> lines are given, only those vectors specified
+are saved.</p>
+<p>Node voltages may be saved by giving the node_name or <em>v(node_name)</em>. Currents through an
+independent voltage source (including inductor) are given by <em>i(source_name)</em> or
+<em>source_name#branch</em>. Internal device data are accepted as <em>&#64;dev[param]</em>.</p>
+<p>If you want to save internal data in addition to the default vector set, add the parameter
+<em>all</em> to the additional vectors to be saved.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Simulation.CircuitSimulation.save_currents">
+<tt class="descname">save_currents</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.save_currents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.save_currents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save all currents.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.temperature">

@@ -82,7 +82,7 @@
 
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.AmplitudeModulated">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">AmplitudeModulated</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>values</em>, <em>repeate_time=0</em>, <em>delay_time=0.0</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#AmplitudeModulated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">AmplitudeModulated</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>offset</em>, <em>amplitude</em>, <em>modulating_frequency</em>, <em>carrier_frequency</em>, <em>signal_delay</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#AmplitudeModulated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></tt></a></p>
 <p>This class implements a Amplitude Modulated source.</p>
 <table border="1" class="docutils">
@@ -137,7 +137,7 @@
 </div>
 <p>The shape of the waveform is described by the following equation:</p>
 <div class="math">
-<p><img src="../../../images/math/0a70831df19e46d8e870e3946668b4c0357b3eb7.png" alt="V(t) = Va (Vo + \sin (2\pi Mf t)) \sin (2\pi Fc t)"/></p>
+<p><img src="../../../images/math/65551c8225f0ee0e50d7a447469ee9d55ec2cc2a.png" alt="V(t) = V_a (V_o + \sin (2\pi M_f\,t)) \sin (2\pi F_c\,t)"/></p>
 </div><dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.AmplitudeModulated.format_spice_parameters">
 <tt class="descname">format_spice_parameters</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#AmplitudeModulated.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
@@ -225,12 +225,12 @@
 <p>The shape of the waveform is described by the following formula:</p>
 <p>Let V21 = V2 - V1 and V12 = V1 - V2.</p>
 <div class="math">
-<p><img src="../../../images/math/2344c172ea9c6f05dc49b2ae55e57fb06a017b87.png" alt="V(t) = \begin{cases}
-  V1 &amp; \text{if}\ 0 \leq t &lt; Td1, \\
-  V1 + V21 ( 1 − e^{-\frac{t-Td1}{\tau_1}} )
-  &amp; \text{if}\ Td1 \leq t &lt; Td2, \\
-  V1 + V21 ( 1 − e^{-\frac{t-Td1}{\tau_1}} ) + V12 ( 1 − e^{-\frac{t-Td2}{\tau_2}} )
-  &amp; \text{if}\ Td2 \leq t &lt; Tstop.
+<p><img src="../../../images/math/142de0f723480f0fce4d4c3df24418faeea36a01.png" alt="V(t) = \begin{cases}
+  V_1 &amp; \text{if}\ 0 \leq t &lt; T_{d1}, \\
+  V_1 + V_{21} ( 1 − e^{-\frac{t-T_{d1}}{\tau_1}} )
+  &amp; \text{if}\ T_{d1} \leq t &lt; T_{d2}, \\
+  V_1 + V_{21} ( 1 − e^{-\frac{t-T_{d1}}{\tau_1}} ) + V_{12} ( 1 − e^{-\frac{t-T_{d2}}{\tau_2}} )
+  &amp; \text{if}\ T_{d2} \leq t &lt; T_{stop}
 \end{cases}"/></p>
 </div><dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.Exponential.format_spice_parameters">
@@ -433,16 +433,15 @@ width and period is the simulation stop time.</p>
 
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.RandomVoltage">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">RandomVoltage</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>values</em>, <em>repeate_time=0</em>, <em>delay_time=0.0</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#RandomVoltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">RandomVoltage</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>random_type</em>, <em>duration=0</em>, <em>time_delay=0</em>, <em>parameter1=1</em>, <em>parameter2=0</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#RandomVoltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></tt></a></p>
 <p>This class implements a Random Voltage source.</p>
 <p>The TRRANDOM option yields statistically distributed voltage values, derived from the ngspice
 random number generator. These values may be used in the transient simulation directly within a
 circuit, e.g. for generating a specific noise voltage, but especially they may be used in the
-con- trol of behavioral sources (B, E, G sources 5, voltage controllable A sources 12,
-capacitors 3.2.8, inductors 3.2.12, or resistors 3.2.4) to simulate the circuit dependence on
-statistically varying device parameters. A Monte-Carlo simulation may thus be handled in a
-single simulation run.</p>
+control of behavioral sources (B, E, G sources, voltage controllable A sources, capacitors,
+inductors, or resistors) to simulate the circuit dependence on statistically varying device
+parameters. A Monte-Carlo simulation may thus be handled in a single simulation run.</p>
 <p>Spice Syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre>TRRANDOM( TYPE TS &lt;TD &lt;PARAM1 &lt;PARAM2&gt; &gt; &gt;)
 </pre></div>
@@ -453,51 +452,45 @@ with 0 V output before the random voltage values start up. PARAM1 and PARAM2 dep
 selected.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="10%" />
 <col width="22%" />
 <col width="25%" />
 <col width="15%" />
-<col width="13%" />
+<col width="22%" />
 <col width="15%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td rowspan="2">TYPE</td>
-<td rowspan="2">description</td>
-<td rowspan="2">PARAM1</td>
-<td rowspan="2">default</td>
-<td rowspan="2">PARAM2</td>
-<td rowspan="2">default</td>
+<tr class="row-odd"><td rowspan="2">Type</td>
+<td rowspan="2">Parameter 1</td>
+<td rowspan="2">Default</td>
+<td rowspan="2">Parameter 2</td>
+<td rowspan="2">Default</td>
 </tr>
 <tr class="row-even"></tr>
-<tr class="row-odd"><td rowspan="2">1</td>
-<td rowspan="2">Uniform</td>
-<td rowspan="2">Range</td>
+<tr class="row-odd"><td rowspan="2">uniform</td>
+<td rowspan="2">range</td>
 <td rowspan="2">1</td>
-<td rowspan="2">Offset</td>
+<td rowspan="2">offset</td>
 <td rowspan="2">0</td>
 </tr>
 <tr class="row-even"></tr>
-<tr class="row-odd"><td rowspan="2">2</td>
-<td rowspan="2">Gaussian</td>
-<td rowspan="2">Standard Dev.</td>
+<tr class="row-odd"><td rowspan="2">gaussian</td>
+<td rowspan="2">standard dev.</td>
 <td rowspan="2">1</td>
-<td rowspan="2">Mean</td>
+<td rowspan="2">mean</td>
 <td rowspan="2">0</td>
 </tr>
 <tr class="row-even"></tr>
-<tr class="row-odd"><td rowspan="2">3</td>
-<td rowspan="2">Exponential</td>
-<td rowspan="2">Mean</td>
+<tr class="row-odd"><td rowspan="2">exponential</td>
+<td rowspan="2">mean</td>
 <td rowspan="2">1</td>
-<td rowspan="2">Offset</td>
+<td rowspan="2">offset</td>
 <td rowspan="2">0</td>
 </tr>
 <tr class="row-even"></tr>
-<tr class="row-odd"><td rowspan="2">4</td>
-<td rowspan="2">Poisson</td>
-<td rowspan="2">Lambda</td>
+<tr class="row-odd"><td rowspan="2">poisson</td>
+<td rowspan="2">lambda</td>
 <td rowspan="2">1</td>
-<td rowspan="2">Offset</td>
+<td rowspan="2">offset</td>
 <td rowspan="2">0</td>
 </tr>
 <tr class="row-even"></tr>
@@ -527,7 +520,7 @@ selected.</p>
 
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.SingleFrequencyFM">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">SingleFrequencyFM</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>values</em>, <em>repeate_time=0</em>, <em>delay_time=0.0</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#SingleFrequencyFM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">SingleFrequencyFM</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>offset</em>, <em>amplitude</em>, <em>carrier_frequency</em>, <em>modulation_index</em>, <em>signal_frequency</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#SingleFrequencyFM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></tt></a></p>
 <p>This class implements a Single-Frequency FM waveform.</p>
 <blockquote>
@@ -585,7 +578,7 @@ selected.</p>
 <blockquote>
 <div><p>The shape of the waveform is described by the following equation:</p>
 <div class="math">
-<p><img src="../../../images/math/ad61e7b5ca2ddcacf0a2c7b8a90fda52f31510f5.png" alt="V(t) = Vo + Va \sin (2\pi Fc t + Mdi \sin (2\pi Fs t))"/></p>
+<p><img src="../../../images/math/085f29d23d2cc31c4c6c4afdc69a6c51ac9b53c1.png" alt="V(t) = V_o + V_a \sin (2\pi F_c\, t + M_{di} \sin (2\pi F_s\,t))"/></p>
 </div></div></blockquote>
 <dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.SingleFrequencyFM.format_spice_parameters">

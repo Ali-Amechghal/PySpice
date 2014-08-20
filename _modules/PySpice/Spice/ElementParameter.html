@@ -50,8 +50,21 @@
   <h1>Source code for PySpice.Spice.ElementParameter</h1><div class="highlight"><pre>
 <span class="c">####################################################################################################</span>
 <span class="c"># </span>
-<span class="c"># PySpice - A Spice package for Python</span>
-<span class="c"># Copyright (C) Salvaire Fabrice 2014</span>
+<span class="c"># PySpice - A Spice Package for Python</span>
+<span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c">#</span>
+<span class="c"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c"># </span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU General Public License for more details.</span>
+<span class="c"># </span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;. </span>
 <span class="c"># </span>
 <span class="c">####################################################################################################</span>
 
@@ -128,8 +141,14 @@
 
         <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 
+    <span class="c">##############################################</span>
+</div>
+    <span class="k">def</span> <span class="nf">__cmp__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="nb">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">)</span>
+
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="PositionalElementParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.PositionalElementParameter">[docs]</a><span class="k">class</span> <span class="nc">PositionalElementParameter</span><span class="p">(</span><span class="n">ParameterDescriptor</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a descriptor for positional element parameters.</span>
@@ -163,7 +182,7 @@
 </div>
     <span class="k">def</span> <span class="nf">__cmp__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="nb">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key_parameter</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">key_parameter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
 </div>
@@ -374,6 +393,21 @@
 <div class="viewcode-block" id="FloatPairKeyParameter.str_value"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatPairKeyParameter.str_value">[docs]</a>    <span class="k">def</span> <span class="nf">str_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">)])</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
+<div class="viewcode-block" id="FloatThreeUpletKeyParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatThreeUpletKeyParameter">[docs]</a><span class="k">class</span> <span class="nc">FloatThreeUpletKeyParameter</span><span class="p">(</span><span class="n">FloatPairKeyParameter</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot; This class implements a 3-uplet key parameter. &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="FloatThreeUpletKeyParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatThreeUpletKeyParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uplet</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uplet</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">uplet</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">uplet</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">uplet</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
 
 <span class="c">####################################################################################################</span>
 </div></div>

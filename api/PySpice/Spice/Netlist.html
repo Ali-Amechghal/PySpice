@@ -79,11 +79,11 @@ R2 out 0 1k
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">MyCircuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VoltageDivider</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;10V&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;10V&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>The circuit attribute <tt class="xref py py-attr docutils literal"><span class="pre">gnd</span></tt> represents the ground of the circuit or subcircuit, usually set to
@@ -94,7 +94,12 @@ R2 out 0 1k
 </pre></div>
 </div>
 <p>The dictionnary style always works, but the attribute only works if it complies with the Python
-syntax, i.e. the element or model name is a valide attribute name starting by a letter.</p>
+syntax, i.e. the element or model name is a valide attribute name (identifier), i.e. starting by a
+letter and not a keyword like &#8216;in&#8217;, cf. <a class="reference external" href="https://docs.python.org/2/reference/lexical_analysis.html">Python Language Reference</a>.</p>
+<p>We can update an element parameter like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">circuit</span><span class="o">.</span><span class="n">R1</span><span class="o">.</span><span class="n">resistance</span> <span class="o">=</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="class">
 <dt id="PySpice.Spice.Netlist.Circuit">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Circuit</tt><big>(</big><em>title</em>, <em>ground=0</em>, <em>global_nodes=()</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit" title="Permalink to this definition">¶</a></dt>
@@ -391,8 +396,23 @@ syntax, i.e. the element or model name is a valide attribute name starting by a 
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.JFET">
+<tt class="descname">JFET</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.JFET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.L">
 <tt class="descname">L</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.L" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.MESFET">
+<tt class="descname">MESFET</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.MESFET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.MOSFET">
+<tt class="descname">MOSFET</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.MOSFET" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -528,6 +548,7 @@ pin and the node.</p>
 <dt id="PySpice.Spice.Netlist.Pin.add_current_probe">
 <tt class="descname">add_current_probe</tt><big>(</big><em>circuit</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin.add_current_probe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.add_current_probe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a current probe between the node and the pin.</p>
+<p>The ammeter is named <em>ElementName_PinName</em>.</p>
 </dd></dl>
 
 <dl class="attribute">

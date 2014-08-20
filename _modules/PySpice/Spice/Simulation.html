@@ -50,8 +50,21 @@
   <h1>Source code for PySpice.Spice.Simulation</h1><div class="highlight"><pre>
 <span class="c">####################################################################################################</span>
 <span class="c"># </span>
-<span class="c"># PySpice - A Spice package for Python</span>
-<span class="c"># Copyright (C) Salvaire Fabrice 2014</span>
+<span class="c"># PySpice - A Spice Package for Python</span>
+<span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c">#</span>
+<span class="c"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c"># </span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU General Public License for more details.</span>
+<span class="c"># </span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;. </span>
 <span class="c"># </span>
 <span class="c">####################################################################################################</span>
 
@@ -64,10 +77,11 @@
 
 <div class="viewcode-block" id="CircuitSimulation"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation">[docs]</a><span class="k">class</span> <span class="nc">CircuitSimulation</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot; Define and generate the spice instruction to perform a circuit simulation.</span>
+    <span class="sd">&quot;&quot;&quot;Define and generate the spice instruction to perform a circuit simulation.</span>
 
-<span class="sd">    In some cases NgSpice can perform several analyses one after the other. This case is partially</span>
-<span class="sd">    supported.</span>
+<span class="sd">    .. warning:: In some cases NgSpice can perform several analyses one after the other. This case</span>
+<span class="sd">    is partially supported.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
@@ -87,7 +101,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nominal_temperature</span> <span class="o">=</span> <span class="n">nominal_temperature</span>
-
+        
         <span class="k">if</span> <span class="n">pipe</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="s">&#39;NOINIT&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s">&#39;binary&#39;</span><span class="p">)</span>
@@ -129,16 +143,54 @@
 
     <span class="c">##############################################</span>
 </div>
-<div class="viewcode-block" id="CircuitSimulation.initial_condition"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.initial_condition">[docs]</a>    <span class="k">def</span> <span class="nf">initial_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CircuitSimulation.initial_condition"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.initial_condition">[docs]</a>    <span class="k">def</span> <span class="nf">initial_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; Set initial condition for voltage nodes.</span>
+
+<span class="sd">        Usage: initial_condition(node_name1=value, ...)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_initial_condition</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_initial_condition</span><span class="p">[</span><span class="s">&#39;V({})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">))]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="c"># Fixme: .nodeset</span>
 
     <span class="c">##############################################</span>
 </div>
 <div class="viewcode-block" id="CircuitSimulation.save"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
 
+        <span class="c"># Fixme: pass Node for voltage node, Element for source branch current, ...</span>
+
+        <span class="sd">&quot;&quot;&quot;Set the list of saved vectors.</span>
+
+<span class="sd">        If no *.save* line is given, then the default set of vectors is saved (node voltages and</span>
+<span class="sd">        voltage source branch currents). If *.save* lines are given, only those vectors specified</span>
+<span class="sd">        are saved.</span>
+
+<span class="sd">        Node voltages may be saved by giving the node_name or *v(node_name)*. Currents through an</span>
+<span class="sd">        independent voltage source (including inductor) are given by *i(source_name)* or</span>
+<span class="sd">        *source_name#branch*. Internal device data are accepted as *@dev[param]*.</span>
+
+<span class="sd">        If you want to save internal data in addition to the default vector set, add the parameter</span>
+<span class="sd">        *all* to the additional vectors to be saved.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_saved_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">save_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Save all currents. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;SAVECURRENTS&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+
+    <span class="nd">@save_currents.setter</span>
+<div class="viewcode-block" id="CircuitSimulation.save_currents"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.save_currents">[docs]</a>    <span class="k">def</span> <span class="nf">save_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s">&#39;SAVECURRENTS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s">&#39;SAVECURRENTS&#39;</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
 </div>
@@ -256,11 +308,8 @@
 <div class="viewcode-block" id="CircuitSimulator._run"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulator._run">[docs]</a>    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">reset_analysis</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">analysis_method</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;ac&#39;</span><span class="p">,</span> <span class="s">&#39;transient&#39;</span><span class="p">):</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;probes&#39;</span><span class="p">))</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;A list of probes is required&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;probes&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;probes&#39;</span><span class="p">))</span>
 
         <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">CircuitSimulation</span><span class="p">,</span> <span class="n">analysis_method</span><span class="p">)</span>
         <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
