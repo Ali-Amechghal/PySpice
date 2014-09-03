@@ -119,6 +119,10 @@
 
 <span class="sd">    circuit.R1.resistance = kilo(1)</span>
 
+<span class="sd">To simulate the circuit, we must create a simulator instance using the :meth:`Circuit.simulator`::</span>
+
+<span class="sd">    simulator = circuit.simulator()</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c">####################################################################################################</span>
@@ -136,7 +140,11 @@
 
 <span class="c">####################################################################################################</span>
 
+<span class="c">####################################################################################################</span>
+
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">import</span> <span class="nn">keyword</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="c"># import networkx</span>
 
@@ -146,7 +154,11 @@
 <span class="kn">from</span> <span class="nn">.ElementParameter</span> <span class="kn">import</span> <span class="p">(</span><span class="n">ParameterDescriptor</span><span class="p">,</span>
                                <span class="n">PositionalElementParameter</span><span class="p">,</span>
                                <span class="n">FlagParameter</span><span class="p">,</span> <span class="n">KeyValueParameter</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">.Simulation</span> <span class="kn">import</span> <span class="n">CircuitSimulator</span>
+<span class="kn">from</span> <span class="nn">.Simulation</span> <span class="kn">import</span> <span class="n">SubprocessCircuitSimulator</span><span class="p">,</span> <span class="n">NgSpiceSharedCircuitSimulator</span>
+
+<span class="c">####################################################################################################</span>
+
+<span class="n">_module_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
 
@@ -234,9 +246,14 @@
 <span class="sd">    pin and the node.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="n">_logger</span> <span class="o">=</span> <span class="n">_module_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;Pin&#39;</span><span class="p">)</span>
+
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">keyword</span><span class="o">.</span><span class="n">iskeyword</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Node {} is a Python keyword&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_element</span> <span class="o">=</span> <span class="n">element</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
@@ -484,7 +501,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
     <span class="c">##############################################</span>
@@ -534,6 +551,12 @@
 <div class="viewcode-block" id="Netlist.element_iterator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Netlist.element_iterator">[docs]</a>    <span class="k">def</span> <span class="nf">element_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Netlist.element_names"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Netlist.element_names">[docs]</a>    <span class="k">def</span> <span class="nf">element_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">element</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_iterator</span><span class="p">()]</span>
 
     <span class="c">##############################################</span>
 </div>
@@ -600,6 +623,12 @@
                         <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">[</span><span class="n">node_name</span><span class="p">]</span>
                     <span class="n">node</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Netlist.node_names"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Netlist.node_names">[docs]</a>    <span class="k">def</span> <span class="nf">node_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
 </div>
@@ -779,14 +808,37 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span><span class="p">:</span>
             <span class="n">netlist</span> <span class="o">+=</span> <span class="n">join_lines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subcircuit_iterator</span><span class="p">())</span>
         <span class="n">netlist</span> <span class="o">+=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Circuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span>
-        <span class="n">netlist</span> <span class="o">+=</span> <span class="s">&#39;.end</span><span class="se">\n</span><span class="s">&#39;</span>
         <span class="k">return</span> <span class="n">netlist</span>
 
     <span class="c">##############################################</span>
 
+<div class="viewcode-block" id="Circuit.str_end"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Circuit.str_end">[docs]</a>    <span class="k">def</span> <span class="nf">str_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;.end</span><span class="se">\n</span><span class="s">&#39;</span>
+
+    <span class="c">##############################################</span>
+</div>
 <div class="viewcode-block" id="Circuit.simulator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Circuit.simulator">[docs]</a>    <span class="k">def</span> <span class="nf">simulator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Return a :obj:`PySpice.Simulation.CircuitSimulator` instance. &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">CircuitSimulator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="sd">&quot;&quot;&quot;Return a :obj:`PySpice.Spice.Simulation.SubprocessCircuitSimulator` or</span>
+<span class="sd">        :obj:`PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator` instance depending of the</span>
+<span class="sd">        value of the *simulator* parameter: ``subprocess`` or ``shared``, respectively. If this</span>
+<span class="sd">        parameter is not specified then a subprocess simulator is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">simulator</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;simulator&#39;</span><span class="p">,</span> <span class="s">&#39;subprocess&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;simulator&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">simulator</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;simulator&#39;</span><span class="p">]</span>
+            <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;simulator&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">simulator</span> <span class="o">=</span> <span class="s">&#39;subprocess&#39;</span>
+        <span class="k">if</span> <span class="n">simulator</span> <span class="o">==</span> <span class="s">&#39;subprocess&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">SubprocessCircuitSimulator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">simulator</span> <span class="o">==</span> <span class="s">&#39;shared&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">NgSpiceSharedCircuitSimulator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Unknown simulator type&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
 <span class="c"># </span>

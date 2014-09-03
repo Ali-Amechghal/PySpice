@@ -166,7 +166,7 @@
 <div class="viewcode-block" id="derivative"><a class="viewcode-back" href="../../../api/PySpice/Math/Calculus.html#PySpice.Math.Calculus.derivative">[docs]</a><span class="k">def</span> <span class="nf">derivative</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">derivative_order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">accuracy_order</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;Compute the derivative at the given derivative order and accuracy order. The precision of the</span>
-<span class="sd">    Taylor expansion is O(dx**accuracy).</span>
+<span class="sd">    Taylor expansion is :math:`\mathcal{O}(dx^{accuracy})`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>

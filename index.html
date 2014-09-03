@@ -93,12 +93,15 @@ same principle and extend PySpice later.</p>
 <p>The main features of PySpice are:</p>
 <blockquote>
 <div><ul class="simple">
-<li>actually PySpice only supports the <a class="reference external" href="http://ngspice.sourceforge.net">Ngspice</a> flavour</li>
+<li>actually PySpice only supports <a class="reference external" href="http://ngspice.sourceforge.net">Ngspice</a></li>
 <li>an oriented-object API to describe circuit in a way similar to SPICE</li>
 <li>a library and model manager that index recursively a directory</li>
 <li>an incomplete SPICE parser (mainly used for the library and model indexer)</li>
-<li>a SPICE server to run the simulator and to get back the result as Numpy array</li>
-<li>some data analysis add-on</li>
+<li>a circuit can be simulated using a subprocess (aka server mode) or using the NgSpice shared library,
+NgSpice vectors are converted to Numpy array</li>
+<li>the NgSpice shared library permits to interact with the simulator and provides Python callback
+for external voltage and current source</li>
+<li>some data analysis add-ons</li>
 </ul>
 </div></blockquote>
 <p>Since PySpice is born with a learning goal, many examples are provided with the sources.  These

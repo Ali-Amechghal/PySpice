@@ -396,13 +396,13 @@
 
 <span class="c">####################################################################################################</span>
 </div></div>
-<div class="viewcode-block" id="FloatThreeUpletKeyParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatThreeUpletKeyParameter">[docs]</a><span class="k">class</span> <span class="nc">FloatThreeUpletKeyParameter</span><span class="p">(</span><span class="n">FloatPairKeyParameter</span><span class="p">):</span>
+<div class="viewcode-block" id="FloatTripletKeyParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatTripletKeyParameter">[docs]</a><span class="k">class</span> <span class="nc">FloatTripletKeyParameter</span><span class="p">(</span><span class="n">FloatPairKeyParameter</span><span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot; This class implements a 3-uplet key parameter. &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; This class implements a triplet key parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="FloatThreeUpletKeyParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatThreeUpletKeyParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uplet</span><span class="p">):</span>
+<div class="viewcode-block" id="FloatTripletKeyParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatTripletKeyParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uplet</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uplet</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">uplet</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">uplet</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">uplet</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>

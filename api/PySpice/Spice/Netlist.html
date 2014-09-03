@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
-    <link rel="next" title="3.1.7.6. Parser" href="Parser.html" />
+    <link rel="next" title="3.1.7.6. NgSpice" href="NgSpice.html" />
     <link rel="prev" title="3.1.7.4. Library" href="Library.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Parser.html" title="3.1.7.6. Parser"
+          <a href="NgSpice.html" title="3.1.7.6. NgSpice"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="Library.html" title="3.1.7.4. Library"
@@ -100,6 +100,10 @@ letter and not a keyword like &#8216;in&#8217;, cf. <a class="reference external
 <div class="highlight-python"><div class="highlight"><pre><span class="n">circuit</span><span class="o">.</span><span class="n">R1</span><span class="o">.</span><span class="n">resistance</span> <span class="o">=</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>To simulate the circuit, we must create a simulator instance using the <a class="reference internal" href="#PySpice.Spice.Netlist.Circuit.simulator" title="PySpice.Spice.Netlist.Circuit.simulator"><tt class="xref py py-meth docutils literal"><span class="pre">Circuit.simulator()</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">()</span>
+</pre></div>
+</div>
 <dl class="class">
 <dt id="PySpice.Spice.Netlist.Circuit">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Circuit</tt><big>(</big><em>title</em>, <em>ground=0</em>, <em>global_nodes=()</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit" title="Permalink to this definition">¶</a></dt>
@@ -131,8 +135,16 @@ letter and not a keyword like &#8216;in&#8217;, cf. <a class="reference external
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Circuit.simulator">
 <tt class="descname">simulator</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.simulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.simulator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a <tt class="xref py py-obj docutils literal"><span class="pre">PySpice.Simulation.CircuitSimulator</span></tt> instance.</p>
+<dd><p>Return a <a class="reference internal" href="Simulation.html#PySpice.Spice.Simulation.SubprocessCircuitSimulator" title="PySpice.Spice.Simulation.SubprocessCircuitSimulator"><tt class="xref py py-obj docutils literal"><span class="pre">PySpice.Spice.Simulation.SubprocessCircuitSimulator</span></tt></a> or
+<a class="reference internal" href="Simulation.html#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator" title="PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator"><tt class="xref py py-obj docutils literal"><span class="pre">PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator</span></tt></a> instance depending of the
+value of the <em>simulator</em> parameter: <tt class="docutils literal"><span class="pre">subprocess</span></tt> or <tt class="docutils literal"><span class="pre">shared</span></tt>, respectively. If this
+parameter is not specified then a subprocess simulator is returned.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Circuit.str_end">
+<tt class="descname">str_end</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.str_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.str_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Circuit.subcircuit">
@@ -497,6 +509,11 @@ letter and not a keyword like &#8216;in&#8217;, cf. <a class="reference external
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.element_names">
+<tt class="descname">element_names</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.element_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.element_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.model">
 <tt class="descname">model</tt><big>(</big><em>name</em>, <em>modele_type</em>, <em>**parameters</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a model.</p>
@@ -505,6 +522,11 @@ letter and not a keyword like &#8216;in&#8217;, cf. <a class="reference external
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.model_iterator">
 <tt class="descname">model_iterator</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.model_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.model_iterator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Netlist.Netlist.node_names">
+<tt class="descname">node_names</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.node_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.node_names" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -544,6 +566,11 @@ the node.</p>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>This class implements a pin of an element. It stores a reference to the element, the name of the
 pin and the node.</p>
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Pin._logger">
+<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x3bcf990&gt;</em><a class="headerlink" href="#PySpice.Spice.Netlist.Pin._logger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Pin.add_current_probe">
 <tt class="descname">add_current_probe</tt><big>(</big><em>circuit</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin.add_current_probe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.add_current_probe" title="Permalink to this definition">¶</a></dt>
@@ -683,8 +710,8 @@ pin and the node.</p>
   <p class="topless"><a href="Library.html"
                         title="previous chapter">3.1.7.4. <tt class="docutils literal"><span class="pre">Library</span></tt></a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="Parser.html"
-                        title="next chapter">3.1.7.6. <tt class="docutils literal"><span class="pre">Parser</span></tt></a></p>
+  <p class="topless"><a href="NgSpice.html"
+                        title="next chapter">3.1.7.6. <tt class="docutils literal"><span class="pre">NgSpice</span></tt></a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../../_sources/api/PySpice/Spice/Netlist.txt"
@@ -717,7 +744,7 @@ pin and the node.</p>
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Parser.html" title="3.1.7.6. Parser"
+          <a href="NgSpice.html" title="3.1.7.6. NgSpice"
              >next</a> |</li>
         <li class="right" >
           <a href="Library.html" title="3.1.7.4. Library"

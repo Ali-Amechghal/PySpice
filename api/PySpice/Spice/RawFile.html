@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.1.7.7. RawFile &mdash; PySpice 0.1.0 documentation</title>
+    <title>3.1.7.8. RawFile &mdash; PySpice 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
-    <link rel="next" title="3.1.7.8. Server" href="Server.html" />
-    <link rel="prev" title="3.1.7.6. Parser" href="Parser.html" /> 
+    <link rel="next" title="3.1.7.9. Server" href="Server.html" />
+    <link rel="prev" title="3.1.7.7. Parser" href="Parser.html" /> 
   </head>
   <body>
     <div class="related">
@@ -39,10 +39,10 @@
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Server.html" title="3.1.7.8. Server"
+          <a href="Server.html" title="3.1.7.9. Server"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Parser.html" title="3.1.7.6. Parser"
+          <a href="Parser.html" title="3.1.7.7. Parser"
              accesskey="P">previous</a> |</li>
         <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
           <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
@@ -57,7 +57,7 @@
           <div class="body">
             
   <div class="section" id="module-PySpice.Spice.RawFile">
-<span id="rawfile"></span><h1>3.1.7.7. <tt class="xref py py-mod docutils literal"><span class="pre">RawFile</span></tt><a class="headerlink" href="#module-PySpice.Spice.RawFile" title="Permalink to this headline">¶</a></h1>
+<span id="rawfile"></span><h1>3.1.7.8. <tt class="xref py py-mod docutils literal"><span class="pre">RawFile</span></tt><a class="headerlink" href="#module-PySpice.Spice.RawFile" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="PySpice.Spice.RawFile.RawFile">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.RawFile.</tt><tt class="descname">RawFile</tt><big>(</big><em>stdout</em>, <em>number_of_points</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile" title="Permalink to this definition">¶</a></dt>
@@ -87,7 +87,7 @@
 </div></blockquote>
 <dl class="attribute">
 <dt id="PySpice.Spice.RawFile.RawFile._logger">
-<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x439ccd0&gt;</em><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._logger" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x3bcf510&gt;</em><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._logger" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -157,13 +157,19 @@
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="PySpice.Spice.RawFile.RawFile.fix_case">
+<tt class="descname">fix_case</tt><big>(</big><em>circuit</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile.fix_case"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile.fix_case" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ngspice return lower case names. This method fixes the case of the variable names.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="PySpice.Spice.RawFile.RawFile.nodes">
 <tt class="descname">nodes</tt><big>(</big><em>to_float=False</em>, <em>abscissa=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile.nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile.nodes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.RawFile.RawFile.to_analysis">
-<tt class="descname">to_analysis</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile.to_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile.to_analysis" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">to_analysis</tt><big>(</big><em>circuit</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile.to_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile.to_analysis" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -183,6 +189,12 @@
 <p><tt class="xref py py-attr docutils literal"><span class="pre">unit</span></tt></p>
 </div></blockquote>
 <dl class="method">
+<dt id="PySpice.Spice.RawFile.Variable.fix_case">
+<tt class="descname">fix_case</tt><big>(</big><em>element_translation</em>, <em>node_translation</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.fix_case"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.fix_case" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the name to the right case.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="PySpice.Spice.RawFile.Variable.is_branch_current">
 <tt class="descname">is_branch_current</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.is_branch_current"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.is_branch_current" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -195,6 +207,16 @@
 <dl class="attribute">
 <dt id="PySpice.Spice.RawFile.Variable.simplified_name">
 <tt class="descname">simplified_name</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.simplified_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.simplified_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="PySpice.Spice.RawFile.Variable.to_branch_name">
+<em class="property">static </em><tt class="descname">to_branch_name</tt><big>(</big><em>element</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.to_branch_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.to_branch_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="PySpice.Spice.RawFile.Variable.to_voltage_name">
+<em class="property">static </em><tt class="descname">to_voltage_name</tt><big>(</big><em>node</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#Variable.to_voltage_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.Variable.to_voltage_name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -215,10 +237,10 @@
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="Parser.html"
-                        title="previous chapter">3.1.7.6. <tt class="docutils literal"><span class="pre">Parser</span></tt></a></p>
+                        title="previous chapter">3.1.7.7. <tt class="docutils literal"><span class="pre">Parser</span></tt></a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="Server.html"
-                        title="next chapter">3.1.7.8. <tt class="docutils literal"><span class="pre">Server</span></tt></a></p>
+                        title="next chapter">3.1.7.9. <tt class="docutils literal"><span class="pre">Server</span></tt></a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../../_sources/api/PySpice/Spice/RawFile.txt"
@@ -251,10 +273,10 @@
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Server.html" title="3.1.7.8. Server"
+          <a href="Server.html" title="3.1.7.9. Server"
              >next</a> |</li>
         <li class="right" >
-          <a href="Parser.html" title="3.1.7.6. Parser"
+          <a href="Parser.html" title="3.1.7.7. Parser"
              >previous</a> |</li>
         <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
           <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
