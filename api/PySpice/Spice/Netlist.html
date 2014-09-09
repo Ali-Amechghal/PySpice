@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -61,11 +63,11 @@
 <p>This modules implements circuit and subcircuit.</p>
 <p>The definition of a netlist follows the same conventions as SPICE. For example this SPICE netlist
 is translated to Python like this:</p>
-<div class="highlight-spice"><div class="highlight"><pre>.title Voltage Divider
-Vinput in 0 10V
-R1 in out 9k
-R2 out 0 1k
-.end
+<div class="highlight-spice"><div class="highlight"><pre><span class="k">.title</span><span class="w"> </span>Voltage Divider
+<span class="nb">V</span><span class="na">input</span> <span class="n">in</span> <span class="mi">0</span> <span class="mi">10</span><span class="n">V</span>
+<span class="nb">R</span><span class="na">1</span> <span class="n">in</span> <span class="n">out</span> <span class="n">9k</span>
+<span class="nb">R</span><span class="na">2</span> <span class="n">out</span> <span class="mi">0</span> <span class="n">1k</span>
+<span class="k">.end</span>
 </pre></div>
 </div>
 <div class="highlight-py"><div class="highlight"><pre><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">)</span>
@@ -568,7 +570,7 @@ the node.</p>
 pin and the node.</p>
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.Pin._logger">
-<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x3bcf990&gt;</em><a class="headerlink" href="#PySpice.Spice.Netlist.Pin._logger" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x46ef050&gt;</em><a class="headerlink" href="#PySpice.Spice.Netlist.Pin._logger" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -757,7 +759,7 @@ pin and the node.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

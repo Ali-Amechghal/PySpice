@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -69,14 +71,15 @@
 
 <span class="c">####################################################################################################</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="c">####################################################################################################</span>
 
 <div class="viewcode-block" id="plot"><a class="viewcode-back" href="../../../api/PySpice/Probe/Plot.html#PySpice.Probe.Plot.plot">[docs]</a><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-    <span class="n">axis</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;axis&#39;</span><span class="p">,</span> <span class="n">pylab</span><span class="p">)</span>
-    <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;axis&#39;</span><span class="p">]</span>
+    <span class="n">axis</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;axis&#39;</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+    <span class="k">if</span> <span class="s">&#39;axis&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;axis&#39;</span><span class="p">]</span>
     <span class="n">axis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">waveform</span><span class="o">.</span><span class="n">abscissa</span><span class="p">,</span> <span class="n">waveform</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
@@ -123,7 +126,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

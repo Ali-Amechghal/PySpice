@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -121,28 +123,28 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="ParameterDescriptor.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ParameterDescriptor.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Validate the parameter&#39;s value. &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="n">value</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="ParameterDescriptor.nonzero"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ParameterDescriptor.nonzero">[docs]</a>    <span class="k">def</span> <span class="nf">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="ParameterDescriptor.to_str"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ParameterDescriptor.to_str">[docs]</a>    <span class="k">def</span> <span class="nf">to_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">to_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Convert the parameter&#39;s value to SPICE syntax. &quot;&quot;&quot;</span>
 
         <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="k">def</span> <span class="nf">__cmp__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">)</span>
@@ -174,12 +176,12 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="PositionalElementParameter.to_str"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.PositionalElementParameter.to_str">[docs]</a>    <span class="k">def</span> <span class="nf">to_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">to_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">))</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="k">def</span> <span class="nf">__cmp__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
@@ -192,31 +194,31 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="ElementNamePositionalParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ElementNamePositionalParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="ExpressionPositionalParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ExpressionPositionalParameter">[docs]</a><span class="k">class</span> <span class="nc">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">PositionalElementParameter</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements an expression positional parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="ExpressionPositionalParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ExpressionPositionalParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="FloatPositionalParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatPositionalParameter">[docs]</a><span class="k">class</span> <span class="nc">FloatPositionalParameter</span><span class="p">(</span><span class="n">PositionalElementParameter</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a float positional parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="FloatPositionalParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatPositionalParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Unit</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">value</span>
@@ -224,20 +226,20 @@
             <span class="k">return</span> <span class="n">Unit</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="InitialStatePositionalParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.InitialStatePositionalParameter">[docs]</a><span class="k">class</span> <span class="nc">InitialStatePositionalParameter</span><span class="p">(</span><span class="n">PositionalElementParameter</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements an initial state (on, off) positional parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="InitialStatePositionalParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.InitialStatePositionalParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c"># Fixme: check KeyParameter</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="InitialStatePositionalParameter.to__str_"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.InitialStatePositionalParameter.to__str_">[docs]</a>    <span class="k">def</span> <span class="nf">to__str_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">to__str_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">):</span>
             <span class="k">return</span> <span class="s">&#39;on&#39;</span>
@@ -245,19 +247,19 @@
             <span class="k">return</span> <span class="s">&#39;off&#39;</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="ModelPositionalParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ModelPositionalParameter">[docs]</a><span class="k">class</span> <span class="nc">ModelPositionalParameter</span><span class="p">(</span><span class="n">PositionalElementParameter</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a model positional parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="ModelPositionalParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ModelPositionalParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="FlagParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FlagParameter">[docs]</a><span class="k">class</span> <span class="nc">FlagParameter</span><span class="p">(</span><span class="n">ParameterDescriptor</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a flag parameter.</span>
@@ -279,13 +281,13 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="FlagParameter.nonzero"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FlagParameter.nonzero">[docs]</a>    <span class="k">def</span> <span class="nf">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">))</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="FlagParameter.to_str"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FlagParameter.to_str">[docs]</a>    <span class="k">def</span> <span class="nf">to_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">to_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">instance</span><span class="p">):</span>
             <span class="k">return</span> <span class="s">&#39;off&#39;</span>
@@ -293,7 +295,7 @@
             <span class="k">return</span> <span class="s">&#39;&#39;</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="KeyValueParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.KeyValueParameter">[docs]</a><span class="k">class</span> <span class="nc">KeyValueParameter</span><span class="p">(</span><span class="n">ParameterDescriptor</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a key value pair parameter.</span>
@@ -315,13 +317,13 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="KeyValueParameter.str_value"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.KeyValueParameter.str_value">[docs]</a>    <span class="k">def</span> <span class="nf">str_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">str_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">))</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="KeyValueParameter.to_str"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.KeyValueParameter.to_str">[docs]</a>    <span class="k">def</span> <span class="nf">to_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">to_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">return</span> <span class="s">&#39;{}={}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spice_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">str_value</span><span class="p">(</span><span class="n">instance</span><span class="p">))</span>
@@ -329,20 +331,20 @@
             <span class="k">return</span> <span class="s">&#39;&#39;</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="BoolKeyParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.BoolKeyParameter">[docs]</a><span class="k">class</span> <span class="nc">BoolKeyParameter</span><span class="p">(</span><span class="n">KeyValueParameter</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a boolean key parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="BoolKeyParameter.nonzero"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.BoolKeyParameter.nonzero">[docs]</a>    <span class="k">def</span> <span class="nf">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">))</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="BoolKeyParameter.str_value"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.BoolKeyParameter.str_value">[docs]</a>    <span class="k">def</span> <span class="nf">str_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">str_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">instance</span><span class="p">):</span>
             <span class="k">return</span> <span class="s">&#39;1&#39;</span>
@@ -350,38 +352,38 @@
             <span class="k">return</span> <span class="s">&#39;0&#39;</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="ExpressionKeyParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ExpressionKeyParameter">[docs]</a><span class="k">class</span> <span class="nc">ExpressionKeyParameter</span><span class="p">(</span><span class="n">KeyValueParameter</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements an expression key parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="ExpressionKeyParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ExpressionKeyParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="FloatKeyParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatKeyParameter">[docs]</a><span class="k">class</span> <span class="nc">FloatKeyParameter</span><span class="p">(</span><span class="n">KeyValueParameter</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a float key  parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="FloatKeyParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatKeyParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="FloatPairKeyParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatPairKeyParameter">[docs]</a><span class="k">class</span> <span class="nc">FloatPairKeyParameter</span><span class="p">(</span><span class="n">KeyValueParameter</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a float pair key parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="FloatPairKeyParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatPairKeyParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
@@ -389,20 +391,20 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="FloatPairKeyParameter.str_value"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatPairKeyParameter.str_value">[docs]</a>    <span class="k">def</span> <span class="nf">str_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">str_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">)])</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="FloatTripletKeyParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatTripletKeyParameter">[docs]</a><span class="k">class</span> <span class="nc">FloatTripletKeyParameter</span><span class="p">(</span><span class="n">FloatPairKeyParameter</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a triplet key parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="FloatTripletKeyParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.FloatTripletKeyParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uplet</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uplet</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uplet</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">uplet</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">uplet</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">uplet</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
@@ -410,14 +412,14 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="IntKeyParameter"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.IntKeyParameter">[docs]</a><span class="k">class</span> <span class="nc">IntKeyParameter</span><span class="p">(</span><span class="n">KeyValueParameter</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements an integer key parameter. &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="IntKeyParameter.validate"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.IntKeyParameter.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
@@ -425,7 +427,7 @@
 <span class="c"># </span>
 <span class="c"># End</span>
 <span class="c"># </span>
-<span class="c">####################################################################################################</span></div></div>
+<span class="c">####################################################################################################</span></div>
 </pre></div>
 
           </div>
@@ -466,7 +468,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

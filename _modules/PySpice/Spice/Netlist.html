@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -309,11 +311,9 @@
 
     <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
 
-        <span class="n">sorted_attributes</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">attributes</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-
-        <span class="n">positional_parameters</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-        <span class="n">parameters</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span> <span class="c"># not required for SPICE, but for unit test</span>
-        <span class="k">for</span> <span class="n">attribute_name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">sorted_attributes</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">positional_parameters</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">attribute_name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ParameterDescriptor</span><span class="p">):</span>
                 <span class="n">obj</span><span class="o">.</span><span class="n">attribute_name</span> <span class="o">=</span> <span class="n">attribute_name</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">PositionalElementParameter</span><span class="p">):</span>
@@ -321,8 +321,10 @@
                 <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="n">FlagParameter</span><span class="p">,</span> <span class="n">KeyValueParameter</span><span class="p">)):</span>
                     <span class="n">d</span> <span class="o">=</span> <span class="n">parameters</span>
                 <span class="n">d</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
-        <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;positional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">positional_parameters</span>
-        <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;optional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters</span>
+        <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;positional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">positional_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+                                                                 <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">position</span><span class="p">))</span>
+        <span class="c"># optional parameter order is not required for SPICE, but for unit test</span>
+        <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;optional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
         <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;parameters_from_args&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameter</span>
                                               <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">positional_parameters</span><span class="o">.</span><span class="n">itervalues</span><span class="p">())</span>
                                               <span class="k">if</span> <span class="ow">not</span> <span class="n">parameter</span><span class="o">.</span><span class="n">key_parameter</span><span class="p">]</span>
@@ -885,7 +887,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -105,8 +107,8 @@ temperatures: 0, 25 and 100 °C.</p>
 </div>
 <p>We plot the characteristic curve and compare them to the Shockley diode model:</p>
 <div class="math">
-<p><img src="../../images/math/9d13f335db582784a85723c4f4f2650219aa5d1d.png" alt="I_d = I_s \left( e^{\frac{V_d}{n V_T}} - 1 \right)"/></p>
-</div><p>where <img class="math" src="../../images/math/288649af452d4cd77214d4c8e6d93a15a27d4445.png" alt="V_T = \frac{k T}{q}"/></p>
+<p><img src="../../images/math/8076462a6cedc492ce039c8bd050f4358e26dcd6.png" alt="I_d = I_s \left( e^{\frac{V_d}{n V_T}} - 1 \right)"/></p>
+</div><p>where <img class="math" src="../../images/math/b9324a13720ce62e49fe4b5e429162f401a8c57b.png" alt="V_T = \frac{k T}{q}"/></p>
 <p>In order to scale the reverse biased region, we have to do some hack with Matplotlib.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">silicon_forward_voltage_threshold</span> <span class="o">=</span> <span class="o">.</span><span class="mi">7</span>
 
@@ -153,9 +155,9 @@ temperatures: 0, 25 and 100 °C.</p>
 </div>
 <p>Now we compute and plot the static and dynamic resistance.</p>
 <div class="math">
-<p><img src="../../images/math/dae4ef6a8344c7761be8b2fe70a46441db5a6ba3.png" alt="\frac{d I_d}{d V_d} = \frac{1}{n V_T}(I_d + I_s)"/></p>
+<p><img src="../../images/math/b76759be586284b62a3cebfb96f009b4868a91ef.png" alt="\frac{d I_d}{d V_d} = \frac{1}{n V_T}(I_d + I_s)"/></p>
 </div><div class="math">
-<p><img src="../../images/math/d60ffc84fbabebdb57f99c63129d56f51cb9e3a8.png" alt="r_d = \frac{d V_d}{d I_d} \approx \frac{n V_T}{I_d}"/></p>
+<p><img src="../../images/math/8332b00933d8f4f74b4c591b6de6114e416e3070.png" alt="r_d = \frac{d V_d}{d I_d} \approx \frac{n V_T}{I_d}"/></p>
 </div><div class="highlight-python"><div class="highlight"><pre><span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">u&#39;Resistance @ 25 °C&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
@@ -240,7 +242,7 @@ temperatures: 0, 25 and 100 °C.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
