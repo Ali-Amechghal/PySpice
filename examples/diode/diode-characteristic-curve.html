@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -59,7 +57,12 @@
             
   <div class="section" id="diode-characteristic-curve">
 <h1>2.5.2.1. Diode Characteristic Curve<a class="headerlink" href="#diode-characteristic-curve" title="Permalink to this headline">¶</a></h1>
-<p>This example shows how to simulate and plot the characteristic curve of a diode.</p>
+<div class="getthecode">
+  <div class="getthecode-header">
+    <span class="getthecode-filename">RingModulator.py</span>
+    <a href="../../_downloads/RingModulator.py"><span>RingModulator.py</span></a>
+  </div>
+</div><p>This example shows how to simulate and plot the characteristic curve of a diode.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
 
 
@@ -107,8 +110,8 @@ temperatures: 0, 25 and 100 °C.</p>
 </div>
 <p>We plot the characteristic curve and compare them to the Shockley diode model:</p>
 <div class="math">
-<p><img src="../../images/math/8076462a6cedc492ce039c8bd050f4358e26dcd6.png" alt="I_d = I_s \left( e^{\frac{V_d}{n V_T}} - 1 \right)"/></p>
-</div><p>where <img class="math" src="../../images/math/b9324a13720ce62e49fe4b5e429162f401a8c57b.png" alt="V_T = \frac{k T}{q}"/></p>
+<p><img src="../../images/math/9d13f335db582784a85723c4f4f2650219aa5d1d.png" alt="I_d = I_s \left( e^{\frac{V_d}{n V_T}} - 1 \right)"/></p>
+</div><p>where <img class="math" src="../../images/math/288649af452d4cd77214d4c8e6d93a15a27d4445.png" alt="V_T = \frac{k T}{q}"/></p>
 <p>In order to scale the reverse biased region, we have to do some hack with Matplotlib.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">silicon_forward_voltage_threshold</span> <span class="o">=</span> <span class="o">.</span><span class="mi">7</span>
 
@@ -143,7 +146,7 @@ temperatures: 0, 25 and 100 °C.</p>
     <span class="n">analysis</span> <span class="o">=</span> <span class="n">analyses</span><span class="p">[</span><span class="n">temperature</span><span class="p">]</span>
     <span class="n">axe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Vd</span><span class="p">,</span> <span class="o">-</span> <span class="n">analysis</span><span class="o">.</span><span class="n">Vinput</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Vd</span><span class="p">,</span> <span class="n">shockley_diode</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="n">Vd</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">,</span> <span class="s">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">axe</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">u&#39;@ {} °C&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;@ {} °C&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">temperature</span> <span class="ow">in</span> <span class="n">temperatures</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s">&#39;Shockley Diode Model Is = 4 nA&#39;</span><span class="p">],</span>
            <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">02</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
@@ -155,11 +158,11 @@ temperatures: 0, 25 and 100 °C.</p>
 </div>
 <p>Now we compute and plot the static and dynamic resistance.</p>
 <div class="math">
-<p><img src="../../images/math/b76759be586284b62a3cebfb96f009b4868a91ef.png" alt="\frac{d I_d}{d V_d} = \frac{1}{n V_T}(I_d + I_s)"/></p>
+<p><img src="../../images/math/dae4ef6a8344c7761be8b2fe70a46441db5a6ba3.png" alt="\frac{d I_d}{d V_d} = \frac{1}{n V_T}(I_d + I_s)"/></p>
 </div><div class="math">
-<p><img src="../../images/math/8332b00933d8f4f74b4c591b6de6114e416e3070.png" alt="r_d = \frac{d V_d}{d I_d} \approx \frac{n V_T}{I_d}"/></p>
+<p><img src="../../images/math/d60ffc84fbabebdb57f99c63129d56f51cb9e3a8.png" alt="r_d = \frac{d V_d}{d I_d} \approx \frac{n V_T}{I_d}"/></p>
 </div><div class="highlight-python"><div class="highlight"><pre><span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">u&#39;Resistance @ 25 °C&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Resistance @ 25 °C&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
@@ -173,10 +176,10 @@ temperatures: 0, 25 and 100 °C.</p>
 <span class="n">axe</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">silicon_forward_voltage_threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">axe</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="s">u&#39;R limitation = 1 Ω&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">axe</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">u&#39;{} Resistance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s">&#39;Static&#39;</span><span class="p">,</span> <span class="s">&#39;Dynamic&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="s">&#39;R limitation = 1 Ω&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;{} Resistance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;Static&#39;</span><span class="p">,</span> <span class="s">&#39;Dynamic&#39;</span><span class="p">)],</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
-<span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">u&#39;Resistance [Ω]&#39;</span><span class="p">)</span>
+<span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Resistance [Ω]&#39;</span><span class="p">)</span>
 
 <span class="n">pylab</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -242,7 +245,7 @@ temperatures: 0, 25 and 100 °C.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

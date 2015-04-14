@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -51,9 +49,9 @@
   <h1>Source code for PySpice.Tools.EnumFactory</h1><div class="highlight"><pre>
 <span class="c">####################################################################################################</span>
 <span class="c"># </span>
-<span class="c"># PySpice - A Spice package for Python</span>
-<span class="c"># Copyright (C) Salvaire Fabrice 2014</span>
-<span class="c"># </span>
+<span class="c"># PySpice - A Spice Package for Python</span>
+<span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c">#</span>
 <span class="c"># This program is free software: you can redistribute it and/or modify</span>
 <span class="c"># it under the terms of the GNU General Public License as published by</span>
 <span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
@@ -65,7 +63,7 @@
 <span class="c"># GNU General Public License for more details.</span>
 <span class="c"># </span>
 <span class="c"># You should have received a copy of the GNU General Public License</span>
-<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;. </span>
 <span class="c"># </span>
 <span class="c">####################################################################################################</span>
 
@@ -214,8 +212,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">obj_dict</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">obj_dict</span><span class="p">[</span><span class="s">&#39;constants&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">enum_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">enum_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">obj_dict</span><span class="p">[</span><span class="s">&#39;constants&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">enum_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">enum_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
         <span class="n">obj_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">EnumConstant</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">ExplicitEnumMetaClass</span><span class="p">(</span><span class="n">enum_name</span><span class="p">,</span> <span class="p">(),</span> <span class="n">obj_dict</span><span class="p">)</span>
@@ -264,7 +262,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

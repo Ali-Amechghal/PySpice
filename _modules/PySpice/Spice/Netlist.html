@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -313,7 +311,7 @@
 
         <span class="n">positional_parameters</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">parameters</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">attribute_name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">attribute_name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ParameterDescriptor</span><span class="p">):</span>
                 <span class="n">obj</span><span class="o">.</span><span class="n">attribute_name</span> <span class="o">=</span> <span class="n">attribute_name</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">PositionalElementParameter</span><span class="p">):</span>
@@ -321,26 +319,24 @@
                 <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="n">FlagParameter</span><span class="p">,</span> <span class="n">KeyValueParameter</span><span class="p">)):</span>
                     <span class="n">d</span> <span class="o">=</span> <span class="n">parameters</span>
                 <span class="n">d</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
-        <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;positional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">positional_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+        <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;positional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">positional_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span>
                                                                  <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">position</span><span class="p">))</span>
         <span class="c"># optional parameter order is not required for SPICE, but for unit test</span>
-        <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;optional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;optional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
         <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;parameters_from_args&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameter</span>
-                                              <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">positional_parameters</span><span class="o">.</span><span class="n">itervalues</span><span class="p">())</span>
+                                              <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">positional_parameters</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
                                               <span class="k">if</span> <span class="ow">not</span> <span class="n">parameter</span><span class="o">.</span><span class="n">key_parameter</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ElementParameterMetaClass</span><span class="p">,</span> <span class="n">cls</span><span class="p">)</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="Element"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Element"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ElementParameterMetaClass</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a base class for an element.</span>
 
 <span class="sd">    It use a metaclass machinery for the declaration of the parameters.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">ElementParameterMetaClass</span>
 
     <span class="c">#: SPICE element prefix</span>
     <span class="n">prefix</span> <span class="o">=</span> <span class="bp">None</span>
@@ -356,7 +352,7 @@
 
         <span class="k">for</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters_from_args</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">positional_parameters</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">optional_parameters</span><span class="p">:</span>
                 <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
@@ -395,7 +391,7 @@
 <div class="viewcode-block" id="Element.parameter_iterator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Element.parameter_iterator">[docs]</a>    <span class="k">def</span> <span class="nf">parameter_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; This iterator returns the parameter in the right order. &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">parameter_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">positional_parameters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">optional_parameters</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">parameter_dict</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">parameter_dict</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
                 <span class="k">if</span> <span class="n">parameter</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                     <span class="k">yield</span> <span class="n">parameter</span>
 
@@ -552,7 +548,7 @@
 
 <div class="viewcode-block" id="Netlist.element_iterator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Netlist.element_iterator">[docs]</a>    <span class="k">def</span> <span class="nf">element_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
     <span class="c">##############################################</span>
 </div>
@@ -564,7 +560,7 @@
 </div>
 <div class="viewcode-block" id="Netlist.model_iterator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Netlist.model_iterator">[docs]</a>    <span class="k">def</span> <span class="nf">model_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
     <span class="c">##############################################</span>
 </div>
@@ -624,7 +620,7 @@
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">[</span><span class="n">node_name</span><span class="p">]</span>
                     <span class="n">node</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
     <span class="c">##############################################</span>
 </div>
@@ -792,7 +788,7 @@
 
         <span class="sd">&quot;&quot;&quot; Return a sub-circuit iterator. &quot;&quot;&quot;</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
     <span class="c">##############################################</span>
 </div>
@@ -887,7 +883,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

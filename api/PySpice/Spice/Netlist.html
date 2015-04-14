@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -165,7 +163,7 @@ parameter is not specified then a subprocess simulator is returned.</p>
 <dl class="class">
 <dt id="PySpice.Spice.Netlist.DeviceModel">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">DeviceModel</tt><big>(</big><em>name</em>, <em>modele_type</em>, <em>**parameters</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#DeviceModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.DeviceModel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
 <p>This class implements a device model.</p>
 <p>Ngspice model types:</p>
 <table border="1" class="docutils">
@@ -259,7 +257,7 @@ parameter is not specified then a subprocess simulator is returned.</p>
 <dl class="class">
 <dt id="PySpice.Spice.Netlist.Element">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Element</tt><big>(</big><em>name</em>, <em>pins</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
 <p>This class implements a base class for an element.</p>
 <p>It use a metaclass machinery for the declaration of the parameters.</p>
 <dl class="method">
@@ -321,14 +319,14 @@ parameter is not specified then a subprocess simulator is returned.</p>
 <dl class="class">
 <dt id="PySpice.Spice.Netlist.ElementParameterMetaClass">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">ElementParameterMetaClass</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#ElementParameterMetaClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.ElementParameterMetaClass" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">type</span></tt></p>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.type</span></tt></p>
 <p>Metaclass to implements the element parameter machinery.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.Netlist.Netlist">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Netlist</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
 <p>This class implements a base class for a netlist.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -542,7 +540,7 @@ parameter is not specified then a subprocess simulator is returned.</p>
 <dl class="class">
 <dt id="PySpice.Spice.Netlist.Node">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Node</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Node" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
 <p>This class implements a node in the circuit. It stores a reference to the elements connected to
 the node.</p>
 <dl class="method">
@@ -565,12 +563,12 @@ the node.</p>
 <dl class="class">
 <dt id="PySpice.Spice.Netlist.Pin">
 <em class="property">class </em><tt class="descclassname">PySpice.Spice.Netlist.</tt><tt class="descname">Pin</tt><big>(</big><em>element</em>, <em>name</em>, <em>node</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
 <p>This class implements a pin of an element. It stores a reference to the element, the name of the
 pin and the node.</p>
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.Pin._logger">
-<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x46ef050&gt;</em><a class="headerlink" href="#PySpice.Spice.Netlist.Pin._logger" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x7f1c7980c1d0&gt;</em><a class="headerlink" href="#PySpice.Spice.Netlist.Pin._logger" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -759,7 +757,7 @@ pin and the node.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

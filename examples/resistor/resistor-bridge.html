@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -59,7 +57,12 @@
             
   <div class="section" id="resistor-bridge">
 <h1>2.5.8.1. Resistor Bridge<a class="headerlink" href="#resistor-bridge" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
+<div class="getthecode">
+  <div class="getthecode-header">
+    <span class="getthecode-filename">RingModulator.py</span>
+    <a href="../../_downloads/RingModulator.py"><span>RingModulator.py</span></a>
+  </div>
+</div><div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
 
 
@@ -79,8 +82,8 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
-<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s">&#39;Node {}: {} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">))</span> <span class="c"># Fixme: format value + unit</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c"># Fixme: format value + unit</span>
 </pre></div>
 </div>
 </div>
@@ -141,7 +144,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

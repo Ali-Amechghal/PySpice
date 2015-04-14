@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -102,7 +100,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span>  <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span>  <span class="n">value</span> <span class="c"># to keep as int</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span> <span class="c"># to keep as int</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
@@ -170,7 +168,7 @@
 
     <span class="c">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">__nonzero__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;True if self != 0. Called for bool(self).&quot;&quot;&quot;</span>
 
@@ -184,9 +182,17 @@
 
         <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-
         <span class="k">return</span> <span class="n">new_obj</span>
 
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self += other&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+        
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -210,7 +216,6 @@
         <span class="sd">&quot;&quot;&quot;+self&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
-
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -219,9 +224,17 @@
 
         <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-
         <span class="k">return</span> <span class="n">new_obj</span>
 
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__isub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self -= other&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -238,9 +251,17 @@
 
         <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">*=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-
         <span class="k">return</span> <span class="n">new_obj</span>
 
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__imul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self *= other&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -251,12 +272,36 @@
 
     <span class="c">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot;self / other without __future__ division</span>
+        <span class="sd">&quot;&quot;&quot;self // other &quot;&quot;&quot;</span>
 
-<span class="sd">        May promote to float.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">//=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_obj</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__ifloordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self //= other &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">//=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__rfloordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;other // self&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;self / other&quot;&quot;&quot;</span>
 
         <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">/=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
@@ -265,30 +310,20 @@
 
     <span class="c">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">__rdiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__itruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot;other / self without __future__ division&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;self /= other&quot;&quot;&quot;</span>
 
-        <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-    <span class="c">##############################################</span>
-
-    <span class="k">def</span> <span class="nf">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-
-        <span class="sd">&quot;&quot;&quot;self / other with __future__ division.</span>
-
-<span class="sd">        Should promote to float when necessary.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">/=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot;other / self with __future__ division&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;other / self&quot;&quot;&quot;</span>
 
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
 
@@ -298,9 +333,15 @@
 
         <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="n">new_obj</span><span class="o">.</span><span class="n">_value</span> <span class="o">**=</span> <span class="nb">float</span><span class="p">(</span><span class="n">exponent</span><span class="p">)</span>
-
         <span class="k">return</span> <span class="n">new_obj</span>
 
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__ipow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exponent</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">**=</span> <span class="nb">float</span><span class="p">(</span><span class="n">exponent</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__rpow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">):</span>
@@ -377,22 +418,6 @@
 
     <span class="c">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-
-        <span class="sd">&quot;&quot;&quot;self // other: The floor() of self/other.&quot;&quot;&quot;</span>
-
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-
-    <span class="c">##############################################</span>
-
-    <span class="k">def</span> <span class="nf">__rfloordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-
-        <span class="sd">&quot;&quot;&quot;other // self: The floor() of other/self.&quot;&quot;&quot;</span>
-
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-
-    <span class="c">##############################################</span>
-
     <span class="k">def</span> <span class="nf">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;self % other&quot;&quot;&quot;</span>
@@ -425,6 +450,24 @@
 
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__ceil__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        
+    <span class="c">##############################################</span>
+        
+    <span class="k">def</span> <span class="nf">__floor__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        
+    <span class="c">##############################################</span>
+        
+    <span class="k">def</span> <span class="nf">__round__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        
     <span class="c">##############################################</span>
 
 <div class="viewcode-block" id="Unit.inverse"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">the_class</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
@@ -610,7 +653,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>
