@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.5.5.2. Operational Amplifier &mdash; PySpice 0.1.0 documentation</title>
+    <title>2.5.6.2. Operational Amplifier &mdash; PySpice 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -23,13 +23,14 @@
     <script type="text/javascript" src="../../static/jquery.js"></script>
     <script type="text/javascript" src="../../static/underscore.js"></script>
     <script type="text/javascript" src="../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
-    <link rel="up" title="2.5.5. Operational Amplifier" href="index.html" />
-    <link rel="next" title="2.5.6. Passive" href="../passive/index.html" />
-    <link rel="prev" title="2.5.5.1. Astable" href="astable.html" /> 
+    <link rel="up" title="2.5.6. Operational Amplifier" href="index.html" />
+    <link rel="next" title="2.5.7. Passive" href="../passive/index.html" />
+    <link rel="prev" title="2.5.6.1. Astable" href="astable.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -39,37 +40,38 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../passive/index.html" title="2.5.6. Passive"
+          <a href="../passive/index.html" title="2.5.7. Passive"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="astable.html" title="2.5.5.1. Astable"
+          <a href="astable.html" title="2.5.6.1. Astable"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">2.5.5. Operational Amplifier</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.6. Operational Amplifier</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="operational-amplifier">
-<h1>2.5.5.2. Operational Amplifier<a class="headerlink" href="#operational-amplifier" title="Permalink to this headline">¶</a></h1>
+<h1>2.5.6.2. Operational Amplifier<a class="headerlink" href="#operational-amplifier" title="Permalink to this headline">¶</a></h1>
 <div class="getthecode">
-  <div class="getthecode-header">
-    <span class="getthecode-filename">RingModulator.py</span>
-    <a href="../../_downloads/RingModulator.py"><span>RingModulator.py</span></a>
-  </div>
-</div><div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="getthecode-header"><span class="getthecode-filename">operational-amplifier.py</span><a href="../../_downloads/operational-amplifier.py"><span>operational-amplifier.py</span></a></div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">####################################################################################################</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
 
+<span class="c">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
 
+<span class="c">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">PySpice.Plot.BodeDiagram</span> <span class="kn">import</span> <span class="n">bode_diagram</span>
 <span class="kn">from</span> <span class="nn">PySpice.Probe.Plot</span> <span class="kn">import</span> <span class="n">plot</span>
@@ -78,6 +80,53 @@
 
 <span class="kn">from</span> <span class="nn">OperationalAmplifier</span> <span class="kn">import</span> <span class="n">BasicOperationalAmplifier</span>
 
+<span class="c">####################################################################################################</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Operational Amplifier&#39;</span><span class="p">)</span>
+
+<span class="c"># AC 1 PWL(0US 0V  0.01US 1V)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">Sinusoidal</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">BasicOperationalAmplifier</span><span class="p">())</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s">&#39;op&#39;</span><span class="p">,</span> <span class="s">&#39;BasicOperationalAmplifier&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">470</span><span class="p">)</span>
+
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">ac</span><span class="p">(</span><span class="n">start_frequency</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stop_frequency</span><span class="o">=</span><span class="n">mega</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">number_of_points</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="n">variation</span><span class="o">=</span><span class="s">&#39;dec&#39;</span><span class="p">)</span>
+
+<span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Bode Diagram of an Operational Amplifier&quot;</span><span class="p">)</span>
+<span class="n">bode_diagram</span><span class="p">(</span><span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">),</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)),</span>
+             <span class="n">frequency</span><span class="o">=</span><span class="n">analysis</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span>
+             <span class="n">gain</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">)),</span>
+             <span class="n">phase</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+             <span class="n">marker</span><span class="o">=</span><span class="s">&#39;.&#39;</span><span class="p">,</span>
+             <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span>
+             <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;-&#39;</span><span class="p">,</span>
+            <span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c">####################################################################################################</span>
+<span class="c"># </span>
+<span class="c"># End</span>
+<span class="c"># </span>
+<span class="c">####################################################################################################</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+
+<span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">PySpice.Plot.BodeDiagram</span> <span class="kn">import</span> <span class="n">bode_diagram</span>
+<span class="kn">from</span> <span class="nn">PySpice.Probe.Plot</span> <span class="kn">import</span> <span class="n">plot</span>
+<span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">OperationalAmplifier</span> <span class="kn">import</span> <span class="n">BasicOperationalAmplifier</span>
 
 <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Operational Amplifier&#39;</span><span class="p">)</span>
 
@@ -110,20 +159,22 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="astable.html"
-                        title="previous chapter">2.5.5.1. Astable</a></p>
+                        title="previous chapter">2.5.6.1. Astable</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../passive/index.html"
-                        title="next chapter">2.5.6. Passive</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../_sources/examples/operational-amplifier/operational-amplifier.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+                        title="next chapter">2.5.7. Passive</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/examples/operational-amplifier/operational-amplifier.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -140,7 +191,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -150,19 +201,19 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../passive/index.html" title="2.5.6. Passive"
+          <a href="../passive/index.html" title="2.5.7. Passive"
              >next</a> |</li>
         <li class="right" >
-          <a href="astable.html" title="2.5.5.1. Astable"
+          <a href="astable.html" title="2.5.6.1. Astable"
              >previous</a> |</li>
-        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li><a href="index.html" >2.5.5. Operational Amplifier</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >2.5.6. Operational Amplifier</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

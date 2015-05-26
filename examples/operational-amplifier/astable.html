@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.5.5.1. Astable &mdash; PySpice 0.1.0 documentation</title>
+    <title>2.5.6.1. Astable &mdash; PySpice 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -23,13 +23,14 @@
     <script type="text/javascript" src="../../static/jquery.js"></script>
     <script type="text/javascript" src="../../static/underscore.js"></script>
     <script type="text/javascript" src="../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
-    <link rel="up" title="2.5.5. Operational Amplifier" href="index.html" />
-    <link rel="next" title="2.5.5.2. Operational Amplifier" href="operational-amplifier.html" />
-    <link rel="prev" title="2.5.5. Operational Amplifier" href="index.html" /> 
+    <link rel="up" title="2.5.6. Operational Amplifier" href="index.html" />
+    <link rel="next" title="2.5.6.2. Operational Amplifier" href="operational-amplifier.html" />
+    <link rel="prev" title="2.5.6. Operational Amplifier" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -39,37 +40,38 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="operational-amplifier.html" title="2.5.5.2. Operational Amplifier"
+          <a href="operational-amplifier.html" title="2.5.6.2. Operational Amplifier"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="2.5.5. Operational Amplifier"
+          <a href="index.html" title="2.5.6. Operational Amplifier"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">2.5.5. Operational Amplifier</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.6. Operational Amplifier</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="astable">
-<h1>2.5.5.1. Astable<a class="headerlink" href="#astable" title="Permalink to this headline">¶</a></h1>
+<h1>2.5.6.1. Astable<a class="headerlink" href="#astable" title="Permalink to this headline">¶</a></h1>
 <div class="getthecode">
-  <div class="getthecode-header">
-    <span class="getthecode-filename">RingModulator.py</span>
-    <a href="../../_downloads/RingModulator.py"><span>RingModulator.py</span></a>
-  </div>
-</div><div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="getthecode-header"><span class="getthecode-filename">astable.py</span><a href="../../_downloads/astable.py"><span>astable.py</span></a></div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">####################################################################################################</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
 
+<span class="c">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
 
+<span class="c">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">PySpice.Probe.Plot</span> <span class="kn">import</span> <span class="n">plot</span>
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
@@ -77,6 +79,57 @@
 
 <span class="c"># from OperationalAmplifier import basic_comparator</span>
 
+<span class="c">####################################################################################################</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Astable Multivibrator&#39;</span><span class="p">)</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;cc&#39;</span><span class="p">,</span> <span class="s">&#39;vcc&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="c"># Time constant</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="s">&#39;comparator&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;comparator&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">nano</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="c"># Reference</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="s">&#39;reference&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#39;vcc&#39;</span><span class="p">,</span> <span class="s">&#39;reference&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">&#39;reference&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>  <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="c"># Comparator</span>
+<span class="c"># Fixme: ngspice is buggy with such subcircuit</span>
+<span class="c"># circuit.subcircuit(basic_comparator)</span>
+<span class="c"># circuit.X(&#39;comparator&#39;, &#39;BasicComparator&#39;, &#39;reference&#39;, &#39;comparator&#39;, &#39;vcc&#39;, circuit.gnd, &#39;output&#39;)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">NonLinearVoltageSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+                               <span class="n">expression</span><span class="o">=</span><span class="s">&#39;V(reference, comparator)&#39;</span><span class="p">,</span>
+                               <span class="n">table</span><span class="o">=</span><span class="p">((</span><span class="o">-</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
+                                      <span class="p">(</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">source</span><span class="o">.</span><span class="n">dc_value</span><span class="p">))</span>
+                               <span class="p">)</span>
+
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">simulator</span><span class="o">.</span><span class="n">initial_condition</span><span class="p">({</span><span class="s">&#39;V(comparator)&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">})</span> <span class="c"># Fixme: simulator.nodes.comparator == 0</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">end_time</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">500</span><span class="p">))</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">reference</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">comparator</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c">####################################################################################################</span>
+<span class="c"># </span>
+<span class="c"># End</span>
+<span class="c"># </span>
+<span class="c">####################################################################################################</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+
+<span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">PySpice.Probe.Plot</span> <span class="kn">import</span> <span class="n">plot</span>
+<span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c"># from OperationalAmplifier import basic_comparator</span>
 
 <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Astable Multivibrator&#39;</span><span class="p">)</span>
 
@@ -114,20 +167,22 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">2.5.5. Operational Amplifier</a></p>
+                        title="previous chapter">2.5.6. Operational Amplifier</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="operational-amplifier.html"
-                        title="next chapter">2.5.5.2. Operational Amplifier</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../_sources/examples/operational-amplifier/astable.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+                        title="next chapter">2.5.6.2. Operational Amplifier</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/examples/operational-amplifier/astable.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -144,7 +199,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -154,19 +209,19 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="operational-amplifier.html" title="2.5.5.2. Operational Amplifier"
+          <a href="operational-amplifier.html" title="2.5.6.2. Operational Amplifier"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="2.5.5. Operational Amplifier"
+          <a href="index.html" title="2.5.6. Operational Amplifier"
              >previous</a> |</li>
-        <li><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li><a href="index.html" >2.5.5. Operational Amplifier</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >2.5.6. Operational Amplifier</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

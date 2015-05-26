@@ -23,13 +23,14 @@
     <script type="text/javascript" src="../../../static/jquery.js"></script>
     <script type="text/javascript" src="../../../static/underscore.js"></script>
     <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
     <link rel="next" title="3.1.7.4. Library" href="Library.html" />
     <link rel="prev" title="3.1.7.2. ElementParameter" href="ElementParameter.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -44,46 +45,46 @@
         <li class="right" >
           <a href="ElementParameter.html" title="3.1.7.2. ElementParameter"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
-          <li><a href="../../PySpice.html" >3.1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
-          <li><a href="../Spice.html" accesskey="U">3.1.7. <tt class="docutils literal"><span class="pre">Spice</span></tt></a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="../Spice.html" accesskey="U">3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-PySpice.Spice.HighLevelElement">
-<span id="highlevelelement"></span><h1>3.1.7.3. <tt class="xref py py-mod docutils literal"><span class="pre">HighLevelElement</span></tt><a class="headerlink" href="#module-PySpice.Spice.HighLevelElement" title="Permalink to this headline">¶</a></h1>
+<span id="highlevelelement"></span><h1>3.1.7.3. <code class="xref py py-mod docutils literal"><span class="pre">HighLevelElement</span></code><a class="headerlink" href="#module-PySpice.Spice.HighLevelElement" title="Permalink to this headline">¶</a></h1>
 <p>This module implements high level elements built on Spice elements.</p>
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.AcLine">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">AcLine</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>rms_voltage=230</em>, <em>frequency=50</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#AcLine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AcLine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.HighLevelElement.Sinusoidal" title="PySpice.Spice.HighLevelElement.Sinusoidal"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.HighLevelElement.Sinusoidal</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.HighLevelElement.</code><code class="descname">AcLine</code><span class="sig-paren">(</span><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>rms_voltage=230</em>, <em>frequency=50</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#AcLine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AcLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.HighLevelElement.Sinusoidal" title="PySpice.Spice.HighLevelElement.Sinusoidal"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.HighLevelElement.Sinusoidal</span></code></a></p>
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.AcLine.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AcLine.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AcLine.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.AcLine.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AcLine.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parameters_from_args</code><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AcLine.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.AcLine.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AcLine.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">positional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AcLine.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.AmplitudeModulated">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">AmplitudeModulated</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>offset</em>, <em>amplitude</em>, <em>modulating_frequency</em>, <em>carrier_frequency</em>, <em>signal_delay</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#AmplitudeModulated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.HighLevelElement.</code><code class="descname">AmplitudeModulated</code><span class="sig-paren">(</span><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>offset</em>, <em>amplitude</em>, <em>modulating_frequency</em>, <em>carrier_frequency</em>, <em>signal_delay</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#AmplitudeModulated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></code></a></p>
 <p>This class implements a Amplitude Modulated source.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -140,30 +141,30 @@
 <p><img src="../../../images/math/65551c8225f0ee0e50d7a447469ee9d55ec2cc2a.png" alt="V(t) = V_a (V_o + \sin (2\pi M_f\,t)) \sin (2\pi F_c\,t)"/></p>
 </div><dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.AmplitudeModulated.format_spice_parameters">
-<tt class="descname">format_spice_parameters</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#AmplitudeModulated.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#AmplitudeModulated.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.AmplitudeModulated.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.AmplitudeModulated.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parameters_from_args</code><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.AmplitudeModulated.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">positional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.Exponential">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">Exponential</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>initial_value</em>, <em>pulsed_value</em>, <em>rise_delay_time=0.0</em>, <em>rise_time_constant=None</em>, <em>fall_delay_time=None</em>, <em>fall_time_constant=None</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Exponential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.HighLevelElement.</code><code class="descname">Exponential</code><span class="sig-paren">(</span><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>initial_value</em>, <em>pulsed_value</em>, <em>rise_delay_time=0.0</em>, <em>rise_time_constant=None</em>, <em>fall_delay_time=None</em>, <em>fall_time_constant=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Exponential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></code></a></p>
 <p>This class implements a Exponential waveform.</p>
 <p>Nomenclature:</p>
 <table border="1" class="docutils">
@@ -234,30 +235,30 @@
 \end{cases}"/></p>
 </div><dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.Exponential.format_spice_parameters">
-<tt class="descname">format_spice_parameters</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Exponential.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Exponential.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Exponential.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Exponential.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parameters_from_args</code><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Exponential.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">positional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.PieceWiseLinear">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">PieceWiseLinear</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>values</em>, <em>repeate_time=0</em>, <em>delay_time=0.0</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#PieceWiseLinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.PieceWiseLinear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.HighLevelElement.</code><code class="descname">PieceWiseLinear</code><span class="sig-paren">(</span><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>values</em>, <em>repeate_time=0</em>, <em>delay_time=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#PieceWiseLinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.PieceWiseLinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></code></a></p>
 <p>This class implements a Piece-Wise Linear waveform.</p>
 <p>Spice Syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre>PWL( T1 V1 &lt;T2 V2 T3 V3 T4 V4 ... &gt; ) &lt;r=value&gt; &lt;td=value&gt;    
@@ -274,30 +275,30 @@ delay time time = td. The current source still needs to be patched, td and r are
 available.</p>
 <dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.PieceWiseLinear.format_spice_parameters">
-<tt class="descname">format_spice_parameters</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#PieceWiseLinear.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.PieceWiseLinear.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#PieceWiseLinear.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.PieceWiseLinear.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.PieceWiseLinear.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.PieceWiseLinear.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.PieceWiseLinear.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.PieceWiseLinear.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.PieceWiseLinear.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parameters_from_args</code><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.PieceWiseLinear.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.PieceWiseLinear.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.PieceWiseLinear.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">positional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.PieceWiseLinear.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.Pulse">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">Pulse</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>initial_value</em>, <em>pulsed_value</em>, <em>pulse_width</em>, <em>period</em>, <em>delay_time=0</em>, <em>rise_time=0</em>, <em>fall_time=0</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Pulse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.HighLevelElement.</code><code class="descname">Pulse</code><span class="sig-paren">(</span><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>initial_value</em>, <em>pulsed_value</em>, <em>pulse_width</em>, <em>period</em>, <em>delay_time=0</em>, <em>rise_time=0</em>, <em>fall_time=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Pulse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></code></a></p>
 <p>This class implements a pulse waveform.</p>
 <p>Nomenclature:</p>
 <table border="1" class="docutils">
@@ -396,45 +397,45 @@ available.</p>
 width and period is the simulation stop time.</p>
 <p>Public Attributes:</p>
 <blockquote>
-<div><p><tt class="xref py py-attr docutils literal"><span class="pre">delay_time</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">fall_time</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">initial_value</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">period</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">pulse_width</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">pulsed_value</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">rise_time</span></tt></p>
+<div><p><code class="xref py py-attr docutils literal"><span class="pre">delay_time</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">fall_time</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">initial_value</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">period</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">pulse_width</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">pulsed_value</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">rise_time</span></code></p>
 </div></blockquote>
 <dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.Pulse.format_spice_parameters">
-<tt class="descname">format_spice_parameters</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Pulse.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Pulse.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Pulse.frequency">
-<tt class="descname">frequency</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Pulse.frequency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse.frequency" title="Permalink to this definition">¶</a></dt>
+<code class="descname">frequency</code><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse.frequency" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Pulse.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Pulse.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parameters_from_args</code><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Pulse.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">positional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Pulse.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.RandomVoltage">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">RandomVoltage</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>random_type</em>, <em>duration=0</em>, <em>time_delay=0</em>, <em>parameter1=1</em>, <em>parameter2=0</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#RandomVoltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.HighLevelElement.</code><code class="descname">RandomVoltage</code><span class="sig-paren">(</span><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>random_type</em>, <em>duration=0</em>, <em>time_delay=0</em>, <em>parameter1=1</em>, <em>parameter2=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#RandomVoltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></code></a></p>
 <p>This class implements a Random Voltage source.</p>
 <p>The TRRANDOM option yields statistically distributed voltage values, derived from the ngspice
 random number generator. These values may be used in the transient simulation directly within a
@@ -498,30 +499,30 @@ selected.</p>
 </table>
 <dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.RandomVoltage.format_spice_parameters">
-<tt class="descname">format_spice_parameters</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#RandomVoltage.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#RandomVoltage.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.RandomVoltage.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.RandomVoltage.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parameters_from_args</code><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.RandomVoltage.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">positional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.RandomVoltage.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.SingleFrequencyFM">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">SingleFrequencyFM</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>offset</em>, <em>amplitude</em>, <em>carrier_frequency</em>, <em>modulation_index</em>, <em>signal_frequency</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#SingleFrequencyFM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.HighLevelElement.</code><code class="descname">SingleFrequencyFM</code><span class="sig-paren">(</span><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>offset</em>, <em>amplitude</em>, <em>carrier_frequency</em>, <em>modulation_index</em>, <em>signal_frequency</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#SingleFrequencyFM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></code></a></p>
 <p>This class implements a Single-Frequency FM waveform.</p>
 <blockquote>
 <div><p>Spice Syntax:</p>
@@ -582,30 +583,30 @@ selected.</p>
 </div></div></blockquote>
 <dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.SingleFrequencyFM.format_spice_parameters">
-<tt class="descname">format_spice_parameters</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#SingleFrequencyFM.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#SingleFrequencyFM.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.SingleFrequencyFM.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.SingleFrequencyFM.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parameters_from_args</code><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.SingleFrequencyFM.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">positional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.HighLevelElement.Sinusoidal">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.HighLevelElement.</tt><tt class="descname">Sinusoidal</tt><big>(</big><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>dc_offset=0</em>, <em>offset=0</em>, <em>amplitude=1</em>, <em>frequency=50</em>, <em>delay=0</em>, <em>damping_factor=0</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Sinusoidal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.HighLevelElement.</code><code class="descname">Sinusoidal</code><span class="sig-paren">(</span><em>name</em>, <em>node_plus</em>, <em>node_minus</em>, <em>dc_offset=0</em>, <em>offset=0</em>, <em>amplitude=1</em>, <em>frequency=50</em>, <em>delay=0</em>, <em>damping_factor=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Sinusoidal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="BasicElement.html#PySpice.Spice.BasicElement.VoltageSource" title="PySpice.Spice.BasicElement.VoltageSource"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.BasicElement.VoltageSource</span></code></a></p>
 <p>This class implements a sinusoidal waveform.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -665,41 +666,41 @@ selected.</p>
 </div>
 <p>Public Attributes:</p>
 <blockquote>
-<div><p><tt class="xref py py-attr docutils literal"><span class="pre">amplitude</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">damping_factor</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">dc_offset</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">delay</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">frequency</span></tt></p>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">offset</span></tt></p>
+<div><p><code class="xref py py-attr docutils literal"><span class="pre">amplitude</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">damping_factor</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">dc_offset</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">delay</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">frequency</span></code></p>
+<p><code class="xref py py-attr docutils literal"><span class="pre">offset</span></code></p>
 </div></blockquote>
 <dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.Sinusoidal.format_spice_parameters">
-<tt class="descname">format_spice_parameters</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Sinusoidal.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Sinusoidal.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Sinusoidal.optional_parameters">
-<tt class="descname">optional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.optional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Sinusoidal.parameters_from_args">
-<tt class="descname">parameters_from_args</tt><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.parameters_from_args" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parameters_from_args</code><em class="property"> = []</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.parameters_from_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Sinusoidal.period">
-<tt class="descname">period</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Sinusoidal.period"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.period" title="Permalink to this definition">¶</a></dt>
+<code class="descname">period</code><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.period" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Sinusoidal.positional_parameters">
-<tt class="descname">positional_parameters</tt><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">positional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.positional_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.HighLevelElement.Sinusoidal.rms_voltage">
-<tt class="descname">rms_voltage</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Sinusoidal.rms_voltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.rms_voltage" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rms_voltage</code><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Sinusoidal.rms_voltage" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -710,20 +711,22 @@ selected.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="ElementParameter.html"
-                        title="previous chapter">3.1.7.2. <tt class="docutils literal"><span class="pre">ElementParameter</span></tt></a></p>
+                        title="previous chapter">3.1.7.2. <code class="docutils literal"><span class="pre">ElementParameter</span></code></a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="Library.html"
-                        title="next chapter">3.1.7.4. <tt class="docutils literal"><span class="pre">Library</span></tt></a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../../_sources/api/PySpice/Spice/HighLevelElement.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+                        title="next chapter">3.1.7.4. <code class="docutils literal"><span class="pre">Library</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/api/PySpice/Spice/HighLevelElement.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
       <input type="text" name="q" />
@@ -740,7 +743,7 @@ selected.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -755,15 +758,15 @@ selected.</p>
         <li class="right" >
           <a href="ElementParameter.html" title="3.1.7.2. ElementParameter"
              >previous</a> |</li>
-        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
-          <li><a href="../../PySpice.html" >3.1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
-          <li><a href="../Spice.html" >3.1.7. <tt class="docutils literal"><span class="pre">Spice</span></tt></a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="../Spice.html" >3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

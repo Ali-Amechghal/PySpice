@@ -23,11 +23,12 @@
     <script type="text/javascript" src="../../../../static/jquery.js"></script>
     <script type="text/javascript" src="../../../../static/underscore.js"></script>
     <script type="text/javascript" src="../../../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../../index.html" />
     <link rel="up" title="PySpice.Spice" href="../../Spice.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,20 +37,20 @@
         <li class="right" >
           <a href="../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../../index.html" >Module code</a> &raquo;</li>
-          <li><a href="../../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <h1>Source code for PySpice.Spice.NgSpice.Shared</h1><div class="highlight"><pre>
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># PySpice - A Spice Package for Python</span>
 <span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
 <span class="c">#</span>
@@ -57,15 +58,15 @@
 <span class="c"># it under the terms of the GNU General Public License as published by</span>
 <span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
 <span class="c"># (at your option) any later version.</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># This program is distributed in the hope that it will be useful,</span>
 <span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
 <span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
 <span class="c"># GNU General Public License for more details.</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># You should have received a copy of the GNU General Public License</span>
-<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;. </span>
-<span class="c"># </span>
+<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span>
 
 <span class="sd">&quot;&quot;&quot;This module provides a Python interface to the Ngspice shared library described in the *ngspice</span>
@@ -163,7 +164,7 @@
     <span class="c">##############################################</span>
 </div>
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Vector.simplified_name"><a class="viewcode-back" href="../../../../api/PySpice/Spice/NgSpice/Shared.html#PySpice.Spice.NgSpice.Shared.Vector.simplified_name">[docs]</a>    <span class="k">def</span> <span class="nf">simplified_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">simplified_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_branch_current</span><span class="p">():</span>
             <span class="c"># return self.name.replace(&#39;#branch&#39;, &#39;&#39;)</span>
@@ -172,9 +173,9 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Vector.unit"><a class="viewcode-back" href="../../../../api/PySpice/Spice/NgSpice/Shared.html#PySpice.Spice.NgSpice.Shared.Vector.unit">[docs]</a>    <span class="k">def</span> <span class="nf">unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">simulation_type</span> <span class="o">==</span> <span class="n">NgSpiceShared</span><span class="o">.</span><span class="n">simulation_type</span><span class="o">.</span><span class="n">voltage</span><span class="p">:</span>
             <span class="k">return</span> <span class="s">&#39;V&#39;</span>
@@ -188,7 +189,7 @@
             <span class="k">return</span> <span class="s">&#39;&#39;</span>
 
     <span class="c">##############################################</span>
-</div>
+
 <div class="viewcode-block" id="Vector.to_waveform"><a class="viewcode-back" href="../../../../api/PySpice/Spice/NgSpice/Shared.html#PySpice.Spice.NgSpice.Shared.Vector.to_waveform">[docs]</a>    <span class="k">def</span> <span class="nf">to_waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">to_real</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Return a :obj:`PySpice.Probe.WaveForm` instance. &quot;&quot;&quot;</span>
@@ -553,14 +554,14 @@
     <span class="c">##############################################</span>
 </div>
     <span class="nd">@property</span>
-<div class="viewcode-block" id="NgSpiceShared.plot_names"><a class="viewcode-back" href="../../../../api/PySpice/Spice/NgSpice/Shared.html#PySpice.Spice.NgSpice.Shared.NgSpiceShared.plot_names">[docs]</a>    <span class="k">def</span> <span class="nf">plot_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">plot_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Return the list of plot names. &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_string_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ngspice_shared</span><span class="o">.</span><span class="n">ngSpice_AllPlots</span><span class="p">())</span>
 
     <span class="c">##############################################</span>
-</div>
+
 <div class="viewcode-block" id="NgSpiceShared.plot"><a class="viewcode-back" href="../../../../api/PySpice/Spice/NgSpice/Shared.html#PySpice.Spice.NgSpice.Shared.NgSpiceShared.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Return the corresponding plot. &quot;&quot;&quot;</span>
@@ -609,9 +610,9 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../../search.html" method="get">
       <input type="text" name="q" />
@@ -628,7 +629,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -637,14 +638,14 @@
         <li class="right" >
           <a href="../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../../index.html" >Module code</a> &raquo;</li>
-          <li><a href="../../Spice.html" >PySpice.Spice</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../Spice.html" >PySpice.Spice</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

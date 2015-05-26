@@ -23,13 +23,14 @@
     <script type="text/javascript" src="../static/jquery.js"></script>
     <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
+    <script type="text/javascript" src="../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../index.html" />
     <link rel="up" title="3. API Documentation" href="../reference-manual.html" />
     <link rel="next" title="3.1.1. Config" href="PySpice/Config.html" />
     <link rel="prev" title="3. API Documentation" href="../reference-manual.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -44,74 +45,74 @@
         <li class="right" >
           <a href="../reference-manual.html" title="3. API Documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../reference-manual.html" accesskey="U">3. API Documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../reference-manual.html" accesskey="U">3. API Documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="pyspice">
-<h1>3.1. <a class="reference internal" href="#module-PySpice" title="PySpice"><tt class="xref py py-mod docutils literal"><span class="pre">PySpice</span></tt></a><a class="headerlink" href="#pyspice" title="Permalink to this headline">¶</a></h1>
+<h1>3.1. <a class="reference internal" href="#module-PySpice" title="PySpice"><code class="xref py py-mod docutils literal"><span class="pre">PySpice</span></code></a><a class="headerlink" href="#pyspice" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="PySpice/Config.html">3.1.1. <tt class="docutils literal"><span class="pre">Config</span></tt></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Config/ConfigInstall.html">3.1.1.1. <tt class="docutils literal"><span class="pre">ConfigInstall</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="PySpice/Config.html">3.1.1. <code class="docutils literal"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Config/ConfigInstall.html">3.1.1.1. <code class="docutils literal"><span class="pre">ConfigInstall</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="PySpice/Logging.html">3.1.2. <tt class="docutils literal"><span class="pre">Logging</span></tt></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Logging/Logging.html">3.1.2.1. <tt class="docutils literal"><span class="pre">Logging</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="PySpice/Logging.html">3.1.2. <code class="docutils literal"><span class="pre">Logging</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Logging/Logging.html">3.1.2.1. <code class="docutils literal"><span class="pre">Logging</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="PySpice/Math.html">3.1.3. <tt class="docutils literal"><span class="pre">Math</span></tt></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Math/Calculus.html">3.1.3.1. <tt class="docutils literal"><span class="pre">Calculus</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="PySpice/Math.html">3.1.3. <code class="docutils literal"><span class="pre">Math</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Math/Calculus.html">3.1.3.1. <code class="docutils literal"><span class="pre">Calculus</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="PySpice/Physics.html">3.1.4. <tt class="docutils literal"><span class="pre">Physics</span></tt></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Physics/ElementProperties.html">3.1.4.1. <tt class="docutils literal"><span class="pre">ElementProperties</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Physics/PhysicalConstants.html">3.1.4.2. <tt class="docutils literal"><span class="pre">PhysicalConstants</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Physics/Resistor.html">3.1.4.3. <tt class="docutils literal"><span class="pre">Resistor</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Physics/SemiConductor.html">3.1.4.4. <tt class="docutils literal"><span class="pre">SemiConductor</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="PySpice/Physics.html">3.1.4. <code class="docutils literal"><span class="pre">Physics</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Physics/ElementProperties.html">3.1.4.1. <code class="docutils literal"><span class="pre">ElementProperties</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Physics/PhysicalConstants.html">3.1.4.2. <code class="docutils literal"><span class="pre">PhysicalConstants</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Physics/Resistor.html">3.1.4.3. <code class="docutils literal"><span class="pre">Resistor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Physics/SemiConductor.html">3.1.4.4. <code class="docutils literal"><span class="pre">SemiConductor</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="PySpice/Plot.html">3.1.5. <tt class="docutils literal"><span class="pre">Plot</span></tt></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Plot/BodeDiagram.html">3.1.5.1. <tt class="docutils literal"><span class="pre">BodeDiagram</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="PySpice/Plot.html">3.1.5. <code class="docutils literal"><span class="pre">Plot</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Plot/BodeDiagram.html">3.1.5.1. <code class="docutils literal"><span class="pre">BodeDiagram</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="PySpice/Probe.html">3.1.6. <tt class="docutils literal"><span class="pre">Probe</span></tt></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Probe/Plot.html">3.1.6.1. <tt class="docutils literal"><span class="pre">Plot</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Probe/WaveForm.html">3.1.6.2. <tt class="docutils literal"><span class="pre">WaveForm</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="PySpice/Probe.html">3.1.6. <code class="docutils literal"><span class="pre">Probe</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Probe/Plot.html">3.1.6.1. <code class="docutils literal"><span class="pre">Plot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Probe/WaveForm.html">3.1.6.2. <code class="docutils literal"><span class="pre">WaveForm</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="PySpice/Spice.html">3.1.7. <tt class="docutils literal"><span class="pre">Spice</span></tt></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/BasicElement.html">3.1.7.1. <tt class="docutils literal"><span class="pre">BasicElement</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/ElementParameter.html">3.1.7.2. <tt class="docutils literal"><span class="pre">ElementParameter</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/HighLevelElement.html">3.1.7.3. <tt class="docutils literal"><span class="pre">HighLevelElement</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/Library.html">3.1.7.4. <tt class="docutils literal"><span class="pre">Library</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/Netlist.html">3.1.7.5. <tt class="docutils literal"><span class="pre">Netlist</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/NgSpice.html">3.1.7.6. <tt class="docutils literal"><span class="pre">NgSpice</span></tt></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="PySpice/Spice/NgSpice/Shared.html">3.1.7.6.1. <tt class="docutils literal"><span class="pre">Shared</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="PySpice/Spice.html">3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/BasicElement.html">3.1.7.1. <code class="docutils literal"><span class="pre">BasicElement</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/ElementParameter.html">3.1.7.2. <code class="docutils literal"><span class="pre">ElementParameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/HighLevelElement.html">3.1.7.3. <code class="docutils literal"><span class="pre">HighLevelElement</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/Library.html">3.1.7.4. <code class="docutils literal"><span class="pre">Library</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/Netlist.html">3.1.7.5. <code class="docutils literal"><span class="pre">Netlist</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/NgSpice.html">3.1.7.6. <code class="docutils literal"><span class="pre">NgSpice</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="PySpice/Spice/NgSpice/Shared.html">3.1.7.6.1. <code class="docutils literal"><span class="pre">Shared</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/Parser.html">3.1.7.7. <tt class="docutils literal"><span class="pre">Parser</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/RawFile.html">3.1.7.8. <tt class="docutils literal"><span class="pre">RawFile</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/Server.html">3.1.7.9. <tt class="docutils literal"><span class="pre">Server</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/Simulation.html">3.1.7.10. <tt class="docutils literal"><span class="pre">Simulation</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/Parser.html">3.1.7.7. <code class="docutils literal"><span class="pre">Parser</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/RawFile.html">3.1.7.8. <code class="docutils literal"><span class="pre">RawFile</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/Server.html">3.1.7.9. <code class="docutils literal"><span class="pre">Server</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Spice/Simulation.html">3.1.7.10. <code class="docutils literal"><span class="pre">Simulation</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="PySpice/Tools.html">3.1.8. <tt class="docutils literal"><span class="pre">Tools</span></tt></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Tools/EnumFactory.html">3.1.8.1. <tt class="docutils literal"><span class="pre">EnumFactory</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Tools/File.html">3.1.8.2. <tt class="docutils literal"><span class="pre">File</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Tools/Path.html">3.1.8.3. <tt class="docutils literal"><span class="pre">Path</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Tools/StringTools.html">3.1.8.4. <tt class="docutils literal"><span class="pre">StringTools</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="PySpice/Tools.html">3.1.8. <code class="docutils literal"><span class="pre">Tools</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Tools/EnumFactory.html">3.1.8.1. <code class="docutils literal"><span class="pre">EnumFactory</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Tools/File.html">3.1.8.2. <code class="docutils literal"><span class="pre">File</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Tools/Path.html">3.1.8.3. <code class="docutils literal"><span class="pre">Path</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Tools/StringTools.html">3.1.8.4. <code class="docutils literal"><span class="pre">StringTools</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="PySpice/Unit.html">3.1.9. <tt class="docutils literal"><span class="pre">Unit</span></tt></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Unit/SiUnits.html">3.1.9.1. <tt class="docutils literal"><span class="pre">SiUnits</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PySpice/Unit/Units.html">3.1.9.2. <tt class="docutils literal"><span class="pre">Units</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="PySpice/Unit.html">3.1.9. <code class="docutils literal"><span class="pre">Unit</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Unit/SiUnits.html">3.1.9.1. <code class="docutils literal"><span class="pre">SiUnits</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PySpice/Unit/Units.html">3.1.9.2. <code class="docutils literal"><span class="pre">Units</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -122,20 +123,22 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="../reference-manual.html"
                         title="previous chapter">3. API Documentation</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="PySpice/Config.html"
-                        title="next chapter">3.1.1. <tt class="docutils literal"><span class="pre">Config</span></tt></a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/api/PySpice.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+                        title="next chapter">3.1.1. <code class="docutils literal"><span class="pre">Config</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/PySpice.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -152,7 +155,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -167,13 +170,13 @@
         <li class="right" >
           <a href="../reference-manual.html" title="3. API Documentation"
              >previous</a> |</li>
-        <li><a href="../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../reference-manual.html" >3. API Documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../reference-manual.html" >3. API Documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

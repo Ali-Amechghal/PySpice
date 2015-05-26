@@ -23,13 +23,14 @@
     <script type="text/javascript" src="../../../static/jquery.js"></script>
     <script type="text/javascript" src="../../../static/underscore.js"></script>
     <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.3. Math" href="../Math.html" />
     <link rel="next" title="3.1.4. Physics" href="../Physics.html" />
     <link rel="prev" title="3.1.3. Math" href="../Math.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -44,25 +45,25 @@
         <li class="right" >
           <a href="../Math.html" title="3.1.3. Math"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
-          <li><a href="../../PySpice.html" >3.1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
-          <li><a href="../Math.html" accesskey="U">3.1.3. <tt class="docutils literal"><span class="pre">Math</span></tt></a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="../Math.html" accesskey="U">3.1.3. <code class="docutils literal"><span class="pre">Math</span></code></a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-PySpice.Math.Calculus">
-<span id="calculus"></span><h1>3.1.3.1. <tt class="xref py py-mod docutils literal"><span class="pre">Calculus</span></tt><a class="headerlink" href="#module-PySpice.Math.Calculus" title="Permalink to this headline">¶</a></h1>
+<span id="calculus"></span><h1>3.1.3.1. <code class="xref py py-mod docutils literal"><span class="pre">Calculus</span></code><a class="headerlink" href="#module-PySpice.Math.Calculus" title="Permalink to this headline">¶</a></h1>
 <p>This module provides algorithms to compute the derivative of a function sampled on an uniform
 grid.</p>
 <dl class="function">
 <dt id="PySpice.Math.Calculus.compute_exact_finite_difference_coefficients">
-<tt class="descclassname">PySpice.Math.Calculus.</tt><tt class="descname">compute_exact_finite_difference_coefficients</tt><big>(</big><em>derivative_order</em>, <em>grid</em>, <em>x0=0</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Math/Calculus.html#compute_exact_finite_difference_coefficients"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Math.Calculus.compute_exact_finite_difference_coefficients" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">PySpice.Math.Calculus.</code><code class="descname">compute_exact_finite_difference_coefficients</code><span class="sig-paren">(</span><em>derivative_order</em>, <em>grid</em>, <em>x0=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Math/Calculus.html#compute_exact_finite_difference_coefficients"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Math.Calculus.compute_exact_finite_difference_coefficients" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function compute the finite difference coefficients for the given derivative order and
 grid.  The parameter <em>x</em> specifies where is computed the derivative on the grid.  The grid is
 given as a list of integer offsets.</p>
@@ -72,24 +73,24 @@ Grids, Bengt Fornberg, Mathematics of computation, volume 51, number 184, octobe
 
 <dl class="function">
 <dt id="PySpice.Math.Calculus.compute_finite_difference_coefficients">
-<tt class="descclassname">PySpice.Math.Calculus.</tt><tt class="descname">compute_finite_difference_coefficients</tt><big>(</big><em>derivative_order</em>, <em>grid</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Math/Calculus.html#compute_finite_difference_coefficients"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Math.Calculus.compute_finite_difference_coefficients" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">PySpice.Math.Calculus.</code><code class="descname">compute_finite_difference_coefficients</code><span class="sig-paren">(</span><em>derivative_order</em>, <em>grid</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Math/Calculus.html#compute_finite_difference_coefficients"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Math.Calculus.compute_finite_difference_coefficients" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="PySpice.Math.Calculus.derivative">
-<tt class="descclassname">PySpice.Math.Calculus.</tt><tt class="descname">derivative</tt><big>(</big><em>x</em>, <em>values</em>, <em>derivative_order=1</em>, <em>accuracy_order=4</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Math/Calculus.html#derivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Math.Calculus.derivative" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">PySpice.Math.Calculus.</code><code class="descname">derivative</code><span class="sig-paren">(</span><em>x</em>, <em>values</em>, <em>derivative_order=1</em>, <em>accuracy_order=4</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Math/Calculus.html#derivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Math.Calculus.derivative" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the derivative at the given derivative order and accuracy order. The precision of the
 Taylor expansion is <img class="math" src="../../../images/math/f20b747964f1dc27ebf6a9332f58c67ab2095934.png" alt="\mathcal{O}(dx^{accuracy})"/>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PySpice.Math.Calculus.get_finite_difference_coefficients">
-<tt class="descclassname">PySpice.Math.Calculus.</tt><tt class="descname">get_finite_difference_coefficients</tt><big>(</big><em>derivative_order</em>, <em>accuracy_order</em>, <em>grid_type</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Math/Calculus.html#get_finite_difference_coefficients"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Math.Calculus.get_finite_difference_coefficients" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">PySpice.Math.Calculus.</code><code class="descname">get_finite_difference_coefficients</code><span class="sig-paren">(</span><em>derivative_order</em>, <em>accuracy_order</em>, <em>grid_type</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Math/Calculus.html#get_finite_difference_coefficients"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Math.Calculus.get_finite_difference_coefficients" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="PySpice.Math.Calculus.simple_derivative">
-<tt class="descclassname">PySpice.Math.Calculus.</tt><tt class="descname">simple_derivative</tt><big>(</big><em>x</em>, <em>values</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Math/Calculus.html#simple_derivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Math.Calculus.simple_derivative" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">PySpice.Math.Calculus.</code><code class="descname">simple_derivative</code><span class="sig-paren">(</span><em>x</em>, <em>values</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Math/Calculus.html#simple_derivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Math.Calculus.simple_derivative" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the derivative as a simple slope.</p>
 </dd></dl>
 
@@ -99,20 +100,22 @@ Taylor expansion is <img class="math" src="../../../images/math/f20b747964f1dc27
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="../Math.html"
-                        title="previous chapter">3.1.3. <tt class="docutils literal"><span class="pre">Math</span></tt></a></p>
+                        title="previous chapter">3.1.3. <code class="docutils literal"><span class="pre">Math</span></code></a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../Physics.html"
-                        title="next chapter">3.1.4. <tt class="docutils literal"><span class="pre">Physics</span></tt></a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../../_sources/api/PySpice/Math/Calculus.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+                        title="next chapter">3.1.4. <code class="docutils literal"><span class="pre">Physics</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/api/PySpice/Math/Calculus.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
       <input type="text" name="q" />
@@ -129,7 +132,7 @@ Taylor expansion is <img class="math" src="../../../images/math/f20b747964f1dc27
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -144,15 +147,15 @@ Taylor expansion is <img class="math" src="../../../images/math/f20b747964f1dc27
         <li class="right" >
           <a href="../Math.html" title="3.1.3. Math"
              >previous</a> |</li>
-        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
-          <li><a href="../../PySpice.html" >3.1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
-          <li><a href="../Math.html" >3.1.3. <tt class="docutils literal"><span class="pre">Math</span></tt></a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="../Math.html" >3.1.3. <code class="docutils literal"><span class="pre">Math</span></code></a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

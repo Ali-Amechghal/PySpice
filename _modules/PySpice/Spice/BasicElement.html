@@ -23,11 +23,12 @@
     <script type="text/javascript" src="../../../static/jquery.js"></script>
     <script type="text/javascript" src="../../../static/underscore.js"></script>
     <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
     <link rel="up" title="PySpice.Spice" href="../Spice.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,20 +37,20 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../index.html" >Module code</a> &raquo;</li>
-          <li><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <h1>Source code for PySpice.Spice.BasicElement</h1><div class="highlight"><pre>
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># PySpice - A Spice Package for Python</span>
 <span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
 <span class="c">#</span>
@@ -57,15 +58,15 @@
 <span class="c"># it under the terms of the GNU General Public License as published by</span>
 <span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
 <span class="c"># (at your option) any later version.</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># This program is distributed in the hope that it will be useful,</span>
 <span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
 <span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
 <span class="c"># GNU General Public License for more details.</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># You should have received a copy of the GNU General Public License</span>
-<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;. </span>
-<span class="c"># </span>
+<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span>
 
 <span class="sd">&quot;&quot;&quot;This module implements SPICE circuit elements.</span>
@@ -899,32 +900,32 @@
     <span class="c">##############################################</span>
 
     <span class="nd">@property</span>
-<div class="viewcode-block" id="BipolarJunctionTransistor.collector"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BipolarJunctionTransistor.collector">[docs]</a>    <span class="k">def</span> <span class="nf">collector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">collector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="BipolarJunctionTransistor.base"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BipolarJunctionTransistor.base">[docs]</a>    <span class="k">def</span> <span class="nf">base</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">base</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="BipolarJunctionTransistor.emitter"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BipolarJunctionTransistor.emitter">[docs]</a>    <span class="k">def</span> <span class="nf">emitter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">emitter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="BipolarJunctionTransistor.substrate"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BipolarJunctionTransistor.substrate">[docs]</a>    <span class="k">def</span> <span class="nf">substrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">substrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">None</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="JunctionFieldEffectTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor">[docs]</a><span class="k">class</span> <span class="nc">JunctionFieldEffectTransistor</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a bipolar junction transistor.</span>
@@ -974,23 +975,23 @@
     <span class="c">##############################################</span>
 
     <span class="nd">@property</span>
-<div class="viewcode-block" id="JunctionFieldEffectTransistor.drain"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor.drain">[docs]</a>    <span class="k">def</span> <span class="nf">drain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">drain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="JunctionFieldEffectTransistor.gate"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor.gate">[docs]</a>    <span class="k">def</span> <span class="nf">gate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">gate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="JunctionFieldEffectTransistor.source"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor.source">[docs]</a>    <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="Mesfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mesfet">[docs]</a><span class="k">class</span> <span class="nc">Mesfet</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a Metal Semiconductor Field Effect Transistor.</span>
@@ -1037,23 +1038,23 @@
     <span class="c">##############################################</span>
 
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Mesfet.drain"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mesfet.drain">[docs]</a>    <span class="k">def</span> <span class="nf">drain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">drain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Mesfet.gate"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mesfet.gate">[docs]</a>    <span class="k">def</span> <span class="nf">gate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">gate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Mesfet.source"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mesfet.source">[docs]</a>    <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
+</div>
 <div class="viewcode-block" id="Mosfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet">[docs]</a><span class="k">class</span> <span class="nc">Mosfet</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a Metal Oxide Field Effect Transistor.</span>
@@ -1130,40 +1131,40 @@
     <span class="c">##############################################</span>
 
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Mosfet.drain"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet.drain">[docs]</a>    <span class="k">def</span> <span class="nf">drain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">drain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Mosfet.gate"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet.gate">[docs]</a>    <span class="k">def</span> <span class="nf">gate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">gate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Mosfet.source"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet.source">[docs]</a>    <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Mosfet.substrate"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet.substrate">[docs]</a>    <span class="k">def</span> <span class="nf">substrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">substrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="c">####################################################################################################</span>
 <span class="c"># </span>
 <span class="c"># End</span>
 <span class="c"># </span>
-<span class="c">####################################################################################################</span></div></div>
+<span class="c">####################################################################################################</span></div>
 </pre></div>
 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
       <input type="text" name="q" />
@@ -1180,7 +1181,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -1189,14 +1190,14 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../index.html" >Module code</a> &raquo;</li>
-          <li><a href="../Spice.html" >PySpice.Spice</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../Spice.html" >PySpice.Spice</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

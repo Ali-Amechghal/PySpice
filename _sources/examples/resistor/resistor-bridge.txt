@@ -4,25 +4,17 @@
 =================
 
 
-.. raw:: html
+.. getthecode:: resistor-bridge.py
+    :language: python
 
-  <div class="getthecode">
-    <div class="getthecode-header">
-      <span class="getthecode-filename">RingModulator.py</span>
-      <a href="../../_downloads/RingModulator.py"><span>RingModulator.py</span></a>
-    </div>
-  </div>
 
 .. code-block:: python
 
-    
     import PySpice.Logging.Logging as Logging
     logger = Logging.setup_logging()
     
-    
     from PySpice.Spice.Netlist import Circuit
     from PySpice.Unit.Units import *
-    
     
     circuit = Circuit('Resistor Bridge')
     
@@ -37,5 +29,9 @@
     analysis = simulator.operating_point()
     
     for node in analysis.nodes.values():
-        print('Node {}: {} V'.format(str(node), float(node))) # Fixme: format value + unit
+        print('Node {}: {:.1} V'.format(str(node), float(node))) # Fixme: format value + unit
+
+
+.. literalinclude:: resistor-bridge.stdout
+    :lines: 1-3
 

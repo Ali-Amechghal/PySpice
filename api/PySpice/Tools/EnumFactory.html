@@ -23,13 +23,14 @@
     <script type="text/javascript" src="../../../static/jquery.js"></script>
     <script type="text/javascript" src="../../../static/underscore.js"></script>
     <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.8. Tools" href="../Tools.html" />
     <link rel="next" title="3.1.8.2. File" href="File.html" />
     <link rel="prev" title="3.1.8. Tools" href="../Tools.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -44,22 +45,22 @@
         <li class="right" >
           <a href="../Tools.html" title="3.1.8. Tools"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
-          <li><a href="../../PySpice.html" >3.1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
-          <li><a href="../Tools.html" accesskey="U">3.1.8. <tt class="docutils literal"><span class="pre">Tools</span></tt></a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="../Tools.html" accesskey="U">3.1.8. <code class="docutils literal"><span class="pre">Tools</span></code></a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-PySpice.Tools.EnumFactory">
-<span id="enumfactory"></span><h1>3.1.8.1. <tt class="xref py py-mod docutils literal"><span class="pre">EnumFactory</span></tt><a class="headerlink" href="#module-PySpice.Tools.EnumFactory" title="Permalink to this headline">¶</a></h1>
+<span id="enumfactory"></span><h1>3.1.8.1. <code class="xref py py-mod docutils literal"><span class="pre">EnumFactory</span></code><a class="headerlink" href="#module-PySpice.Tools.EnumFactory" title="Permalink to this headline">¶</a></h1>
 <p>This module provides an implementation for enumerate.</p>
-<p>The enumerate factory <a class="reference internal" href="#PySpice.Tools.EnumFactory.EnumFactory" title="PySpice.Tools.EnumFactory.EnumFactory"><tt class="xref py py-func docutils literal"><span class="pre">EnumFactory()</span></tt></a> builds a enumerate from a list of names and assigns to
+<p>The enumerate factory <a class="reference internal" href="#PySpice.Tools.EnumFactory.EnumFactory" title="PySpice.Tools.EnumFactory.EnumFactory"><code class="xref py py-func docutils literal"><span class="pre">EnumFactory()</span></code></a> builds a enumerate from a list of names and assigns to
 these constants a value from 0 to N-1, where N is the number of constants.  For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">enum</span> <span class="o">=</span> <span class="n">EnumFactory</span><span class="p">(</span><span class="s">&#39;Enum1&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;cst1&#39;</span><span class="p">,</span> <span class="s">&#39;cst2&#39;</span><span class="p">))</span>
 </pre></div>
@@ -87,7 +88,7 @@ these constants a value from 0 to N-1, where N is the number of constants.  For 
 <div class="highlight-python"><div class="highlight"><pre><span class="nb">len</span><span class="p">(</span><span class="n">enum</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The enumerate factory <a class="reference internal" href="#PySpice.Tools.EnumFactory.ExplicitEnumFactory" title="PySpice.Tools.EnumFactory.ExplicitEnumFactory"><tt class="xref py py-func docutils literal"><span class="pre">ExplicitEnumFactory()</span></tt></a> is a variant that permits to specify the values of
+<p>The enumerate factory <a class="reference internal" href="#PySpice.Tools.EnumFactory.ExplicitEnumFactory" title="PySpice.Tools.EnumFactory.ExplicitEnumFactory"><code class="xref py py-func docutils literal"><span class="pre">ExplicitEnumFactory()</span></code></a> is a variant that permits to specify the values of
 the constants:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">enum2</span> <span class="o">=</span> <span class="n">ExplicitEnumFactory</span><span class="p">(</span><span class="s">&#39;Enum2&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;cst1&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;cst2&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">})</span>
 </pre></div>
@@ -98,43 +99,43 @@ the constants:</p>
 </div>
 <dl class="class">
 <dt id="PySpice.Tools.EnumFactory.EnumConstant">
-<em class="property">class </em><tt class="descclassname">PySpice.Tools.EnumFactory.</tt><tt class="descname">EnumConstant</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#EnumConstant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.EnumConstant" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<em class="property">class </em><code class="descclassname">PySpice.Tools.EnumFactory.</code><code class="descname">EnumConstant</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#EnumConstant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.EnumConstant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Define an Enum Constant</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PySpice.Tools.EnumFactory.EnumFactory">
-<tt class="descclassname">PySpice.Tools.EnumFactory.</tt><tt class="descname">EnumFactory</tt><big>(</big><em>enum_name</em>, <em>enum_tuple</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#EnumFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.EnumFactory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return an <a class="reference internal" href="#PySpice.Tools.EnumFactory.EnumMetaClass" title="PySpice.Tools.EnumFactory.EnumMetaClass"><tt class="xref py py-class docutils literal"><span class="pre">EnumMetaClass</span></tt></a> instance, where <em>enum_name</em> is the class name and
+<code class="descclassname">PySpice.Tools.EnumFactory.</code><code class="descname">EnumFactory</code><span class="sig-paren">(</span><em>enum_name</em>, <em>enum_tuple</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#EnumFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.EnumFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an <a class="reference internal" href="#PySpice.Tools.EnumFactory.EnumMetaClass" title="PySpice.Tools.EnumFactory.EnumMetaClass"><code class="xref py py-class docutils literal"><span class="pre">EnumMetaClass</span></code></a> instance, where <em>enum_name</em> is the class name and
 <em>enum_tuple</em> is an iterable of constant&#8217;s names.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Tools.EnumFactory.EnumMetaClass">
-<em class="property">class </em><tt class="descclassname">PySpice.Tools.EnumFactory.</tt><tt class="descname">EnumMetaClass</tt><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#EnumMetaClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.EnumMetaClass" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Tools.EnumFactory.ReadOnlyMetaClass" title="PySpice.Tools.EnumFactory.ReadOnlyMetaClass"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Tools.EnumFactory.ReadOnlyMetaClass</span></tt></a></p>
-<p>This meta class implements the <a class="reference external" href="http://docs.python.org/library/functions.html#len" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">len()</span></tt></a> protocol.</p>
+<em class="property">class </em><code class="descclassname">PySpice.Tools.EnumFactory.</code><code class="descname">EnumMetaClass</code><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#EnumMetaClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.EnumMetaClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Tools.EnumFactory.ReadOnlyMetaClass" title="PySpice.Tools.EnumFactory.ReadOnlyMetaClass"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Tools.EnumFactory.ReadOnlyMetaClass</span></code></a></p>
+<p>This meta class implements the <a class="reference external" href="http://docs.python.org/library/functions.html#len" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">len()</span></code></a> protocol.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PySpice.Tools.EnumFactory.ExplicitEnumFactory">
-<tt class="descclassname">PySpice.Tools.EnumFactory.</tt><tt class="descname">ExplicitEnumFactory</tt><big>(</big><em>enum_name</em>, <em>enum_dict</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#ExplicitEnumFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.ExplicitEnumFactory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return an <a class="reference internal" href="#PySpice.Tools.EnumFactory.ExplicitEnumMetaClass" title="PySpice.Tools.EnumFactory.ExplicitEnumMetaClass"><tt class="xref py py-class docutils literal"><span class="pre">ExplicitEnumMetaClass</span></tt></a> instance, where <em>enum_name</em> is the class name and
+<code class="descclassname">PySpice.Tools.EnumFactory.</code><code class="descname">ExplicitEnumFactory</code><span class="sig-paren">(</span><em>enum_name</em>, <em>enum_dict</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#ExplicitEnumFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.ExplicitEnumFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an <a class="reference internal" href="#PySpice.Tools.EnumFactory.ExplicitEnumMetaClass" title="PySpice.Tools.EnumFactory.ExplicitEnumMetaClass"><code class="xref py py-class docutils literal"><span class="pre">ExplicitEnumMetaClass</span></code></a> instance, where <em>enum_name</em> is the class name and
 <em>enum_dict</em> is a dict of constant&#8217;s names and their values.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Tools.EnumFactory.ExplicitEnumMetaClass">
-<em class="property">class </em><tt class="descclassname">PySpice.Tools.EnumFactory.</tt><tt class="descname">ExplicitEnumMetaClass</tt><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#ExplicitEnumMetaClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.ExplicitEnumMetaClass" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Tools.EnumFactory.ReadOnlyMetaClass" title="PySpice.Tools.EnumFactory.ReadOnlyMetaClass"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Tools.EnumFactory.ReadOnlyMetaClass</span></tt></a></p>
-<p>This meta class implements the operator <tt class="docutils literal"><span class="pre">in</span></tt>.</p>
+<em class="property">class </em><code class="descclassname">PySpice.Tools.EnumFactory.</code><code class="descname">ExplicitEnumMetaClass</code><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#ExplicitEnumMetaClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.ExplicitEnumMetaClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Tools.EnumFactory.ReadOnlyMetaClass" title="PySpice.Tools.EnumFactory.ReadOnlyMetaClass"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Tools.EnumFactory.ReadOnlyMetaClass</span></code></a></p>
+<p>This meta class implements the operator <code class="docutils literal"><span class="pre">in</span></code>.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Tools.EnumFactory.ReadOnlyMetaClass">
-<em class="property">class </em><tt class="descclassname">PySpice.Tools.EnumFactory.</tt><tt class="descname">ReadOnlyMetaClass</tt><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#ReadOnlyMetaClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.ReadOnlyMetaClass" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.type</span></tt></p>
+<em class="property">class </em><code class="descclassname">PySpice.Tools.EnumFactory.</code><code class="descname">ReadOnlyMetaClass</code><a class="reference internal" href="../../../_modules/PySpice/Tools/EnumFactory.html#ReadOnlyMetaClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Tools.EnumFactory.ReadOnlyMetaClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#type" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">type</span></code></a></p>
 <p>This meta class implements a class where attributes are read only.</p>
 </dd></dl>
 
@@ -144,20 +145,22 @@ the constants:</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="../Tools.html"
-                        title="previous chapter">3.1.8. <tt class="docutils literal"><span class="pre">Tools</span></tt></a></p>
+                        title="previous chapter">3.1.8. <code class="docutils literal"><span class="pre">Tools</span></code></a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="File.html"
-                        title="next chapter">3.1.8.2. <tt class="docutils literal"><span class="pre">File</span></tt></a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../../_sources/api/PySpice/Tools/EnumFactory.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+                        title="next chapter">3.1.8.2. <code class="docutils literal"><span class="pre">File</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/api/PySpice/Tools/EnumFactory.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
       <input type="text" name="q" />
@@ -174,7 +177,7 @@ the constants:</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -189,15 +192,15 @@ the constants:</p>
         <li class="right" >
           <a href="../Tools.html" title="3.1.8. Tools"
              >previous</a> |</li>
-        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
-          <li><a href="../../PySpice.html" >3.1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
-          <li><a href="../Tools.html" >3.1.8. <tt class="docutils literal"><span class="pre">Tools</span></tt></a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="../Tools.html" >3.1.8. <code class="docutils literal"><span class="pre">Tools</span></code></a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

@@ -23,13 +23,14 @@
     <script type="text/javascript" src="../../../static/jquery.js"></script>
     <script type="text/javascript" src="../../../static/underscore.js"></script>
     <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
     <link rel="next" title="3.1.8. Tools" href="../Tools.html" />
     <link rel="prev" title="3.1.7.9. Server" href="Server.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -44,24 +45,24 @@
         <li class="right" >
           <a href="Server.html" title="3.1.7.9. Server"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
-          <li><a href="../../PySpice.html" >3.1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
-          <li><a href="../Spice.html" accesskey="U">3.1.7. <tt class="docutils literal"><span class="pre">Spice</span></tt></a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="../Spice.html" accesskey="U">3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-PySpice.Spice.Simulation">
-<span id="simulation"></span><h1>3.1.7.10. <tt class="xref py py-mod docutils literal"><span class="pre">Simulation</span></tt><a class="headerlink" href="#module-PySpice.Spice.Simulation" title="Permalink to this headline">¶</a></h1>
+<span id="simulation"></span><h1>3.1.7.10. <code class="xref py py-mod docutils literal"><span class="pre">Simulation</span></code><a class="headerlink" href="#module-PySpice.Spice.Simulation" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Simulation.</tt><tt class="descname">CircuitSimulation</tt><big>(</big><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em>, <em>pipe=True</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Simulation.</code><code class="descname">CircuitSimulation</code><span class="sig-paren">(</span><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em>, <em>pipe=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Define and generate the spice instruction to perform a circuit simulation.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -70,12 +71,12 @@ is partially supported.</p>
 </div>
 <dl class="attribute">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation._logger">
-<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x7f1c79822d30&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation._logger" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation._logger" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.ac">
-<tt class="descname">ac</tt><big>(</big><em>start_frequency</em>, <em>stop_frequency</em>, <em>number_of_points</em>, <em>variation</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.ac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.ac" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ac</code><span class="sig-paren">(</span><em>start_frequency</em>, <em>stop_frequency</em>, <em>number_of_points</em>, <em>variation</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.ac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.ac" title="Permalink to this definition">¶</a></dt>
 <dd><p>.ac dec nd fstart fstop
 .ac oct no fstart fstop
 .ac lin np fstart fstop</p>
@@ -83,18 +84,18 @@ is partially supported.</p>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.circuit">
-<tt class="descname">circuit</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.circuit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">circuit</code><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.circuit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.dc">
-<tt class="descname">dc</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.dc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.dc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dc</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.dc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.dc" title="Permalink to this definition">¶</a></dt>
 <dd><p>.dc srcnam vstart vstop vincr [ src2 start2 stop2 incr2 ]</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.dc_sensitivity">
-<tt class="descname">dc_sensitivity</tt><big>(</big><em>output_variable</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.dc_sensitivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.dc_sensitivity" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dc_sensitivity</code><span class="sig-paren">(</span><em>output_variable</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.dc_sensitivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.dc_sensitivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>.sens outvar</p>
 <p>.sens outvar ac dec nd fstart fstop
 .sens outvar ac oct no fstart fstop
@@ -103,34 +104,34 @@ is partially supported.</p>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.initial_condition">
-<tt class="descname">initial_condition</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.initial_condition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.initial_condition" title="Permalink to this definition">¶</a></dt>
+<code class="descname">initial_condition</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.initial_condition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.initial_condition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set initial condition for voltage nodes.</p>
 <p>Usage: initial_condition(node_name1=value, ...)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.nominal_temperature">
-<tt class="descname">nominal_temperature</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.nominal_temperature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.nominal_temperature" title="Permalink to this definition">¶</a></dt>
+<code class="descname">nominal_temperature</code><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.nominal_temperature" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.operating_point">
-<tt class="descname">operating_point</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.operating_point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.operating_point" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operating_point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.operating_point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.operating_point" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.options">
-<tt class="descname">options</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.options" title="Permalink to this definition">¶</a></dt>
+<code class="descname">options</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.options" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.reset_analysis">
-<tt class="descname">reset_analysis</tt><big>(</big><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.reset_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.reset_analysis" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reset_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.reset_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.reset_analysis" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.save">
-<tt class="descname">save</tt><big>(</big><em>*args</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the list of saved vectors.</p>
 <p>If no <em>.save</em> line is given, then the default set of vectors is saved (node voltages and
 voltage source branch currents). If <em>.save</em> lines are given, only those vectors specified
@@ -144,18 +145,18 @@ independent voltage source (including inductor) are given by <em>i(source_name)<
 
 <dl class="attribute">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.save_currents">
-<tt class="descname">save_currents</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.save_currents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.save_currents" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_currents</code><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.save_currents" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save all currents.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.temperature">
-<tt class="descname">temperature</tt><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.temperature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.temperature" title="Permalink to this definition">¶</a></dt>
+<code class="descname">temperature</code><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.temperature" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.transient">
-<tt class="descname">transient</tt><big>(</big><em>step_time</em>, <em>end_time</em>, <em>start_time=None</em>, <em>max_time=None</em>, <em>use_initial_condition=False</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.transient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.transient" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transient</code><span class="sig-paren">(</span><em>step_time</em>, <em>end_time</em>, <em>start_time=None</em>, <em>max_time=None</em>, <em>use_initial_condition=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.transient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.transient" title="Permalink to this definition">¶</a></dt>
 <dd><p>.tran tstep tstop &lt;tstart &lt;tmax&gt;&gt; &lt;uic&gt;</p>
 </dd></dl>
 
@@ -163,77 +164,77 @@ independent voltage source (including inductor) are given by <em>i(source_name)<
 
 <dl class="class">
 <dt id="PySpice.Spice.Simulation.CircuitSimulator">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Simulation.</tt><tt class="descname">CircuitSimulator</tt><big>(</big><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em>, <em>pipe=True</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Simulation.CircuitSimulation" title="PySpice.Spice.Simulation.CircuitSimulation"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Simulation.CircuitSimulation</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Simulation.</code><code class="descname">CircuitSimulator</code><span class="sig-paren">(</span><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em>, <em>pipe=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Simulation.CircuitSimulation" title="PySpice.Spice.Simulation.CircuitSimulation"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Simulation.CircuitSimulation</span></code></a></p>
 <p>This class implements a circuit simulator. Each analysis mode is performed by a method that
 return the measured probes.</p>
 <p>For <em>ac</em> and <em>transient</em> analyses, the user must specify a list of nodes using the <em>probes</em> key
 argument.</p>
 <dl class="attribute">
 <dt id="PySpice.Spice.Simulation.CircuitSimulator._logger">
-<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x7f1c7982e7b8&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator._logger" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator._logger" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulator._run">
-<tt class="descname">_run</tt><big>(</big><em>analysis_method</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator._run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator._run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_run</code><span class="sig-paren">(</span><em>analysis_method</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator._run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator._run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulator.ac">
-<tt class="descname">ac</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.ac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.ac" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ac</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.ac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.ac" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulator.dc">
-<tt class="descname">dc</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.dc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.dc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dc</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.dc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.dc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulator.dc_sensitivity">
-<tt class="descname">dc_sensitivity</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.dc_sensitivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.dc_sensitivity" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dc_sensitivity</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.dc_sensitivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.dc_sensitivity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulator.operating_point">
-<tt class="descname">operating_point</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.operating_point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.operating_point" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operating_point</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.operating_point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.operating_point" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulator.transient">
-<tt class="descname">transient</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.transient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.transient" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transient</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.transient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.transient" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Simulation.</tt><tt class="descname">NgSpiceSharedCircuitSimulator</tt><big>(</big><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#NgSpiceSharedCircuitSimulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Simulation.CircuitSimulator" title="PySpice.Spice.Simulation.CircuitSimulator"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Simulation.CircuitSimulator</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Simulation.</code><code class="descname">NgSpiceSharedCircuitSimulator</code><span class="sig-paren">(</span><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#NgSpiceSharedCircuitSimulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Simulation.CircuitSimulator" title="PySpice.Spice.Simulation.CircuitSimulator"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Simulation.CircuitSimulator</span></code></a></p>
 <dl class="attribute">
 <dt id="PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._logger">
-<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x7f1c79753358&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._logger" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._logger" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._run">
-<tt class="descname">_run</tt><big>(</big><em>analysis_method</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#NgSpiceSharedCircuitSimulator._run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_run</code><span class="sig-paren">(</span><em>analysis_method</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#NgSpiceSharedCircuitSimulator._run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.Simulation.SubprocessCircuitSimulator">
-<em class="property">class </em><tt class="descclassname">PySpice.Spice.Simulation.</tt><tt class="descname">SubprocessCircuitSimulator</tt><big>(</big><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em>, <em>spice_command='ngspice'</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#SubprocessCircuitSimulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.SubprocessCircuitSimulator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Simulation.CircuitSimulator" title="PySpice.Spice.Simulation.CircuitSimulator"><tt class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Simulation.CircuitSimulator</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Simulation.</code><code class="descname">SubprocessCircuitSimulator</code><span class="sig-paren">(</span><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em>, <em>spice_command='ngspice'</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#SubprocessCircuitSimulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.SubprocessCircuitSimulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Simulation.CircuitSimulator" title="PySpice.Spice.Simulation.CircuitSimulator"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Simulation.CircuitSimulator</span></code></a></p>
 <dl class="attribute">
 <dt id="PySpice.Spice.Simulation.SubprocessCircuitSimulator._logger">
-<tt class="descname">_logger</tt><em class="property"> = &lt;logging.Logger object at 0x7f1c7974bcf8&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.SubprocessCircuitSimulator._logger" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.SubprocessCircuitSimulator._logger" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.SubprocessCircuitSimulator._run">
-<tt class="descname">_run</tt><big>(</big><em>analysis_method</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#SubprocessCircuitSimulator._run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.SubprocessCircuitSimulator._run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_run</code><span class="sig-paren">(</span><em>analysis_method</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#SubprocessCircuitSimulator._run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.SubprocessCircuitSimulator._run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -244,20 +245,22 @@ argument.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="Server.html"
-                        title="previous chapter">3.1.7.9. <tt class="docutils literal"><span class="pre">Server</span></tt></a></p>
+                        title="previous chapter">3.1.7.9. <code class="docutils literal"><span class="pre">Server</span></code></a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../Tools.html"
-                        title="next chapter">3.1.8. <tt class="docutils literal"><span class="pre">Tools</span></tt></a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../../_sources/api/PySpice/Spice/Simulation.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+                        title="next chapter">3.1.8. <code class="docutils literal"><span class="pre">Tools</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/api/PySpice/Spice/Simulation.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
       <input type="text" name="q" />
@@ -274,7 +277,7 @@ argument.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -289,15 +292,15 @@ argument.</p>
         <li class="right" >
           <a href="Server.html" title="3.1.7.9. Server"
              >previous</a> |</li>
-        <li><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
-          <li><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
-          <li><a href="../../PySpice.html" >3.1. <tt class="docutils literal"><span class="pre">PySpice</span></tt></a> &raquo;</li>
-          <li><a href="../Spice.html" >3.1.7. <tt class="docutils literal"><span class="pre">Spice</span></tt></a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="../Spice.html" >3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>
