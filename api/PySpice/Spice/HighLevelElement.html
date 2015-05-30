@@ -23,6 +23,7 @@
     <script type="text/javascript" src="../../../static/jquery.js"></script>
     <script type="text/javascript" src="../../../static/underscore.js"></script>
     <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
@@ -138,8 +139,8 @@
 </div>
 <p>The shape of the waveform is described by the following equation:</p>
 <div class="math">
-<p><img src="../../../images/math/65551c8225f0ee0e50d7a447469ee9d55ec2cc2a.png" alt="V(t) = V_a (V_o + \sin (2\pi M_f\,t)) \sin (2\pi F_c\,t)"/></p>
-</div><dl class="method">
+\[V(t) = V_a (V_o + \sin (2\pi M_f\,t)) \sin (2\pi F_c\,t)\]</div>
+<dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.AmplitudeModulated.format_spice_parameters">
 <code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#AmplitudeModulated.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.AmplitudeModulated.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -226,14 +227,14 @@
 <p>The shape of the waveform is described by the following formula:</p>
 <p>Let V21 = V2 - V1 and V12 = V1 - V2.</p>
 <div class="math">
-<p><img src="../../../images/math/142de0f723480f0fce4d4c3df24418faeea36a01.png" alt="V(t) = \begin{cases}
+\[\begin{split}V(t) = \begin{cases}
   V_1 &amp; \text{if}\ 0 \leq t &lt; T_{d1}, \\
   V_1 + V_{21} ( 1 − e^{-\frac{t-T_{d1}}{\tau_1}} )
   &amp; \text{if}\ T_{d1} \leq t &lt; T_{d2}, \\
   V_1 + V_{21} ( 1 − e^{-\frac{t-T_{d1}}{\tau_1}} ) + V_{12} ( 1 − e^{-\frac{t-T_{d2}}{\tau_2}} )
   &amp; \text{if}\ T_{d2} \leq t &lt; T_{stop}
-\end{cases}"/></p>
-</div><dl class="method">
+\end{cases}\end{split}\]</div>
+<dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.Exponential.format_spice_parameters">
 <code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#Exponential.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.Exponential.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -579,8 +580,8 @@ selected.</p>
 <blockquote>
 <div><p>The shape of the waveform is described by the following equation:</p>
 <div class="math">
-<p><img src="../../../images/math/085f29d23d2cc31c4c6c4afdc69a6c51ac9b53c1.png" alt="V(t) = V_o + V_a \sin (2\pi F_c\, t + M_{di} \sin (2\pi F_s\,t))"/></p>
-</div></div></blockquote>
+\[V(t) = V_o + V_a \sin (2\pi F_c\, t + M_{di} \sin (2\pi F_s\,t))\]</div>
+</div></blockquote>
 <dl class="method">
 <dt id="PySpice.Spice.HighLevelElement.SingleFrequencyFM.format_spice_parameters">
 <code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/HighLevelElement.html#SingleFrequencyFM.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.HighLevelElement.SingleFrequencyFM.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
@@ -656,11 +657,11 @@ selected.</p>
 </table>
 <p>The shape of the waveform is described by the following formula:</p>
 <div class="math">
-<p><img src="../../../images/math/886aef87fbba48ef8edd5cd9acc558c73aeff066.png" alt="V(t) = \begin{cases}
+\[\begin{split}V(t) = \begin{cases}
   V_o &amp; \text{if}\ 0 \leq t &lt; T_d, \\
   V_o + V_a e^{-D_f(t-T_d)} \sin\left(2\pi f (t-T_d)\right) &amp; \text{if}\ T_d \leq t &lt; T_{stop}.
-\end{cases}"/></p>
-</div><p>Spice syntax:</p>
+\end{cases}\end{split}\]</div>
+<p>Spice syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre>SIN ( Voffset Vamplitude Freq Tdelay DampingFactor )
 </pre></div>
 </div>

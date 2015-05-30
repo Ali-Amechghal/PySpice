@@ -6,10 +6,11 @@ This section discusses the fundamental laws of electronic.
 
 .. end
 
-This section has 1 examples.
+This section has 2 examples.
 
 
 .. toctree::
   :maxdepth: 1
 
-  voltage_divider.rst
+  current-divider.rst
+  voltage-divider.rst

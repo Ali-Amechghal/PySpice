@@ -23,6 +23,7 @@
     <script type="text/javascript" src="../../static/jquery.js"></script>
     <script type="text/javascript" src="../../static/underscore.js"></script>
     <script type="text/javascript" src="../../static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
     <link rel="up" title="2.5.9. Resistor" href="index.html" />
@@ -85,7 +86,7 @@
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:.1} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c"># Fixme: format value + unit</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:4.1f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c"># Fixme: format value + unit</span>
 <span class="c">#o#</span>
 
 <span class="c">####################################################################################################</span>
@@ -115,12 +116,12 @@
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:.1} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c"># Fixme: format value + unit</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:4.1f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c"># Fixme: format value + unit</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Node 3 [voltage]: 6e+00 V
-Node 1 [voltage]: 1e+01 V
-Node 2 [voltage]: 4e+00 V
+<div class="highlight-python"><div class="highlight"><pre>Node 2 [voltage]:  4.0 V
+Node 3 [voltage]:  6.0 V
+Node 1 [voltage]: 10.0 V
 </pre></div>
 </div>
 </div>

@@ -23,6 +23,7 @@
     <script type="text/javascript" src="../../static/jquery.js"></script>
     <script type="text/javascript" src="../../static/underscore.js"></script>
     <script type="text/javascript" src="../../static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
     <link rel="up" title="2.5.3. Electricity" href="index.html" />
@@ -182,17 +183,17 @@
 <span class="n">amplitude_mono</span> <span class="o">=</span> <span class="n">rms_mono</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The phase voltages in Y configuration are dephased of <img class="math" src="../../images/math/340431b697fd877f224809cb3b7c797a97d59e0c.png" alt="\frac{2\pi}{3}"/>:</p>
+<p>The phase voltages in Y configuration are dephased of <span class="math">\(\frac{2\pi}{3}\)</span>:</p>
 <div class="math">
-<p><img src="../../images/math/cf2441fcc0621417252f643e90eff444b94e9100.png" alt="V_{L1 - N} = V_{pp} \cos \left( \omega t \right) \\
+\[\begin{split}V_{L1 - N} = V_{pp} \cos \left( \omega t \right) \\
 V_{L2 - N} = V_{pp} \cos \left( \omega t - \frac{2\pi}{3} \right) \\
-V_{L3 - N} = V_{pp} \cos \left( \omega t - \frac{4\pi}{3} \right)"/></p>
-</div><p>We rewrite them in complex notation:</p>
+V_{L3 - N} = V_{pp} \cos \left( \omega t - \frac{4\pi}{3} \right)\end{split}\]</div>
+<p>We rewrite them in complex notation:</p>
 <div class="math">
-<p><img src="../../images/math/21c1deee0e75f93b715467b7a04d59c03f41ed8a.png" alt="V_{L1 - N} = V_{pp} e^{j\omega t} \\
+\[\begin{split}V_{L1 - N} = V_{pp} e^{j\omega t} \\
 V_{L2 - N} = V_{pp} e^{j \left(\omega t - \frac{2\pi}{3} \right) } \\
-V_{L3 - N} = V_{pp} e^{j \left(\omega t - \frac{4\pi}{3} \right) }"/></p>
-</div><div class="highlight-python"><div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">period</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+V_{L3 - N} = V_{pp} e^{j \left(\omega t - \frac{4\pi}{3} \right) }\end{split}\]</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">period</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">L1</span> <span class="o">=</span> <span class="n">amplitude_mono</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span><span class="p">)</span>
 <span class="n">L2</span> <span class="o">=</span> <span class="n">amplitude_mono</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">L3</span> <span class="o">=</span> <span class="n">amplitude_mono</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
@@ -200,17 +201,17 @@ V_{L3 - N} = V_{pp} e^{j \left(\omega t - \frac{4\pi}{3} \right) }"/></p>
 </div>
 <p>From these expressions, we compute the voltage in delta configuration using trigonometric identities :</p>
 <div class="math">
-<p><img src="../../images/math/f4f7717dbdf0c45cb3f8189e9ab73f84c46c7207.png" alt="V_{L1 - L2} = V_{L1} \sqrt{3} e^{j \frac{\pi}{6} } \\
+\[\begin{split}V_{L1 - L2} = V_{L1} \sqrt{3} e^{j \frac{\pi}{6} } \\
 V_{L2 - L3} = V_{L2} \sqrt{3} e^{j \frac{\pi}{6} } \\
-V_{L3 - L1} = V_{L3} \sqrt{3} e^{j \frac{\pi}{6} }"/></p>
-</div><p>In comparison to the Y configuration, the voltages in delta configuration are magnified by
-a factor <img class="math" src="../../images/math/a95d932617b4c41b5b65b55115e36e465b667202.png" alt="\sqrt{3}"/> and dephased of <img class="math" src="../../images/math/dbdc8232925c221be22cd31c7105c4d0306dceca.png" alt="\frac{\pi}{6}"/>.</p>
+V_{L3 - L1} = V_{L3} \sqrt{3} e^{j \frac{\pi}{6} }\end{split}\]</div>
+<p>In comparison to the Y configuration, the voltages in delta configuration are magnified by
+a factor <span class="math">\(\sqrt{3}\)</span> and dephased of <span class="math">\(\frac{\pi}{6}\)</span>.</p>
 <p>Finally we rewrite them in temporal notation:</p>
 <div class="math">
-<p><img src="../../images/math/ad6ac53a705a3a00da2b951acaa96a564b28b947.png" alt="V_{L1 - L2} = V_{pp} \sqrt{3} \cos \left( \omega t + \frac{\pi}{6} \right) \\
+\[\begin{split}V_{L1 - L2} = V_{pp} \sqrt{3} \cos \left( \omega t + \frac{\pi}{6} \right) \\
 V_{L2 - L3} = V_{pp} \sqrt{3} \cos \left( \omega t - \frac{\pi}{2} \right) \\
-V_{L3 - L1} = V_{pp} \sqrt{3} \cos \left( \omega t - \frac{7\pi}{6} \right)"/></p>
-</div><div class="highlight-python"><div class="highlight"><pre><span class="n">rms_tri</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">rms_mono</span>
+V_{L3 - L1} = V_{pp} \sqrt{3} \cos \left( \omega t - \frac{7\pi}{6} \right)\end{split}\]</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">rms_tri</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">rms_mono</span>
 <span class="n">amplitude_tri</span> <span class="o">=</span> <span class="n">rms_tri</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">L12</span> <span class="o">=</span> <span class="n">amplitude_tri</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Voltage Divider &mdash; PySpice 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../static/hidecode.js"></script>
+    <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="voltage-divider">
+<h1>Voltage Divider<a class="headerlink" href="#voltage-divider" title="Permalink to this headline">¶</a></h1>
+<p>This circuit is a fundamental block in electronic that permits to scale a voltage by an
+impedance ratio.</p>
+<img alt="../../images/voltage-divider.png" src="../../images/voltage-divider.png" />
+<p>The relation between the input and ouput voltage is:</p>
+<div class="math">
+\[\frac{V_{out}}{V_{in}} = \frac{R_2}{R_1 + R_2}\]</div>
+<p>This equation holds for any impedances like resistance, capacitance, inductance, etc.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c"># Fixme: V(10) uV(10) 10*V</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c"># Fixme: format value + unit</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Node 1 [voltage]: 10.00 V
+Node 2 [voltage]:  3.33 V
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/examples/fundamental-laws/voltage-divider.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

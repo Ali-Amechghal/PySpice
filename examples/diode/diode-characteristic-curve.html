@@ -23,6 +23,7 @@
     <script type="text/javascript" src="../../static/jquery.js"></script>
     <script type="text/javascript" src="../../static/underscore.js"></script>
     <script type="text/javascript" src="../../static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.1.0 documentation" href="../../index.html" />
     <link rel="up" title="2.5.2. Diode" href="index.html" />
@@ -257,8 +258,8 @@ temperatures: 0, 25 and 100 °C.</p>
 </div>
 <p>We plot the characteristic curve and compare them to the Shockley diode model:</p>
 <div class="math">
-<p><img src="../../images/math/9d13f335db582784a85723c4f4f2650219aa5d1d.png" alt="I_d = I_s \left( e^{\frac{V_d}{n V_T}} - 1 \right)"/></p>
-</div><p>where <img class="math" src="../../images/math/288649af452d4cd77214d4c8e6d93a15a27d4445.png" alt="V_T = \frac{k T}{q}"/></p>
+\[I_d = I_s \left( e^{\frac{V_d}{n V_T}} - 1 \right)\]</div>
+<p>where <span class="math">\(V_T = \frac{k T}{q}\)</span></p>
 <p>In order to scale the reverse biased region, we have to do some hack with Matplotlib.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">silicon_forward_voltage_threshold</span> <span class="o">=</span> <span class="o">.</span><span class="mi">7</span>
 
@@ -305,10 +306,10 @@ temperatures: 0, 25 and 100 °C.</p>
 </div>
 <p>Now we compute and plot the static and dynamic resistance.</p>
 <div class="math">
-<p><img src="../../images/math/dae4ef6a8344c7761be8b2fe70a46441db5a6ba3.png" alt="\frac{d I_d}{d V_d} = \frac{1}{n V_T}(I_d + I_s)"/></p>
-</div><div class="math">
-<p><img src="../../images/math/d60ffc84fbabebdb57f99c63129d56f51cb9e3a8.png" alt="r_d = \frac{d V_d}{d I_d} \approx \frac{n V_T}{I_d}"/></p>
-</div><div class="highlight-python"><div class="highlight"><pre><span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+\[\frac{d I_d}{d V_d} = \frac{1}{n V_T}(I_d + I_s)\]</div>
+<div class="math">
+\[r_d = \frac{d V_d}{d I_d} \approx \frac{n V_T}{I_d}\]</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Resistance @ 25 °C&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
