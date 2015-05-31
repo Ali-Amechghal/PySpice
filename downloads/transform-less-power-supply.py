@@ -44,6 +44,7 @@ circuit.R('ac', 2, 'in', 470)
 simulator = circuit.simulator(temperature=25, nominal_temperature=25)
 analysis = simulator.transient(step_time=ac_line.period/200, end_time=ac_line.period*10)
 
+figure = plt.figure(1, (20, 10))
 axe = plt.subplot(111)
 
 plot(analysis['in'] / 100, axis=axe)
@@ -52,7 +53,7 @@ plot((analysis.out - analysis['in']) / 100, axis=axe)
 plot(analysis.out - analysis['1'], axis=axe)
 plot((analysis['1'] - analysis['2']) / 100, axis=axe)
 # or:
-#   pylab.plot(analysis.out.abscissa, analysis.out)
+#   plt.plot(analysis.out.abscissa, analysis.out)
 plt.legend(('Vin [V]', 'Vout [V]'), loc=(.8,.8))
 plt.grid()
 plt.xlabel('t [s]')
@@ -60,9 +61,10 @@ plt.ylabel('[V]')
 
 plt.tight_layout()
 plt.show()
+#fig# save_figure(figure, 'transform-less-power-supply.png')
 
 ####################################################################################################
-# 
+#
 # End
-# 
+#
 ####################################################################################################

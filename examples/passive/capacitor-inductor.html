@@ -63,7 +63,7 @@
 <div class="getthecode-header"><span class="getthecode-filename">capacitor-inductor.py</span><a href="../../downloads/capacitor-inductor.py"><span>capacitor-inductor.py</span></a></div>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">####################################################################################################</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="c">####################################################################################################</span>
 
@@ -80,6 +80,8 @@
 
 <span class="c"># Warning: the capacitor/inductor return current in the generator</span>
 <span class="c">#  could use switches instead</span>
+
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">element_type</span> <span class="ow">in</span> <span class="s">&#39;capacitor&#39;</span><span class="p">,</span> <span class="s">&#39;inductor&#39;</span><span class="p">:</span>
 
@@ -108,14 +110,14 @@
     <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
     <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">end_time</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">period</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
 
-    <span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-    <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s">&#39;capacitor&#39;</span><span class="p">:</span>
+        <span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Capacitor: voltage is constant&quot;</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Inductor: current is constant&quot;</span>
     <span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">current_scale</span> <span class="o">=</span> <span class="mi">1000</span>
     <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;in&#39;</span><span class="p">])</span>
     <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;out&#39;</span><span class="p">])</span>
@@ -126,17 +128,19 @@
     <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;[V]&#39;</span><span class="p">)</span>
     <span class="n">axe</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Vin [V]&#39;</span><span class="p">,</span> <span class="s">&#39;Vout [V]&#39;</span><span class="p">,</span> <span class="s">&#39;I&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
 
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c">#fig# save_figure(figure, &#39;capacitor-inductor.png&#39;)</span>
 
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># End</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span>
 </pre></div>
 </div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
@@ -147,6 +151,8 @@
 
 <span class="c"># Warning: the capacitor/inductor return current in the generator</span>
 <span class="c">#  could use switches instead</span>
+
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">element_type</span> <span class="ow">in</span> <span class="s">&#39;capacitor&#39;</span><span class="p">,</span> <span class="s">&#39;inductor&#39;</span><span class="p">:</span>
 
@@ -175,14 +181,14 @@
     <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
     <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">end_time</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">period</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
 
-    <span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-    <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s">&#39;capacitor&#39;</span><span class="p">:</span>
+        <span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Capacitor: voltage is constant&quot;</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Inductor: current is constant&quot;</span>
     <span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">current_scale</span> <span class="o">=</span> <span class="mi">1000</span>
     <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;in&#39;</span><span class="p">])</span>
     <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;out&#39;</span><span class="p">])</span>
@@ -193,9 +199,11 @@
     <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;[V]&#39;</span><span class="p">)</span>
     <span class="n">axe</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Vin [V]&#39;</span><span class="p">,</span> <span class="s">&#39;Vout [V]&#39;</span><span class="p">,</span> <span class="s">&#39;I&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
 
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<img alt="../../images/capacitor-inductor.png" class="align-center" src="../../images/capacitor-inductor.png" />
 </div>
 
 

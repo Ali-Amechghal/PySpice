@@ -61,16 +61,14 @@
 <h1>2.5.2.1. Diode Characteristic Curve<a class="headerlink" href="#diode-characteristic-curve" title="Permalink to this headline">¶</a></h1>
 <div class="getthecode">
 <div class="getthecode-header"><span class="getthecode-filename">diode-characteristic-curve.py</span><a href="../../downloads/diode-characteristic-curve.py"><span>diode-characteristic-curve.py</span></a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
-
-<span class="c">#!# This example shows how to simulate and plot the characteristic curve of a diode.</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!# This example shows how to simulate and plot the characteristic curve of a diode.</span>
 
 <span class="c">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="kn">as</span> <span class="nn">ticker</span>
 
 <span class="c">####################################################################################################</span>
@@ -137,9 +135,9 @@
         <span class="k">return</span> <span class="s">&#39;{} nA&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">formatter</span> <span class="o">=</span> <span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">two_scales_tick_formatter</span><span class="p">)</span>
 
-<span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;1N4148 Characteristic Curve &#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Current&#39;</span><span class="p">)</span>
@@ -179,7 +177,7 @@
 <span class="c">#!#</span>
 <span class="c">#!#   r_d = \frac{d V_d}{d I_d} \approx \frac{n V_T}{I_d}</span>
 
-<span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Resistance @ 25 °C&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -199,8 +197,8 @@
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Resistance [Ω]&#39;</span><span class="p">)</span>
 
-<span class="n">pylab</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c">#fig# save_figure(figure, &#39;diode-characteristic-curve.png&#39;)</span>
 
@@ -208,20 +206,18 @@
 <span class="c">#?# #!# Indeed the thermal agitation overcome the electron flow.</span>
 
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># End</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span>
 </pre></div>
 </div>
 </div>
 <p>This example shows how to simulate and plot the characteristic curve of a diode.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="kn">as</span> <span class="nn">ticker</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
@@ -239,7 +235,7 @@
 <p>For this purpose, we use the common high-speed diode 1N4148.  The diode is driven by a variable
 voltage source through a limiting current resistance.  And We will simulate the circuit at these
 temperatures: 0, 25 and 100 °C.</p>
-<img alt="../../images/diode-characteristic-curve-circuit.png" src="../../images/diode-characteristic-curve-circuit.png" />
+<img alt="../../images/diode-characteristic-curve-circuit.png" class="align-center" src="../../images/diode-characteristic-curve-circuit.png" />
 <div class="highlight-python"><div class="highlight"><pre><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Diode Characteristic Curve&#39;</span><span class="p">)</span>
 
 <span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">spice_library</span><span class="p">[</span><span class="s">&#39;1N4148&#39;</span><span class="p">])</span>
@@ -272,9 +268,9 @@ temperatures: 0, 25 and 100 °C.</p>
         <span class="k">return</span> <span class="s">&#39;{} nA&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">formatter</span> <span class="o">=</span> <span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">two_scales_tick_formatter</span><span class="p">)</span>
 
-<span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;1N4148 Characteristic Curve &#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Current&#39;</span><span class="p">)</span>
@@ -309,7 +305,7 @@ temperatures: 0, 25 and 100 °C.</p>
 \[\frac{d I_d}{d V_d} = \frac{1}{n V_T}(I_d + I_s)\]</div>
 <div class="math">
 \[r_d = \frac{d V_d}{d I_d} \approx \frac{n V_T}{I_d}\]</div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Resistance @ 25 °C&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -329,11 +325,11 @@ temperatures: 0, 25 and 100 °C.</p>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Resistance [Ω]&#39;</span><span class="p">)</span>
 
-<span class="n">pylab</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../../images/diode-characteristic-curve.png" src="../../images/diode-characteristic-curve.png" />
+<img alt="../../images/diode-characteristic-curve.png" class="align-center" src="../../images/diode-characteristic-curve.png" />
 <p>We observe the forward voltage threshold increase with the temperature.</p>
 </div>
 

@@ -50,7 +50,7 @@
           <div class="body" role="main">
             
   <h1>Source code for PySpice.Spice.Simulation</h1><div class="highlight"><pre>
-<span class="c">####################################################################################################</span>
+<span class="c">###################################################################################################</span>
 <span class="c">#</span>
 <span class="c"># PySpice - A Spice Package for Python</span>
 <span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
@@ -106,12 +106,12 @@
                 <span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span> <span class="o">=</span> <span class="n">circuit</span>
-
+        
         <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="p">{}</span> <span class="c"># .options</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_initial_condition</span> <span class="o">=</span> <span class="p">{}</span> <span class="c"># .ic</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_saved_nodes</span> <span class="o">=</span> <span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span> <span class="o">=</span> <span class="p">{}</span>
-
+        
         <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nominal_temperature</span> <span class="o">=</span> <span class="n">nominal_temperature</span>
         
@@ -306,7 +306,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_logger</span> <span class="o">=</span> <span class="n">_module_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;CircuitSimulator&#39;</span><span class="p">)</span>
-        
+
     <span class="c">##############################################</span>
 
 <div class="viewcode-block" id="CircuitSimulator._run"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulator._run">[docs]</a>    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -367,7 +367,7 @@
         <span class="c"># Fixme: kwargs</span>
 
         <span class="nb">super</span><span class="p">(</span><span class="n">SubprocessCircuitSimulator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="p">,</span> <span class="n">pipe</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
+        
         <span class="bp">self</span><span class="o">.</span><span class="n">_spice_server</span> <span class="o">=</span> <span class="n">SpiceServer</span><span class="p">()</span>
 
     <span class="c">##############################################</span>
@@ -375,13 +375,13 @@
 <div class="viewcode-block" id="SubprocessCircuitSimulator._run"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.SubprocessCircuitSimulator._run">[docs]</a>    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="nb">super</span><span class="p">(</span><span class="n">SubprocessCircuitSimulator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
+        
         <span class="n">raw_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spice_server</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset_analysis</span><span class="p">()</span>
-
+        
         <span class="c"># for field in raw_file.variables:</span>
         <span class="c">#     print field</span>
-
+        
         <span class="k">return</span> <span class="n">raw_file</span><span class="o">.</span><span class="n">to_analysis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
@@ -402,7 +402,7 @@
         <span class="c"># Fixme: kwargs</span>
 
         <span class="nb">super</span><span class="p">(</span><span class="n">NgSpiceSharedCircuitSimulator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="p">,</span> <span class="n">pipe</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-
+        
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ngspice_shared__</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__ngspice_shared__</span> <span class="o">=</span> <span class="n">NgSpiceShared</span><span class="p">(</span><span class="n">send_data</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ngspice_shared</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ngspice_shared__</span>
@@ -417,7 +417,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_ngspice_shared</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ngspice_shared</span><span class="o">.</span><span class="n">plot_names</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset_analysis</span><span class="p">()</span>
-
+        
         <span class="k">if</span> <span class="n">analysis_method</span> <span class="o">==</span> <span class="s">&#39;dc&#39;</span><span class="p">:</span>
             <span class="n">plot_name</span> <span class="o">=</span> <span class="s">&#39;dc1&#39;</span>
         <span class="k">elif</span> <span class="n">analysis_method</span> <span class="o">==</span> <span class="s">&#39;ac&#39;</span><span class="p">:</span>
@@ -426,13 +426,13 @@
             <span class="n">plot_name</span> <span class="o">=</span> <span class="s">&#39;tran1&#39;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-
+        
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ngspice_shared</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_name</span><span class="p">)</span><span class="o">.</span><span class="n">to_analysis</span><span class="p">()</span>
 
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># End</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span></div></div>
 </pre></div>
 

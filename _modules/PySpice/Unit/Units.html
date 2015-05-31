@@ -147,7 +147,7 @@
     <span class="c">##############################################</span>
 </div>
 <div class="viewcode-block" id="Unit.convert"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.convert">[docs]</a>    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        
+
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">))</span>
 
     <span class="c">##############################################</span>
@@ -194,7 +194,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
-        
+
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -236,7 +236,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
-    
+
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -263,7 +263,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
-    
+
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -290,7 +290,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">//=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
-    
+
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__rfloordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -318,7 +318,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">/=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
-    
+
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -343,7 +343,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">**=</span> <span class="nb">float</span><span class="p">(</span><span class="n">exponent</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
-    
+
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__rpow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">):</span>
@@ -457,19 +457,19 @@
     <span class="k">def</span> <span class="nf">__ceil__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
-        
+
     <span class="c">##############################################</span>
-        
+
     <span class="k">def</span> <span class="nf">__floor__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
-        
+
     <span class="c">##############################################</span>
-        
+
     <span class="k">def</span> <span class="nf">__round__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
-        
+
     <span class="c">##############################################</span>
 
 <div class="viewcode-block" id="Unit.inverse"><a class="viewcode-back" href="../../../api/PySpice/Unit/Units.html#PySpice.Unit.Units.Unit.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">the_class</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
@@ -612,9 +612,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">pulsation</span>
 
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># End</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span></div>
 </pre></div>
 

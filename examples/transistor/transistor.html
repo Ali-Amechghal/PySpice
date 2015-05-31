@@ -66,7 +66,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="c">####################################################################################################</span>
 
@@ -100,15 +100,15 @@
 
 <span class="c">####################################################################################################</span>
 
-<span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="c">####################################################################################################</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vbase</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">))</span>
 
-<span class="n">axe1</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
-<span class="n">axe1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">base</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vbase</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">axe1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+<span class="n">axe1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">base</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vbase</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">axe1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">65</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
 <span class="n">axe1</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Base-Emitter Diode curve&#39;</span><span class="p">,),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">axe1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
@@ -150,14 +150,14 @@
  <span class="c"># 2 v(base) voltage</span>
 <span class="c"># 3 i(vcollector)   current</span>
 
-<span class="n">axe2</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="n">axe2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
 <span class="n">axe2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="c"># axe2.legend((&#39;Ic(Vce, Ib)&#39;,), loc=(.5,.5))</span>
 <span class="n">axe2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Vce [V]&#39;</span><span class="p">)</span>
 <span class="n">axe2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Ic [mA]&#39;</span><span class="p">)</span>
 <span class="n">axe2</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
 
-<span class="n">axe3</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+<span class="n">axe3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
 <span class="n">axe3</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="c"># axe3.legend((&#39;beta(Vce)&#39;,), loc=(.5,.5))</span>
 <span class="n">axe3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Vce [V]&#39;</span><span class="p">)</span>
@@ -171,14 +171,14 @@
     <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vcollector</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">))</span>
     <span class="c"># Fixme: lower case </span>
     <span class="c"># add ib as text, linear and saturate region</span>
-    <span class="n">axe2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vcollector</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">axe2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vcollector</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
     <span class="c"># Plot beta</span>
-    <span class="n">axe3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vcollector</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">base_current</span><span class="p">))</span>
+    <span class="n">axe3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vcollector</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">base_current</span><span class="p">))</span>
     <span class="c"># # trans-resistance U = RI   R = U / I = Vce / Ie</span>
-    <span class="c"># # axe3.plot(analysis.collector, analysis.v_sweep/(float(base_current)-analysis.vcollector))</span>
+    <span class="c"># # axe3.plot(analysis.collector, analysis.v_sweep/(float(base_current)-analysis.Vcollector))</span>
     <span class="c"># # Fixme: v_sweep is not so explicit</span>
 
-<span class="n">axe4</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+<span class="n">axe4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
 <span class="n">axe4</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">axe4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Ib [uA]&#39;</span><span class="p">)</span>
 <span class="n">axe4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Ic [mA]&#39;</span><span class="p">)</span>
@@ -186,17 +186,18 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Ibase</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">100e-6</span><span class="p">,</span> <span class="mf">10e-6</span><span class="p">))</span>
 <span class="c"># Fixme: v_sweep</span>
-<span class="n">axe4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">v_sweep</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vcollector</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">axe4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">v_sweep</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vcollector</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;o-&#39;</span><span class="p">)</span>
 <span class="n">axe4</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Ic(Ib)&#39;</span><span class="p">,),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
 
-<span class="c">####################################################################################################</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c">#fig# save_figure(figure, &#39;transistor.png&#39;)</span>
 
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># End</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span>
 </pre></div>
 </div>
@@ -204,7 +205,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
@@ -228,13 +229,13 @@
 <span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">spice_library</span><span class="p">[</span><span class="s">&#39;2n2222a&#39;</span><span class="p">])</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">BJT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;collector&#39;</span><span class="p">,</span> <span class="s">&#39;base&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;2n2222a&#39;</span><span class="p">)</span>
 
-<span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vbase</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">))</span>
 
-<span class="n">axe1</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
-<span class="n">axe1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">base</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vbase</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">axe1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+<span class="n">axe1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">base</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vbase</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">axe1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">65</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
 <span class="n">axe1</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Base-Emitter Diode curve&#39;</span><span class="p">,),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">axe1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
@@ -274,14 +275,14 @@
  <span class="c"># 2 v(base) voltage</span>
 <span class="c"># 3 i(vcollector)   current</span>
 
-<span class="n">axe2</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="n">axe2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
 <span class="n">axe2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="c"># axe2.legend((&#39;Ic(Vce, Ib)&#39;,), loc=(.5,.5))</span>
 <span class="n">axe2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Vce [V]&#39;</span><span class="p">)</span>
 <span class="n">axe2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Ic [mA]&#39;</span><span class="p">)</span>
 <span class="n">axe2</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
 
-<span class="n">axe3</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+<span class="n">axe3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
 <span class="n">axe3</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="c"># axe3.legend((&#39;beta(Vce)&#39;,), loc=(.5,.5))</span>
 <span class="n">axe3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Vce [V]&#39;</span><span class="p">)</span>
@@ -295,14 +296,14 @@
     <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vcollector</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">))</span>
     <span class="c"># Fixme: lower case</span>
     <span class="c"># add ib as text, linear and saturate region</span>
-    <span class="n">axe2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vcollector</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">axe2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vcollector</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
     <span class="c"># Plot beta</span>
-    <span class="n">axe3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vcollector</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">base_current</span><span class="p">))</span>
+    <span class="n">axe3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vcollector</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">base_current</span><span class="p">))</span>
     <span class="c"># # trans-resistance U = RI   R = U / I = Vce / Ie</span>
-    <span class="c"># # axe3.plot(analysis.collector, analysis.v_sweep/(float(base_current)-analysis.vcollector))</span>
+    <span class="c"># # axe3.plot(analysis.collector, analysis.v_sweep/(float(base_current)-analysis.Vcollector))</span>
     <span class="c"># # Fixme: v_sweep is not so explicit</span>
 
-<span class="n">axe4</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+<span class="n">axe4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
 <span class="n">axe4</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">axe4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Ib [uA]&#39;</span><span class="p">)</span>
 <span class="n">axe4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Ic [mA]&#39;</span><span class="p">)</span>
@@ -310,12 +311,14 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Ibase</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">100e-6</span><span class="p">,</span> <span class="mf">10e-6</span><span class="p">))</span>
 <span class="c"># Fixme: v_sweep</span>
-<span class="n">axe4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">v_sweep</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">vcollector</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">axe4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">v_sweep</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vcollector</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;o-&#39;</span><span class="p">)</span>
 <span class="n">axe4</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Ic(Ib)&#39;</span><span class="p">,),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
 
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<img alt="../../images/transistor.png" class="align-center" src="../../images/transistor.png" />
 </div>
 
 

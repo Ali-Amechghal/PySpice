@@ -107,6 +107,7 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">ac_line</span><span class="o">.</span><span class="n">period</span><span class="o">/</span><span class="mi">200</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">ac_line</span><span class="o">.</span><span class="n">period</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
 
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
 <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;in&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axe</span><span class="p">)</span>
@@ -115,7 +116,7 @@
 <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span> <span class="o">-</span> <span class="n">analysis</span><span class="p">[</span><span class="s">&#39;1&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="n">axe</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">((</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;1&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">analysis</span><span class="p">[</span><span class="s">&#39;2&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axe</span><span class="p">)</span>
 <span class="c"># or:</span>
-<span class="c">#   pylab.plot(analysis.out.abscissa, analysis.out)</span>
+<span class="c">#   plt.plot(analysis.out.abscissa, analysis.out)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Vin [V]&#39;</span><span class="p">,</span> <span class="s">&#39;Vout [V]&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
@@ -123,11 +124,12 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c">#fig# save_figure(figure, &#39;transform-less-power-supply.png&#39;)</span>
 
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># End</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span>
 </pre></div>
 </div>
@@ -168,6 +170,7 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">ac_line</span><span class="o">.</span><span class="n">period</span><span class="o">/</span><span class="mi">200</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">ac_line</span><span class="o">.</span><span class="n">period</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
 
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
 <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;in&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axe</span><span class="p">)</span>
@@ -176,7 +179,7 @@
 <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span> <span class="o">-</span> <span class="n">analysis</span><span class="p">[</span><span class="s">&#39;1&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="n">axe</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">((</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;1&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">analysis</span><span class="p">[</span><span class="s">&#39;2&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axe</span><span class="p">)</span>
 <span class="c"># or:</span>
-<span class="c">#   pylab.plot(analysis.out.abscissa, analysis.out)</span>
+<span class="c">#   plt.plot(analysis.out.abscissa, analysis.out)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Vin [V]&#39;</span><span class="p">,</span> <span class="s">&#39;Vout [V]&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
@@ -186,6 +189,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<img alt="../../images/transform-less-power-supply.png" class="align-center" src="../../images/transform-less-power-supply.png" />
 </div>
 
 

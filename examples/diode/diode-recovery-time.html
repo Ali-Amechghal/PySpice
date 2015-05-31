@@ -61,14 +61,12 @@
 <h1>2.5.2.2. Diode Recovery Time<a class="headerlink" href="#diode-recovery-time" title="Permalink to this headline">¶</a></h1>
 <div class="getthecode">
 <div class="getthecode-header"><span class="getthecode-filename">diode-recovery-time.py</span><a href="../../downloads/diode-recovery-time.py"><span>diode-recovery-time.py</span></a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
-
-<span class="c">####################################################################################################</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="c">####################################################################################################</span>
 
@@ -131,16 +129,16 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">ac</span><span class="p">(</span><span class="n">start_frequency</span><span class="o">=</span><span class="n">kilo</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">stop_frequency</span><span class="o">=</span><span class="n">giga</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">number_of_points</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="n">variation</span><span class="o">=</span><span class="s">&#39;dec&#39;</span><span class="p">)</span>
 
-<span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">)</span>
+<span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">)</span><span class="o">*</span><span class="mf">1e3</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">&#39;minor&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;Vd [mV]&quot;</span><span class="p">)</span>
 
-<span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">)</span>
+<span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">)</span>
 <span class="n">current</span> <span class="o">=</span> <span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;in&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="o">/</span><span class="n">current</span><span class="p">))</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
@@ -167,7 +165,7 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">period</span><span class="o">/</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">period</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
 
-<span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
+<span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
 <span class="c"># Fixme: axis, x scale</span>
 <span class="c"># plot(analysis[&#39;in&#39;] - dc_offset + quiescent_points[0][&#39;quiescent_voltage&#39;], axis=axe)</span>
 <span class="c"># plot(analysis.out, axis=axe)</span>
@@ -178,25 +176,23 @@
 <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;[V]&#39;</span><span class="p">)</span>
 <span class="c"># axe.set_ylim(.5, 1 + ac_amplitude + .1)</span>
 
-<span class="c">####################################################################################################</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">pylab</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c">#fig# save_figure(figure, &#39;diode-recovery-time.png&#39;)</span>
 
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># End</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span>
 </pre></div>
 </div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
@@ -247,16 +243,16 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">ac</span><span class="p">(</span><span class="n">start_frequency</span><span class="o">=</span><span class="n">kilo</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">stop_frequency</span><span class="o">=</span><span class="n">giga</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">number_of_points</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="n">variation</span><span class="o">=</span><span class="s">&#39;dec&#39;</span><span class="p">)</span>
 
-<span class="n">figure</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">)</span>
+<span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">)</span><span class="o">*</span><span class="mf">1e3</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">&#39;minor&#39;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;Vd [mV]&quot;</span><span class="p">)</span>
 
-<span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">)</span>
+<span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">)</span>
 <span class="n">current</span> <span class="o">=</span> <span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;in&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="o">/</span><span class="n">current</span><span class="p">))</span>
 <span class="n">axe</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
@@ -281,7 +277,7 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">period</span><span class="o">/</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">period</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
 
-<span class="n">axe</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
+<span class="n">axe</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
 <span class="c"># Fixme: axis, x scale</span>
 <span class="c"># plot(analysis[&#39;in&#39;] - dc_offset + quiescent_points[0][&#39;quiescent_voltage&#39;], axis=axe)</span>
 <span class="c"># plot(analysis.out, axis=axe)</span>
@@ -292,10 +288,11 @@
 <span class="n">axe</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;[V]&#39;</span><span class="p">)</span>
 <span class="c"># axe.set_ylim(.5, 1 + ac_amplitude + .1)</span>
 
-<span class="n">pylab</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<img alt="../../images/diode-recovery-time.png" class="align-center" src="../../images/diode-recovery-time.png" />
 </div>
 
 

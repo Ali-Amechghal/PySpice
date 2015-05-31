@@ -61,10 +61,8 @@
 <h1>2.5.2.5. Voltage Multiplier<a class="headerlink" href="#voltage-multiplier" title="Permalink to this headline">¶</a></h1>
 <div class="getthecode">
 <div class="getthecode-header"><span class="getthecode-filename">voltage-multiplier.py</span><a href="../../downloads/voltage-multiplier.py"><span>voltage-multiplier.py</span></a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
-
-<span class="c">#!# This example shows a voltage multiplier using diodes and capacitors.</span>
-<span class="c">#!# See ` &lt;http://en.wikipedia.org/wiki/Voltage_multiplier&gt;`_</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!# This example depicts a voltage multiplier using diodes and capacitors.</span>
+<span class="c">#!# See `link &lt;http://en.wikipedia.org/wiki/Voltage_multiplier&gt;`_</span>
 
 <span class="c">####################################################################################################</span>
 
@@ -138,18 +136,16 @@
 <span class="c">#fig# save_figure(figure, &#39;voltage-multiplier.png&#39;)</span>
 
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># End</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span>
 </pre></div>
 </div>
 </div>
-<p>This example shows a voltage multiplier using diodes and capacitors.
-See ` &lt;<a class="reference external" href="http://en.wikipedia.org/wiki/Voltage_multiplier">http://en.wikipedia.org/wiki/Voltage_multiplier</a>&gt;`_</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
+<p>This example depicts a voltage multiplier using diodes and capacitors.
+See <a class="reference external" href="http://en.wikipedia.org/wiki/Voltage_multiplier">link</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
@@ -165,7 +161,7 @@ See ` &lt;<a class="reference external" href="http://en.wikipedia.org/wiki/Volta
 <span class="n">spice_library</span> <span class="o">=</span> <span class="n">SpiceLibrary</span><span class="p">(</span><span class="n">libraries_path</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../../images/voltage-multiplier-circuit.png" src="../../images/voltage-multiplier-circuit.png" />
+<img alt="../../images/voltage-multiplier-circuit.png" class="align-center" src="../../images/voltage-multiplier-circuit.png" />
 <div class="highlight-python"><div class="highlight"><pre><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Voltage Multiplier&#39;</span><span class="p">)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">spice_library</span><span class="p">[</span><span class="s">&#39;1N4148&#39;</span><span class="p">])</span>
 <span class="n">source</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">Sinusoidal</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
@@ -207,7 +203,7 @@ See ` &lt;<a class="reference external" href="http://en.wikipedia.org/wiki/Volta
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../../images/voltage-multiplier.png" src="../../images/voltage-multiplier.png" />
+<img alt="../../images/voltage-multiplier.png" class="align-center" src="../../images/voltage-multiplier.png" />
 </div>
 
 

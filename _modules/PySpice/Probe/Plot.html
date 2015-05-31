@@ -77,15 +77,20 @@
 
 <div class="viewcode-block" id="plot"><a class="viewcode-back" href="../../../api/PySpice/Probe/Plot.html#PySpice.Probe.Plot.plot">[docs]</a><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
+    <span class="sd">&quot;&quot;&quot;Plot a waveform using the current Axes instance or the one specified by the *axis* key</span>
+<span class="sd">    argument. Additional parameters are passed to the Matplotlib plot function.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">axis</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;axis&#39;</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
     <span class="k">if</span> <span class="s">&#39;axis&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
         <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;axis&#39;</span><span class="p">]</span>
     <span class="n">axis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">waveform</span><span class="o">.</span><span class="n">abscissa</span><span class="p">,</span> <span class="n">waveform</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c"># End</span>
-<span class="c"># </span>
+<span class="c">#</span>
 <span class="c">####################################################################################################</span></div>
 </pre></div>
 

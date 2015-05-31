@@ -111,7 +111,7 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
-<span class="n">node_A</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> <span class="c"># Fixme: lower</span>
+<span class="n">node_A</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">A</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node_A</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node_A</span><span class="p">)))</span>
 <span class="c">#o#</span>
 
@@ -131,7 +131,7 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
-<span class="n">node_A</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> <span class="c"># Fixme: lower</span>
+<span class="n">node_A</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">A</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node_A</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node_A</span><span class="p">)))</span>
 <span class="c">#o#</span>
 
@@ -178,11 +178,11 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
-<span class="n">node_A</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> <span class="c"># Fixme: lower</span>
+<span class="n">node_A</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">A</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node_A</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node_A</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Node a [voltage]:  1.64 V
+<div class="highlight-python"><div class="highlight"><pre>Node A [voltage]:  1.64 V
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">branch_voltages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_of_branches</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span>
@@ -204,11 +204,11 @@
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
-<span class="n">node_A</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> <span class="c"># Fixme: lower</span>
+<span class="n">node_A</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">A</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node_A</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node_A</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Node a [voltage]:  1.96 V
+<div class="highlight-python"><div class="highlight"><pre>Node A [voltage]:  1.96 V
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">branch_currents</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_of_branches</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">micro</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
