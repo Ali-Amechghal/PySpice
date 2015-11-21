@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.1.7.8. RawFile &mdash; PySpice 0.1.0 documentation</title>
+    <title>3.1.7.8. RawFile &mdash; PySpice 0.2.2 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.1.0',
+        VERSION:     '0.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
-    <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
+    <link rel="top" title="PySpice 0.2.2 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
     <link rel="next" title="3.1.7.9. Server" href="Server.html" />
     <link rel="prev" title="3.1.7.7. Parser" href="Parser.html" /> 
@@ -46,7 +46,7 @@
         <li class="right" >
           <a href="Parser.html" title="3.1.7.7. Parser"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
           <li class="nav-item nav-item-3"><a href="../Spice.html" accesskey="U">3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
@@ -60,6 +60,70 @@
             
   <div class="section" id="module-PySpice.Spice.RawFile">
 <span id="rawfile"></span><h1>3.1.7.8. <code class="xref py py-mod docutils literal"><span class="pre">RawFile</span></code><a class="headerlink" href="#module-PySpice.Spice.RawFile" title="Permalink to this headline">¶</a></h1>
+<p>Header</p>
+<blockquote>
+<div><div class="code highlight-python"><div class="highlight"><pre>Circuit: 230V Rectifier
+
+Doing analysis at TEMP = 25.000000 and TNOM = 25.000000
+
+Title: 230V Rectifier
+Date: Thu Jun  4 23:40:58  2015
+Plotname: Transient Analysis
+Flags: real
+No. Variables: 6
+No. Points: 0
+Variables:
+No. of Data Columns : 6
+        0       time    time
+        1       v(in)   voltage
+        ...
+        5       i(vinput)       current
+Binary:
+</pre></div>
+</div>
+</div></blockquote>
+<p>Operating Point
+Node voltages and source branch currents:</p>
+<blockquote>
+<div><ul class="simple">
+<li>v(node_name)</li>
+<li>i(vname)</li>
+</ul>
+</div></blockquote>
+<p>Sensitivity Analysis</p>
+<blockquote>
+<div><ul class="simple">
+<li>v({element})</li>
+<li>v({element}_{parameter})</li>
+<li>v(v{source})</li>
+</ul>
+</div></blockquote>
+<p>DC</p>
+<blockquote>
+<div><ul class="simple">
+<li>v(v-sweep)</li>
+<li>v({node})</li>
+<li>i(v{source})</li>
+</ul>
+</div></blockquote>
+<p>AC
+Frequency, node voltages and source branch currents:</p>
+<blockquote>
+<div><ul class="simple">
+<li>frequency</li>
+<li>v({node})</li>
+<li>i(v{name})</li>
+</ul>
+</div></blockquote>
+<p>Transient Analysis
+Time, node voltages and source branch currents:</p>
+<blockquote>
+<div><ul class="simple">
+<li>time</li>
+<li>v({node})</li>
+<li>i(v{source})</li>
+</ul>
+</div></blockquote>
 <dl class="class">
 <dt id="PySpice.Spice.RawFile.RawFile">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.RawFile.</code><code class="descname">RawFile</code><span class="sig-paren">(</span><em>stdout</em>, <em>number_of_points</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile" title="Permalink to this definition">¶</a></dt>
@@ -282,7 +346,7 @@
         <li class="right" >
           <a href="Parser.html" title="3.1.7.7. Parser"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
           <li class="nav-item nav-item-3"><a href="../Spice.html" >3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 

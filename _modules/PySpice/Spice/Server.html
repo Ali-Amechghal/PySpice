@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PySpice.Spice.Server &mdash; PySpice 0.1.0 documentation</title>
+    <title>PySpice.Spice.Server &mdash; PySpice 0.2.2 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.1.0',
+        VERSION:     '0.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
-    <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
+    <link rel="top" title="PySpice 0.2.2 documentation" href="../../../index.html" />
     <link rel="up" title="PySpice.Spice" href="../Spice.html" /> 
   </head>
   <body role="document">
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
       </ul>
@@ -70,6 +70,28 @@
 <span class="c">#</span>
 <span class="c">####################################################################################################</span>
 
+<span class="sd">&quot;&quot;&quot;This module provides an interface to run ngspice in server mode and get back the simulation</span>
+<span class="sd">output.</span>
+
+<span class="sd">When ngspice runs in server mode, it writes on the standard output an header and then the simulation</span>
+<span class="sd">output in binary format.  At the end of the simulation, it writes on the standard error a line of</span>
+<span class="sd">the form:</span>
+
+<span class="sd">    .. code::</span>
+
+<span class="sd">        @@@ \d+ \d+</span>
+
+<span class="sd">where the second number is the number of points of the simulation.  Due to the iterative and</span>
+<span class="sd">adaptive nature of a transient simulation, the number of points is only known at the end.</span>
+
+<span class="sd">Any line starting with &quot;Error&quot; in the standard output indicates an error in the simulation process.</span>
+<span class="sd">The line &quot;run simulation(s) aborted&quot; in the standard error indicates the simulation aborted.</span>
+
+<span class="sd">Any line starting with *Warning* in the standard error indicates non critical error in the</span>
+<span class="sd">simulation process.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
 <span class="c">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -88,7 +110,7 @@
 
 <div class="viewcode-block" id="SpiceServer"><a class="viewcode-back" href="../../../api/PySpice/Spice/Server.html#PySpice.Spice.Server.SpiceServer">[docs]</a><span class="k">class</span> <span class="nc">SpiceServer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot; This class wraps the execution of SPICE in server mode and convert the output in Python data</span>
+    <span class="sd">&quot;&quot;&quot;This class wraps the execution of ngspice in server mode and convert the output to a Python data</span>
 <span class="sd">    structure.</span>
 
 <span class="sd">    Example of usage::</span>
@@ -112,7 +134,7 @@
 
 <div class="viewcode-block" id="SpiceServer._decode_number_of_points"><a class="viewcode-back" href="../../../api/PySpice/Spice/Server.html#PySpice.Spice.Server.SpiceServer._decode_number_of_points">[docs]</a>    <span class="k">def</span> <span class="nf">_decode_number_of_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot; Decode the number of points in stderr line. &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Decode the number of points in the given line.&quot;&quot;&quot;</span>
 
         <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&#39;@@@ (\d+) (\d+)&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
@@ -124,10 +146,10 @@
 </div>
 <div class="viewcode-block" id="SpiceServer._parse_stdout"><a class="viewcode-back" href="../../../api/PySpice/Spice/Server.html#PySpice.Spice.Server.SpiceServer._parse_stdout">[docs]</a>    <span class="k">def</span> <span class="nf">_parse_stdout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stdout</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot; Parse stdout for errors. &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Parse stdout for errors.&quot;&quot;&quot;</span>
 
         <span class="c"># self._logger.debug(&#39;\n&#39; + stdout)</span>
-
+        
         <span class="n">error_found</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="n">lines</span> <span class="o">=</span> <span class="n">stdout</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">line_index</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
@@ -141,8 +163,10 @@
 </div>
 <div class="viewcode-block" id="SpiceServer._parse_stderr"><a class="viewcode-back" href="../../../api/PySpice/Spice/Server.html#PySpice.Spice.Server.SpiceServer._parse_stderr">[docs]</a>    <span class="k">def</span> <span class="nf">_parse_stderr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stderr</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot; Parse stderr for warnings and return the number of points. &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Parse stderr for warnings and return the number of points.&quot;&quot;&quot;</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span> <span class="n">stderr</span><span class="p">)</span>
+        
         <span class="n">stderr_lines</span> <span class="o">=</span> <span class="n">stderr</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
         <span class="n">number_of_points</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">stderr_lines</span><span class="p">:</span>
@@ -152,20 +176,20 @@
                 <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;Simulation aborted</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">+</span> <span class="n">stderr</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;@@@&#39;</span><span class="p">):</span>
                 <span class="n">number_of_points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_number_of_points</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-
+        
         <span class="k">return</span> <span class="n">number_of_points</span>
 
     <span class="c">##############################################</span>
 </div>
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spice_input</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot;Run SPICE as a subprocess in server mode for the given input and return a</span>
+        <span class="sd">&quot;&quot;&quot;Run SPICE in server mode as a subprocess for the given input and return a</span>
 <span class="sd">        :obj:`PySpice.RawFile.RawFile` instance.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Start the spice subprocess&quot;</span><span class="p">)</span>
-
+        
         <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_spice_command</span><span class="p">,</span> <span class="s">&#39;-s&#39;</span><span class="p">),</span>
                                    <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
                                    <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
@@ -181,7 +205,7 @@
             <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;The number of points was not found in the standard error buffer,&quot;</span>
                             <span class="s">&quot; ngspice returned:</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">+</span>
                             <span class="n">stderr</span><span class="p">)</span>
-
+        
         <span class="k">return</span> <span class="n">RawFile</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
@@ -222,7 +246,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../Spice.html" >PySpice.Spice</a> &raquo;</li> 
       </ul>

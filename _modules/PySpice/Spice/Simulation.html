@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PySpice.Spice.Simulation &mdash; PySpice 0.1.0 documentation</title>
+    <title>PySpice.Spice.Simulation &mdash; PySpice 0.2.2 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.1.0',
+        VERSION:     '0.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
-    <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
+    <link rel="top" title="PySpice 0.2.2 documentation" href="../../../index.html" />
     <link rel="up" title="PySpice.Spice" href="../Spice.html" /> 
   </head>
   <body role="document">
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
       </ul>
@@ -215,31 +215,103 @@
 </div>
 <div class="viewcode-block" id="CircuitSimulation.operating_point"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.operating_point">[docs]</a>    <span class="k">def</span> <span class="nf">operating_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
+        <span class="sd">&quot;&quot;&quot;Compute the operating point of the circuit with capacitors open and inductors shorted.&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;op&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
 
     <span class="c">##############################################</span>
 </div>
 <div class="viewcode-block" id="CircuitSimulation.dc_sensitivity"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.dc_sensitivity">[docs]</a>    <span class="k">def</span> <span class="nf">dc_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_variable</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        .sens outvar</span>
+        <span class="sd">&quot;&quot;&quot;Compute the sensitivity of the DC operating point of a node voltage or voltage-source branch</span>
+<span class="sd">        current to all non-zero device parameters.</span>
 
-<span class="sd">        .sens outvar ac dec nd fstart fstop</span>
-<span class="sd">        .sens outvar ac oct no fstart fstop</span>
-<span class="sd">        .sens outvar ac lin np fstart fstop</span>
+<span class="sd">        General form:</span>
+
+<span class="sd">        .. code::</span>
+
+<span class="sd">            .sens outvar</span>
+
+<span class="sd">        Examples:</span>
+
+<span class="sd">        .. code::</span>
+
+<span class="sd">            .SENS V(1, OUT)</span>
+<span class="sd">            .SENS I(VTEST)</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;sens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">output_variable</span><span class="p">,)</span>
 
     <span class="c">##############################################</span>
 </div>
+<div class="viewcode-block" id="CircuitSimulation.ac_sensitivity"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.ac_sensitivity">[docs]</a>    <span class="k">def</span> <span class="nf">ac_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_variable</span><span class="p">,</span>
+                       <span class="n">start_frequency</span><span class="p">,</span> <span class="n">stop_frequency</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">,</span> <span class="n">variation</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Compute the sensitivity of the AC values of a node voltage or voltage-source branch</span>
+<span class="sd">        current to all non-zero device parameters.</span>
+
+<span class="sd">        General form:</span>
+
+<span class="sd">        .. code::</span>
+
+<span class="sd">            .sens outvar ac dec nd fstart fstop</span>
+<span class="sd">            .sens outvar ac oct no fstart fstop</span>
+<span class="sd">            .sens outvar ac lin np fstart fstop</span>
+
+<span class="sd">        Examples:</span>
+
+<span class="sd">        .. code::</span>
+
+<span class="sd">            .SENS V(OUT) AC DEC 10 100 100 k</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">variation</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;dec&#39;</span><span class="p">,</span> <span class="s">&#39;oct&#39;</span><span class="p">,</span> <span class="s">&#39;lin&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Incorrect variation type&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;sens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">output_variable</span><span class="p">,</span>
+                                             <span class="n">variation</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">,</span> <span class="n">start_frequency</span><span class="p">,</span> <span class="n">stop_frequency</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
 <div class="viewcode-block" id="CircuitSimulation.dc"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.dc">[docs]</a>    <span class="k">def</span> <span class="nf">dc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot; .dc srcnam vstart vstop vincr [ src2 start2 stop2 incr2 ] &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Compute the DC transfer fonction of the circuit with capacitors open and inductors shorted.</span>
+
+<span class="sd">        General form:</span>
+
+<span class="sd">        .. code::</span>
+
+<span class="sd">            .dc srcnam vstart vstop vincr [ src2 start2 stop2 incr2 ]</span>
+
+<span class="sd">        *srcnam* is the name of an independent voltage or current source, a resistor or the circuit</span>
+<span class="sd">        temperature. *vstart*, *vstop*, and *vincr* are the starting, final, and incrementing values</span>
+<span class="sd">        respectively.</span>
+
+<span class="sd">        A second source (*src2*) may optionally be specified with associated sweep parameters. In</span>
+<span class="sd">        this case, the first source is swept over its range for each value of the second source.</span>
+
+<span class="sd">        Examples:</span>
+
+<span class="sd">        .. code::</span>
+
+<span class="sd">            .dc VIN 0 .2 5 5.0 0.25</span>
+<span class="sd">            .dc VDS 0 10 .5 VGS 0 5 1</span>
+<span class="sd">            .dc VCE 0 10 .2 5 IB 0 10U 1U</span>
+<span class="sd">            .dc RLoad 1k 2k 100</span>
+<span class="sd">            .dc TEMP -15 75 5</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">source_name</span><span class="p">,</span> <span class="n">voltage_slice</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">parameters</span> <span class="o">+=</span> <span class="p">[</span><span class="n">source_name</span><span class="p">,</span> <span class="n">voltage_slice</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">voltage_slice</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">voltage_slice</span><span class="o">.</span><span class="n">step</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">variable</span><span class="p">,</span> <span class="n">value_slice</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">variable_lower</span> <span class="o">=</span> <span class="n">variable</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">variable_lower</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">variable_lower</span> <span class="o">==</span> <span class="s">&#39;temp&#39;</span><span class="p">:</span>
+                <span class="n">parameters</span> <span class="o">+=</span> <span class="p">[</span><span class="n">variable</span><span class="p">,</span> <span class="n">value_slice</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">value_slice</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">value_slice</span><span class="o">.</span><span class="n">step</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&#39;Sweep variable must be a voltage/current source, &#39;</span>
+                                <span class="s">&#39;a resistor or the circuit temperature&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters</span>
 
     <span class="c">##############################################</span>
@@ -248,10 +320,24 @@
 
         <span class="c"># fixme: concise keyword ?</span>
 
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        .ac dec nd fstart fstop</span>
-<span class="sd">        .ac oct no fstart fstop</span>
-<span class="sd">        .ac lin np fstart fstop</span>
+        <span class="sd">&quot;&quot;&quot;Perform a small-signal AC analysis of the circuit where all non-linear devices are linearized</span>
+<span class="sd">        around their actual DC operating point.</span>
+
+<span class="sd">        Note that in order for this analysis to be meaningful, at least one independent source must</span>
+<span class="sd">        have been specified with an AC value. Typically it does not make much sense to specify more</span>
+<span class="sd">        than one AC source. If you do, the result will be a superposition of all sources, thus</span>
+<span class="sd">        difficult to interpret.</span>
+
+<span class="sd">        Examples:</span>
+
+<span class="sd">        .. code::</span>
+
+<span class="sd">            .ac dec nd fstart fstop</span>
+<span class="sd">            .ac oct no fstart fstop</span>
+<span class="sd">            .ac lin np fstart fstop</span>
+
+<span class="sd">        The parameter *variation* must be either `dec`, `oct` or `lin`.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">variation</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;dec&#39;</span><span class="p">,</span> <span class="s">&#39;oct&#39;</span><span class="p">,</span> <span class="s">&#39;lin&#39;</span><span class="p">):</span>
@@ -264,8 +350,14 @@
 <div class="viewcode-block" id="CircuitSimulation.transient"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.transient">[docs]</a>    <span class="k">def</span> <span class="nf">transient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                   <span class="n">use_initial_condition</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        .tran tstep tstop &lt;tstart &lt;tmax&gt;&gt; &lt;uic&gt;</span>
+        <span class="sd">&quot;&quot;&quot;Perform a transient analysis of the circuit.</span>
+
+<span class="sd">        General Form:</span>
+
+<span class="sd">        .. code::</span>
+
+<span class="sd">            .tran tstep tstop &lt;tstart &lt;tmax&gt;&gt; &lt;uic&gt;</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">use_initial_condition</span><span class="p">:</span>
@@ -467,7 +559,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../Spice.html" >PySpice.Spice</a> &raquo;</li> 
       </ul>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.1.7.9. Server &mdash; PySpice 0.1.0 documentation</title>
+    <title>3.1.7.9. Server &mdash; PySpice 0.2.2 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.1.0',
+        VERSION:     '0.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
-    <link rel="top" title="PySpice 0.1.0 documentation" href="../../../index.html" />
+    <link rel="top" title="PySpice 0.2.2 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
     <link rel="next" title="3.1.7.10. Simulation" href="Simulation.html" />
     <link rel="prev" title="3.1.7.8. RawFile" href="RawFile.html" /> 
@@ -46,7 +46,7 @@
         <li class="right" >
           <a href="RawFile.html" title="3.1.7.8. RawFile"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
           <li class="nav-item nav-item-3"><a href="../Spice.html" accesskey="U">3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
@@ -60,11 +60,27 @@
             
   <div class="section" id="module-PySpice.Spice.Server">
 <span id="server"></span><h1>3.1.7.9. <code class="xref py py-mod docutils literal"><span class="pre">Server</span></code><a class="headerlink" href="#module-PySpice.Spice.Server" title="Permalink to this headline">¶</a></h1>
+<p>This module provides an interface to run ngspice in server mode and get back the simulation
+output.</p>
+<p>When ngspice runs in server mode, it writes on the standard output an header and then the simulation
+output in binary format.  At the end of the simulation, it writes on the standard error a line of
+the form:</p>
+<blockquote>
+<div><div class="code highlight-python"><div class="highlight"><pre>@@@ \d+ \d+
+</pre></div>
+</div>
+</div></blockquote>
+<p>where the second number is the number of points of the simulation.  Due to the iterative and
+adaptive nature of a transient simulation, the number of points is only known at the end.</p>
+<p>Any line starting with &#8220;Error&#8221; in the standard output indicates an error in the simulation process.
+The line &#8220;run simulation(s) aborted&#8221; in the standard error indicates the simulation aborted.</p>
+<p>Any line starting with <em>Warning</em> in the standard error indicates non critical error in the
+simulation process.</p>
 <dl class="class">
 <dt id="PySpice.Spice.Server.SpiceServer">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.Server.</code><code class="descname">SpiceServer</code><span class="sig-paren">(</span><em>spice_command='ngspice'</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Server.html#SpiceServer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Server.SpiceServer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p>This class wraps the execution of SPICE in server mode and convert the output in Python data
+<p>This class wraps the execution of ngspice in server mode and convert the output to a Python data
 structure.</p>
 <p>Example of usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">spice_server</span> <span class="o">=</span> <span class="n">SpiceServer</span><span class="p">(</span><span class="n">spice_command</span><span class="o">=</span><span class="s">&#39;/path/to/ngspice&#39;</span><span class="p">)</span>
@@ -75,7 +91,7 @@ structure.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Server.SpiceServer._decode_number_of_points">
 <code class="descname">_decode_number_of_points</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Server.html#SpiceServer._decode_number_of_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Server.SpiceServer._decode_number_of_points" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decode the number of points in stderr line.</p>
+<dd><p>Decode the number of points in the given line.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -150,7 +166,7 @@ structure.</p>
         <li class="right" >
           <a href="RawFile.html" title="3.1.7.8. RawFile"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.1.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
           <li class="nav-item nav-item-3"><a href="../Spice.html" >3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
