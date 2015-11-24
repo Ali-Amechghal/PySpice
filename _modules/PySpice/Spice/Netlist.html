@@ -98,7 +98,7 @@
 
 <span class="sd">          def __init__(self, **kwargs):</span>
 
-<span class="sd">              super(VoltageDivider, self).__init__(title=&#39;Voltage Divider&#39;, **kwargs)</span>
+<span class="sd">              super().__init__(title=&#39;Voltage Divider&#39;, **kwargs)</span>
 
 <span class="sd">              self.V(&#39;input&#39;, &#39;in&#39;, self.gnd, &#39;10V&#39;)</span>
 <span class="sd">              self.R(1, &#39;in&#39;, &#39;out&#39;, kilo(9))</span>
@@ -165,7 +165,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="DeviceModel"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.DeviceModel">[docs]</a><span class="k">class</span> <span class="nc">DeviceModel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="DeviceModel"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.DeviceModel">[docs]</a><span class="k">class</span> <span class="nc">DeviceModel</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a device model.</span>
 
@@ -243,7 +243,7 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="Pin"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Pin">[docs]</a><span class="k">class</span> <span class="nc">Pin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Pin"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Pin">[docs]</a><span class="k">class</span> <span class="nc">Pin</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a pin of an element. It stores a reference to the element, the name of the</span>
 <span class="sd">    pin and the node.</span>
@@ -329,12 +329,20 @@
         <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;parameters_from_args&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameter</span>
                                               <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">positional_parameters</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
                                               <span class="k">if</span> <span class="ow">not</span> <span class="n">parameter</span><span class="o">.</span><span class="n">key_parameter</span><span class="p">]</span>
+        
+        <span class="c"># Implement alias for parameters</span>
+        <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;spice_to_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">parameter</span><span class="o">.</span><span class="n">spice_name</span><span class="p">:</span><span class="n">parameter</span>
+                                             <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;optional_parameters&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()}</span>
+        <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;spice_to_parameters&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">parameter</span><span class="o">.</span><span class="n">spice_name</span> <span class="ow">in</span> <span class="n">attributes</span>
+                <span class="ow">and</span> <span class="n">parameter</span><span class="o">.</span><span class="n">spice_name</span> <span class="o">!=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">):</span>
+                <span class="n">_module_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Spice parameter &quot;{}&quot; clash with attributes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">parameter</span><span class="o">.</span><span class="n">spice_name</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ElementParameterMetaClass</span><span class="p">,</span> <span class="n">cls</span><span class="p">)</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="Element"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ElementParameterMetaClass</span><span class="p">):</span>
+<div class="viewcode-block" id="Element"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ElementParameterMetaClass</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a base class for an element.</span>
 
@@ -385,6 +393,28 @@
 
     <span class="c">##############################################</span>
 
+    <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+        <span class="c"># Implement alias for parameters</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spice_to_parameters</span><span class="p">:</span>
+            <span class="n">parameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spice_to_parameters</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="nb">object</span><span class="o">.</span><span class="n">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">object</span><span class="o">.</span><span class="n">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+
+        <span class="c"># Implement alias for parameters</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spice_to_parameters</span><span class="p">:</span>
+            <span class="n">parameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spice_to_parameters</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="n">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
 <div class="viewcode-block" id="Element.format_node_names"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Element.format_node_names">[docs]</a>    <span class="k">def</span> <span class="nf">format_node_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return the formatted list of nodes. &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">)))</span>
@@ -428,7 +458,7 @@
 
         <span class="n">pins</span> <span class="o">=</span> <span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;plus&#39;</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;minus&#39;</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">))</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
 
@@ -453,6 +483,8 @@
 
     <span class="c">##############################################</span>
 
+    <span class="c"># Fixme: Why the order the inverted ?</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
                  <span class="n">input_node_plus</span><span class="p">,</span> <span class="n">input_node_minus</span><span class="p">,</span>
                  <span class="n">output_node_plus</span><span class="p">,</span> <span class="n">output_node_minus</span><span class="p">,</span>
@@ -463,7 +495,7 @@
                 <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;input_plus&#39;</span><span class="p">,</span> <span class="n">input_node_plus</span><span class="p">),</span>
                 <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;input_minus&#39;</span><span class="p">,</span> <span class="n">input_node_minus</span><span class="p">))</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
 
@@ -491,7 +523,7 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="Node"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Node">[docs]</a><span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Node"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Node">[docs]</a><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a node in the circuit. It stores a reference to the elements connected to</span>
 <span class="sd">    the node.&quot;&quot;&quot;</span>
@@ -527,7 +559,7 @@
 
 <span class="c">####################################################################################################</span>
 </div></div>
-<div class="viewcode-block" id="Netlist"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Netlist">[docs]</a><span class="k">class</span> <span class="nc">Netlist</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Netlist"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Netlist">[docs]</a><span class="k">class</span> <span class="nc">Netlist</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a base class for a netlist.</span>
 
@@ -663,11 +695,15 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">nodes</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_external_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="c"># Fixme: ok ?</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ground</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ground&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;ground&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;ground&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="n">kwargs</span>
 
     <span class="c">##############################################</span>
 
@@ -675,6 +711,13 @@
     <span class="k">def</span> <span class="nf">gnd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Local ground &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ground</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Parameters &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span>
 
     <span class="c">##############################################</span>
 
@@ -696,8 +739,11 @@
 
         <span class="sd">&quot;&quot;&quot; Return the formatted subcircuit definition. &quot;&quot;&quot;</span>
 
-        <span class="n">netlist</span> <span class="o">=</span> <span class="s">&#39;.subckt {} {}</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_external_nodes</span><span class="p">))</span>
-        <span class="n">netlist</span> <span class="o">+=</span> <span class="nb">super</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="n">join_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_external_nodes</span><span class="p">)</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="n">join_list</span><span class="p">([</span><span class="s">&#39;{}={}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+        <span class="n">netlist</span> <span class="o">=</span> <span class="s">&#39;.subckt &#39;</span> <span class="o">+</span> <span class="n">join_list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">parameters</span><span class="p">))</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="n">netlist</span> <span class="o">+=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span>
         <span class="n">netlist</span> <span class="o">+=</span> <span class="s">&#39;.ends</span><span class="se">\n</span><span class="s">&#39;</span>
         <span class="k">return</span> <span class="n">netlist</span>
 
@@ -714,7 +760,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">SubCircuitFactory</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__nodes__</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__nodes__</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
 </div>
@@ -741,7 +787,7 @@
                  <span class="n">global_nodes</span><span class="o">=</span><span class="p">(),</span>
              <span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">Circuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ground</span> <span class="o">=</span> <span class="n">ground</span>
@@ -810,7 +856,7 @@
             <span class="n">netlist</span> <span class="o">+=</span> <span class="n">join_lines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s">&#39;.param &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span><span class="p">:</span>
             <span class="n">netlist</span> <span class="o">+=</span> <span class="n">join_lines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subcircuit_iterator</span><span class="p">())</span>
-        <span class="n">netlist</span> <span class="o">+=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Circuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span>
+        <span class="n">netlist</span> <span class="o">+=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">netlist</span>
 
     <span class="c">##############################################</span>

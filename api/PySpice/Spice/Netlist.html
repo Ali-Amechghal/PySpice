@@ -81,7 +81,7 @@ is translated to Python like this:</p>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">VoltageDivider</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;10V&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
@@ -315,6 +315,11 @@ parameter is not specified then a subprocess simulator is returned.</p>
 <code class="descname">prefix</code><em class="property"> = None</em><a class="headerlink" href="#PySpice.Spice.Netlist.Element.prefix" title="Permalink to this definition">¶</a></dt>
 <dd><p>SPICE element prefix</p>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.Element.spice_to_parameters">
+<code class="descname">spice_to_parameters</code><em class="property"> = {}</em><a class="headerlink" href="#PySpice.Spice.Netlist.Element.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -614,6 +619,12 @@ pin and the node.</p>
 <dd><p>Local ground</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.SubCircuit.parameters">
+<code class="descname">parameters</code><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuit.parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parameters</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -650,6 +661,11 @@ pin and the node.</p>
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.TwoPinElement.positional_parameters">
 <code class="descname">positional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.Netlist.TwoPinElement.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.TwoPinElement.spice_to_parameters">
+<code class="descname">spice_to_parameters</code><em class="property"> = {}</em><a class="headerlink" href="#PySpice.Spice.Netlist.TwoPinElement.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -696,6 +712,11 @@ pin and the node.</p>
 <dl class="attribute">
 <dt id="PySpice.Spice.Netlist.TwoPortElement.positional_parameters">
 <code class="descname">positional_parameters</code><em class="property"> = OrderedDict()</em><a class="headerlink" href="#PySpice.Spice.Netlist.TwoPortElement.positional_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.Netlist.TwoPortElement.spice_to_parameters">
+<code class="descname">spice_to_parameters</code><em class="property"> = {}</em><a class="headerlink" href="#PySpice.Spice.Netlist.TwoPortElement.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

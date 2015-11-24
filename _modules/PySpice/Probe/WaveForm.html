@@ -161,11 +161,11 @@
 
 <div class="viewcode-block" id="WaveForm.str_data"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.WaveForm.str_data">[docs]</a>    <span class="k">def</span> <span class="nf">str_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">WaveForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__repr__</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__repr__</span><span class="p">()</span>
 
 <span class="c">####################################################################################################</span>
 </div></div>
-<div class="viewcode-block" id="Analysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.Analysis">[docs]</a><span class="k">class</span> <span class="nc">Analysis</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Analysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.Analysis">[docs]</a><span class="k">class</span> <span class="nc">Analysis</span><span class="p">:</span>
 
     <span class="c">##############################################</span>
 
@@ -213,7 +213,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elements</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">SensitivityAnalysis</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">elements</span><span class="o">=</span><span class="n">elements</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">elements</span><span class="o">=</span><span class="n">elements</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
 </div>
@@ -237,7 +237,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_sweep</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">DcAnalysis</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_v_sweep</span> <span class="o">=</span> <span class="n">v_sweep</span>
 
@@ -255,7 +255,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">AcAnalysis</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span> <span class="o">=</span> <span class="n">frequency</span>
 
@@ -273,7 +273,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">TransientAnalysis</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_time</span> <span class="o">=</span> <span class="n">time</span>
 

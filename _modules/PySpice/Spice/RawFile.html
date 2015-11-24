@@ -148,7 +148,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="Variable"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable">[docs]</a><span class="k">class</span> <span class="nc">Variable</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Variable"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable">[docs]</a><span class="k">class</span> <span class="nc">Variable</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a variable or probe in a SPICE simulation output.</span>
 
@@ -243,7 +243,7 @@
 
 <span class="c">####################################################################################################</span>
 </div></div>
-<div class="viewcode-block" id="RawFile"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile">[docs]</a><span class="k">class</span> <span class="nc">RawFile</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="RawFile"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile">[docs]</a><span class="k">class</span> <span class="nc">RawFile</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This class parse the stdout of ngspice and the raw data output.</span>
 
@@ -271,6 +271,8 @@
 <span class="sd">      :attr:`title`</span>
 
 <span class="sd">      :attr:`variables`</span>
+
+<span class="sd">      :attr:`warnings`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -304,6 +306,10 @@
         
         <span class="bp">self</span><span class="o">.</span><span class="n">circuit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Circuit&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Doing analysis at TEMP&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Warning&#39;</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;Warning&#39;</span><span class="p">))]</span>
+        <span class="k">for</span> <span class="n">warning</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">warning</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Title&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Date&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Plotname&#39;</span><span class="p">)</span>

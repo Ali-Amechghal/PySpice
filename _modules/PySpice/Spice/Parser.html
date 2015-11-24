@@ -80,7 +80,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="Token"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Token">[docs]</a><span class="k">class</span> <span class="nc">Token</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Token"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Token">[docs]</a><span class="k">class</span> <span class="nc">Token</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a token, in fact a line in a Spice netlist. &quot;&quot;&quot;</span>
 
@@ -133,7 +133,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
         <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_line</span><span class="p">(</span><span class="s">&#39;.subckt&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
@@ -181,7 +181,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">Title</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
         <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_line</span><span class="p">(</span><span class="s">&#39;.title&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_title</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -202,7 +202,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">Element</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
         <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_line</span><span class="p">(</span><span class="s">&#39;R&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_element_type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">line</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -233,7 +233,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
         <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_line</span><span class="p">(</span><span class="s">&#39;.model&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_type</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
@@ -254,7 +254,7 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="Line"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Line">[docs]</a><span class="k">class</span> <span class="nc">Line</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Line"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Line">[docs]</a><span class="k">class</span> <span class="nc">Line</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a line in the netlist. &quot;&quot;&quot;</span>
 
@@ -277,7 +277,7 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="SpiceParser"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser">[docs]</a><span class="k">class</span> <span class="nc">SpiceParser</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="SpiceParser"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser">[docs]</a><span class="k">class</span> <span class="nc">SpiceParser</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This class parse a Spice netlist file and build a syntax tree.</span>
 

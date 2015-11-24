@@ -78,7 +78,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="ParameterDescriptor"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ParameterDescriptor">[docs]</a><span class="k">class</span> <span class="nc">ParameterDescriptor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ParameterDescriptor"><a class="viewcode-back" href="../../../api/PySpice/Spice/ElementParameter.html#PySpice.Spice.ElementParameter.ParameterDescriptor">[docs]</a><span class="k">class</span> <span class="nc">ParameterDescriptor</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This base class implements a descriptor for element parameters.</span>
 
@@ -169,7 +169,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">PositionalElementParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">key_parameter</span> <span class="o">=</span> <span class="n">key_parameter</span>
@@ -275,7 +275,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spice_name</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">FlagParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">spice_name</span> <span class="o">=</span> <span class="n">spice_name</span>
 
@@ -311,7 +311,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spice_name</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">KeyValueParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">spice_name</span> <span class="o">=</span> <span class="n">spice_name</span>
 
