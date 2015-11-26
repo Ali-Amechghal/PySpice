@@ -80,6 +80,117 @@
 
 <span class="c">####################################################################################################</span>
 
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="c">####################################################################################################</span>
+
+<span class="kn">from</span> <span class="nn">.ElementParameter</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">FlagParameter</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.Netlist</span> <span class="kn">import</span> <span class="n">ElementParameterMetaClass</span><span class="p">,</span> <span class="n">NPinElement</span><span class="p">,</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">.BasicElement</span> <span class="kn">import</span> <span class="n">SubCircuitElement</span><span class="p">,</span> <span class="n">BipolarJunctionTransistor</span>
+
+<span class="c">####################################################################################################</span>
+
+<span class="n">_module_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+
+<div class="viewcode-block" id="PrefixData"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.PrefixData">[docs]</a><span class="k">class</span> <span class="nc">PrefixData</span><span class="p">:</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">classes</span>
+        
+        <span class="n">number_of_positionals_min</span> <span class="o">=</span> <span class="mi">1000</span>
+        <span class="n">number_of_positionals_max</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">has_optionals</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">element_class</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+            <span class="n">number_of_positionals</span> <span class="o">=</span> <span class="n">element_class</span><span class="o">.</span><span class="n">number_of_positional_parameters</span><span class="p">()</span>
+            <span class="n">number_of_positionals_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">number_of_positionals_min</span><span class="p">,</span> <span class="n">number_of_positionals</span><span class="p">)</span>
+            <span class="n">number_of_positionals_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">number_of_positionals_max</span><span class="p">,</span> <span class="n">number_of_positionals</span><span class="p">)</span>
+            <span class="n">has_optionals</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">has_optionals</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">element_class</span><span class="o">.</span><span class="n">optional_parameters</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_positionals_min</span> <span class="o">=</span> <span class="n">number_of_positionals_min</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_positionals_max</span> <span class="o">=</span> <span class="n">number_of_positionals_max</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_optionals</span> <span class="o">=</span> <span class="n">has_optionals</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">multi_devices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">npins</span> <span class="o">=</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;Q&#39;</span><span class="p">,</span> <span class="s">&#39;X&#39;</span><span class="p">)</span> <span class="c"># NPinElement, Q has 3 to 4 pins</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">npins</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">number_of_pins</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Q and X are single</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">number_of_pins</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">number_of_pins</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_flag</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">element_class</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">element_class</span><span class="o">.</span><span class="n">optional_parameters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameter</span><span class="p">,</span> <span class="n">FlagParameter</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">has_flag</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">single</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">multi_devices</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">()</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<span class="n">_prefix_cache</span> <span class="o">=</span> <span class="p">{</span><span class="n">prefix</span><span class="p">:</span><span class="n">PrefixData</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">classes</span> <span class="ow">in</span> <span class="n">ElementParameterMetaClass</span><span class="o">.</span><span class="n">__classes__</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+<span class="c"># for prefix_data in sorted(_prefix_cache.values(), key=lambda x: len(x)):</span>
+<span class="c">#     print(prefix_data.prefix,</span>
+<span class="c">#           len(prefix_data),</span>
+<span class="c">#           prefix_data.number_of_positionals_min, prefix_data.number_of_positionals_max,</span>
+<span class="c">#           prefix_data.has_optionals)</span>
+
+<span class="c"># Single:</span>
+<span class="c"># B 0 True</span>
+<span class="c"># D 1 True</span>
+<span class="c"># F 2 False</span>
+<span class="c"># G 1 False</span>
+<span class="c"># H 2 False</span>
+<span class="c"># I 1 False</span>
+<span class="c"># J 1 True</span>
+<span class="c"># K 3 False</span>
+<span class="c"># M 1 True</span>
+<span class="c"># S 2 False</span>
+<span class="c"># V 1 False</span>
+<span class="c"># W 3 False</span>
+<span class="c"># Z 1 True</span>
+
+<span class="c"># Two:</span>
+<span class="c"># E 0 1 False</span>
+<span class="c"># L 1 2 True</span>
+
+<span class="c"># Three:</span>
+<span class="c"># C 1 2 True</span>
+<span class="c"># R 1 2 True</span>
+
+<span class="c"># NPinElement:</span>
+<span class="c"># Q 1 1 True</span>
+<span class="c"># X 1 1 False</span>
+
+<span class="c">####################################################################################################</span>
+
 <div class="viewcode-block" id="Token"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Token">[docs]</a><span class="k">class</span> <span class="nc">Token</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a token, in fact a line in a Spice netlist. &quot;&quot;&quot;</span>
@@ -92,28 +203,6 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="Token.split_line"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Token.split_line">[docs]</a>    <span class="k">def</span> <span class="nf">split_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyword</span><span class="p">):</span>
-
-        <span class="sd">&quot;&quot;&quot; Split the line according to the following pattern::</span>
-
-<span class="sd">            keyword parameter1 parameter2 ... key1=value1 key2=value2 ...</span>
-
-<span class="sd">        Return the list of parameters and the dictionnary.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">raw_parameters</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="p">)[</span><span class="nb">len</span><span class="p">(</span><span class="n">keyword</span><span class="p">):]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-        <span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">dict_parameters</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">raw_parameters</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s">&#39;=&#39;</span> <span class="ow">in</span> <span class="n">parameter</span><span class="p">:</span>
-                <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;=&#39;</span><span class="p">)</span>
-                <span class="n">dict_parameters</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span>
-
-    <span class="c">##############################################</span>
-</div>
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="s">&quot;{} {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="p">))</span>
@@ -125,9 +214,61 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="SubCircuit"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SubCircuit">[docs]</a><span class="k">class</span> <span class="nc">SubCircuit</span><span class="p">(</span><span class="n">Token</span><span class="p">):</span>
+<div class="viewcode-block" id="Title"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Title">[docs]</a><span class="k">class</span> <span class="nc">Title</span><span class="p">(</span><span class="n">Token</span><span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot; This class implements a sub-circuit definition. &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; This class implements a title definition. &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">read_right_of</span><span class="p">(</span><span class="s">&#39;.title&#39;</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_title</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;Title {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_title</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="Include"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Include">[docs]</a><span class="k">class</span> <span class="nc">Include</span><span class="p">(</span><span class="n">Token</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot; This class implements a include definition. &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_include</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">read_right_of</span><span class="p">(</span><span class="s">&#39;.include&#39;</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_include</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;Include {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_title</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">Token</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot; This class implements a model definition.</span>
+
+<span class="sd">    Spice syntax::</span>
+
+<span class="sd">        .model mname type (pname1=pval1 pname2=pval2)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c">##############################################</span>
 
@@ -135,7 +276,44 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
-        <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_line</span><span class="p">(</span><span class="s">&#39;.subckt&#39;</span><span class="p">)</span>
+        <span class="c"># Fixme</span>
+        <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">split_line</span><span class="p">(</span><span class="s">&#39;.model&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_type</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="n">dict_parameters</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Name of the model &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="s">&quot;Model {} {} {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="SubCircuit"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SubCircuit">[docs]</a><span class="k">class</span> <span class="nc">SubCircuit</span><span class="p">(</span><span class="n">Token</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot; This class implements a sub-circuit definition.</span>
+
+<span class="sd">    Spice syntax::</span>
+
+<span class="sd">        .SUBCKT name node1 ... param1=value1 ...</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="c"># Fixme:</span>
+        <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">split_line</span><span class="p">(</span><span class="s">&#39;.subckt&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span> <span class="o">=</span> <span class="p">[]</span>
@@ -173,42 +351,97 @@
 
 <span class="c">####################################################################################################</span>
 </div></div>
-<div class="viewcode-block" id="Title"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Title">[docs]</a><span class="k">class</span> <span class="nc">Title</span><span class="p">(</span><span class="n">Token</span><span class="p">):</span>
-
-    <span class="sd">&quot;&quot;&quot; This class implements a title definition. &quot;&quot;&quot;</span>
-
-    <span class="c">##############################################</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
-
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-
-        <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_line</span><span class="p">(</span><span class="s">&#39;.title&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_title</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-    <span class="c">##############################################</span>
-
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-        <span class="k">return</span> <span class="s">&quot;Title {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_title</span><span class="p">)</span>
-
-<span class="c">####################################################################################################</span>
-</div>
 <div class="viewcode-block" id="Element"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="n">Token</span><span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot; This class implements an element definition. &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; This class implements an element definition.</span>
+
+<span class="sd">    &quot;{ expression }&quot; are allowed in device line.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_logger</span> <span class="o">=</span> <span class="n">_module_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;Element&#39;</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        
+        <span class="n">line_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="c"># self._logger.debug(&#39;\n&#39; + line_str)</span>
+        
+        <span class="c"># Retrieve device prefix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span> <span class="o">=</span> <span class="n">line_str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">prefix_data</span> <span class="o">=</span> <span class="n">_prefix_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span><span class="p">]</span>
 
-        <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_line</span><span class="p">(</span><span class="s">&#39;R&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_element_type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">line</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_dict_parameters</span> <span class="o">=</span> <span class="n">dict_parameters</span>
+        <span class="c"># Retrieve device name</span>
+        <span class="n">start_location</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">stop_location</span> <span class="o">=</span> <span class="n">line_str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">line_str</span><span class="p">[</span><span class="n">start_location</span><span class="p">:</span><span class="n">stop_location</span><span class="p">]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dict_parameters</span> <span class="o">=</span> <span class="p">{}</span>
+        
+        <span class="c"># Read nodes</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">npins</span><span class="p">:</span>
+            <span class="n">number_of_pins</span> <span class="o">=</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">number_of_pins</span>
+            <span class="k">if</span> <span class="n">number_of_pins</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">,</span> <span class="n">stop_location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">read_words</span><span class="p">(</span><span class="n">stop_location</span><span class="p">,</span> <span class="n">number_of_pins</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c"># Q or X</span>
+            <span class="k">if</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">prefix</span> <span class="o">==</span> <span class="s">&#39;Q&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">,</span> <span class="n">stop_location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">read_words</span><span class="p">(</span><span class="n">stop_location</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+                <span class="c"># Fixme: optional node</span>
+            <span class="k">else</span><span class="p">:</span> <span class="c"># X</span>
+                <span class="n">args</span><span class="p">,</span> <span class="n">stop_location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">split_words</span><span class="p">(</span><span class="n">stop_location</span><span class="p">,</span> <span class="n">until</span><span class="o">=</span><span class="s">&#39;=&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span> <span class="o">=</span> <span class="n">args</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c"># model name</span>
+        
+        <span class="c"># Read positionals</span>
+        <span class="n">number_of_positionals</span> <span class="o">=</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">number_of_positionals_min</span>
+        <span class="k">if</span> <span class="n">number_of_positionals</span> <span class="ow">and</span> <span class="n">stop_location</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="c"># model is optional</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">,</span> <span class="n">stop_location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">read_words</span><span class="p">(</span><span class="n">stop_location</span><span class="p">,</span> <span class="n">number_of_positionals</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">multi_devices</span><span class="p">:</span>
+            <span class="n">remaining</span><span class="p">,</span> <span class="n">stop_location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">split_words</span><span class="p">(</span><span class="n">stop_location</span><span class="p">,</span> <span class="n">until</span><span class="o">=</span><span class="s">&#39;=&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">remaining</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">prefix</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;V&#39;</span><span class="p">,</span> <span class="s">&#39;I&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">stop_location</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># merge remaining</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">line_str</span><span class="p">[</span><span class="n">stop_location</span><span class="p">:]</span>
+        
+        <span class="c"># Read optionals</span>
+        <span class="k">if</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">has_optionals</span> <span class="ow">and</span> <span class="n">stop_location</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">,</span> <span class="n">stop_location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">split_words</span><span class="p">(</span><span class="n">stop_location</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">kwarg</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">kwarg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;=&#39;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_dict_parameters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">kwarg</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">,)</span> <span class="ow">and</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">has_flag</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_dict_parameters</span><span class="p">[</span><span class="s">&#39;off&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">line_str</span><span class="p">)</span>
+                        <span class="c"># raise NameError(&quot;Bad element line:&quot;, line_str)</span>
+        
+        <span class="k">if</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">multi_devices</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">element_class</span> <span class="ow">in</span> <span class="n">prefix_data</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">)</span> <span class="o">==</span> <span class="n">element_class</span><span class="o">.</span><span class="n">number_of_positional_parameters</span><span class="p">():</span>
+                    <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">element_class</span> <span class="o">=</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">single</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">factory</span> <span class="o">=</span> <span class="n">element_class</span>
+        
+        <span class="c"># Move positionals passed as kwarg</span>
+        <span class="n">to_delete</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">element_class</span><span class="o">.</span><span class="n">positional_parameters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">parameter</span><span class="o">.</span><span class="n">key_parameter</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">position</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dict_parameters</span><span class="p">[</span><span class="n">parameter</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">to_delete</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">to_delete</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__repr__</span><span class="p">())</span>
 
     <span class="c">##############################################</span>
 
@@ -221,36 +454,7 @@
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="s">&quot;Element {} {} {} {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_element_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">)</span>
-
-<span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">Token</span><span class="p">):</span>
-
-    <span class="sd">&quot;&quot;&quot; This class implements a model definition. &quot;&quot;&quot;</span>
-
-    <span class="c">##############################################</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
-
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-
-        <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_line</span><span class="p">(</span><span class="s">&#39;.model&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_type</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="n">dict_parameters</span>
-
-    <span class="c">##############################################</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Name of the model &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
-
-    <span class="c">##############################################</span>
-
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-        <span class="k">return</span> <span class="s">&quot;Model {} {} {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s">&quot;Element {0._prefix} {0._name} {0._nodes} {0._parameters} {0._dict_parameters}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
 </div>
@@ -262,21 +466,111 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">line_range</span><span class="p">):</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">marker</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;$&#39;</span><span class="p">,</span> <span class="s">&#39;;&#39;</span><span class="p">,</span> <span class="s">&#39;//&#39;</span><span class="p">):</span>
+            <span class="n">location</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">location</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">location</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">[:</span><span class="n">location</span><span class="p">]</span>
+            <span class="n">comment</span> <span class="o">=</span> <span class="n">text</span><span class="p">[</span><span class="n">location</span><span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">comment</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_comment</span> <span class="o">=</span> <span class="n">comment</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_line_range</span> <span class="o">=</span> <span class="n">line_range</span>
 
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&quot;{} {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_line_range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s">&quot;{0._line_range} {0._text}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span>
 
-<span class="c">####################################################################################################</span>
+    <span class="c">##############################################</span>
+
+<div class="viewcode-block" id="Line.read_right_of"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Line.read_right_of">[docs]</a>    <span class="k">def</span> <span class="nf">read_right_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">):]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="c">##############################################</span>
 </div>
+<div class="viewcode-block" id="Line.read_words"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Line.read_words">[docs]</a>    <span class="k">def</span> <span class="nf">read_words</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_location</span><span class="p">,</span> <span class="n">number_of_words</span><span class="p">):</span>
+
+        <span class="n">line_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span>
+        <span class="n">number_of_words_read</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="n">number_of_words_read</span> <span class="o">&lt;</span> <span class="n">number_of_words</span><span class="p">:</span> <span class="c"># and start_location &lt; len(line_str)</span>
+            <span class="n">stop_location</span> <span class="o">=</span> <span class="n">line_str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="n">start_location</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">stop_location</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">stop_location</span> <span class="o">=</span> <span class="bp">None</span> <span class="c"># read until end</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">line_str</span><span class="p">[</span><span class="n">start_location</span><span class="p">:</span><span class="n">stop_location</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">word</span><span class="p">:</span>
+                <span class="n">number_of_words_read</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">stop_location</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="c"># we should stop</span>
+                <span class="k">if</span> <span class="n">number_of_words_read</span> <span class="o">!=</span> <span class="n">number_of_words</span><span class="p">:</span>
+                    <span class="n">template</span> <span class="o">=</span> <span class="s">&quot;Bad element line, looking for word {}/{}:</span><span class="se">\n</span><span class="s">&quot;</span>
+                    <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_of_words_read</span><span class="p">,</span> <span class="n">number_of_words</span><span class="p">)</span> <span class="o">+</span>
+                                    <span class="n">line_str</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span>
+                                    <span class="s">&#39; &#39;</span><span class="o">*</span><span class="n">start_location</span> <span class="o">+</span> <span class="s">&#39;^&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">start_location</span> <span class="o">&lt;</span> <span class="n">stop_location</span><span class="p">:</span>
+                    <span class="n">start_location</span> <span class="o">=</span> <span class="n">stop_location</span>
+                <span class="k">else</span><span class="p">:</span> <span class="c"># we have read a space</span>
+                    <span class="n">start_location</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">return</span> <span class="n">words</span><span class="p">,</span> <span class="n">stop_location</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Line.split_words"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Line.split_words">[docs]</a>    <span class="k">def</span> <span class="nf">split_words</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_location</span><span class="p">,</span> <span class="n">until</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+        <span class="n">line_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span>
+        <span class="n">stop_location</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="n">until</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">location</span> <span class="o">=</span> <span class="n">line_str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">until</span><span class="p">,</span> <span class="n">start_location</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">location</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">stop_location</span> <span class="o">=</span> <span class="n">location</span>
+                <span class="n">location</span> <span class="o">=</span> <span class="n">line_str</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="n">start_location</span><span class="p">,</span> <span class="n">stop_location</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">location</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">stop_location</span> <span class="o">=</span> <span class="n">location</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;Bad element line, missing key? &quot;</span> <span class="o">+</span> <span class="n">line_str</span><span class="p">)</span>
+        
+        <span class="n">line_str</span> <span class="o">=</span> <span class="n">line_str</span><span class="p">[</span><span class="n">start_location</span><span class="p">:</span><span class="n">stop_location</span><span class="p">]</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">line_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
+        
+        <span class="k">return</span> <span class="n">words</span><span class="p">,</span> <span class="n">stop_location</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="Line.split_line"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.Line.split_line">[docs]</a>    <span class="k">def</span> <span class="nf">split_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyword</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; Split the line according to the following pattern::</span>
+
+<span class="sd">            keyword parameter1 parameter2 ... key1=value1 key2=value2 ...</span>
+
+<span class="sd">        Return the list of parameters and the dictionnary.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">raw_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">keyword</span><span class="p">):]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dict_parameters</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">raw_parameters</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s">&#39;=&#39;</span> <span class="ow">in</span> <span class="n">parameter</span><span class="p">:</span>
+                <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;=&#39;</span><span class="p">)</span>
+                <span class="n">dict_parameters</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">dict_parameters</span>
+
+<span class="c">####################################################################################################</span>
+</div></div>
 <div class="viewcode-block" id="SpiceParser"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser">[docs]</a><span class="k">class</span> <span class="nc">SpiceParser</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This class parse a Spice netlist file and build a syntax tree.</span>
@@ -291,14 +585,24 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="n">_logger</span> <span class="o">=</span> <span class="n">_module_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;SpiceParser&#39;</span><span class="p">)</span>
+
     <span class="c">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">raw_lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="c"># Fixme: empty source</span>
 
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">raw_lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">raw_lines</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span> <span class="c"># Fixme: other os</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span>
+        
         <span class="n">lines</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_lines</span><span class="p">(</span><span class="n">raw_lines</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_title</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_find_sections</span><span class="p">()</span>
 
@@ -306,8 +610,12 @@
 
 <div class="viewcode-block" id="SpiceParser._merge_lines"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser._merge_lines">[docs]</a>    <span class="k">def</span> <span class="nf">_merge_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_lines</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot; Merge broken lines and return a new list of lines. &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Merge broken lines and return a new list of lines.</span>
+<span class="sd">        </span>
+<span class="sd">        A line starting with &quot;+&quot; continues the preceding line.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
+        <span class="c"># Fixme: better using lines[-1] ?</span>
         <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">current_line</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
         <span class="n">current_line_index</span> <span class="o">=</span> <span class="bp">None</span>
@@ -331,38 +639,43 @@
 
         <span class="n">tokens</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">sub_circuit</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">scope</span> <span class="o">=</span> <span class="n">tokens</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
             <span class="c"># print repr(line)</span>
             <span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-            <span class="n">lower_case_text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">lower_case_text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c"># !</span>
             <span class="k">if</span> <span class="n">text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;*&#39;</span><span class="p">):</span>
-                <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Comment</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+                <span class="n">scope</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Comment</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
             <span class="k">elif</span> <span class="n">lower_case_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">):</span>
                 <span class="n">lower_case_text</span> <span class="o">=</span> <span class="n">lower_case_text</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
                 <span class="k">if</span> <span class="n">lower_case_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;subckt&#39;</span><span class="p">):</span>
                     <span class="n">sub_circuit</span> <span class="o">=</span> <span class="n">SubCircuit</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
                     <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sub_circuit</span><span class="p">)</span>
+                    <span class="n">scope</span> <span class="o">=</span> <span class="n">sub_circuit</span>
                 <span class="k">elif</span> <span class="n">lower_case_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;ends&#39;</span><span class="p">):</span>
                     <span class="n">sub_circuit</span> <span class="o">=</span> <span class="bp">None</span>
+                    <span class="n">scope</span> <span class="o">=</span> <span class="n">tokens</span>
                 <span class="k">elif</span> <span class="n">lower_case_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;title&#39;</span><span class="p">):</span>
-                    <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Title</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_title</span> <span class="o">=</span> <span class="n">Title</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="n">scope</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_title</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="n">lower_case_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">):</span>
                     <span class="k">pass</span>
                 <span class="k">elif</span> <span class="n">lower_case_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;model&#39;</span><span class="p">):</span>
                     <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">sub_circuit</span><span class="p">:</span>
-                        <span class="n">sub_circuit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+                    <span class="n">scope</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">lower_case_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;include&#39;</span><span class="p">):</span>
+                    <span class="n">scope</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Include</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="c"># options param ...</span>
-                    <span class="k">pass</span>
+                    <span class="c"># .global</span>
+                    <span class="c"># .lib filename libname</span>
+                    <span class="c"># .param</span>
+                    <span class="c"># .func .csparam .temp .if</span>
+                    <span class="c"># { expr } are allowed in .model lines and in device lines.</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">element</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">sub_circuit</span><span class="p">:</span>
-                    <span class="n">sub_circuit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+                <span class="n">scope</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">tokens</span>
 
@@ -397,6 +710,31 @@
 <div class="viewcode-block" id="SpiceParser.is_only_model"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser.is_only_model">[docs]</a>    <span class="k">def</span> <span class="nf">is_only_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">circuit</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">subcircuits</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+</div>
+<div class="viewcode-block" id="SpiceParser.build_circuit"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser.build_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">build_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_title</span><span class="p">))</span>
+        
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">Include</span><span class="p">):</span>
+                <span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+        
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
+                <span class="n">factory</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">alias</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">_prefix</span> <span class="o">!=</span> <span class="s">&#39;X&#39;</span><span class="p">:</span>
+                    <span class="n">args</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">_nodes</span> <span class="o">+</span> <span class="n">token</span><span class="o">.</span><span class="n">_parameters</span>
+                <span class="k">else</span><span class="p">:</span> <span class="c"># != Spice</span>
+                    <span class="n">args</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">+</span> <span class="n">token</span><span class="o">.</span><span class="n">_nodes</span>
+                <span class="n">kwargs</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">_dict_parameters</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">_prefix</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">_nodes</span><span class="p">,</span>
+                                                     <span class="n">token</span><span class="o">.</span><span class="n">_parameters</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">_dict_parameters</span><span class="p">)])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+                <span class="n">factory</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">circuit</span>
 
 <span class="c">####################################################################################################</span>
 <span class="c">#</span>

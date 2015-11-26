@@ -482,22 +482,22 @@
 
     <span class="n">_logger</span> <span class="o">=</span> <span class="n">_module_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;NgSpiceSharedCircuitSimulator&#39;</span><span class="p">)</span>
 
-    <span class="n">__ngspice_shared__</span> <span class="o">=</span> <span class="bp">None</span>
-
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">,</span>
                  <span class="n">temperature</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
                  <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+                 <span class="n">ngspice_shared</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                 <span class="p">):</span>
 
         <span class="c"># Fixme: kwargs</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="p">,</span> <span class="n">pipe</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ngspice_shared__</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__ngspice_shared__</span> <span class="o">=</span> <span class="n">NgSpiceShared</span><span class="p">(</span><span class="n">send_data</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ngspice_shared</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ngspice_shared__</span>
+        <span class="k">if</span> <span class="n">ngspice_shared</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ngspice_shared</span> <span class="o">=</span> <span class="n">NgSpiceShared</span><span class="p">(</span><span class="n">send_data</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ngspice_shared</span> <span class="o">=</span> <span class="n">ngspice_shared</span>
 
     <span class="c">##############################################</span>
 
@@ -514,7 +514,7 @@
             <span class="n">plot_name</span> <span class="o">=</span> <span class="s">&#39;dc1&#39;</span>
         <span class="k">elif</span> <span class="n">analysis_method</span> <span class="o">==</span> <span class="s">&#39;ac&#39;</span><span class="p">:</span>
             <span class="n">plot_name</span> <span class="o">=</span> <span class="s">&#39;ac1&#39;</span>
-        <span class="k">elif</span> <span class="n">analysis_method</span> <span class="o">==</span> <span class="s">&#39;tran&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">analysis_method</span> <span class="o">==</span> <span class="s">&#39;transient&#39;</span><span class="p">:</span>
             <span class="n">plot_name</span> <span class="o">=</span> <span class="s">&#39;tran1&#39;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>

@@ -142,8 +142,6 @@
 
 <span class="c">####################################################################################################</span>
 
-<span class="c">####################################################################################################</span>
-
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="kn">import</span> <span class="nn">keyword</span>
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -308,10 +306,13 @@
 
     <span class="sd">&quot;&quot;&quot; Metaclass to implements the element parameter machinery. &quot;&quot;&quot;</span>
 
+    <span class="n">__classes__</span> <span class="o">=</span> <span class="p">{}</span>
+
     <span class="c">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">class_name</span><span class="p">,</span> <span class="n">super_classes</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
 
+        <span class="c"># Collect positional and optional parameters from class attribute dict</span>
         <span class="n">positional_parameters</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">parameters</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">attribute_name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -321,11 +322,18 @@
                     <span class="n">d</span> <span class="o">=</span> <span class="n">positional_parameters</span>
                 <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="n">FlagParameter</span><span class="p">,</span> <span class="n">KeyValueParameter</span><span class="p">)):</span>
                     <span class="n">d</span> <span class="o">=</span> <span class="n">parameters</span>
+                <span class="c"># else:</span>
+                <span class="c">#     raise NotImplementedError</span>
                 <span class="n">d</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
+        
+        <span class="c"># Build dictionnary : attribute_name -&gt; parameter</span>
         <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;positional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">positional_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span>
                                                                  <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">position</span><span class="p">))</span>
+        
         <span class="c"># optional parameter order is not required for SPICE, but for unit test</span>
         <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;optional_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        
+        <span class="c"># Positional parameter array</span>
         <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;parameters_from_args&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameter</span>
                                               <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">positional_parameters</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
                                               <span class="k">if</span> <span class="ow">not</span> <span class="n">parameter</span><span class="o">.</span><span class="n">key_parameter</span><span class="p">]</span>
@@ -338,7 +346,23 @@
                 <span class="ow">and</span> <span class="n">parameter</span><span class="o">.</span><span class="n">spice_name</span> <span class="o">!=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">):</span>
                 <span class="n">_module_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Spice parameter &quot;{}&quot; clash with attributes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">parameter</span><span class="o">.</span><span class="n">spice_name</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">class_name</span><span class="p">,</span> <span class="n">super_classes</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">class_name</span><span class="p">,</span> <span class="n">super_classes</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+
+        <span class="nb">type</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">class_name</span><span class="p">,</span> <span class="n">super_classes</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+        
+        <span class="c"># Collect basic element classes</span>
+        <span class="k">if</span> <span class="s">&#39;prefix&#39;</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;prefix&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">classes</span> <span class="o">=</span> <span class="n">ElementParameterMetaClass</span><span class="o">.</span><span class="n">__classes__</span>
+                <span class="k">if</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+                    <span class="n">classes</span><span class="p">[</span><span class="n">prefix</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">classes</span><span class="p">[</span><span class="n">prefix</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">cls</span><span class="p">]</span>
 
 <span class="c">####################################################################################################</span>
 </div>
@@ -349,11 +373,21 @@
 <span class="sd">    It use a metaclass machinery for the declaration of the parameters.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="c"># Fixme: _prefix</span>
+
     <span class="c">#: SPICE element prefix</span>
     <span class="n">prefix</span> <span class="o">=</span> <span class="bp">None</span>
 
+    <span class="n">__number_of_pins__</span> <span class="o">=</span> <span class="bp">None</span>
+
     <span class="c">##############################################</span>
 
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Element.number_of_pins"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Element.number_of_pins">[docs]</a>    <span class="k">def</span> <span class="nf">number_of_pins</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">__number_of_pins__</span>
+
+    <span class="c">##############################################</span>
+</div>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
@@ -429,6 +463,12 @@
                     <span class="k">yield</span> <span class="n">parameter</span>
 
     <span class="c">##############################################</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Element.number_of_positional_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.Element.number_of_positional_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">number_of_positional_parameters</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">positional_parameters</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
 
     <span class="c"># @property</span>
     <span class="c"># def parameters(self):</span>
@@ -448,9 +488,23 @@
 
 <span class="c">####################################################################################################</span>
 </div>
+<div class="viewcode-block" id="NPinElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.NPinElement">[docs]</a><span class="k">class</span> <span class="nc">NPinElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="AnyPinElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.AnyPinElement">[docs]</a><span class="k">class</span> <span class="nc">AnyPinElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+    <span class="n">__number_of_pins__</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c">####################################################################################################</span>
+</div>
 <div class="viewcode-block" id="TwoPinElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.TwoPinElement">[docs]</a><span class="k">class</span> <span class="nc">TwoPinElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a base class for a two-pin element. &quot;&quot;&quot;</span>
+
+    <span class="c"># dipole</span>
+
+    <span class="n">__number_of_pins__</span> <span class="o">=</span> <span class="mi">2</span>
 
     <span class="c">##############################################</span>
 
@@ -474,12 +528,24 @@
 
 <span class="c">####################################################################################################</span>
 </div>
+<div class="viewcode-block" id="ThreePinElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.ThreePinElement">[docs]</a><span class="k">class</span> <span class="nc">ThreePinElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+    <span class="n">__number_of_pins__</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c">####################################################################################################</span>
+</div>
+<div class="viewcode-block" id="FourPinElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.FourPinElement">[docs]</a><span class="k">class</span> <span class="nc">FourPinElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+    <span class="n">__number_of_pins__</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c">####################################################################################################</span>
+</div>
 <div class="viewcode-block" id="TwoPortElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/Netlist.html#PySpice.Spice.Netlist.TwoPortElement">[docs]</a><span class="k">class</span> <span class="nc">TwoPortElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a base class for a two-port element.</span>
 
 <span class="sd">    .. warning:: As opposite to Spice, the input nodes are specified before the output nodes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__number_of_pins__</span> <span class="o">=</span> <span class="mi">4</span>
 
     <span class="c">##############################################</span>
 
@@ -792,7 +858,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ground</span> <span class="o">=</span> <span class="n">ground</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_global_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">global_nodes</span><span class="p">)</span> <span class="c"># .global</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_includes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c"># .include</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_includes</span> <span class="o">=</span> <span class="p">[]</span> <span class="c"># .include</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="p">{}</span> <span class="c"># .param</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -813,7 +879,10 @@
 
         <span class="sd">&quot;&quot;&quot; Include a file. &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_includes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_includes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_includes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;Duplicated include&quot;</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
 </div>

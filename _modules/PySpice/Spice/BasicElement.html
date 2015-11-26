@@ -152,7 +152,11 @@
 <span class="c">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">..Tools.StringTools</span> <span class="kn">import</span> <span class="n">join_list</span>
-<span class="kn">from</span> <span class="nn">.Netlist</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">Element</span><span class="p">,</span> <span class="n">TwoPinElement</span><span class="p">,</span> <span class="n">TwoPortElement</span>
+<span class="kn">from</span> <span class="nn">.Netlist</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Pin</span><span class="p">,</span>
+                      <span class="n">AnyPinElement</span><span class="p">,</span>
+                      <span class="n">TwoPinElement</span><span class="p">,</span> <span class="n">ThreePinElement</span><span class="p">,</span> <span class="n">FourPinElement</span><span class="p">,</span>
+                      <span class="n">NPinElement</span><span class="p">,</span>
+                      <span class="n">TwoPortElement</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">.ElementParameter</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="c"># KeyValueParameter,</span>
     <span class="n">BoolKeyParameter</span><span class="p">,</span>
@@ -171,7 +175,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="SubCircuitElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SubCircuitElement">[docs]</a><span class="k">class</span> <span class="nc">SubCircuitElement</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+<div class="viewcode-block" id="SubCircuitElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SubCircuitElement">[docs]</a><span class="k">class</span> <span class="nc">SubCircuitElement</span><span class="p">(</span><span class="n">NPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a sub-circuit.</span>
 
@@ -518,7 +522,7 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="CoupledInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CoupledInductor">[docs]</a><span class="k">class</span> <span class="nc">CoupledInductor</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+<div class="viewcode-block" id="CoupledInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CoupledInductor">[docs]</a><span class="k">class</span> <span class="nc">CoupledInductor</span><span class="p">(</span><span class="n">AnyPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implementss a coupled (mutual) inductors.</span>
 
@@ -870,7 +874,7 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="BipolarJunctionTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BipolarJunctionTransistor">[docs]</a><span class="k">class</span> <span class="nc">BipolarJunctionTransistor</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+<div class="viewcode-block" id="BipolarJunctionTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BipolarJunctionTransistor">[docs]</a><span class="k">class</span> <span class="nc">BipolarJunctionTransistor</span><span class="p">(</span><span class="n">NPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a bipolar junction transistor.</span>
 
@@ -960,7 +964,7 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="JunctionFieldEffectTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor">[docs]</a><span class="k">class</span> <span class="nc">JunctionFieldEffectTransistor</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+<div class="viewcode-block" id="JunctionFieldEffectTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor">[docs]</a><span class="k">class</span> <span class="nc">JunctionFieldEffectTransistor</span><span class="p">(</span><span class="n">ThreePinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a bipolar junction transistor.</span>
 
@@ -1026,7 +1030,7 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="Mesfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mesfet">[docs]</a><span class="k">class</span> <span class="nc">Mesfet</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+<div class="viewcode-block" id="Mesfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mesfet">[docs]</a><span class="k">class</span> <span class="nc">Mesfet</span><span class="p">(</span><span class="n">ThreePinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a Metal Semiconductor Field Effect Transistor.</span>
 
@@ -1089,14 +1093,14 @@
 
 <span class="c">####################################################################################################</span>
 </div>
-<div class="viewcode-block" id="Mosfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet">[docs]</a><span class="k">class</span> <span class="nc">Mosfet</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+<div class="viewcode-block" id="Mosfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet">[docs]</a><span class="k">class</span> <span class="nc">Mosfet</span><span class="p">(</span><span class="n">FourPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot; This class implements a Metal Oxide Field Effect Transistor.</span>
 
 <span class="sd">    Spice syntax::</span>
 
-<span class="sd">         MXXXXXXX nd ng ns nb mname &lt;m=val&gt; &lt;l=val&gt; &lt;w=val&gt; </span>
-<span class="sd">         + &lt;ad=val&gt; &lt;as=val&gt; &lt;pd=val&gt; &lt;ps=val&gt; &lt;nrd=val&gt; </span>
+<span class="sd">         MXXXXXXX nd ng ns nb mname &lt;m=val&gt; &lt;l=val&gt; &lt;w=val&gt;</span>
+<span class="sd">         + &lt;ad=val&gt; &lt;as=val&gt; &lt;pd=val&gt; &lt;ps=val&gt; &lt;nrd=val&gt;</span>
 <span class="sd">         + &lt;nrs=val&gt; &lt;off&gt; &lt;ic=vds,vgs,vbs&gt; &lt;temp=t&gt;</span>
 
 <span class="sd">    Attributes:</span>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction &mdash; PySpice 0.2.2 documentation</title>
+    <title>News &mdash; PySpice 0.2.2 documentation</title>
     
     <link rel="stylesheet" href="static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -59,6 +59,19 @@
 git repository after each commit.</p>
 <p class="last">As opposite the <a class="reference external" href="http://fabricesalvaire.github.io/PySpice">PySpice Home Page</a> is built manually and is thus less prone to errors.</p>
 </div>
+<div class="section" id="news">
+<h1>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v0-3-0">
+<h2>V0.3.0<a class="headerlink" href="#v0-3-0" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Added an example to show how to use the NgSpice Shared Simulation Mode.</li>
+<li>Completed the Spice netlist parser and added an example, thus we could now use a schematic editor
+to define the circuit.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
 <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>PySpice is a <a class="reference external" href="http://python.org">Python</a> 3 library which interplay with Berkeley SPICE, the industrial circuit
@@ -98,11 +111,11 @@ same principle and extend PySpice later.</p>
 <li>actually PySpice only supports <a class="reference external" href="http://ngspice.sourceforge.net">Ngspice</a></li>
 <li>an oriented-object API to describe circuit in a way similar to SPICE</li>
 <li>a library and model manager that index recursively a directory</li>
-<li>an incomplete SPICE parser (mainly used for the library and model indexer)</li>
+<li>an (experimental) SPICE netlist parser.  <a class="reference external" href="http://www.kicad-pcb.org">Kicad</a> can be used as schematic editor to simplify the
+netlist writing.</li>
 <li>a circuit can be simulated using a subprocess (aka server mode) or using the NgSpice shared library,
 NgSpice vectors are converted to Numpy array</li>
-<li>the NgSpice shared library permits to interact with the simulator and provides Python callback
-for external voltage and current source</li>
+<li>the NgSpice shared library permits to plug voltage/current sources from Python to NgSpice and vice versa.</li>
 <li>some data analysis add-ons</li>
 </ul>
 </div></blockquote>
@@ -115,9 +128,6 @@ included in the <em>tools</em> directory. This tool could be extended to generat
 <p>These features are planned in the future:</p>
 <blockquote>
 <div><ul class="simple">
-<li>implement a SPICE to Python converted using the parser. It could be used for the following
-workflow: quick circuit sketching using <a class="reference external" href="http://www.kicad-pcb.org">Kicad</a> &gt; SPICE netlist &gt; spice2python &gt; PySpice which
-could help for complex circuit.</li>
 <li>implement a basic simulator featuring passive element like resistor, capacitor and inductor.</li>
 <li>implement a Modelica backend. <a class="reference external" href="http://www.modelica.org">Modelica</a> is a very interesting solution for transient analysis.</li>
 </ul>
@@ -177,12 +187,14 @@ design. Best is to cross check the simulation using an industrial grade simulato
 <li class="toctree-l3"><a class="reference internal" href="examples/electricity/index.html">2.5.3. Electricity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="examples/filter/index.html">2.5.4. Filter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="examples/fundamental-laws/index.html">2.5.5. Fundamental Laws</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/operational-amplifier/index.html">2.5.6. Operational Amplifier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/passive/index.html">2.5.7. Passive</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/power-supply/index.html">2.5.8. Power Supply</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/resistor/index.html">2.5.9. Resistor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/transformer/index.html">2.5.10. Transformer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/transistor/index.html">2.5.11. Transistor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/ngspice-shared/index.html">2.5.6. Ngspice Shared</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/operational-amplifier/index.html">2.5.7. Operational Amplifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/passive/index.html">2.5.8. Passive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/power-supply/index.html">2.5.9. Power Supply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/resistor/index.html">2.5.10. Resistor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/spice-parser/index.html">2.5.11. Spice Parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/transformer/index.html">2.5.12. Transformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/transistor/index.html">2.5.13. Transistor</a></li>
 </ul>
 </li>
 </ul>
@@ -221,7 +233,11 @@ design. Best is to cross check the simulation using an industrial grade simulato
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Introduction</a></li>
+<li><a class="reference internal" href="#">News</a><ul>
+<li><a class="reference internal" href="#v0-3-0">V0.3.0</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#features">Features</a></li>
 <li><a class="reference internal" href="#planned-features">Planned Features</a></li>
 <li><a class="reference internal" href="#advertisements">Advertisements</a></li>

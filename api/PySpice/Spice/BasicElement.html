@@ -244,7 +244,7 @@ CXXXXXXX n+ n- C=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialCapacitor.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'tc2': FloatKeyParameter, 'tc1': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'tc1': FloatKeyParameter, 'tc2': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialCapacitor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -307,7 +307,7 @@ LXXXXXXX n+ n- L=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialInductor.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'tc2': FloatKeyParameter, 'tc1': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialInductor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'tc1': FloatKeyParameter, 'tc2': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialInductor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -370,7 +370,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialResistor.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'tc2': FloatKeyParameter, 'tc1': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialResistor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'tc1': FloatKeyParameter, 'tc2': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialResistor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -440,7 +440,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BehavorialSource.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'i': ExpressionKeyParameter, 'tc2': FloatKeyParameter, 'v': ExpressionKeyParameter, 'temp': FloatKeyParameter, 'dtemp': FloatKeyParameter, 'tc1': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialSource.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'tc1': FloatKeyParameter, 'dtemp': FloatKeyParameter, 'tc2': FloatKeyParameter, 'v': ExpressionKeyParameter, 'temp': FloatKeyParameter, 'i': ExpressionKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BehavorialSource.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -468,7 +468,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <dl class="class">
 <dt id="PySpice.Spice.BasicElement.BipolarJunctionTransistor">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.BasicElement.</code><code class="descname">BipolarJunctionTransistor</code><span class="sig-paren">(</span><em>name</em>, <em>collector_node</em>, <em>base_node</em>, <em>emitter_node</em>, <em>substrate_node=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/BasicElement.html#BipolarJunctionTransistor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.Element</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.NPinElement" title="PySpice.Spice.Netlist.NPinElement"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.NPinElement</span></code></a></p>
 <p>This class implements a bipolar junction transistor.</p>
 <p>Spice syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre>QXXXXXXX nc nb ne &lt;ns&gt; mname &lt;area=val&gt; &lt;areac=val&gt; &lt;areab=val&gt; &lt;m=val&gt; &lt;off&gt; &lt;ic=vbe,vce&gt; &lt;temp=val&gt; &lt;dtemp=val&gt;
@@ -568,7 +568,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.BipolarJunctionTransistor.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'area': FloatKeyParameter, 'areab': FloatKeyParameter, 'temp': FloatKeyParameter, 'ic': FloatPairKeyParameter, 'areac': FloatKeyParameter, 'dtemp': FloatKeyParameter, 'm': IntKeyParameter, 'off': FlagParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'dtemp': FloatKeyParameter, 'temp': FloatKeyParameter, 'off': FlagParameter, 'm': IntKeyParameter, 'areac': FloatKeyParameter, 'areab': FloatKeyParameter, 'area': FloatKeyParameter, 'ic': FloatPairKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.BipolarJunctionTransistor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -659,7 +659,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Capacitor.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'temp': FloatKeyParameter, 'ic': FloatKeyParameter, 'dtemp': FloatKeyParameter, 'scale': FloatKeyParameter, 'm': IntKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Capacitor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'m': IntKeyParameter, 'dtemp': FloatKeyParameter, 'scale': FloatKeyParameter, 'temp': FloatKeyParameter, 'ic': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Capacitor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -672,7 +672,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <dl class="class">
 <dt id="PySpice.Spice.BasicElement.CoupledInductor">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.BasicElement.</code><code class="descname">CoupledInductor</code><span class="sig-paren">(</span><em>name</em>, <em>inductor_name1</em>, <em>inductor_name2</em>, <em>coupling_factor</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/BasicElement.html#CoupledInductor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.BasicElement.CoupledInductor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.Element</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.AnyPinElement" title="PySpice.Spice.Netlist.AnyPinElement"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.AnyPinElement</span></code></a></p>
 <p>This class implementss a coupled (mutual) inductors.</p>
 <p>Spice syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre>KXXXXXXX LYYYYYYY LZZZZZZZ value
@@ -1036,7 +1036,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Diode.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'pj': FloatKeyParameter, 'area': FloatKeyParameter, 'ic': FloatPairKeyParameter, 'dtemp': FloatKeyParameter, 'temp': FloatKeyParameter, 'm': IntKeyParameter, 'off': FlagParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Diode.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'dtemp': FloatKeyParameter, 'pj': FloatKeyParameter, 'temp': FloatKeyParameter, 'off': FlagParameter, 'm': IntKeyParameter, 'area': FloatKeyParameter, 'ic': FloatPairKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Diode.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1128,7 +1128,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Inductor.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'temp': FloatKeyParameter, 'ic': FloatKeyParameter, 'dtemp': FloatKeyParameter, 'scale': FloatKeyParameter, 'm': IntKeyParameter, 'nt': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Inductor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'ic': FloatKeyParameter, 'dtemp': FloatKeyParameter, 'temp': FloatKeyParameter, 'm': IntKeyParameter, 'scale': FloatKeyParameter, 'nt': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Inductor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1141,7 +1141,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <dl class="class">
 <dt id="PySpice.Spice.BasicElement.JunctionFieldEffectTransistor">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.BasicElement.</code><code class="descname">JunctionFieldEffectTransistor</code><span class="sig-paren">(</span><em>name</em>, <em>drain_node</em>, <em>gate_node</em>, <em>source_node</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/BasicElement.html#JunctionFieldEffectTransistor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.Element</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.ThreePinElement" title="PySpice.Spice.Netlist.ThreePinElement"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.ThreePinElement</span></code></a></p>
 <p>This class implements a bipolar junction transistor.</p>
 <p>Spice syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre>JXXXXXXX nd ng ns mname &lt;area&gt; &lt;off&gt; &lt;ic=vds,vgs&gt; &lt;temp=t&gt;
@@ -1222,7 +1222,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.JunctionFieldEffectTransistor.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'ic': FloatPairKeyParameter, 'temp': FloatKeyParameter, 'area': FloatKeyParameter, 'm': IntKeyParameter, 'off': FlagParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'m': IntKeyParameter, 'off': FlagParameter, 'temp': FloatKeyParameter, 'area': FloatKeyParameter, 'ic': FloatPairKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1235,7 +1235,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <dl class="class">
 <dt id="PySpice.Spice.BasicElement.Mesfet">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.BasicElement.</code><code class="descname">Mesfet</code><span class="sig-paren">(</span><em>name</em>, <em>drain_node</em>, <em>gate_node</em>, <em>source_node</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/BasicElement.html#Mesfet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.BasicElement.Mesfet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.Element</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.ThreePinElement" title="PySpice.Spice.Netlist.ThreePinElement"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.ThreePinElement</span></code></a></p>
 <p>This class implements a Metal Semiconductor Field Effect Transistor.</p>
 <p>Spice syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre>ZXXXXXXX nd ng ns mname &lt;area&gt; &lt;off&gt; &lt;ic=vds,vgs&gt;
@@ -1315,7 +1315,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Mesfet.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'ic': FloatPairKeyParameter, 'area': FloatKeyParameter, 'm': IntKeyParameter, 'off': FlagParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Mesfet.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'m': IntKeyParameter, 'off': FlagParameter, 'area': FloatKeyParameter, 'ic': FloatPairKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Mesfet.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1323,11 +1323,11 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 <dl class="class">
 <dt id="PySpice.Spice.BasicElement.Mosfet">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.BasicElement.</code><code class="descname">Mosfet</code><span class="sig-paren">(</span><em>name</em>, <em>drain_node</em>, <em>gate_node</em>, <em>source_node</em>, <em>substrate_node</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/BasicElement.html#Mosfet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.BasicElement.Mosfet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.Element</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.FourPinElement" title="PySpice.Spice.Netlist.FourPinElement"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.FourPinElement</span></code></a></p>
 <p>This class implements a Metal Oxide Field Effect Transistor.</p>
 <p>Spice syntax:</p>
-<div class="highlight-python"><div class="highlight"><pre>MXXXXXXX nd ng ns nb mname &lt;m=val&gt; &lt;l=val&gt; &lt;w=val&gt; 
-+ &lt;ad=val&gt; &lt;as=val&gt; &lt;pd=val&gt; &lt;ps=val&gt; &lt;nrd=val&gt; 
+<div class="highlight-python"><div class="highlight"><pre>MXXXXXXX nd ng ns nb mname &lt;m=val&gt; &lt;l=val&gt; &lt;w=val&gt;
++ &lt;ad=val&gt; &lt;as=val&gt; &lt;pd=val&gt; &lt;ps=val&gt; &lt;nrd=val&gt;
 + &lt;nrs=val&gt; &lt;off&gt; &lt;ic=vds,vgs,vbs&gt; &lt;temp=t&gt;
 </pre></div>
 </div>
@@ -1444,7 +1444,7 @@ Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Mosfet.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'l': FloatKeyParameter, 'ps': FloatKeyParameter, 'm': IntKeyParameter, 'as': FloatKeyParameter, 'w': FloatKeyParameter, 'pd': FloatKeyParameter, 'nrd': FloatKeyParameter, 'ic': FloatTripletKeyParameter, 'temp': FloatKeyParameter, 'nrs': FloatKeyParameter, 'off': FlagParameter, 'ad': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Mosfet.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'as': FloatKeyParameter, 'w': FloatKeyParameter, 'temp': FloatKeyParameter, 'ad': FloatKeyParameter, 'nrd': FloatKeyParameter, 'pd': FloatKeyParameter, 'off': FlagParameter, 'nrs': FloatKeyParameter, 'm': IntKeyParameter, 'l': FloatKeyParameter, 'ps': FloatKeyParameter, 'ic': FloatTripletKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Mosfet.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1590,7 +1590,7 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.Resistor.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'ac': FloatKeyParameter, 'noisy': BoolKeyParameter, 'temp': FloatKeyParameter, 'dtemp': FloatKeyParameter, 'scale': FloatKeyParameter, 'm': IntKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'dtemp': FloatKeyParameter, 'noisy': BoolKeyParameter, 'ac': FloatKeyParameter, 'temp': FloatKeyParameter, 'm': IntKeyParameter, 'scale': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.Resistor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1683,7 +1683,7 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorCapacitor.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'w': FloatKeyParameter, 'l': FloatKeyParameter, 'temp': FloatKeyParameter, 'ic': FloatKeyParameter, 'dtemp': FloatKeyParameter, 'scale': FloatKeyParameter, 'm': IntKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'dtemp': FloatKeyParameter, 'w': FloatKeyParameter, 'temp': FloatKeyParameter, 'm': IntKeyParameter, 'l': FloatKeyParameter, 'ic': FloatKeyParameter, 'scale': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorCapacitor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1787,7 +1787,7 @@ Laplace
 
 <dl class="attribute">
 <dt id="PySpice.Spice.BasicElement.SemiconductorResistor.spice_to_parameters">
-<code class="descname">spice_to_parameters</code><em class="property"> = {'w': FloatKeyParameter, 'l': FloatKeyParameter, 'ac': FloatKeyParameter, 'noisy': BoolKeyParameter, 'temp': FloatKeyParameter, 'dtemp': FloatKeyParameter, 'scale': FloatKeyParameter, 'm': IntKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spice_to_parameters</code><em class="property"> = {'dtemp': FloatKeyParameter, 'noisy': BoolKeyParameter, 'ac': FloatKeyParameter, 'w': FloatKeyParameter, 'temp': FloatKeyParameter, 'm': IntKeyParameter, 'l': FloatKeyParameter, 'scale': FloatKeyParameter}</em><a class="headerlink" href="#PySpice.Spice.BasicElement.SemiconductorResistor.spice_to_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1805,7 +1805,7 @@ Laplace
 <dl class="class">
 <dt id="PySpice.Spice.BasicElement.SubCircuitElement">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.BasicElement.</code><code class="descname">SubCircuitElement</code><span class="sig-paren">(</span><em>name</em>, <em>subcircuit_name</em>, <em>*nodes</em>, <em>**parameters</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/BasicElement.html#SubCircuitElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.BasicElement.SubCircuitElement" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.Element" title="PySpice.Spice.Netlist.Element"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.Element</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="Netlist.html#PySpice.Spice.Netlist.NPinElement" title="PySpice.Spice.Netlist.NPinElement"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Netlist.NPinElement</span></code></a></p>
 <p>This class implements a sub-circuit.</p>
 <p>Spice syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre>XYYYYYY node1 node2 ... subcircuit_name parameter1=value1 ...

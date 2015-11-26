@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.5.13. Transistor &mdash; PySpice 0.2.2 documentation</title>
+    <title>2.5.6. Ngspice Shared &mdash; PySpice 0.2.2 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="../../static/hidecode.js"></script>
     <link rel="top" title="PySpice 0.2.2 documentation" href="../../index.html" />
     <link rel="up" title="2. Examples" href="../index.html" />
-    <link rel="next" title="2.5.13.1. Transistor" href="transistor.html" />
-    <link rel="prev" title="2.5.12.1. Transformer" href="../transformer/transformer-example.html" /> 
+    <link rel="next" title="2.5.6.1. NgSpice Shared Simulation Mode Introduction" href="voltage-divider.html" />
+    <link rel="prev" title="2.5.5.2.3. Voltage and Current Divider" href="../fundamental-laws/voltage-current-divider.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -41,10 +41,10 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="transistor.html" title="2.5.13.1. Transistor"
+          <a href="voltage-divider.html" title="2.5.6.1. NgSpice Shared Simulation Mode Introduction"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../transformer/transformer-example.html" title="2.5.12.1. Transformer"
+          <a href="../fundamental-laws/voltage-current-divider.html" title="2.5.5.2.3. Voltage and Current Divider"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">2. Examples</a> &raquo;</li> 
@@ -56,12 +56,20 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="transistor">
-<h1>2.5.13. Transistor<a class="headerlink" href="#transistor" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="ngspice-shared">
+<h1>2.5.6. Ngspice Shared<a class="headerlink" href="#ngspice-shared" title="Permalink to this headline">¶</a></h1>
+<p>This section shows how to use the NgSpice Shared Simulation Mode which permits to plug
+voltage/current sources from Python to NgSpice and vice versa.</p>
+<p>This NgSpice feature paves the way to advanced simulation use cases.  For example we can perform a
+mixed level simulation of an analogic circuit connected to a microcontroller.  We just need to
+implement an impedance model in Spice for input and output ports and implement the logic within
+Python.  The NgSpice callbacks provide the interface to read and set current/voltage of the external
+nodes.</p>
+<p>See <a class="reference internal" href="../../api/PySpice/Spice/NgSpice/Shared.html#module-PySpice.Spice.NgSpice.Shared" title="PySpice.Spice.NgSpice.Shared"><code class="xref py py-mod docutils literal"><span class="pre">PySpice.Spice.NgSpice.Shared</span></code></a> for more details.</p>
 <p>This section has 1 examples.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="transistor.html">2.5.13.1. Transistor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="voltage-divider.html">2.5.6.1. NgSpice Shared Simulation Mode Introduction</a></li>
 </ul>
 </div>
 </div>
@@ -73,15 +81,15 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../transformer/transformer-example.html"
-                        title="previous chapter">2.5.12.1. Transformer</a></p>
+  <p class="topless"><a href="../fundamental-laws/voltage-current-divider.html"
+                        title="previous chapter">2.5.5.2.3. Voltage and Current Divider</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="transistor.html"
-                        title="next chapter">2.5.13.1. Transistor</a></p>
+  <p class="topless"><a href="voltage-divider.html"
+                        title="next chapter">2.5.6.1. NgSpice Shared Simulation Mode Introduction</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/examples/transistor/index.txt"
+      <li><a href="../../_sources/examples/ngspice-shared/index.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -112,10 +120,10 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="transistor.html" title="2.5.13.1. Transistor"
+          <a href="voltage-divider.html" title="2.5.6.1. NgSpice Shared Simulation Mode Introduction"
              >next</a> |</li>
         <li class="right" >
-          <a href="../transformer/transformer-example.html" title="2.5.12.1. Transformer"
+          <a href="../fundamental-laws/voltage-current-divider.html" title="2.5.5.2.3. Voltage and Current Divider"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li> 

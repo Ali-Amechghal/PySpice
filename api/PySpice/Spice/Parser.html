@@ -73,6 +73,12 @@
 <em class="property">class </em><code class="descclassname">PySpice.Spice.Parser.</code><code class="descname">Element</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Parser.Token" title="PySpice.Spice.Parser.Token"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Parser.Token</span></code></a></p>
 <p>This class implements an element definition.</p>
+<p>&#8220;{ expression }&#8221; are allowed in device line.</p>
+<dl class="attribute">
+<dt id="PySpice.Spice.Parser.Element._logger">
+<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Parser.Element._logger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="PySpice.Spice.Parser.Element.name">
 <code class="descname">name</code><a class="headerlink" href="#PySpice.Spice.Parser.Element.name" title="Permalink to this definition">¶</a></dt>
@@ -82,10 +88,42 @@
 </dd></dl>
 
 <dl class="class">
+<dt id="PySpice.Spice.Parser.Include">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Parser.</code><code class="descname">Include</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Include"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Include" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Parser.Token" title="PySpice.Spice.Parser.Token"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Parser.Token</span></code></a></p>
+<p>This class implements a include definition.</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="PySpice.Spice.Parser.Line">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.Parser.</code><code class="descname">Line</code><span class="sig-paren">(</span><em>text</em>, <em>line_range</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>This class implements a line in the netlist.</p>
+<dl class="method">
+<dt id="PySpice.Spice.Parser.Line.read_right_of">
+<code class="descname">read_right_of</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Line.read_right_of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Line.read_right_of" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Parser.Line.read_words">
+<code class="descname">read_words</code><span class="sig-paren">(</span><em>start_location</em>, <em>number_of_words</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Line.read_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Line.read_words" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Parser.Line.split_line">
+<code class="descname">split_line</code><span class="sig-paren">(</span><em>keyword</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Line.split_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Line.split_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split the line according to the following pattern:</p>
+<div class="highlight-python"><div class="highlight"><pre>keyword parameter1 parameter2 ... key1=value1 key2=value2 ...
+</pre></div>
+</div>
+<p>Return the list of parameters and the dictionnary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Parser.Line.split_words">
+<code class="descname">split_words</code><span class="sig-paren">(</span><em>start_location</em>, <em>until=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Line.split_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Line.split_words" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -93,6 +131,10 @@
 <em class="property">class </em><code class="descclassname">PySpice.Spice.Parser.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Parser.Token" title="PySpice.Spice.Parser.Token"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Parser.Token</span></code></a></p>
 <p>This class implements a model definition.</p>
+<p>Spice syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre>.model mname type (pname1=pval1 pname2=pval2)
+</pre></div>
+</div>
 <dl class="attribute">
 <dt id="PySpice.Spice.Parser.Model.name">
 <code class="descname">name</code><a class="headerlink" href="#PySpice.Spice.Parser.Model.name" title="Permalink to this definition">¶</a></dt>
@@ -102,8 +144,19 @@
 </dd></dl>
 
 <dl class="class">
+<dt id="PySpice.Spice.Parser.PrefixData">
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Parser.</code><code class="descname">PrefixData</code><span class="sig-paren">(</span><em>prefix</em>, <em>classes</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#PrefixData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.PrefixData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="PySpice.Spice.Parser.PrefixData.single">
+<code class="descname">single</code><a class="headerlink" href="#PySpice.Spice.Parser.PrefixData.single" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="PySpice.Spice.Parser.SpiceParser">
-<em class="property">class </em><code class="descclassname">PySpice.Spice.Parser.</code><code class="descname">SpiceParser</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">PySpice.Spice.Parser.</code><code class="descname">SpiceParser</code><span class="sig-paren">(</span><em>path=None</em>, <em>source=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>This class parse a Spice netlist file and build a syntax tree.</p>
 <p>Public Attributes:</p>
@@ -118,10 +171,16 @@
 <dd><p>Look for model, sub-circuit and circuit definitions in the token list.</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="PySpice.Spice.Parser.SpiceParser._logger">
+<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser._logger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="PySpice.Spice.Parser.SpiceParser._merge_lines">
 <code class="descname">_merge_lines</code><span class="sig-paren">(</span><em>raw_lines</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser._merge_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser._merge_lines" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge broken lines and return a new list of lines.</p>
+<p>A line starting with &#8220;+&#8221; continues the preceding line.</p>
 </dd></dl>
 
 <dl class="method">
@@ -129,6 +188,11 @@
 <code class="descname">_parse</code><span class="sig-paren">(</span><em>lines</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser._parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser._parse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse the lines and return a list of tokens.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Parser.SpiceParser.build_circuit">
+<code class="descname">build_circuit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser.build_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser.build_circuit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Parser.SpiceParser.is_only_model">
@@ -147,6 +211,10 @@
 <em class="property">class </em><code class="descclassname">PySpice.Spice.Parser.</code><code class="descname">SubCircuit</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SubCircuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SubCircuit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Parser.Token" title="PySpice.Spice.Parser.Token"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Parser.Token</span></code></a></p>
 <p>This class implements a sub-circuit definition.</p>
+<p>Spice syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre>.SUBCKT name node1 ... param1=value1 ...
+</pre></div>
+</div>
 <dl class="method">
 <dt id="PySpice.Spice.Parser.SubCircuit.append">
 <code class="descname">append</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SubCircuit.append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SubCircuit.append" title="Permalink to this definition">¶</a></dt>
@@ -173,16 +241,6 @@
 <em class="property">class </em><code class="descclassname">PySpice.Spice.Parser.</code><code class="descname">Token</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Token"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Token" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>This class implements a token, in fact a line in a Spice netlist.</p>
-<dl class="method">
-<dt id="PySpice.Spice.Parser.Token.split_line">
-<code class="descname">split_line</code><span class="sig-paren">(</span><em>keyword</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Token.split_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Token.split_line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Split the line according to the following pattern:</p>
-<div class="highlight-python"><div class="highlight"><pre>keyword parameter1 parameter2 ... key1=value1 key2=value2 ...
-</pre></div>
-</div>
-<p>Return the list of parameters and the dictionnary.</p>
-</dd></dl>
-
 </dd></dl>
 
 </div>
