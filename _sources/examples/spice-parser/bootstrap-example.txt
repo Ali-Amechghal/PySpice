@@ -1,5 +1,5 @@
 
-.. getthecode:: example.py
+.. getthecode:: bootstrap-example.py
     :language: python
 
 

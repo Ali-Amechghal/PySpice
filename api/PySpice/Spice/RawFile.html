@@ -152,67 +152,6 @@ Time, node voltages and source branch currents:</p>
 <p><code class="xref py py-attr docutils literal"><span class="pre">variables</span></code></p>
 <p><code class="xref py py-attr docutils literal"><span class="pre">warnings</span></code></p>
 </div></blockquote>
-<dl class="attribute">
-<dt id="PySpice.Spice.RawFile.RawFile._logger">
-<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._logger" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.RawFile.RawFile._read_header">
-<code class="descname">_read_header</code><span class="sig-paren">(</span><em>stdout</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._read_header"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._read_header" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parse the header</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.RawFile.RawFile._read_header_field_line">
-<code class="descname">_read_header_field_line</code><span class="sig-paren">(</span><em>header_line_iterator</em>, <em>expected_label</em>, <em>has_value=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._read_header_field_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._read_header_field_line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read an header line and check it starts with <em>expected_label</em>.</p>
-<p>Return the values next to the label if the flag <em>has_value</em> is set.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.RawFile.RawFile._read_header_line">
-<code class="descname">_read_header_line</code><span class="sig-paren">(</span><em>header_line_iterator</em>, <em>head_line</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._read_header_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._read_header_line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read an header line and check it starts with <em>head_line</em>.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.RawFile.RawFile._read_line">
-<code class="descname">_read_line</code><span class="sig-paren">(</span><em>header_line_iterator</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._read_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._read_line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the next line</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.RawFile.RawFile._read_variable_data">
-<code class="descname">_read_variable_data</code><span class="sig-paren">(</span><em>raw_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._read_variable_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._read_variable_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read the raw data and set the variable values.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.RawFile.RawFile._to_ac_analysis">
-<code class="descname">_to_ac_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._to_ac_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._to_ac_analysis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.RawFile.RawFile._to_dc_analysis">
-<code class="descname">_to_dc_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._to_dc_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._to_dc_analysis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.RawFile.RawFile._to_operating_point_analysis">
-<code class="descname">_to_operating_point_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._to_operating_point_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._to_operating_point_analysis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.RawFile.RawFile._to_sensitivity_analysis">
-<code class="descname">_to_sensitivity_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._to_sensitivity_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._to_sensitivity_analysis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.RawFile.RawFile._to_transient_analysis">
-<code class="descname">_to_transient_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile._to_transient_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile._to_transient_analysis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="PySpice.Spice.RawFile.RawFile.branches">
 <code class="descname">branches</code><span class="sig-paren">(</span><em>to_float=False</em>, <em>abscissa=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/RawFile.html#RawFile.branches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.RawFile.RawFile.branches" title="Permalink to this definition">¶</a></dt>

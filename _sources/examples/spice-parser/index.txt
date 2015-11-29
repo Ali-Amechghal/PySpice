@@ -2,10 +2,15 @@
 ==============
  Spice Parser
 ==============
-This section has 1 examples.
+This section shows how to use the Spice netlist parser.
+
+.. end
+
+This section has 2 examples.
 
 
 .. toctree::
   :maxdepth: 1
 
-  example.rst
+  bootstrap-example.rst
+  kicad-example.rst

@@ -72,14 +72,22 @@
 
 <span class="c">####################################################################################################</span>
 
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="c">####################################################################################################</span>
+
 <span class="kn">from</span> <span class="nn">..Tools.File</span> <span class="kn">import</span> <span class="n">Directory</span>
 <span class="kn">from</span> <span class="nn">.Parser</span> <span class="kn">import</span> <span class="n">SpiceParser</span>
 
 <span class="c">####################################################################################################</span>
 
+<span class="n">_module_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
+
 <div class="viewcode-block" id="SpiceLibrary"><a class="viewcode-back" href="../../../api/PySpice/Spice/Library.html#PySpice.Spice.Library.SpiceLibrary">[docs]</a><span class="k">class</span> <span class="nc">SpiceLibrary</span><span class="p">:</span>
 
-    <span class="sd">&quot;&quot;&quot; This class implements a Spice sub-circuits and models library.</span>
+    <span class="sd">&quot;&quot;&quot;This class implements a Spice sub-circuits and models library.</span>
 
 <span class="sd">    A library is a directory which is recursively scanned for &#39;.lib&#39; file and parsed for sub-circuit</span>
 <span class="sd">    and models definitions.</span>
@@ -95,6 +103,8 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="n">_logger</span> <span class="o">=</span> <span class="n">_module_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;Library&#39;</span><span class="p">)</span>
+
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_path</span><span class="p">):</span>
@@ -105,7 +115,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_models</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_directory</span><span class="o">.</span><span class="n">iter_file</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">extension</span> <span class="o">==</span> <span class="s">&#39;.lib&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">extension</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;.lib&#39;</span><span class="p">,</span> <span class="s">&#39;.mod&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Parse {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
                 <span class="n">spice_parser</span> <span class="o">=</span> <span class="n">SpiceParser</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">spice_parser</span><span class="o">.</span><span class="n">is_only_subcircuit</span><span class="p">():</span>
                     <span class="k">for</span> <span class="n">subcircuit</span> <span class="ow">in</span> <span class="n">spice_parser</span><span class="o">.</span><span class="n">subcircuits</span><span class="p">:</span>
@@ -130,12 +141,12 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">subcircuits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Dictionary of sub-circuits &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_subcircuits</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">models</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Dictionary of models &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_models</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">)</span>
 
     <span class="c"># ##############################################</span>
 

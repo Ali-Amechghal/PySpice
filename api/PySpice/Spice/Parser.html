@@ -75,11 +75,6 @@
 <p>This class implements an element definition.</p>
 <p>&#8220;{ expression }&#8221; are allowed in device line.</p>
 <dl class="attribute">
-<dt id="PySpice.Spice.Parser.Element._logger">
-<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Parser.Element._logger" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="PySpice.Spice.Parser.Element.name">
 <code class="descname">name</code><a class="headerlink" href="#PySpice.Spice.Parser.Element.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of the element</p>
@@ -166,32 +161,8 @@
 <p><code class="xref py py-attr docutils literal"><span class="pre">subcircuits</span></code></p>
 </div></blockquote>
 <dl class="method">
-<dt id="PySpice.Spice.Parser.SpiceParser._find_sections">
-<code class="descname">_find_sections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser._find_sections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser._find_sections" title="Permalink to this definition">¶</a></dt>
-<dd><p>Look for model, sub-circuit and circuit definitions in the token list.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="PySpice.Spice.Parser.SpiceParser._logger">
-<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser._logger" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Parser.SpiceParser._merge_lines">
-<code class="descname">_merge_lines</code><span class="sig-paren">(</span><em>raw_lines</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser._merge_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser._merge_lines" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merge broken lines and return a new list of lines.</p>
-<p>A line starting with &#8220;+&#8221; continues the preceding line.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Parser.SpiceParser._parse">
-<code class="descname">_parse</code><span class="sig-paren">(</span><em>lines</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser._parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser._parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parse the lines and return a list of tokens.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="PySpice.Spice.Parser.SpiceParser.build_circuit">
-<code class="descname">build_circuit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser.build_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser.build_circuit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">build_circuit</code><span class="sig-paren">(</span><em>ground=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser.build_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser.build_circuit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

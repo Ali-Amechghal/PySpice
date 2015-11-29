@@ -70,11 +70,6 @@
 <p class="last">In some cases NgSpice can perform several analyses one after the other. This case
 is partially supported.</p>
 </div>
-<dl class="attribute">
-<dt id="PySpice.Spice.Simulation.CircuitSimulation._logger">
-<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation._logger" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulation.ac">
 <code class="descname">ac</code><span class="sig-paren">(</span><em>start_frequency</em>, <em>stop_frequency</em>, <em>number_of_points</em>, <em>variation</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulation.ac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulation.ac" title="Permalink to this definition">¶</a></dt>
@@ -227,16 +222,6 @@ independent voltage source (including inductor) are given by <em>i(source_name)<
 return the measured probes.</p>
 <p>For <em>ac</em> and <em>transient</em> analyses, the user must specify a list of nodes using the <em>probes</em> key
 argument.</p>
-<dl class="attribute">
-<dt id="PySpice.Spice.Simulation.CircuitSimulator._logger">
-<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator._logger" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Simulation.CircuitSimulator._run">
-<code class="descname">_run</code><span class="sig-paren">(</span><em>analysis_method</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator._run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator._run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="PySpice.Spice.Simulation.CircuitSimulator.ac">
 <code class="descname">ac</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#CircuitSimulator.ac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.CircuitSimulator.ac" title="Permalink to this definition">¶</a></dt>
@@ -268,32 +253,12 @@ argument.</p>
 <dt id="PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.Simulation.</code><code class="descname">NgSpiceSharedCircuitSimulator</code><span class="sig-paren">(</span><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em>, <em>ngspice_shared=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#NgSpiceSharedCircuitSimulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Simulation.CircuitSimulator" title="PySpice.Spice.Simulation.CircuitSimulator"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Simulation.CircuitSimulator</span></code></a></p>
-<dl class="attribute">
-<dt id="PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._logger">
-<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._logger" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._run">
-<code class="descname">_run</code><span class="sig-paren">(</span><em>analysis_method</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#NgSpiceSharedCircuitSimulator._run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="class">
 <dt id="PySpice.Spice.Simulation.SubprocessCircuitSimulator">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.Simulation.</code><code class="descname">SubprocessCircuitSimulator</code><span class="sig-paren">(</span><em>circuit</em>, <em>temperature=27</em>, <em>nominal_temperature=27</em>, <em>spice_command='ngspice'</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#SubprocessCircuitSimulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.SubprocessCircuitSimulator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.Simulation.CircuitSimulator" title="PySpice.Spice.Simulation.CircuitSimulator"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.Simulation.CircuitSimulator</span></code></a></p>
-<dl class="attribute">
-<dt id="PySpice.Spice.Simulation.SubprocessCircuitSimulator._logger">
-<code class="descname">_logger</code><em class="property"> = &lt;logging.Logger object&gt;</em><a class="headerlink" href="#PySpice.Spice.Simulation.SubprocessCircuitSimulator._logger" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="PySpice.Spice.Simulation.SubprocessCircuitSimulator._run">
-<code class="descname">_run</code><span class="sig-paren">(</span><em>analysis_method</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Simulation.html#SubprocessCircuitSimulator._run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Simulation.SubprocessCircuitSimulator._run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </div>

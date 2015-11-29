@@ -109,7 +109,7 @@
         <span class="n">number_of_positionals_max</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">has_optionals</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="k">for</span> <span class="n">element_class</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
-            <span class="n">number_of_positionals</span> <span class="o">=</span> <span class="n">element_class</span><span class="o">.</span><span class="n">number_of_positional_parameters</span><span class="p">()</span>
+            <span class="n">number_of_positionals</span> <span class="o">=</span> <span class="n">element_class</span><span class="o">.</span><span class="n">number_of_positional_parameters</span>
             <span class="n">number_of_positionals_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">number_of_positionals_min</span><span class="p">,</span> <span class="n">number_of_positionals</span><span class="p">)</span>
             <span class="n">number_of_positionals_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">number_of_positionals_max</span><span class="p">,</span> <span class="n">number_of_positionals</span><span class="p">)</span>
             <span class="n">has_optionals</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">has_optionals</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">element_class</span><span class="o">.</span><span class="n">optional_parameters</span><span class="p">))</span>
@@ -124,7 +124,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">number_of_pins</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c"># Q and X are single</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">number_of_pins</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">number_of_pins</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">number_of_pins</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">number_of_pins</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">has_flag</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="k">for</span> <span class="n">element_class</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
@@ -425,7 +425,7 @@
         
         <span class="k">if</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">multi_devices</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">element_class</span> <span class="ow">in</span> <span class="n">prefix_data</span><span class="p">:</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">)</span> <span class="o">==</span> <span class="n">element_class</span><span class="o">.</span><span class="n">number_of_positional_parameters</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">)</span> <span class="o">==</span> <span class="n">element_class</span><span class="o">.</span><span class="n">number_of_positional_parameters</span><span class="p">:</span>
                     <span class="k">break</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">element_class</span> <span class="o">=</span> <span class="n">prefix_data</span><span class="o">.</span><span class="n">single</span>
@@ -608,7 +608,7 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="SpiceParser._merge_lines"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser._merge_lines">[docs]</a>    <span class="k">def</span> <span class="nf">_merge_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_lines</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_merge_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_lines</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;Merge broken lines and return a new list of lines.</span>
 <span class="sd">        </span>
@@ -632,8 +632,8 @@
         <span class="k">return</span> <span class="n">lines</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="SpiceParser._parse"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser._parse">[docs]</a>    <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Parse the lines and return a list of tokens. &quot;&quot;&quot;</span>
 
@@ -680,8 +680,8 @@
         <span class="k">return</span> <span class="n">tokens</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="SpiceParser._find_sections"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser._find_sections">[docs]</a>    <span class="k">def</span> <span class="nf">_find_sections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_find_sections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Look for model, sub-circuit and circuit definitions in the token list. &quot;&quot;&quot;</span>
 
@@ -700,7 +700,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
+
 <div class="viewcode-block" id="SpiceParser.is_only_subcircuit"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser.is_only_subcircuit">[docs]</a>    <span class="k">def</span> <span class="nf">is_only_subcircuit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">circuit</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">subcircuits</span><span class="p">)</span>
@@ -713,8 +713,10 @@
 
     <span class="c">##############################################</span>
 </div>
-<div class="viewcode-block" id="SpiceParser.build_circuit"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser.build_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">build_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SpiceParser.build_circuit"><a class="viewcode-back" href="../../../api/PySpice/Spice/Parser.html#PySpice.Spice.Parser.SpiceParser.build_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">build_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ground</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 
+        <span class="n">ground</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ground</span><span class="p">)</span>
+        
         <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_title</span><span class="p">))</span>
         
         <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span><span class="p">:</span>
@@ -724,12 +726,17 @@
         <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
                 <span class="n">factory</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">alias</span><span class="p">)</span>
+                <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">token</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">==</span> <span class="n">ground</span><span class="p">:</span>
+                        <span class="n">node</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">_prefix</span> <span class="o">!=</span> <span class="s">&#39;X&#39;</span><span class="p">:</span>
                     <span class="n">args</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">_nodes</span> <span class="o">+</span> <span class="n">token</span><span class="o">.</span><span class="n">_parameters</span>
                 <span class="k">else</span><span class="p">:</span> <span class="c"># != Spice</span>
-                    <span class="n">args</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">+</span> <span class="n">token</span><span class="o">.</span><span class="n">_nodes</span>
+                    <span class="n">args</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">+</span> <span class="n">nodes</span>
                 <span class="n">kwargs</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">_dict_parameters</span>
-                <span class="n">message</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">_prefix</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">_nodes</span><span class="p">,</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">_prefix</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span>
                                                      <span class="n">token</span><span class="o">.</span><span class="n">_parameters</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">_dict_parameters</span><span class="p">)])</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
                 <span class="n">factory</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

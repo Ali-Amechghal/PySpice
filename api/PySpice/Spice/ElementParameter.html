@@ -60,7 +60,7 @@
             
   <div class="section" id="module-PySpice.Spice.ElementParameter">
 <span id="elementparameter"></span><h1>3.1.7.2. <code class="xref py py-mod docutils literal"><span class="pre">ElementParameter</span></code><a class="headerlink" href="#module-PySpice.Spice.ElementParameter" title="Permalink to this headline">¶</a></h1>
-<p>This modules implements the machinery to define element&#8217;s parameters.</p>
+<p>This modules implements the machinery to define element&#8217;s parameters as descriptor.</p>
 <dl class="class">
 <dt id="PySpice.Spice.ElementParameter.BoolKeyParameter">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.ElementParameter.</code><code class="descname">BoolKeyParameter</code><span class="sig-paren">(</span><em>spice_name</em>, <em>default=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/ElementParameter.html#BoolKeyParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.ElementParameter.BoolKeyParameter" title="Permalink to this definition">¶</a></dt>
@@ -142,7 +142,7 @@
 <dt id="PySpice.Spice.ElementParameter.FloatKeyParameter">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.ElementParameter.</code><code class="descname">FloatKeyParameter</code><span class="sig-paren">(</span><em>spice_name</em>, <em>default=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/ElementParameter.html#FloatKeyParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.ElementParameter.FloatKeyParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#PySpice.Spice.ElementParameter.KeyValueParameter" title="PySpice.Spice.ElementParameter.KeyValueParameter"><code class="xref py py-class docutils literal"><span class="pre">PySpice.Spice.ElementParameter.KeyValueParameter</span></code></a></p>
-<p>This class implements a float key  parameter.</p>
+<p>This class implements a float key parameter.</p>
 <dl class="method">
 <dt id="PySpice.Spice.ElementParameter.FloatKeyParameter.validate">
 <code class="descname">validate</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/ElementParameter.html#FloatKeyParameter.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.ElementParameter.FloatKeyParameter.validate" title="Permalink to this definition">¶</a></dt>
@@ -264,12 +264,22 @@
 <p>Public Attributes:</p>
 <blockquote>
 <div><dl class="docutils">
-<dt><code class="xref py py-attr docutils literal"><span class="pre">attribute_name</span></code></dt>
+<dt><a class="reference internal" href="#PySpice.Spice.ElementParameter.ParameterDescriptor.attribute_name" title="PySpice.Spice.ElementParameter.ParameterDescriptor.attribute_name"><code class="xref py py-attr docutils literal"><span class="pre">attribute_name</span></code></a></dt>
 <dd>Name of the attribute in the element&#8217;s class</dd>
-<dt><code class="xref py py-attr docutils literal"><span class="pre">default_value</span></code></dt>
+<dt><a class="reference internal" href="#PySpice.Spice.ElementParameter.ParameterDescriptor.default_value" title="PySpice.Spice.ElementParameter.ParameterDescriptor.default_value"><code class="xref py py-attr docutils literal"><span class="pre">default_value</span></code></a></dt>
 <dd>The default value</dd>
 </dl>
 </div></blockquote>
+<dl class="attribute">
+<dt id="PySpice.Spice.ElementParameter.ParameterDescriptor.attribute_name">
+<code class="descname">attribute_name</code><a class="headerlink" href="#PySpice.Spice.ElementParameter.ParameterDescriptor.attribute_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.ElementParameter.ParameterDescriptor.default_value">
+<code class="descname">default_value</code><a class="headerlink" href="#PySpice.Spice.ElementParameter.ParameterDescriptor.default_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="PySpice.Spice.ElementParameter.ParameterDescriptor.nonzero">
 <code class="descname">nonzero</code><span class="sig-paren">(</span><em>instance</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/ElementParameter.html#ParameterDescriptor.nonzero"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.ElementParameter.ParameterDescriptor.nonzero" title="Permalink to this definition">¶</a></dt>
@@ -297,12 +307,22 @@
 <p>Public Attributes:</p>
 <blockquote>
 <div><dl class="docutils">
-<dt><code class="xref py py-attr docutils literal"><span class="pre">key_parameter</span></code></dt>
+<dt><a class="reference internal" href="#PySpice.Spice.ElementParameter.PositionalElementParameter.key_parameter" title="PySpice.Spice.ElementParameter.PositionalElementParameter.key_parameter"><code class="xref py py-attr docutils literal"><span class="pre">key_parameter</span></code></a></dt>
 <dd>Flag to specify if the parameter is passed as key parameter in Python</dd>
-<dt><code class="xref py py-attr docutils literal"><span class="pre">position</span></code></dt>
+<dt><a class="reference internal" href="#PySpice.Spice.ElementParameter.PositionalElementParameter.position" title="PySpice.Spice.ElementParameter.PositionalElementParameter.position"><code class="xref py py-attr docutils literal"><span class="pre">position</span></code></a></dt>
 <dd>Position of the parameter in the element definition</dd>
 </dl>
 </div></blockquote>
+<dl class="attribute">
+<dt id="PySpice.Spice.ElementParameter.PositionalElementParameter.key_parameter">
+<code class="descname">key_parameter</code><a class="headerlink" href="#PySpice.Spice.ElementParameter.PositionalElementParameter.key_parameter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PySpice.Spice.ElementParameter.PositionalElementParameter.position">
+<code class="descname">position</code><a class="headerlink" href="#PySpice.Spice.ElementParameter.PositionalElementParameter.position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="PySpice.Spice.ElementParameter.PositionalElementParameter.to_str">
 <code class="descname">to_str</code><span class="sig-paren">(</span><em>instance</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/ElementParameter.html#PositionalElementParameter.to_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.ElementParameter.PositionalElementParameter.to_str" title="Permalink to this definition">¶</a></dt>

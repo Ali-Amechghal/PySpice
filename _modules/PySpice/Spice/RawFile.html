@@ -150,7 +150,7 @@
 
 <div class="viewcode-block" id="Variable"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable">[docs]</a><span class="k">class</span> <span class="nc">Variable</span><span class="p">:</span>
 
-    <span class="sd">&quot;&quot;&quot; This class implements a variable or probe in a SPICE simulation output.</span>
+    <span class="sd">&quot;&quot;&quot;This class implements a variable or probe in a SPICE simulation output.</span>
 
 <span class="sd">    Public Attributes:</span>
 
@@ -175,21 +175,17 @@
     <span class="c">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
         <span class="k">return</span> <span class="s">&#39;variable[{self.index}]: {self.name} [{self.unit}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
 
 <div class="viewcode-block" id="Variable.is_voltage_node"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.is_voltage_node">[docs]</a>    <span class="k">def</span> <span class="nf">is_voltage_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;v(&#39;</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
 </div>
 <div class="viewcode-block" id="Variable.is_branch_current"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.is_branch_current">[docs]</a>    <span class="k">def</span> <span class="nf">is_branch_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
         <span class="c"># source branch current</span>
-
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;i(&#39;</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
