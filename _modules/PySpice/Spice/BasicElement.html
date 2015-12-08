@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PySpice.Spice.BasicElement &mdash; PySpice 0.2.2 documentation</title>
+    <title>PySpice.Spice.BasicElement &mdash; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.2.2',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
-    <link rel="top" title="PySpice 0.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="PySpice 0.3.0 documentation" href="../../../index.html" />
     <link rel="up" title="PySpice.Spice" href="../Spice.html" /> 
   </head>
   <body role="document">
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
       </ul>
@@ -175,7 +175,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="SubCircuitElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SubCircuitElement">[docs]</a><span class="k">class</span> <span class="nc">SubCircuitElement</span><span class="p">(</span><span class="n">NPinElement</span><span class="p">):</span>
+<div class="viewcode-block" id="SubCircuitElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SubCircuitElement">[docs]</a><span class="k">class</span> <span class="nc">SubCircuitElement</span><span class="p">(</span><span class="n">NPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a sub-circuit.</span>
 
@@ -216,7 +216,7 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="SubCircuitElement.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SubCircuitElement.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return the formatted list of parameters. &quot;&quot;&quot;</span>
 
         <span class="n">spice_parameters</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">format_spice_parameters</span><span class="p">()</span>
@@ -227,8 +227,8 @@
         <span class="k">return</span> <span class="n">spice_parameters</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
-<div class="viewcode-block" id="Resistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Resistor">[docs]</a><span class="k">class</span> <span class="nc">Resistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Resistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Resistor">[docs]</a><span class="k">class</span> <span class="nc">Resistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a resistor.</span>
 
@@ -283,8 +283,8 @@
     <span class="n">noisy</span> <span class="o">=</span> <span class="n">BoolKeyParameter</span><span class="p">(</span><span class="s">&#39;noisy&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="SemiconductorResistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SemiconductorResistor">[docs]</a><span class="k">class</span> <span class="nc">SemiconductorResistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SemiconductorResistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SemiconductorResistor">[docs]</a><span class="k">class</span> <span class="nc">SemiconductorResistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a Semiconductor resistor.</span>
 
@@ -356,8 +356,8 @@
     <span class="n">noisy</span> <span class="o">=</span> <span class="n">BoolKeyParameter</span><span class="p">(</span><span class="s">&#39;noisy&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="BehavorialResistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialResistor">[docs]</a><span class="k">class</span> <span class="nc">BehavorialResistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BehavorialResistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialResistor">[docs]</a><span class="k">class</span> <span class="nc">BehavorialResistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a behavorial resistor.</span>
 
@@ -389,8 +389,8 @@
     <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc2&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="Capacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Capacitor">[docs]</a><span class="k">class</span> <span class="nc">Capacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Capacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Capacitor">[docs]</a><span class="k">class</span> <span class="nc">Capacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a capacitor.</span>
 
@@ -446,8 +446,8 @@
     <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="SemiconductorCapacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SemiconductorCapacitor">[docs]</a><span class="k">class</span> <span class="nc">SemiconductorCapacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SemiconductorCapacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SemiconductorCapacitor">[docs]</a><span class="k">class</span> <span class="nc">SemiconductorCapacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a semiconductor capacitor.</span>
 
@@ -515,8 +515,8 @@
     <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="BehavorialCapacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialCapacitor">[docs]</a><span class="k">class</span> <span class="nc">BehavorialCapacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BehavorialCapacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialCapacitor">[docs]</a><span class="k">class</span> <span class="nc">BehavorialCapacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a behavioral capacitor.</span>
 
@@ -549,8 +549,8 @@
     <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc2&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="Inductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Inductor">[docs]</a><span class="k">class</span> <span class="nc">Inductor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Inductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Inductor">[docs]</a><span class="k">class</span> <span class="nc">Inductor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements an inductor.</span>
 
@@ -609,8 +609,8 @@
     <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="BehavorialInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialInductor">[docs]</a><span class="k">class</span> <span class="nc">BehavorialInductor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BehavorialInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialInductor">[docs]</a><span class="k">class</span> <span class="nc">BehavorialInductor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a behavioral inductor.</span>
 
@@ -643,8 +643,8 @@
     <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc2&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="CoupledInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CoupledInductor">[docs]</a><span class="k">class</span> <span class="nc">CoupledInductor</span><span class="p">(</span><span class="n">AnyPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CoupledInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CoupledInductor">[docs]</a><span class="k">class</span> <span class="nc">CoupledInductor</span><span class="p">(</span><span class="n">AnyPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implementss a coupled (mutual) inductors.</span>
 
@@ -681,8 +681,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_inductor_names</span> <span class="o">=</span> <span class="p">(</span><span class="n">inductor_name1</span><span class="p">,</span> <span class="n">inductor_name2</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="VoltageControlledSwitch"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledSwitch">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledSwitch</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="VoltageControlledSwitch"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledSwitch">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledSwitch</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a voltage controlled switch.</span>
 
@@ -711,8 +711,8 @@
     <span class="n">initial_state</span> <span class="o">=</span> <span class="n">InitialStatePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="CurrentControlledSwitch"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledSwitch">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledSwitch</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CurrentControlledSwitch"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledSwitch">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledSwitch</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a current controlled switch.</span>
 
@@ -746,8 +746,8 @@
     <span class="n">initial_state</span> <span class="o">=</span> <span class="n">InitialStatePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="VoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="VoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements an independent sources for voltage.</span>
 
@@ -770,8 +770,8 @@
     <span class="n">dc_value</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="CurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements an independent sources for current.</span>
 
@@ -794,8 +794,8 @@
     <span class="n">dc_value</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="VoltageControlledVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledVoltageSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="VoltageControlledVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledVoltageSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a linear voltage-controlled voltage sources (VCVS).</span>
 
@@ -817,8 +817,8 @@
     <span class="n">voltage_gain</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="CurrentControlledCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledCurrentSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CurrentControlledCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledCurrentSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a linear current-controlled current sources (CCCS).</span>
 
@@ -845,8 +845,8 @@
     <span class="n">current_gain</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="VoltageControlledCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledCurrentSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="VoltageControlledCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledCurrentSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a linear voltage-controlled current sources (VCCS).</span>
 
@@ -874,8 +874,8 @@
     <span class="n">transconductance</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="CurrentControlledVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledVoltageSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CurrentControlledVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledVoltageSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a linear current-controlled voltage sources (ccvs).</span>
 
@@ -902,8 +902,8 @@
     <span class="n">transresistance</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="BehavorialSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialSource">[docs]</a><span class="k">class</span> <span class="nc">BehavorialSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BehavorialSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialSource">[docs]</a><span class="k">class</span> <span class="nc">BehavorialSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a behavorial source.</span>
 
@@ -956,8 +956,8 @@
     <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="NonLinearVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.NonLinearVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">NonLinearVoltageSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="NonLinearVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.NonLinearVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">NonLinearVoltageSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a non linear voltage source.</span>
 
@@ -1005,8 +1005,8 @@
         <span class="k">return</span> <span class="n">spice_element</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="Diode"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Diode">[docs]</a><span class="k">class</span> <span class="nc">Diode</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Diode"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Diode">[docs]</a><span class="k">class</span> <span class="nc">Diode</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a junction diode.</span>
 
@@ -1068,8 +1068,8 @@
     <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="BipolarJunctionTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BipolarJunctionTransistor">[docs]</a><span class="k">class</span> <span class="nc">BipolarJunctionTransistor</span><span class="p">(</span><span class="n">NPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BipolarJunctionTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BipolarJunctionTransistor">[docs]</a><span class="k">class</span> <span class="nc">BipolarJunctionTransistor</span><span class="p">(</span><span class="n">NPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a bipolar junction transistor.</span>
 
@@ -1181,8 +1181,8 @@
             <span class="k">return</span> <span class="bp">None</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="JunctionFieldEffectTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor">[docs]</a><span class="k">class</span> <span class="nc">JunctionFieldEffectTransistor</span><span class="p">(</span><span class="n">ThreePinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="JunctionFieldEffectTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor">[docs]</a><span class="k">class</span> <span class="nc">JunctionFieldEffectTransistor</span><span class="p">(</span><span class="n">ThreePinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a bipolar junction transistor.</span>
 
@@ -1260,8 +1260,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="Mesfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mesfet">[docs]</a><span class="k">class</span> <span class="nc">Mesfet</span><span class="p">(</span><span class="n">ThreePinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Mesfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mesfet">[docs]</a><span class="k">class</span> <span class="nc">Mesfet</span><span class="p">(</span><span class="n">ThreePinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a Metal Semiconductor Field Effect Transistor.</span>
 
@@ -1333,8 +1333,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="Mosfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet">[docs]</a><span class="k">class</span> <span class="nc">Mosfet</span><span class="p">(</span><span class="n">FourPinElement</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Mosfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet">[docs]</a><span class="k">class</span> <span class="nc">Mosfet</span><span class="p">(</span><span class="n">FourPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a Metal Oxide Field Effect Transistor.</span>
 
@@ -1473,7 +1473,7 @@
 <span class="c">#</span>
 <span class="c"># End</span>
 <span class="c">#</span>
-<span class="c">####################################################################################################</span></div>
+<span class="c">####################################################################################################</span>
 </pre></div>
 
           </div>
@@ -1507,14 +1507,14 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../Spice.html" >PySpice.Spice</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+        &copy; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.2.
     </div>
   </body>
 </html>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PySpice.Probe.WaveForm &mdash; PySpice 0.2.2 documentation</title>
+    <title>PySpice.Probe.WaveForm &mdash; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.2.2',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
-    <link rel="top" title="PySpice 0.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="PySpice 0.3.0 documentation" href="../../../index.html" />
     <link rel="up" title="Module code" href="../../index.html" /> 
   </head>
   <body role="document">
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -115,7 +115,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="WaveForm"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.WaveForm">[docs]</a><span class="k">class</span> <span class="nc">WaveForm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<div class="viewcode-block" id="WaveForm"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.WaveForm">[docs]</a><span class="k">class</span> <span class="nc">WaveForm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span></div>
 
     <span class="c">##############################################</span>
 
@@ -159,13 +159,13 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="WaveForm.str_data"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.WaveForm.str_data">[docs]</a>    <span class="k">def</span> <span class="nf">str_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">str_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__repr__</span><span class="p">()</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
-<div class="viewcode-block" id="Analysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.Analysis">[docs]</a><span class="k">class</span> <span class="nc">Analysis</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Analysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.Analysis">[docs]</a><span class="k">class</span> <span class="nc">Analysis</span><span class="p">:</span></div>
 
     <span class="c">##############################################</span>
 
@@ -201,13 +201,13 @@
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
+
 <div class="viewcode-block" id="OperatingPoint"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.OperatingPoint">[docs]</a><span class="k">class</span> <span class="nc">OperatingPoint</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="SensitivityAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.SensitivityAnalysis">[docs]</a><span class="k">class</span> <span class="nc">SensitivityAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SensitivityAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.SensitivityAnalysis">[docs]</a><span class="k">class</span> <span class="nc">SensitivityAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span></div>
 
     <span class="c">##############################################</span>
 
@@ -216,8 +216,8 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">elements</span><span class="o">=</span><span class="n">elements</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="DcAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.DcAnalysis">[docs]</a><span class="k">class</span> <span class="nc">DcAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
+
+<div class="viewcode-block" id="DcAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.DcAnalysis">[docs]</a><span class="k">class</span> <span class="nc">DcAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;</span>
 
@@ -248,8 +248,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_sweep</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="AcAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.AcAnalysis">[docs]</a><span class="k">class</span> <span class="nc">AcAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
+
+<div class="viewcode-block" id="AcAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.AcAnalysis">[docs]</a><span class="k">class</span> <span class="nc">AcAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span></div>
 
     <span class="c">##############################################</span>
 
@@ -266,8 +266,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="TransientAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.TransientAnalysis">[docs]</a><span class="k">class</span> <span class="nc">TransientAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TransientAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.TransientAnalysis">[docs]</a><span class="k">class</span> <span class="nc">TransientAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span></div>
 
     <span class="c">##############################################</span>
 
@@ -287,7 +287,7 @@
 <span class="c">#</span>
 <span class="c"># End</span>
 <span class="c">#</span>
-<span class="c">####################################################################################################</span></div>
+<span class="c">####################################################################################################</span>
 </pre></div>
 
           </div>
@@ -321,13 +321,13 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+        &copy; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.2.
     </div>
   </body>
 </html>

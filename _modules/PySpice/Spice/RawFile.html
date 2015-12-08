@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PySpice.Spice.RawFile &mdash; PySpice 0.2.2 documentation</title>
+    <title>PySpice.Spice.RawFile &mdash; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.2.2',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
-    <link rel="top" title="PySpice 0.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="PySpice 0.3.0 documentation" href="../../../index.html" />
     <link rel="up" title="PySpice.Spice" href="../Spice.html" /> 
   </head>
   <body role="document">
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
       </ul>
@@ -148,7 +148,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="Variable"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable">[docs]</a><span class="k">class</span> <span class="nc">Variable</span><span class="p">:</span>
+<div class="viewcode-block" id="Variable"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable">[docs]</a><span class="k">class</span> <span class="nc">Variable</span><span class="p">:</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a variable or probe in a SPICE simulation output.</span>
 
@@ -179,29 +179,29 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="Variable.is_voltage_node"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.is_voltage_node">[docs]</a>    <span class="k">def</span> <span class="nf">is_voltage_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">is_voltage_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;v(&#39;</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="Variable.is_branch_current"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.is_branch_current">[docs]</a>    <span class="k">def</span> <span class="nf">is_branch_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">is_branch_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c"># source branch current</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;i(&#39;</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="Variable.to_voltage_name"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.to_voltage_name">[docs]</a>    <span class="k">def</span> <span class="nf">to_voltage_name</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">to_voltage_name</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
         <span class="k">return</span> <span class="s">&#39;v({})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="Variable.to_branch_name"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.to_branch_name">[docs]</a>    <span class="k">def</span> <span class="nf">to_branch_name</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">to_branch_name</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
         <span class="k">return</span> <span class="s">&#39;i({})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">simplified_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -212,7 +212,7 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="Variable.fix_case"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.fix_case">[docs]</a>    <span class="k">def</span> <span class="nf">fix_case</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element_translation</span><span class="p">,</span> <span class="n">node_translation</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">fix_case</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element_translation</span><span class="p">,</span> <span class="n">node_translation</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Update the name to the right case. &quot;&quot;&quot;</span>
 
@@ -224,8 +224,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_voltage_name</span><span class="p">(</span><span class="n">node_translation</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">simplified_name</span><span class="p">])</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="Variable.to_waveform"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.to_waveform">[docs]</a>    <span class="k">def</span> <span class="nf">to_waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">to_real</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">to_waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">to_real</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Return a :obj:`PySpice.Probe.WaveForm` instance. &quot;&quot;&quot;</span>
 
@@ -238,8 +238,8 @@
         <span class="k">return</span> <span class="n">WaveForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">simplified_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="n">abscissa</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
-<div class="viewcode-block" id="RawFile"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile">[docs]</a><span class="k">class</span> <span class="nc">RawFile</span><span class="p">:</span>
+
+<div class="viewcode-block" id="RawFile"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile">[docs]</a><span class="k">class</span> <span class="nc">RawFile</span><span class="p">:</span></div>
 
     <span class="sd">&quot;&quot;&quot; This class parse the stdout of ngspice and the raw data output.</span>
 
@@ -286,7 +286,7 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="RawFile._read_header"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile._read_header">[docs]</a>    <span class="k">def</span> <span class="nf">_read_header</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stdout</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_read_header</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stdout</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Parse the header &quot;&quot;&quot;</span>
         
@@ -327,8 +327,8 @@
         <span class="k">return</span> <span class="n">raw_data</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile._read_line"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile._read_line">[docs]</a>    <span class="k">def</span> <span class="nf">_read_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_line_iterator</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_read_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_line_iterator</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Return the next line &quot;&quot;&quot;</span>
 
@@ -340,8 +340,8 @@
         <span class="k">return</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile._read_header_line"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile._read_header_line">[docs]</a>    <span class="k">def</span> <span class="nf">_read_header_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_line_iterator</span><span class="p">,</span> <span class="n">head_line</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_read_header_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_line_iterator</span><span class="p">,</span> <span class="n">head_line</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Read an header line and check it starts with *head_line*. &quot;&quot;&quot;</span>
 
@@ -351,8 +351,8 @@
             <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;Unexpected line: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">line</span><span class="p">))</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile._read_header_field_line"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile._read_header_field_line">[docs]</a>    <span class="k">def</span> <span class="nf">_read_header_field_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_line_iterator</span><span class="p">,</span> <span class="n">expected_label</span><span class="p">,</span> <span class="n">has_value</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_read_header_field_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_line_iterator</span><span class="p">,</span> <span class="n">expected_label</span><span class="p">,</span> <span class="n">has_value</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Read an header line and check it starts with *expected_label*.</span>
 
@@ -373,8 +373,8 @@
             <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile._read_variable_data"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile._read_variable_data">[docs]</a>    <span class="k">def</span> <span class="nf">_read_variable_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_read_variable_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Read the raw data and set the variable values. &quot;&quot;&quot;</span>
 
@@ -397,8 +397,8 @@
             <span class="n">variable</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="n">variable</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile.fix_case"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile.fix_case">[docs]</a>    <span class="k">def</span> <span class="nf">fix_case</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">fix_case</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Ngspice return lower case names. This method fixes the case of the variable names. &quot;&quot;&quot;</span>
 
@@ -408,31 +408,31 @@
             <span class="n">variable</span><span class="o">.</span><span class="n">fix_case</span><span class="p">(</span><span class="n">element_translation</span><span class="p">,</span> <span class="n">node_translation</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile.nodes"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile.nodes">[docs]</a>    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="p">[</span><span class="n">variable</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">abscissa</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="n">to_float</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">variable</span><span class="o">.</span><span class="n">is_voltage_node</span><span class="p">()]</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile.branches"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile.branches">[docs]</a>    <span class="k">def</span> <span class="nf">branches</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">branches</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="p">[</span><span class="n">variable</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">abscissa</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="n">to_float</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">variable</span><span class="o">.</span><span class="n">is_branch_current</span><span class="p">()]</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile.elements"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile.elements">[docs]</a>    <span class="k">def</span> <span class="nf">elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="p">[</span><span class="n">variable</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">abscissa</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile.to_analysis"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile.to_analysis">[docs]</a>    <span class="k">def</span> <span class="nf">to_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">to_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">fix_case</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
         
@@ -450,22 +450,22 @@
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;Unsupported plot name {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span><span class="p">))</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile._to_operating_point_analysis"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile._to_operating_point_analysis">[docs]</a>    <span class="k">def</span> <span class="nf">_to_operating_point_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_to_operating_point_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="n">OperatingPoint</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">to_float</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> <span class="n">branches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">branches</span><span class="p">(</span><span class="n">to_float</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile._to_sensitivity_analysis"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile._to_sensitivity_analysis">[docs]</a>    <span class="k">def</span> <span class="nf">_to_sensitivity_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_to_sensitivity_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="c"># Fixme: test .SENS I (VTEST)</span>
         <span class="c"># Fixme: separate v(vinput), analysis.R2.m</span>
         <span class="k">return</span> <span class="n">SensitivityAnalysis</span><span class="p">(</span><span class="n">elements</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">())</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile._to_dc_analysis"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile._to_dc_analysis">[docs]</a>    <span class="k">def</span> <span class="nf">_to_dc_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_to_dc_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="s">&#39;v(v-sweep)&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
             <span class="n">sweep_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;v(v-sweep)&#39;</span><span class="p">]</span>
@@ -478,15 +478,15 @@
         <span class="k">return</span> <span class="n">DcAnalysis</span><span class="p">(</span><span class="n">sweep</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="n">branches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">branches</span><span class="p">())</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile._to_ac_analysis"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile._to_ac_analysis">[docs]</a>    <span class="k">def</span> <span class="nf">_to_ac_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_to_ac_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">frequency</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">to_real</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">AcAnalysis</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="n">branches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">branches</span><span class="p">())</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="RawFile._to_transient_analysis"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile._to_transient_analysis">[docs]</a>    <span class="k">def</span> <span class="nf">_to_transient_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_to_transient_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">to_real</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TransientAnalysis</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">abscissa</span><span class="o">=</span><span class="n">time</span><span class="p">),</span> <span class="n">branches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">branches</span><span class="p">(</span><span class="n">abscissa</span><span class="o">=</span><span class="n">time</span><span class="p">))</span>
@@ -495,7 +495,7 @@
 <span class="c">#</span>
 <span class="c"># End</span>
 <span class="c">#</span>
-<span class="c">####################################################################################################</span></div></div>
+<span class="c">####################################################################################################</span>
 </pre></div>
 
           </div>
@@ -529,14 +529,14 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../Spice.html" >PySpice.Spice</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+        &copy; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.2.
     </div>
   </body>
 </html>

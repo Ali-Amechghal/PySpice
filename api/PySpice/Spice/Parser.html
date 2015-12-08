@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.1.7.7. Parser &mdash; PySpice 0.2.2 documentation</title>
+    <title>3.1.7.7. Parser &mdash; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.2.2',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
-    <link rel="top" title="PySpice 0.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="PySpice 0.3.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
     <link rel="next" title="3.1.7.8. RawFile" href="RawFile.html" />
     <link rel="prev" title="3.1.7.6.1. Shared" href="NgSpice/Shared.html" /> 
@@ -46,7 +46,7 @@
         <li class="right" >
           <a href="NgSpice/Shared.html" title="3.1.7.6.1. Shared"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
           <li class="nav-item nav-item-3"><a href="../Spice.html" accesskey="U">3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
@@ -96,17 +96,17 @@
 <p>This class implements a line in the netlist.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Parser.Line.read_right_of">
-<code class="descname">read_right_of</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Line.read_right_of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Line.read_right_of" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_right_of</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Parser.Line.read_right_of" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Parser.Line.read_words">
-<code class="descname">read_words</code><span class="sig-paren">(</span><em>start_location</em>, <em>number_of_words</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Line.read_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Line.read_words" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_words</code><span class="sig-paren">(</span><em>start_location</em>, <em>number_of_words</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Parser.Line.read_words" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Parser.Line.split_line">
-<code class="descname">split_line</code><span class="sig-paren">(</span><em>keyword</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Line.split_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Line.split_line" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split_line</code><span class="sig-paren">(</span><em>keyword</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Parser.Line.split_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split the line according to the following pattern:</p>
 <div class="highlight-python"><div class="highlight"><pre>keyword parameter1 parameter2 ... key1=value1 key2=value2 ...
 </pre></div>
@@ -116,7 +116,7 @@
 
 <dl class="method">
 <dt id="PySpice.Spice.Parser.Line.split_words">
-<code class="descname">split_words</code><span class="sig-paren">(</span><em>start_location</em>, <em>until=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#Line.split_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.Line.split_words" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split_words</code><span class="sig-paren">(</span><em>start_location</em>, <em>until=None</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Parser.Line.split_words" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -162,17 +162,22 @@
 </div></blockquote>
 <dl class="method">
 <dt id="PySpice.Spice.Parser.SpiceParser.build_circuit">
-<code class="descname">build_circuit</code><span class="sig-paren">(</span><em>ground=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser.build_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser.build_circuit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">build_circuit</code><span class="sig-paren">(</span><em>ground=0</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser.build_circuit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Parser.SpiceParser.is_only_model">
-<code class="descname">is_only_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser.is_only_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser.is_only_model" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_only_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser.is_only_model" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Parser.SpiceParser.is_only_subcircuit">
-<code class="descname">is_only_subcircuit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SpiceParser.is_only_subcircuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser.is_only_subcircuit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_only_subcircuit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser.is_only_subcircuit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PySpice.Spice.Parser.SpiceParser.to_python_code">
+<code class="descname">to_python_code</code><span class="sig-paren">(</span><em>ground=0</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Parser.SpiceParser.to_python_code" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -188,7 +193,7 @@
 </div>
 <dl class="method">
 <dt id="PySpice.Spice.Parser.SubCircuit.append">
-<code class="descname">append</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Parser.html#SubCircuit.append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Parser.SubCircuit.append" title="Permalink to this definition">¶</a></dt>
+<code class="descname">append</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Parser.SubCircuit.append" title="Permalink to this definition">¶</a></dt>
 <dd><p>Append a token to the token&#8217;s list.</p>
 </dd></dl>
 
@@ -267,15 +272,15 @@
         <li class="right" >
           <a href="NgSpice/Shared.html" title="3.1.7.6.1. Shared"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
           <li class="nav-item nav-item-3"><a href="../Spice.html" >3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+        &copy; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.2.
     </div>
   </body>
 </html>

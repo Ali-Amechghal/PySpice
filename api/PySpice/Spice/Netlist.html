@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.1.7.5. Netlist &mdash; PySpice 0.2.2 documentation</title>
+    <title>3.1.7.5. Netlist &mdash; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.2.2',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
-    <link rel="top" title="PySpice 0.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="PySpice 0.3.0 documentation" href="../../../index.html" />
     <link rel="up" title="3.1.7. Spice" href="../Spice.html" />
     <link rel="next" title="3.1.7.6. NgSpice" href="NgSpice.html" />
     <link rel="prev" title="3.1.7.4. Library" href="Library.html" /> 
@@ -46,7 +46,7 @@
         <li class="right" >
           <a href="Library.html" title="3.1.7.4. Library"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
           <li class="nav-item nav-item-3"><a href="../Spice.html" accesskey="U">3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
@@ -130,19 +130,19 @@ letter and not a keyword like &#8216;in&#8217;, cf. <a class="reference external
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Circuit.include">
-<code class="descname">include</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.include"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.include" title="Permalink to this definition">¶</a></dt>
+<code class="descname">include</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.include" title="Permalink to this definition">¶</a></dt>
 <dd><p>Include a file.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Circuit.parameter">
-<code class="descname">parameter</code><span class="sig-paren">(</span><em>name</em>, <em>expression</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.parameter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parameter</code><span class="sig-paren">(</span><em>name</em>, <em>expression</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.parameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a parameter.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Circuit.simulator">
-<code class="descname">simulator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.simulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.simulator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">simulator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.simulator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a <a class="reference internal" href="Simulation.html#PySpice.Spice.Simulation.SubprocessCircuitSimulator" title="PySpice.Spice.Simulation.SubprocessCircuitSimulator"><code class="xref py py-obj docutils literal"><span class="pre">PySpice.Spice.Simulation.SubprocessCircuitSimulator</span></code></a> or
 <a class="reference internal" href="Simulation.html#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator" title="PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator"><code class="xref py py-obj docutils literal"><span class="pre">PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator</span></code></a> instance depending of the
 value of the <em>simulator</em> parameter: <code class="docutils literal"><span class="pre">subprocess</span></code> or <code class="docutils literal"><span class="pre">shared</span></code>, respectively. If this
@@ -151,18 +151,18 @@ parameter is not specified then a subprocess simulator is returned.</p>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Circuit.str_end">
-<code class="descname">str_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.str_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.str_end" title="Permalink to this definition">¶</a></dt>
+<code class="descname">str_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.str_end" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Circuit.subcircuit">
-<code class="descname">subcircuit</code><span class="sig-paren">(</span><em>subcircuit</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.subcircuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.subcircuit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subcircuit</code><span class="sig-paren">(</span><em>subcircuit</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.subcircuit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a sub-circuit.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Circuit.subcircuit_iterator">
-<code class="descname">subcircuit_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Circuit.subcircuit_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.subcircuit_iterator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subcircuit_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Circuit.subcircuit_iterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a sub-circuit iterator.</p>
 </dd></dl>
 
@@ -270,13 +270,13 @@ parameter is not specified then a subprocess simulator is returned.</p>
 <p>It use a metaclass machinery for the declaration of the parameters.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Element.format_node_names">
-<code class="descname">format_node_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.format_node_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.format_node_names" title="Permalink to this definition">¶</a></dt>
+<code class="descname">format_node_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Element.format_node_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the formatted list of nodes.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Element.format_spice_parameters">
-<code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.format_spice_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">format_spice_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Element.format_spice_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the formatted list of parameters.</p>
 </dd></dl>
 
@@ -292,7 +292,7 @@ parameter is not specified then a subprocess simulator is returned.</p>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Element.parameter_iterator">
-<code class="descname">parameter_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Element.parameter_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Element.parameter_iterator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parameter_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Element.parameter_iterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>This iterator returns the parameter in the right order.</p>
 </dd></dl>
 
@@ -534,28 +534,28 @@ parameter is not specified then a subprocess simulator is returned.</p>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.element_iterator">
-<code class="descname">element_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.element_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.element_iterator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">element_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.element_iterator" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.element_names">
-<code class="descname">element_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.element_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.element_names" title="Permalink to this definition">¶</a></dt>
+<code class="descname">element_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.element_names" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.model">
-<code class="descname">model</code><span class="sig-paren">(</span><em>name</em>, <em>modele_type</em>, <em>**parameters</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.model" title="Permalink to this definition">¶</a></dt>
+<code class="descname">model</code><span class="sig-paren">(</span><em>name</em>, <em>modele_type</em>, <em>**parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a model.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.model_iterator">
-<code class="descname">model_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.model_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.model_iterator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">model_iterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.model_iterator" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Netlist.node_names">
-<code class="descname">node_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Netlist.node_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.node_names" title="Permalink to this definition">¶</a></dt>
+<code class="descname">node_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Netlist.node_names" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -574,7 +574,7 @@ parameter is not specified then a subprocess simulator is returned.</p>
 the node.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Node.add_element">
-<code class="descname">add_element</code><span class="sig-paren">(</span><em>element</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Node.add_element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Node.add_element" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_element</code><span class="sig-paren">(</span><em>element</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Node.add_element" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -597,7 +597,7 @@ the node.</p>
 pin and the node.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.Pin.add_current_probe">
-<code class="descname">add_current_probe</code><span class="sig-paren">(</span><em>circuit</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#Pin.add_current_probe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.add_current_probe" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_current_probe</code><span class="sig-paren">(</span><em>circuit</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.Pin.add_current_probe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a current probe between the node and the pin.</p>
 <p>The ammeter is named <em>ElementName_PinName</em>.</p>
 </dd></dl>
@@ -626,7 +626,7 @@ pin and the node.</p>
 <p>This class implements a sub-cicuit netlist.</p>
 <dl class="method">
 <dt id="PySpice.Spice.Netlist.SubCircuit.check_nodes">
-<code class="descname">check_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/PySpice/Spice/Netlist.html#SubCircuit.check_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuit.check_nodes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.Netlist.SubCircuit.check_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check for dangling nodes in the subcircuit.</p>
 </dd></dl>
 
@@ -757,15 +757,15 @@ pin and the node.</p>
         <li class="right" >
           <a href="Library.html" title="3.1.7.4. Library"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
           <li class="nav-item nav-item-3"><a href="../Spice.html" >3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+        &copy; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.2.
     </div>
   </body>
 </html>

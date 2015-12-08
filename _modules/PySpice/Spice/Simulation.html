@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PySpice.Spice.Simulation &mdash; PySpice 0.2.2 documentation</title>
+    <title>PySpice.Spice.Simulation &mdash; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.2.2',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
-    <link rel="top" title="PySpice 0.2.2 documentation" href="../../../index.html" />
+    <link rel="top" title="PySpice 0.3.0 documentation" href="../../../index.html" />
     <link rel="up" title="PySpice.Spice" href="../Spice.html" /> 
   </head>
   <body role="document">
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
       </ul>
@@ -86,7 +86,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="CircuitSimulation"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation">[docs]</a><span class="k">class</span> <span class="nc">CircuitSimulation</span><span class="p">:</span>
+<div class="viewcode-block" id="CircuitSimulation"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation">[docs]</a><span class="k">class</span> <span class="nc">CircuitSimulation</span><span class="p">:</span></div>
 
     <span class="sd">&quot;&quot;&quot;Define and generate the spice instruction to perform a circuit simulation.</span>
 
@@ -127,7 +127,7 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="CircuitSimulation.options"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.options">[docs]</a>    <span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">None</span>
@@ -135,7 +135,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s">&#39;TEMP&#39;</span><span class="p">]</span>
@@ -156,7 +156,7 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="CircuitSimulation.initial_condition"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.initial_condition">[docs]</a>    <span class="k">def</span> <span class="nf">initial_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">initial_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Set initial condition for voltage nodes.</span>
 
@@ -169,8 +169,8 @@
         <span class="c"># Fixme: .nodeset</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulation.save"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
 
         <span class="c"># Fixme: pass Node for voltage node, Element for source branch current, ...</span>
 
@@ -192,7 +192,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_saved_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">save_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Save all currents. &quot;&quot;&quot;</span>
@@ -207,21 +207,21 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="CircuitSimulation.reset_analysis"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.reset_analysis">[docs]</a>    <span class="k">def</span> <span class="nf">reset_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reset_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulation.operating_point"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.operating_point">[docs]</a>    <span class="k">def</span> <span class="nf">operating_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">operating_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;Compute the operating point of the circuit with capacitors open and inductors shorted.&quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;op&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulation.dc_sensitivity"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.dc_sensitivity">[docs]</a>    <span class="k">def</span> <span class="nf">dc_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_variable</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">dc_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_variable</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;Compute the sensitivity of the DC operating point of a node voltage or voltage-source branch</span>
 <span class="sd">        current to all non-zero device parameters.</span>
@@ -244,8 +244,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;sens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">output_variable</span><span class="p">,)</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulation.ac_sensitivity"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.ac_sensitivity">[docs]</a>    <span class="k">def</span> <span class="nf">ac_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_variable</span><span class="p">,</span>
+
+    <span class="k">def</span> <span class="nf">ac_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_variable</span><span class="p">,</span>
                        <span class="n">start_frequency</span><span class="p">,</span> <span class="n">stop_frequency</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">,</span> <span class="n">variation</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;Compute the sensitivity of the AC values of a node voltage or voltage-source branch</span>
@@ -274,8 +274,8 @@
                                              <span class="n">variation</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">,</span> <span class="n">start_frequency</span><span class="p">,</span> <span class="n">stop_frequency</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulation.dc"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.dc">[docs]</a>    <span class="k">def</span> <span class="nf">dc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">dc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;Compute the DC transfer fonction of the circuit with capacitors open and inductors shorted.</span>
 
@@ -315,8 +315,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulation.ac"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.ac">[docs]</a>    <span class="k">def</span> <span class="nf">ac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_frequency</span><span class="p">,</span> <span class="n">stop_frequency</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">,</span> <span class="n">variation</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">ac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_frequency</span><span class="p">,</span> <span class="n">stop_frequency</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">,</span> <span class="n">variation</span><span class="p">):</span>
 
         <span class="c"># fixme: concise keyword ?</span>
 
@@ -346,8 +346,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;ac&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">variation</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">,</span> <span class="n">start_frequency</span><span class="p">,</span> <span class="n">stop_frequency</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulation.transient"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulation.transient">[docs]</a>    <span class="k">def</span> <span class="nf">transient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+
+    <span class="k">def</span> <span class="nf">transient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                   <span class="n">use_initial_condition</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;Perform a transient analysis of the circuit.</span>
@@ -367,7 +367,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_parameters</span><span class="p">[</span><span class="s">&#39;tran&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">step_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">max_time</span><span class="p">,</span> <span class="n">uic</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
+
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">netlist</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span><span class="p">)</span>
@@ -387,8 +387,8 @@
         <span class="k">return</span> <span class="n">netlist</span>
 
 <span class="c">####################################################################################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulator">[docs]</a><span class="k">class</span> <span class="nc">CircuitSimulator</span><span class="p">(</span><span class="n">CircuitSimulation</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CircuitSimulator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulator">[docs]</a><span class="k">class</span> <span class="nc">CircuitSimulator</span><span class="p">(</span><span class="n">CircuitSimulation</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot; This class implements a circuit simulator. Each analysis mode is performed by a method that</span>
 <span class="sd">    return the measured probes.</span>
@@ -401,7 +401,7 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="CircuitSimulator._run"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulator._run">[docs]</a>    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">reset_analysis</span><span class="p">()</span>
         <span class="k">if</span> <span class="s">&#39;probes&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
@@ -413,38 +413,38 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;desk</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulator.operating_point"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulator.operating_point">[docs]</a>    <span class="k">def</span> <span class="nf">operating_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">operating_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="s">&#39;operating_point&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulator.dc"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulator.dc">[docs]</a>    <span class="k">def</span> <span class="nf">dc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">dc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="s">&#39;dc&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulator.dc_sensitivity"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulator.dc_sensitivity">[docs]</a>    <span class="k">def</span> <span class="nf">dc_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">dc_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="s">&#39;dc_sensitivity&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulator.ac"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulator.ac">[docs]</a>    <span class="k">def</span> <span class="nf">ac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">ac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="s">&#39;ac&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c">##############################################</span>
-</div>
-<div class="viewcode-block" id="CircuitSimulator.transient"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.CircuitSimulator.transient">[docs]</a>    <span class="k">def</span> <span class="nf">transient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">transient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="s">&#39;transient&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
-<div class="viewcode-block" id="SubprocessCircuitSimulator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.SubprocessCircuitSimulator">[docs]</a><span class="k">class</span> <span class="nc">SubprocessCircuitSimulator</span><span class="p">(</span><span class="n">CircuitSimulator</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SubprocessCircuitSimulator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.SubprocessCircuitSimulator">[docs]</a><span class="k">class</span> <span class="nc">SubprocessCircuitSimulator</span><span class="p">(</span><span class="n">CircuitSimulator</span><span class="p">):</span></div>
 
     <span class="n">_logger</span> <span class="o">=</span> <span class="n">_module_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;SubprocessCircuitSimulator&#39;</span><span class="p">)</span>
 
@@ -464,7 +464,7 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="SubprocessCircuitSimulator._run"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.SubprocessCircuitSimulator._run">[docs]</a>    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         
@@ -477,8 +477,8 @@
         <span class="k">return</span> <span class="n">raw_file</span><span class="o">.</span><span class="n">to_analysis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span><span class="p">)</span>
 
 <span class="c">####################################################################################################</span>
-</div></div>
-<div class="viewcode-block" id="NgSpiceSharedCircuitSimulator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator">[docs]</a><span class="k">class</span> <span class="nc">NgSpiceSharedCircuitSimulator</span><span class="p">(</span><span class="n">CircuitSimulator</span><span class="p">):</span>
+
+<div class="viewcode-block" id="NgSpiceSharedCircuitSimulator"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator">[docs]</a><span class="k">class</span> <span class="nc">NgSpiceSharedCircuitSimulator</span><span class="p">(</span><span class="n">CircuitSimulator</span><span class="p">):</span></div>
 
     <span class="n">_logger</span> <span class="o">=</span> <span class="n">_module_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;NgSpiceSharedCircuitSimulator&#39;</span><span class="p">)</span>
 
@@ -501,7 +501,7 @@
 
     <span class="c">##############################################</span>
 
-<div class="viewcode-block" id="NgSpiceSharedCircuitSimulator._run"><a class="viewcode-back" href="../../../api/PySpice/Spice/Simulation.html#PySpice.Spice.Simulation.NgSpiceSharedCircuitSimulator._run">[docs]</a>    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="n">analysis_method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         
@@ -525,7 +525,7 @@
 <span class="c">#</span>
 <span class="c"># End</span>
 <span class="c">#</span>
-<span class="c">####################################################################################################</span></div></div>
+<span class="c">####################################################################################################</span>
 </pre></div>
 
           </div>
@@ -559,14 +559,14 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.2.2 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="../Spice.html" >PySpice.Spice</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2014, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+        &copy; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.2.
     </div>
   </body>
 </html>
