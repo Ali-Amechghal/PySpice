@@ -357,13 +357,16 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="BehavorialResistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialResistor">[docs]</a><span class="k">class</span> <span class="nc">BehavorialResistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="BehavioralResistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralResistor">[docs]</a><span class="k">class</span> <span class="nc">BehavioralResistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
-    <span class="sd">&quot;&quot;&quot;This class implements a behavorial resistor.</span>
+    <span class="c"># Behavioral / Behavioural</span>
+
+    <span class="sd">&quot;&quot;&quot;This class implements a behavioral resistor.</span>
 
 <span class="sd">    Spice syntax::</span>
 
-<span class="sd">        RXXXXXXX n+ n- &#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt; Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;</span>
+<span class="sd">        RXXXXXXX n+ n- &#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;</span>
+<span class="sd">        Rxxxxxxx n+ n- R=&#39;expression&#39; &lt;tc1=value&gt; &lt;tc2=value&gt;</span>
 
 <span class="sd">    Keyword Parameters:</span>
 
@@ -381,7 +384,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavorialResistor&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavioralResistor&#39;</span>
     <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;R&#39;</span>
 
     <span class="n">resistance_expression</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -516,7 +519,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="BehavorialCapacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialCapacitor">[docs]</a><span class="k">class</span> <span class="nc">BehavorialCapacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="BehavioralCapacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralCapacitor">[docs]</a><span class="k">class</span> <span class="nc">BehavioralCapacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a behavioral capacitor.</span>
 
@@ -541,7 +544,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavorialCapacitor&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavioralCapacitor&#39;</span>
     <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;C&#39;</span>
 
     <span class="n">capacitance_expression</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -610,7 +613,7 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="BehavorialInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialInductor">[docs]</a><span class="k">class</span> <span class="nc">BehavorialInductor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="BehavioralInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralInductor">[docs]</a><span class="k">class</span> <span class="nc">BehavioralInductor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
     <span class="sd">&quot;&quot;&quot;This class implements a behavioral inductor.</span>
 
@@ -635,7 +638,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavorialInductor&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavioralInductor&#39;</span>
     <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;L&#39;</span>
 
     <span class="n">inductance_expression</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -903,9 +906,9 @@
 
 <span class="c">####################################################################################################</span>
 
-<div class="viewcode-block" id="BehavorialSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavorialSource">[docs]</a><span class="k">class</span> <span class="nc">BehavorialSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="BehavioralSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralSource">[docs]</a><span class="k">class</span> <span class="nc">BehavioralSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
 
-    <span class="sd">&quot;&quot;&quot;This class implements a behavorial source.</span>
+    <span class="sd">&quot;&quot;&quot;This class implements a behavioral source.</span>
 
 <span class="sd">    Spice syntax::</span>
 
@@ -945,7 +948,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavorialSource&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavioralSource&#39;</span>
     <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;B&#39;</span>
 
     <span class="n">current_expression</span> <span class="o">=</span> <span class="n">ExpressionKeyParameter</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">)</span>
@@ -1001,7 +1004,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="c"># TABLE {expression} = (x0, y0) (x1, y1) ...</span>
             <span class="n">table</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;({}, {})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">]</span>
-            <span class="n">spice_element</span> <span class="o">+=</span> <span class="s">&#39; TABLE {</span><span class="si">%s</span><span class="s">} = </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expression</span><span class="p">,</span> <span class="n">join_list</span><span class="p">(</span><span class="n">table</span><span class="p">))</span> 
+            <span class="n">spice_element</span> <span class="o">+=</span> <span class="s">&#39; TABLE {</span><span class="si">%s</span><span class="s">} = </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expression</span><span class="p">,</span> <span class="n">join_list</span><span class="p">(</span><span class="n">table</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">spice_element</span>
 
 <span class="c">####################################################################################################</span>
@@ -1470,6 +1473,71 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="c">####################################################################################################</span>
+
+<div class="viewcode-block" id="TransmissionLine"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.TransmissionLine">[docs]</a><span class="k">class</span> <span class="nc">TransmissionLine</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
+
+    <span class="sd">&quot;&quot;&quot;This class implements a lossless transmission line.</span>
+
+<span class="sd">    Spice syntax::</span>
+
+<span class="sd">        TXXXXXXX N1 N2 N3 N4 Z0=VALUE &lt;TD=VALUE&gt; &lt;F=FREQ &lt;NL=NRMLEN&gt;&gt;</span>
+
+<span class="sd">    where TD or F, NL must be specified.</span>
+
+<span class="sd">    Keyword Parameters:</span>
+
+<span class="sd">      :attr:`impedance`</span>
+<span class="sd">         alias:`Z0`</span>
+
+<span class="sd">      :attr:`time_delay`</span>
+<span class="sd">         alias:`TD`</span>
+
+<span class="sd">      :attr:`frequency`</span>
+<span class="sd">         alias:`F`</span>
+
+<span class="sd">      :attr:`normalized_length`</span>
+<span class="sd">         alias:`NL`</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">      :attr:`impedance`</span>
+
+<span class="sd">      :attr:`time_delay`</span>
+
+<span class="sd">      :attr:`frequency`</span>
+
+<span class="sd">      :attr:`normalized_length`</span>
+
+<span class="sd">    Note: Either time_delay or frequency must be given.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;TransmissionLine&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;T&#39;</span>
+
+    <span class="n">impedance</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;Z0&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">time_delay</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;TD&#39;</span><span class="p">)</span>
+    <span class="n">frequency</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">normalized_length</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;NL&#39;</span><span class="p">)</span>
+
+    <span class="c">##############################################</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+                 <span class="n">input_node_plus</span><span class="p">,</span> <span class="n">input_node_minus</span><span class="p">,</span>
+                 <span class="n">output_node_plus</span><span class="p">,</span> <span class="n">output_node_minus</span><span class="p">,</span>
+                 <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="c"># check: ^ xor, &amp; bitwise and</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="s">&#39;time_delay&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">)</span> <span class="o">^</span>
+                <span class="p">((</span><span class="s">&#39;frequency&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="s">&#39;normalized_length&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">))):</span>
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&#39;Either TD or F, NL must be specified&#39;</span><span class="p">)</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span>
+                         <span class="n">output_node_plus</span><span class="p">,</span> <span class="n">output_node_minus</span><span class="p">,</span>
+                         <span class="n">input_node_plus</span><span class="p">,</span> <span class="n">input_node_minus</span><span class="p">,</span> <span class="c"># Fixme: inverted inputs</span>
+                         <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="c">####################################################################################################</span>
 <span class="c">#</span>
 <span class="c"># End</span>
 <span class="c">#</span>
@@ -1514,7 +1582,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
     </div>
   </body>
 </html>
