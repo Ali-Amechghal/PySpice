@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PySpice.Spice.BasicElement &mdash; PySpice 0.3.0 documentation</title>
+    <title>PySpice.Spice.BasicElement &#8212; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="PySpice 0.3.0 documentation" href="../../../index.html" />
     <link rel="up" title="PySpice.Spice" href="../Spice.html" /> 
   </head>
@@ -38,9 +40,9 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -50,25 +52,25 @@
           <div class="body" role="main">
             
   <h1>Source code for PySpice.Spice.BasicElement</h1><div class="highlight"><pre>
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># PySpice - A Spice Package for Python</span>
-<span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
-<span class="c">#</span>
-<span class="c"># This program is free software: you can redistribute it and/or modify</span>
-<span class="c"># it under the terms of the GNU General Public License as published by</span>
-<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
-<span class="c"># (at your option) any later version.</span>
-<span class="c">#</span>
-<span class="c"># This program is distributed in the hope that it will be useful,</span>
-<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="c"># GNU General Public License for more details.</span>
-<span class="c">#</span>
-<span class="c"># You should have received a copy of the GNU General Public License</span>
-<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span></span><span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># PySpice - A Spice Package for Python</span>
+<span class="c1"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="sd">&quot;&quot;&quot;This module implements SPICE circuit elements.</span>
 
@@ -147,18 +149,18 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c"># Fixme: add transmission lines</span>
+<span class="c1"># Fixme: add transmission lines</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="kn">from</span> <span class="nn">..Tools.StringTools</span> <span class="kn">import</span> <span class="n">join_list</span>
-<span class="kn">from</span> <span class="nn">.Netlist</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Pin</span><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">..Tools.StringTools</span> <span class="k">import</span> <span class="n">join_list</span>
+<span class="kn">from</span> <span class="nn">.Netlist</span> <span class="k">import</span> <span class="p">(</span><span class="n">Pin</span><span class="p">,</span>
                       <span class="n">AnyPinElement</span><span class="p">,</span>
                       <span class="n">TwoPinElement</span><span class="p">,</span> <span class="n">ThreePinElement</span><span class="p">,</span> <span class="n">FourPinElement</span><span class="p">,</span>
                       <span class="n">NPinElement</span><span class="p">,</span>
                       <span class="n">TwoPortElement</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">.ElementParameter</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="c"># KeyValueParameter,</span>
+<span class="kn">from</span> <span class="nn">.ElementParameter</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="c1"># KeyValueParameter,</span>
     <span class="n">BoolKeyParameter</span><span class="p">,</span>
     <span class="n">ElementNamePositionalParameter</span><span class="p">,</span>
     <span class="n">ExpressionKeyParameter</span><span class="p">,</span>
@@ -173,9 +175,9 @@
     <span class="n">ModelPositionalParameter</span><span class="p">,</span>
     <span class="p">)</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="SubCircuitElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SubCircuitElement">[docs]</a><span class="k">class</span> <span class="nc">SubCircuitElement</span><span class="p">(</span><span class="n">NPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="SubCircuitElement"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SubCircuitElement">[docs]</a><span class="k">class</span> <span class="nc">SubCircuitElement</span><span class="p">(</span><span class="n">NPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a sub-circuit.</span>
 
@@ -192,43 +194,43 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;X&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;X&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
 
-    <span class="n">subcircuit_name</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">subcircuit_name</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">subcircuit_name</span><span class="p">,</span> <span class="o">*</span><span class="n">nodes</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters</span><span class="p">):</span>
 
-        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">]</span>
+        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">]</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="n">subcircuit_name</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
 
-        <span class="c"># Fixme: investigate</span>
-        <span class="c"># for key, value in parameters.items():</span>
-        <span class="c">#     parameter = KeyValueParameter(key)</span>
-        <span class="c">#     parameter.__set__(self, value)</span>
-        <span class="c">#     self.optional_parameters[key] = parameter</span>
-        <span class="c">#     setattr(self, key, parameter)</span>
+        <span class="c1"># Fixme: investigate</span>
+        <span class="c1"># for key, value in parameters.items():</span>
+        <span class="c1">#     parameter = KeyValueParameter(key)</span>
+        <span class="c1">#     parameter.__set__(self, value)</span>
+        <span class="c1">#     self.optional_parameters[key] = parameter</span>
+        <span class="c1">#     setattr(self, key, parameter)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SubCircuitElement.format_spice_parameters"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SubCircuitElement.format_spice_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">format_spice_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return the formatted list of parameters. &quot;&quot;&quot;</span>
 
         <span class="n">spice_parameters</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">format_spice_parameters</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
-            <span class="n">spice_parameters</span> <span class="o">+=</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">join_list</span><span class="p">([</span><span class="s">&#39;{}={}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="n">spice_parameters</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">join_list</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
                                                  <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
 
-        <span class="k">return</span> <span class="n">spice_parameters</span>
+        <span class="k">return</span> <span class="n">spice_parameters</span></div></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="Resistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Resistor">[docs]</a><span class="k">class</span> <span class="nc">Resistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="Resistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Resistor">[docs]</a><span class="k">class</span> <span class="nc">Resistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a resistor.</span>
 
@@ -271,20 +273,20 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;R&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;R&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span>
 
-    <span class="n">resistance</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">ac</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;ac&#39;</span><span class="p">)</span>
-    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">scale</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;scale&#39;</span><span class="p">)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
-    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
-    <span class="n">noisy</span> <span class="o">=</span> <span class="n">BoolKeyParameter</span><span class="p">(</span><span class="s">&#39;noisy&#39;</span><span class="p">)</span>
+    <span class="n">resistance</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;ac&#39;</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;scale&#39;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
+    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;dtemp&#39;</span><span class="p">)</span>
+    <span class="n">noisy</span> <span class="o">=</span> <span class="n">BoolKeyParameter</span><span class="p">(</span><span class="s1">&#39;noisy&#39;</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="SemiconductorResistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SemiconductorResistor">[docs]</a><span class="k">class</span> <span class="nc">SemiconductorResistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="SemiconductorResistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SemiconductorResistor">[docs]</a><span class="k">class</span> <span class="nc">SemiconductorResistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a Semiconductor resistor.</span>
 
@@ -341,25 +343,25 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;SemiconductorResistor&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;R&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;SemiconductorResistor&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span>
 
-    <span class="n">resistance</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">width</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
-    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
-    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">ac</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;ac&#39;</span><span class="p">)</span>
-    <span class="n">scale</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;scale&#39;</span><span class="p">)</span>
-    <span class="n">noisy</span> <span class="o">=</span> <span class="n">BoolKeyParameter</span><span class="p">(</span><span class="s">&#39;noisy&#39;</span><span class="p">)</span>
+    <span class="n">resistance</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
+    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;dtemp&#39;</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;ac&#39;</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;scale&#39;</span><span class="p">)</span>
+    <span class="n">noisy</span> <span class="o">=</span> <span class="n">BoolKeyParameter</span><span class="p">(</span><span class="s1">&#39;noisy&#39;</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="BehavioralResistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralResistor">[docs]</a><span class="k">class</span> <span class="nc">BehavioralResistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="BehavioralResistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralResistor">[docs]</a><span class="k">class</span> <span class="nc">BehavioralResistor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
-    <span class="c"># Behavioral / Behavioural</span>
+    <span class="c1"># Behavioral / Behavioural</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a behavioral resistor.</span>
 
@@ -384,16 +386,16 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavioralResistor&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;R&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;BehavioralResistor&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span>
 
-    <span class="n">resistance_expression</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">tc1</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc1&#39;</span><span class="p">)</span>
-    <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc2&#39;</span><span class="p">)</span>
+    <span class="n">resistance_expression</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">tc1</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;tc1&#39;</span><span class="p">)</span>
+    <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;tc2&#39;</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="Capacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Capacitor">[docs]</a><span class="k">class</span> <span class="nc">Capacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="Capacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Capacitor">[docs]</a><span class="k">class</span> <span class="nc">Capacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a capacitor.</span>
 
@@ -437,20 +439,20 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;C&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;C&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
 
-    <span class="n">capacitance</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">scale</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;scale&#39;</span><span class="p">)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
-    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
-    <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
+    <span class="n">capacitance</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;scale&#39;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
+    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;dtemp&#39;</span><span class="p">)</span>
+    <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;ic&#39;</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="SemiconductorCapacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SemiconductorCapacitor">[docs]</a><span class="k">class</span> <span class="nc">SemiconductorCapacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="SemiconductorCapacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.SemiconductorCapacitor">[docs]</a><span class="k">class</span> <span class="nc">SemiconductorCapacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a semiconductor capacitor.</span>
 
@@ -504,22 +506,22 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;SemiconductorCapacitor&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;C&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;SemiconductorCapacitor&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
 
-    <span class="n">capacitance</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">width</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
-    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">scale</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;scale&#39;</span><span class="p">)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
-    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
-    <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
+    <span class="n">capacitance</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;scale&#39;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
+    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;dtemp&#39;</span><span class="p">)</span>
+    <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;ic&#39;</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="BehavioralCapacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralCapacitor">[docs]</a><span class="k">class</span> <span class="nc">BehavioralCapacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="BehavioralCapacitor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralCapacitor">[docs]</a><span class="k">class</span> <span class="nc">BehavioralCapacitor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a behavioral capacitor.</span>
 
@@ -544,16 +546,16 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavioralCapacitor&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;C&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;BehavioralCapacitor&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
 
-    <span class="n">capacitance_expression</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">tc1</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc1&#39;</span><span class="p">)</span>
-    <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc2&#39;</span><span class="p">)</span>
+    <span class="n">capacitance_expression</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">tc1</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;tc1&#39;</span><span class="p">)</span>
+    <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;tc2&#39;</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="Inductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Inductor">[docs]</a><span class="k">class</span> <span class="nc">Inductor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="Inductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Inductor">[docs]</a><span class="k">class</span> <span class="nc">Inductor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements an inductor.</span>
 
@@ -599,21 +601,21 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;L&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;L&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;L&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;L&#39;</span>
 
-    <span class="n">inductance</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">nt</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;nt&#39;</span><span class="p">)</span>
-    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">scale</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;scale&#39;</span><span class="p">)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
-    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
-    <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
+    <span class="n">inductance</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nt</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;nt&#39;</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;scale&#39;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
+    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;dtemp&#39;</span><span class="p">)</span>
+    <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;ic&#39;</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="BehavioralInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralInductor">[docs]</a><span class="k">class</span> <span class="nc">BehavioralInductor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="BehavioralInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralInductor">[docs]</a><span class="k">class</span> <span class="nc">BehavioralInductor</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a behavioral inductor.</span>
 
@@ -638,16 +640,16 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavioralInductor&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;L&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;BehavioralInductor&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;L&#39;</span>
 
-    <span class="n">inductance_expression</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">tc1</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc1&#39;</span><span class="p">)</span>
-    <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc2&#39;</span><span class="p">)</span>
+    <span class="n">inductance_expression</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">tc1</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;tc1&#39;</span><span class="p">)</span>
+    <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;tc2&#39;</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="CoupledInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CoupledInductor">[docs]</a><span class="k">class</span> <span class="nc">CoupledInductor</span><span class="p">(</span><span class="n">AnyPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="CoupledInductor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CoupledInductor">[docs]</a><span class="k">class</span> <span class="nc">CoupledInductor</span><span class="p">(</span><span class="n">AnyPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implementss a coupled (mutual) inductors.</span>
 
@@ -667,25 +669,25 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;CoupledInductor&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;K&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;CoupledInductor&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;K&#39;</span>
 
-    <span class="n">inductor1</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">inductor2</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">coupling_factor</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">inductor1</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">inductor2</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">coupling_factor</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
- <span class="c">##############################################</span>
+ <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">inductor_name1</span><span class="p">,</span> <span class="n">inductor_name2</span><span class="p">,</span> <span class="n">coupling_factor</span><span class="p">):</span>
 
-        <span class="c"># Fixme: any pins here</span>
+        <span class="c1"># Fixme: any pins here</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">(),</span>
                                               <span class="n">inductor_name1</span><span class="p">,</span> <span class="n">inductor_name2</span><span class="p">,</span> <span class="n">coupling_factor</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_inductor_names</span> <span class="o">=</span> <span class="p">(</span><span class="n">inductor_name1</span><span class="p">,</span> <span class="n">inductor_name2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inductor_names</span> <span class="o">=</span> <span class="p">(</span><span class="n">inductor_name1</span><span class="p">,</span> <span class="n">inductor_name2</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="VoltageControlledSwitch"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledSwitch">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledSwitch</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="VoltageControlledSwitch"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledSwitch">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledSwitch</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a voltage controlled switch.</span>
 
@@ -707,15 +709,15 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;VCS&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;S&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;VCS&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;S&#39;</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">initial_state</span> <span class="o">=</span> <span class="n">InitialStatePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">initial_state</span> <span class="o">=</span> <span class="n">InitialStatePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="CurrentControlledSwitch"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledSwitch">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledSwitch</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="CurrentControlledSwitch"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledSwitch">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledSwitch</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a current controlled switch.</span>
 
@@ -741,16 +743,16 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;CCS&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;W&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;CCS&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;W&#39;</span>
 
-    <span class="n">source</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">initial_state</span> <span class="o">=</span> <span class="n">InitialStatePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">initial_state</span> <span class="o">=</span> <span class="n">InitialStatePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="VoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="VoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements an independent sources for voltage.</span>
 
@@ -766,15 +768,15 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;V&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;V&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;V&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;V&#39;</span>
 
-    <span class="c"># Fixme: ngspice manual doesn&#39;t describe well the syntax</span>
-    <span class="n">dc_value</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="c1"># Fixme: ngspice manual doesn&#39;t describe well the syntax</span>
+    <span class="n">dc_value</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="CurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="CurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements an independent sources for current.</span>
 
@@ -790,15 +792,15 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;I&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;I&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;I&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;I&#39;</span>
 
-    <span class="c"># Fixme: ngspice manual doesn&#39;t describe well the syntax</span>
-    <span class="n">dc_value</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="c1"># Fixme: ngspice manual doesn&#39;t describe well the syntax</span>
+    <span class="n">dc_value</span> <span class="o">=</span> <span class="n">FloatPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="VoltageControlledVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledVoltageSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="VoltageControlledVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledVoltageSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a linear voltage-controlled voltage sources (VCVS).</span>
 
@@ -814,14 +816,14 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;VCVS&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;E&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;VCVS&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;E&#39;</span>
 
-    <span class="n">voltage_gain</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">voltage_gain</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="CurrentControlledCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledCurrentSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="CurrentControlledCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledCurrentSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a linear current-controlled current sources (CCCS).</span>
 
@@ -841,15 +843,15 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;CCCS&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;F&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;CCCS&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span>
 
-    <span class="n">source</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c"># Fixme: right ???</span>
-    <span class="n">current_gain</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Fixme: right ???</span>
+    <span class="n">current_gain</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="VoltageControlledCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledCurrentSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="VoltageControlledCurrentSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.VoltageControlledCurrentSource">[docs]</a><span class="k">class</span> <span class="nc">VoltageControlledCurrentSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a linear voltage-controlled current sources (VCCS).</span>
 
@@ -871,14 +873,14 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;VCCS&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;G&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;VCCS&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;G&#39;</span>
 
-    <span class="n">transconductance</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">transconductance</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="CurrentControlledVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledVoltageSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="CurrentControlledVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.CurrentControlledVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">CurrentControlledVoltageSource</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a linear current-controlled voltage sources (ccvs).</span>
 
@@ -898,15 +900,15 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;CCVS&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;H&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;CCVS&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span>
 
-    <span class="n">source</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c"># Fixme: right ????</span>
-    <span class="n">transresistance</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">ElementNamePositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Fixme: right ????</span>
+    <span class="n">transresistance</span> <span class="o">=</span> <span class="n">ExpressionPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="BehavioralSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralSource">[docs]</a><span class="k">class</span> <span class="nc">BehavioralSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="BehavioralSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BehavioralSource">[docs]</a><span class="k">class</span> <span class="nc">BehavioralSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a behavioral source.</span>
 
@@ -948,19 +950,19 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BehavioralSource&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;B&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;BehavioralSource&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span>
 
-    <span class="n">current_expression</span> <span class="o">=</span> <span class="n">ExpressionKeyParameter</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">)</span>
-    <span class="n">voltage_expression</span> <span class="o">=</span> <span class="n">ExpressionKeyParameter</span><span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">)</span>
-    <span class="n">tc1</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc1&#39;</span><span class="p">)</span>
-    <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;tc2&#39;</span><span class="p">)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
-    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
+    <span class="n">current_expression</span> <span class="o">=</span> <span class="n">ExpressionKeyParameter</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
+    <span class="n">voltage_expression</span> <span class="o">=</span> <span class="n">ExpressionKeyParameter</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">)</span>
+    <span class="n">tc1</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;tc1&#39;</span><span class="p">)</span>
+    <span class="n">tc2</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;tc2&#39;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
+    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;dtemp&#39;</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="NonLinearVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.NonLinearVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">NonLinearVoltageSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="NonLinearVoltageSource"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.NonLinearVoltageSource">[docs]</a><span class="k">class</span> <span class="nc">NonLinearVoltageSource</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a non linear voltage source.</span>
 
@@ -980,36 +982,36 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;NonLinearVoltageSource&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;E&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;NonLinearVoltageSource&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;E&#39;</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
                  <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">,</span>
-                 <span class="n">expression</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                 <span class="n">table</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+                 <span class="n">expression</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">table</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">node_plus</span><span class="p">,</span> <span class="n">node_minus</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">expression</span> <span class="o">=</span> <span class="n">expression</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">spice_element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_node_names</span><span class="p">()</span>
-        <span class="c"># Fixme: expression</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c"># TABLE {expression} = (x0, y0) (x1, y1) ...</span>
-            <span class="n">table</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;({}, {})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">]</span>
-            <span class="n">spice_element</span> <span class="o">+=</span> <span class="s">&#39; TABLE {</span><span class="si">%s</span><span class="s">} = </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expression</span><span class="p">,</span> <span class="n">join_list</span><span class="p">(</span><span class="n">table</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">spice_element</span>
+        <span class="c1"># Fixme: expression</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># TABLE {expression} = (x0, y0) (x1, y1) ...</span>
+            <span class="n">table</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;(</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">]</span>
+            <span class="n">spice_element</span> <span class="o">+=</span> <span class="s1">&#39; TABLE {</span><span class="si">%s</span><span class="s1">} = </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expression</span><span class="p">,</span> <span class="n">join_list</span><span class="p">(</span><span class="n">table</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">spice_element</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="Diode"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Diode">[docs]</a><span class="k">class</span> <span class="nc">Diode</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="Diode"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Diode">[docs]</a><span class="k">class</span> <span class="nc">Diode</span><span class="p">(</span><span class="n">TwoPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a junction diode.</span>
 
@@ -1058,21 +1060,21 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;D&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;D&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;area&#39;</span><span class="p">)</span>
-    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">pj</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;pj&#39;</span><span class="p">)</span>
-    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatPairKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
-    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;area&#39;</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">pj</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;pj&#39;</span><span class="p">)</span>
+    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatPairKeyParameter</span><span class="p">(</span><span class="s1">&#39;ic&#39;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
+    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;dtemp&#39;</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="BipolarJunctionTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BipolarJunctionTransistor">[docs]</a><span class="k">class</span> <span class="nc">BipolarJunctionTransistor</span><span class="p">(</span><span class="n">NPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="BipolarJunctionTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.BipolarJunctionTransistor">[docs]</a><span class="k">class</span> <span class="nc">BipolarJunctionTransistor</span><span class="p">(</span><span class="n">NPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a bipolar junction transistor.</span>
 
@@ -1125,67 +1127,67 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c"># Fixme: off doesn&#39;t fit in kwargs !</span>
+    <span class="c1"># Fixme: off doesn&#39;t fit in kwargs !</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;BJT&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;Q&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;BJT&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;Q&#39;</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;area&#39;</span><span class="p">)</span>
-    <span class="n">areac</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;areac&#39;</span><span class="p">)</span>
-    <span class="n">areab</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;areab&#39;</span><span class="p">)</span>
-    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatPairKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
-    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;dtemp&#39;</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;area&#39;</span><span class="p">)</span>
+    <span class="n">areac</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;areac&#39;</span><span class="p">)</span>
+    <span class="n">areab</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;areab&#39;</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatPairKeyParameter</span><span class="p">(</span><span class="s1">&#39;ic&#39;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
+    <span class="n">device_temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;dtemp&#39;</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
                  <span class="n">collector_node</span><span class="p">,</span> <span class="n">base_node</span><span class="p">,</span> <span class="n">emitter_node</span><span class="p">,</span>
-                 <span class="n">substrate_node</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="c"># default is ground</span>
+                 <span class="n">substrate_node</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># default is ground</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;collector&#39;</span><span class="p">,</span> <span class="n">collector_node</span><span class="p">),</span>
-                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;base&#39;</span><span class="p">,</span> <span class="n">base_node</span><span class="p">),</span>
-                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;emitter&#39;</span><span class="p">,</span> <span class="n">emitter_node</span><span class="p">),]</span>
-        <span class="k">if</span> <span class="n">substrate_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_substrate_pin</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;substrate&#39;</span><span class="p">,</span> <span class="n">substrate_node</span><span class="p">)</span>
+        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;collector&#39;</span><span class="p">,</span> <span class="n">collector_node</span><span class="p">),</span>
+                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="n">base_node</span><span class="p">),</span>
+                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;emitter&#39;</span><span class="p">,</span> <span class="n">emitter_node</span><span class="p">),]</span>
+        <span class="k">if</span> <span class="n">substrate_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_substrate_pin</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;substrate&#39;</span><span class="p">,</span> <span class="n">substrate_node</span><span class="p">)</span>
             <span class="n">pins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_substrate_pin</span><span class="p">)</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">collector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">base</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">emitter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">substrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="JunctionFieldEffectTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor">[docs]</a><span class="k">class</span> <span class="nc">JunctionFieldEffectTransistor</span><span class="p">(</span><span class="n">ThreePinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="JunctionFieldEffectTransistor"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.JunctionFieldEffectTransistor">[docs]</a><span class="k">class</span> <span class="nc">JunctionFieldEffectTransistor</span><span class="p">(</span><span class="n">ThreePinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a bipolar junction transistor.</span>
 
@@ -1220,51 +1222,51 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c"># Fixme: off doesn&#39;t fit in kwargs !</span>
+    <span class="c1"># Fixme: off doesn&#39;t fit in kwargs !</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;JFET&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;J&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;JFET&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;J&#39;</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;area&#39;</span><span class="p">)</span>
-    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatPairKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;area&#39;</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatPairKeyParameter</span><span class="p">(</span><span class="s1">&#39;ic&#39;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
                  <span class="n">drain_node</span><span class="p">,</span> <span class="n">gate_node</span><span class="p">,</span> <span class="n">source_node</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;drain&#39;</span><span class="p">,</span> <span class="n">drain_node</span><span class="p">),</span>
-                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;gate&#39;</span><span class="p">,</span> <span class="n">gate_node</span><span class="p">),</span>
-                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;source&#39;</span><span class="p">,</span> <span class="n">source_node</span><span class="p">),]</span>
+        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;drain&#39;</span><span class="p">,</span> <span class="n">drain_node</span><span class="p">),</span>
+                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;gate&#39;</span><span class="p">,</span> <span class="n">gate_node</span><span class="p">),</span>
+                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">source_node</span><span class="p">),]</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">drain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">gate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="Mesfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mesfet">[docs]</a><span class="k">class</span> <span class="nc">Mesfet</span><span class="p">(</span><span class="n">ThreePinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="Mesfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mesfet">[docs]</a><span class="k">class</span> <span class="nc">Mesfet</span><span class="p">(</span><span class="n">ThreePinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a Metal Semiconductor Field Effect Transistor.</span>
 
@@ -1294,50 +1296,50 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c"># Fixme: off doesn&#39;t fit in kwargs !</span>
+    <span class="c1"># Fixme: off doesn&#39;t fit in kwargs !</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;MESFET&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;Z&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;MESFET&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;Z&#39;</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;area&#39;</span><span class="p">)</span>
-    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatPairKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;area&#39;</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatPairKeyParameter</span><span class="p">(</span><span class="s1">&#39;ic&#39;</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
                  <span class="n">drain_node</span><span class="p">,</span> <span class="n">gate_node</span><span class="p">,</span> <span class="n">source_node</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;drain&#39;</span><span class="p">,</span> <span class="n">drain_node</span><span class="p">),</span>
-                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;gate&#39;</span><span class="p">,</span> <span class="n">gate_node</span><span class="p">),</span>
-                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;source&#39;</span><span class="p">,</span> <span class="n">source_node</span><span class="p">),]</span>
+        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;drain&#39;</span><span class="p">,</span> <span class="n">drain_node</span><span class="p">),</span>
+                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;gate&#39;</span><span class="p">,</span> <span class="n">gate_node</span><span class="p">),</span>
+                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">source_node</span><span class="p">),]</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">drain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">gate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="Mosfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet">[docs]</a><span class="k">class</span> <span class="nc">Mosfet</span><span class="p">(</span><span class="n">FourPinElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="Mosfet"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.Mosfet">[docs]</a><span class="k">class</span> <span class="nc">Mosfet</span><span class="p">(</span><span class="n">FourPinElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a Metal Oxide Field Effect Transistor.</span>
 
@@ -1415,66 +1417,66 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c"># Fixme: off doesn&#39;t fit in kwargs !</span>
+    <span class="c1"># Fixme: off doesn&#39;t fit in kwargs !</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;MOSFET&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;M&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;MOSFET&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">width</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
-    <span class="n">drain_area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;ad&#39;</span><span class="p">)</span>
-    <span class="n">source_area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;as&#39;</span><span class="p">)</span>
-    <span class="n">drain_perimeter</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;pd&#39;</span><span class="p">)</span>
-    <span class="n">source_perimeter</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;ps&#39;</span><span class="p">)</span>
-    <span class="n">drain_number_square</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;nrd&#39;</span><span class="p">)</span>
-    <span class="n">source_number_square</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;nrs&#39;</span><span class="p">)</span>
-    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatTripletKeyParameter</span><span class="p">(</span><span class="s">&#39;ic&#39;</span><span class="p">)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;temp&#39;</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPositionalParameter</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">key_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">IntKeyParameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">drain_area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;ad&#39;</span><span class="p">)</span>
+    <span class="n">source_area</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;as&#39;</span><span class="p">)</span>
+    <span class="n">drain_perimeter</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;pd&#39;</span><span class="p">)</span>
+    <span class="n">source_perimeter</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;ps&#39;</span><span class="p">)</span>
+    <span class="n">drain_number_square</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;nrd&#39;</span><span class="p">)</span>
+    <span class="n">source_number_square</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;nrs&#39;</span><span class="p">)</span>
+    <span class="n">off</span> <span class="o">=</span> <span class="n">FlagParameter</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">ic</span> <span class="o">=</span> <span class="n">FloatTripletKeyParameter</span><span class="p">(</span><span class="s1">&#39;ic&#39;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
                  <span class="n">drain_node</span><span class="p">,</span> <span class="n">gate_node</span><span class="p">,</span> <span class="n">source_node</span><span class="p">,</span> <span class="n">substrate_node</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;drain&#39;</span><span class="p">,</span> <span class="n">drain_node</span><span class="p">),</span>
-                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;gate&#39;</span><span class="p">,</span> <span class="n">gate_node</span><span class="p">),</span>
-                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;source&#39;</span><span class="p">,</span> <span class="n">source_node</span><span class="p">),</span>
-                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;substrate&#39;</span><span class="p">,</span> <span class="n">substrate_node</span><span class="p">),</span> <span class="c"># bulk</span>
+        <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;drain&#39;</span><span class="p">,</span> <span class="n">drain_node</span><span class="p">),</span>
+                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;gate&#39;</span><span class="p">,</span> <span class="n">gate_node</span><span class="p">),</span>
+                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">source_node</span><span class="p">),</span>
+                <span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;substrate&#39;</span><span class="p">,</span> <span class="n">substrate_node</span><span class="p">),</span> <span class="c1"># bulk</span>
         <span class="p">]</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">drain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">gate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">substrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="TransmissionLine"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.TransmissionLine">[docs]</a><span class="k">class</span> <span class="nc">TransmissionLine</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span></div>
+<div class="viewcode-block" id="TransmissionLine"><a class="viewcode-back" href="../../../api/PySpice/Spice/BasicElement.html#PySpice.Spice.BasicElement.TransmissionLine">[docs]</a><span class="k">class</span> <span class="nc">TransmissionLine</span><span class="p">(</span><span class="n">TwoPortElement</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a lossless transmission line.</span>
 
@@ -1512,36 +1514,36 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">alias</span> <span class="o">=</span> <span class="s">&#39;TransmissionLine&#39;</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;T&#39;</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="s1">&#39;TransmissionLine&#39;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span>
 
-    <span class="n">impedance</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;Z0&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-    <span class="n">time_delay</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;TD&#39;</span><span class="p">)</span>
-    <span class="n">frequency</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;F&#39;</span><span class="p">)</span>
-    <span class="n">normalized_length</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s">&#39;NL&#39;</span><span class="p">)</span>
+    <span class="n">impedance</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;Z0&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">time_delay</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;TD&#39;</span><span class="p">)</span>
+    <span class="n">frequency</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">normalized_length</span> <span class="o">=</span> <span class="n">FloatKeyParameter</span><span class="p">(</span><span class="s1">&#39;NL&#39;</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
                  <span class="n">input_node_plus</span><span class="p">,</span> <span class="n">input_node_minus</span><span class="p">,</span>
                  <span class="n">output_node_plus</span><span class="p">,</span> <span class="n">output_node_minus</span><span class="p">,</span>
                  <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="c"># check: ^ xor, &amp; bitwise and</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="s">&#39;time_delay&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">)</span> <span class="o">^</span>
-                <span class="p">((</span><span class="s">&#39;frequency&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="s">&#39;normalized_length&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">))):</span>
-            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&#39;Either TD or F, NL must be specified&#39;</span><span class="p">)</span>
+        <span class="c1"># check: ^ xor, &amp; bitwise and</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="s1">&#39;time_delay&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">)</span> <span class="o">^</span>
+                <span class="p">((</span><span class="s1">&#39;frequency&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="s1">&#39;normalized_length&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">))):</span>
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;Either TD or F, NL must be specified&#39;</span><span class="p">)</span>
         
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span>
                          <span class="n">output_node_plus</span><span class="p">,</span> <span class="n">output_node_minus</span><span class="p">,</span>
-                         <span class="n">input_node_plus</span><span class="p">,</span> <span class="n">input_node_minus</span><span class="p">,</span> <span class="c"># Fixme: inverted inputs</span>
-                         <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                         <span class="n">input_node_plus</span><span class="p">,</span> <span class="n">input_node_minus</span><span class="p">,</span> <span class="c1"># Fixme: inverted inputs</span>
+                         <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># End</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># End</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 </pre></div>
 
           </div>
@@ -1552,14 +1554,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -1575,14 +1574,14 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="../Spice.html" >PySpice.Spice</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../Spice.html" >PySpice.Spice</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+        &#169; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>

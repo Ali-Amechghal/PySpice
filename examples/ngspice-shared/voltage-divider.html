@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.5.6.1. NgSpice Shared Simulation Mode Introduction &mdash; PySpice 0.3.0 documentation</title>
+    <title>2.5.6.1. NgSpice Shared Simulation Mode Introduction &#8212; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../static/hidecode.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="PySpice 0.3.0 documentation" href="../../index.html" />
     <link rel="up" title="2.5.6. Ngspice Shared" href="index.html" />
     <link rel="next" title="2.5.7. Operational Amplifier" href="../operational-amplifier/index.html" />
@@ -46,9 +48,9 @@
         <li class="right" >
           <a href="index.html" title="2.5.6. Ngspice Shared"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.6. Ngspice Shared</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.6. Ngspice Shared</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -59,39 +61,39 @@
             
   <div class="getthecode">
 <div class="getthecode-header"><span class="getthecode-filename">voltage-divider.py</span><a href="../../downloads/voltage-divider.py"><span>voltage-divider.py</span></a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">####################################################################################################</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">####################################################################################################</span>
 
-<span class="c">#!#</span>
-<span class="c">#!# =============================================</span>
-<span class="c">#!#  NgSpice Shared Simulation Mode Introduction</span>
-<span class="c">#!# =============================================</span>
-<span class="c">#!#</span>
-<span class="c">#!# This example explains how to plug a voltage source from Python to NgSpice.</span>
-<span class="c">#!#</span>
+<span class="c1">#!#</span>
+<span class="c1">#!# =============================================</span>
+<span class="c1">#!#  NgSpice Shared Simulation Mode Introduction</span>
+<span class="c1">#!# =============================================</span>
+<span class="c1">#!#</span>
+<span class="c1">#!# This example explains how to plug a voltage source from Python to NgSpice.</span>
+<span class="c1">#!#</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">PySpice.Probe.Plot</span> <span class="kn">import</span> <span class="n">plot</span>
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
 <span class="kn">from</span> <span class="nn">PySpice.Spice.NgSpice.Shared</span> <span class="kn">import</span> <span class="n">NgSpiceShared</span>
 <span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="k">class</span> <span class="nc">MyNgSpiceShared</span><span class="p">(</span><span class="n">NgSpiceShared</span><span class="p">):</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
@@ -100,64 +102,64 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_amplitude</span> <span class="o">=</span> <span class="n">amplitude</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pulsation</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">frequency</span><span class="o">.</span><span class="n">pulsation</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">get_vsrc_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voltage</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">ngspice_id</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;ngspice_id-{} get_vsrc_data @{} node {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ngspice_id</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;ngspice_id-{} get_vsrc_data @{} node {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ngspice_id</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
         <span class="n">voltage</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_amplitude</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pulsation</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">0</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">get_isrc_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">ngspice_id</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;ngspice_id-{} get_isrc_data @{} node {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ngspice_id</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;ngspice_id-{} get_isrc_data @{} node {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ngspice_id</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
         <span class="n">current</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
         <span class="k">return</span> <span class="mi">0</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Voltage Divider&#39;</span><span class="p">)</span>
 
-<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;dc 0 external&#39;</span><span class="p">)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;dc 0 external&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="n">amplitude</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">frequency</span> <span class="o">=</span> <span class="n">Frequency</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">ngspice_shared</span> <span class="o">=</span> <span class="n">MyNgSpiceShared</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span> <span class="n">send_data</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
-                              <span class="n">simulator</span><span class="o">=</span><span class="s">&#39;shared&#39;</span><span class="p">,</span> <span class="n">ngspice_shared</span><span class="o">=</span><span class="n">ngspice_shared</span><span class="p">)</span>
+                              <span class="n">simulator</span><span class="o">=</span><span class="s1">&#39;shared&#39;</span><span class="p">,</span> <span class="n">ngspice_shared</span><span class="o">=</span><span class="n">ngspice_shared</span><span class="p">)</span>
 <span class="n">period</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">frequency</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">period</span><span class="o">/</span><span class="mi">200</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">period</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="n">figure1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time [s]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Voltage Divider&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">input</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="n">amplitude</span><span class="o">*</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">*</span><span class="mf">1.1</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="c">#fig# save_figure(figure1, &#39;voltage-divider.png&#39;)</span>
+<span class="c1">#fig# save_figure(figure1, &#39;voltage-divider.png&#39;)</span>
 
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># End</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># End</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ngspice-shared-simulation-mode-introduction">
 <h1>2.5.6.1. NgSpice Shared Simulation Mode Introduction<a class="headerlink" href="#ngspice-shared-simulation-mode-introduction" title="Permalink to this headline">¶</a></h1>
 <p>This example explains how to plug a voltage source from Python to NgSpice.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
@@ -179,37 +181,37 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_pulsation</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">frequency</span><span class="o">.</span><span class="n">pulsation</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_vsrc_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voltage</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">ngspice_id</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;ngspice_id-{} get_vsrc_data @{} node {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ngspice_id</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;ngspice_id-{} get_vsrc_data @{} node {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ngspice_id</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
         <span class="n">voltage</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_amplitude</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pulsation</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">get_isrc_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">ngspice_id</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;ngspice_id-{} get_isrc_data @{} node {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ngspice_id</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;ngspice_id-{} get_isrc_data @{} node {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ngspice_id</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
         <span class="n">current</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
         <span class="k">return</span> <span class="mi">0</span>
 
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Voltage Divider&#39;</span><span class="p">)</span>
 
-<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;dc 0 external&#39;</span><span class="p">)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;dc 0 external&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="n">amplitude</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">frequency</span> <span class="o">=</span> <span class="n">Frequency</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">ngspice_shared</span> <span class="o">=</span> <span class="n">MyNgSpiceShared</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span> <span class="n">send_data</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
-                              <span class="n">simulator</span><span class="o">=</span><span class="s">&#39;shared&#39;</span><span class="p">,</span> <span class="n">ngspice_shared</span><span class="o">=</span><span class="n">ngspice_shared</span><span class="p">)</span>
+                              <span class="n">simulator</span><span class="o">=</span><span class="s1">&#39;shared&#39;</span><span class="p">,</span> <span class="n">ngspice_shared</span><span class="o">=</span><span class="n">ngspice_shared</span><span class="p">)</span>
 <span class="n">period</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">frequency</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">period</span><span class="o">/</span><span class="mi">200</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">period</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">figure1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time [s]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Voltage Divider&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">input</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="n">amplitude</span><span class="o">*</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">*</span><span class="mf">1.1</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -241,14 +243,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -270,14 +269,14 @@
         <li class="right" >
           <a href="index.html" title="2.5.6. Ngspice Shared"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >2.5.6. Ngspice Shared</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >2.5.6. Ngspice Shared</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+        &#169; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>

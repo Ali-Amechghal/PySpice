@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.5.5.2.3. Voltage and Current Divider &mdash; PySpice 0.3.0 documentation</title>
+    <title>2.5.5.2.3. Voltage and Current Divider &#8212; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../static/hidecode.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="PySpice 0.3.0 documentation" href="../../index.html" />
     <link rel="up" title="2.5.5. Fundamental Laws" href="index.html" />
     <link rel="next" title="2.5.6. Ngspice Shared" href="../ngspice-shared/index.html" />
@@ -46,9 +48,9 @@
         <li class="right" >
           <a href="thévenin-norton-theorem.html" title="2.5.5.2.2. Thévenin and Norton Theorem"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.5. Fundamental Laws</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.5. Fundamental Laws</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -59,40 +61,40 @@
             
   <div class="getthecode">
 <div class="getthecode-header"><span class="getthecode-filename">voltage-current-divider.py</span><a href="../../downloads/voltage-current-divider.py"><span>voltage-current-divider.py</span></a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">####################################################################################################</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">####################################################################################################</span>
 
-<span class="c">#!# =============================</span>
-<span class="c">#!#  Voltage and Current Divider</span>
-<span class="c">#!# =============================</span>
+<span class="c1">#!# =============================</span>
+<span class="c1">#!#  Voltage and Current Divider</span>
+<span class="c1">#!# =============================</span>
 
-<span class="c">#!# This circuit is a fundamental block in electronic that permits to scale a voltage by an</span>
-<span class="c">#!# impedance ratio:</span>
+<span class="c1">#!# This circuit is a fundamental block in electronic that permits to scale a voltage by an</span>
+<span class="c1">#!# impedance ratio:</span>
 
-<span class="c">#cm# voltage-divider.m4</span>
+<span class="c1">#cm# voltage-divider.m4</span>
 
-<span class="c">#!# The relation between the input and ouput voltage is:</span>
-<span class="c">#!#</span>
-<span class="c">#!# .. math::</span>
-<span class="c">#!#</span>
-<span class="c">#!#     \frac{V_{out}}{V_{in}} = \frac{R_2}{R_1 + R_2}</span>
-<span class="c">#!#</span>
-<span class="c">#!# This equation holds for any impedances like resistance, capacitance, inductance, etc.</span>
+<span class="c1">#!# The relation between the input and ouput voltage is:</span>
+<span class="c1">#!#</span>
+<span class="c1">#!# .. math::</span>
+<span class="c1">#!#</span>
+<span class="c1">#!#     \frac{V_{out}}{V_{in}} = \frac{R_2}{R_1 + R_2}</span>
+<span class="c1">#!#</span>
+<span class="c1">#!# This equation holds for any impedances like resistance, capacitance, inductance, etc.</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
 <span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Voltage Divider&#39;</span><span class="p">)</span>
 
-<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c"># Fixme: V(10) uV(10) 10*V</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># Fixme: V(10) uV(10) 10*V</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
@@ -100,49 +102,49 @@
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c"># Fixme: format value + unit</span>
-<span class="c">#o#</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c1"># Fixme: format value + unit</span>
+<span class="c1">#o#</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="c">#!# Similarly we can build a circuit that scale a current by an impedance ratio:</span>
+<span class="c1">#!# Similarly we can build a circuit that scale a current by an impedance ratio:</span>
 
-<span class="c">#cm# current-divider.m4</span>
+<span class="c1">#cm# current-divider.m4</span>
 
-<span class="c">#!# The relation between the input and ouput current is:</span>
-<span class="c">#!#</span>
-<span class="c">#!# .. math::</span>
-<span class="c">#!#</span>
-<span class="c">#!#     \frac{I_{out}}{I_{in}} = \frac{R_1}{R_1 + R_2}</span>
-<span class="c">#!#</span>
-<span class="c">#!# Note the role of R1 and R2 is exchanged.</span>
-<span class="c">#!#</span>
-<span class="c">#!# This equation holds for any impedances like resistance, capacitance, inductance, etc.</span>
+<span class="c1">#!# The relation between the input and ouput current is:</span>
+<span class="c1">#!#</span>
+<span class="c1">#!# .. math::</span>
+<span class="c1">#!#</span>
+<span class="c1">#!#     \frac{I_{out}}{I_{in}} = \frac{R_1}{R_1 + R_2}</span>
+<span class="c1">#!#</span>
+<span class="c1">#!# Note the role of R1 and R2 is exchanged.</span>
+<span class="c1">#!#</span>
+<span class="c1">#!# This equation holds for any impedances like resistance, capacitance, inductance, etc.</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Current Divider&#39;</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Current Divider&#39;</span><span class="p">)</span>
 
-<span class="n">circuit</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c"># Fixme: current value</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># Fixme: current value</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">resistance</span> <span class="ow">in</span> <span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">R1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">R2</span><span class="p">):</span>
-    <span class="n">resistance</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span> <span class="c"># to get positive value</span>
+    <span class="n">resistance</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span> <span class="c1"># to get positive value</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
-<span class="c"># Fixme: current over resistor</span>
+<span class="c1"># Fixme: current over resistor</span>
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} A&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c"># Fixme: format value + unit</span>
-<span class="c">#o#</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Node {}: {:5.2f} A&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c1"># Fixme: format value + unit</span>
+<span class="c1">#o#</span>
 
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># End</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># End</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 </pre></div>
 </div>
 </div>
@@ -155,15 +157,15 @@ impedance ratio:</p>
 <div class="math">
 \[\frac{V_{out}}{V_{in}} = \frac{R_2}{R_1 + R_2}\]</div>
 <p>This equation holds for any impedances like resistance, capacitance, inductance, etc.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
 
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
 <span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Voltage Divider&#39;</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Voltage Divider&#39;</span><span class="p">)</span>
 
-<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c"># Fixme: V(10) uV(10) 10*V</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># Fixme: V(10) uV(10) 10*V</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
@@ -171,11 +173,11 @@ impedance ratio:</p>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c"># Fixme: format value + unit</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c1"># Fixme: format value + unit</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Node 1 [voltage]: 10.00 V
-Node 2 [voltage]:  3.33 V
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Node</span> <span class="mi">2</span> <span class="p">[</span><span class="n">voltage</span><span class="p">]:</span>  <span class="mf">3.33</span> <span class="n">V</span>
+<span class="n">Node</span> <span class="mi">1</span> <span class="p">[</span><span class="n">voltage</span><span class="p">]:</span> <span class="mf">10.00</span> <span class="n">V</span>
 </pre></div>
 </div>
 <p>Similarly we can build a circuit that scale a current by an impedance ratio:</p>
@@ -185,25 +187,25 @@ Node 2 [voltage]:  3.33 V
 \[\frac{I_{out}}{I_{in}} = \frac{R_1}{R_1 + R_2}\]</div>
 <p>Note the role of R1 and R2 is exchanged.</p>
 <p>This equation holds for any impedances like resistance, capacitance, inductance, etc.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Current Divider&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Current Divider&#39;</span><span class="p">)</span>
 
-<span class="n">circuit</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c"># Fixme: current value</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># Fixme: current value</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">resistance</span> <span class="ow">in</span> <span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">R1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">R2</span><span class="p">):</span>
-    <span class="n">resistance</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span> <span class="c"># to get positive value</span>
+    <span class="n">resistance</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span> <span class="c1"># to get positive value</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
-<span class="c"># Fixme: current over resistor</span>
+<span class="c1"># Fixme: current over resistor</span>
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} A&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c"># Fixme: format value + unit</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Node {}: {:5.2f} A&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c1"># Fixme: format value + unit</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Node VR1_minus [current]:  0.33 A
-Node VR2_minus [current]:  0.67 A
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Node</span> <span class="n">VR1_minus</span> <span class="p">[</span><span class="n">current</span><span class="p">]:</span>  <span class="mf">0.33</span> <span class="n">A</span>
+<span class="n">Node</span> <span class="n">VR2_minus</span> <span class="p">[</span><span class="n">current</span><span class="p">]:</span>  <span class="mf">0.67</span> <span class="n">A</span>
 </pre></div>
 </div>
 </div>
@@ -230,14 +232,11 @@ Node VR2_minus [current]:  0.67 A
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -259,14 +258,14 @@ Node VR2_minus [current]:  0.67 A
         <li class="right" >
           <a href="thévenin-norton-theorem.html" title="2.5.5.2.2. Thévenin and Norton Theorem"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >2.5.5. Fundamental Laws</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >2.5.5. Fundamental Laws</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+        &#169; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>

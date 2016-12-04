@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PySpice.Spice.RawFile &mdash; PySpice 0.3.0 documentation</title>
+    <title>PySpice.Spice.RawFile &#8212; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="PySpice 0.3.0 documentation" href="../../../index.html" />
     <link rel="up" title="PySpice.Spice" href="../Spice.html" /> 
   </head>
@@ -38,9 +40,9 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../Spice.html" accesskey="U">PySpice.Spice</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -50,25 +52,25 @@
           <div class="body" role="main">
             
   <h1>Source code for PySpice.Spice.RawFile</h1><div class="highlight"><pre>
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># PySpice - A Spice Package for Python</span>
-<span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
-<span class="c">#</span>
-<span class="c"># This program is free software: you can redistribute it and/or modify</span>
-<span class="c"># it under the terms of the GNU General Public License as published by</span>
-<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
-<span class="c"># (at your option) any later version.</span>
-<span class="c">#</span>
-<span class="c"># This program is distributed in the hope that it will be useful,</span>
-<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="c"># GNU General Public License for more details.</span>
-<span class="c">#</span>
-<span class="c"># You should have received a copy of the GNU General Public License</span>
-<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span></span><span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># PySpice - A Spice Package for Python</span>
+<span class="c1"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -128,27 +130,27 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c"># * v({element}:bv_max)</span>
-<span class="c"># * i(e.xdz1.ev1)</span>
+<span class="c1"># * v({element}:bv_max)</span>
+<span class="c1"># * i(e.xdz1.ev1)</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="kn">from</span> <span class="nn">..Probe.WaveForm</span> <span class="kn">import</span> <span class="p">(</span><span class="n">OperatingPoint</span><span class="p">,</span> <span class="n">SensitivityAnalysis</span><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">..Probe.WaveForm</span> <span class="k">import</span> <span class="p">(</span><span class="n">OperatingPoint</span><span class="p">,</span> <span class="n">SensitivityAnalysis</span><span class="p">,</span>
                               <span class="n">DcAnalysis</span><span class="p">,</span> <span class="n">AcAnalysis</span><span class="p">,</span> <span class="n">TransientAnalysis</span><span class="p">,</span>
                               <span class="n">WaveForm</span><span class="p">)</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="n">_module_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="Variable"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable">[docs]</a><span class="k">class</span> <span class="nc">Variable</span><span class="p">:</span></div>
+<div class="viewcode-block" id="Variable"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable">[docs]</a><span class="k">class</span> <span class="nc">Variable</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;This class implements a variable or probe in a SPICE simulation output.</span>
 
@@ -163,44 +165,44 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">unit</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span> <span class="c"># could be guessed from name also for voltage node and branch current</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span> <span class="c1"># could be guessed from name also for voltage node and branch current</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&#39;variable[{self.index}]: {self.name} [{self.unit}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;variable[</span><span class="si">{self.index}</span><span class="s1">]: </span><span class="si">{self.name}</span><span class="s1"> [</span><span class="si">{self.unit}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">is_voltage_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;v(&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="Variable.is_voltage_node"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.is_voltage_node">[docs]</a>    <span class="k">def</span> <span class="nf">is_voltage_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;v(&#39;</span><span class="p">)</span></div>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">is_branch_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c"># source branch current</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;i(&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="Variable.is_branch_current"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.is_branch_current">[docs]</a>    <span class="k">def</span> <span class="nf">is_branch_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># source branch current</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;i(&#39;</span><span class="p">)</span></div>
 
-    <span class="c">##############################################</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">to_voltage_name</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&#39;v({})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">to_branch_name</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&#39;i({})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<div class="viewcode-block" id="Variable.to_voltage_name"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.to_voltage_name">[docs]</a>    <span class="k">def</span> <span class="nf">to_voltage_name</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;v(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Variable.to_branch_name"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.to_branch_name">[docs]</a>    <span class="k">def</span> <span class="nf">to_branch_name</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;i(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">element</span><span class="p">)</span></div>
+
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">simplified_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -210,9 +212,9 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">fix_case</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element_translation</span><span class="p">,</span> <span class="n">node_translation</span><span class="p">):</span>
+<div class="viewcode-block" id="Variable.fix_case"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.fix_case">[docs]</a>    <span class="k">def</span> <span class="nf">fix_case</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element_translation</span><span class="p">,</span> <span class="n">node_translation</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Update the name to the right case. &quot;&quot;&quot;</span>
 
@@ -221,11 +223,11 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_branch_name</span><span class="p">(</span><span class="n">element_translation</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">simplified_name</span><span class="p">])</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_voltage_node</span><span class="p">():</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplified_name</span> <span class="ow">in</span> <span class="n">node_translation</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_voltage_name</span><span class="p">(</span><span class="n">node_translation</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">simplified_name</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_voltage_name</span><span class="p">(</span><span class="n">node_translation</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">simplified_name</span><span class="p">])</span></div>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">to_waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">to_real</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Variable.to_waveform"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.Variable.to_waveform">[docs]</a>    <span class="k">def</span> <span class="nf">to_waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">to_real</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Return a :obj:`PySpice.Probe.WaveForm` instance. &quot;&quot;&quot;</span>
 
@@ -235,11 +237,11 @@
         <span class="k">if</span> <span class="n">to_float</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         
-        <span class="k">return</span> <span class="n">WaveForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">simplified_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="n">abscissa</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">WaveForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">simplified_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="n">abscissa</span><span class="p">)</span></div></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="RawFile"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile">[docs]</a><span class="k">class</span> <span class="nc">RawFile</span><span class="p">:</span></div>
+<div class="viewcode-block" id="RawFile"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile">[docs]</a><span class="k">class</span> <span class="nc">RawFile</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot; This class parse the stdout of ngspice and the raw data output.</span>
 
@@ -272,9 +274,9 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">_logger</span> <span class="o">=</span> <span class="n">_module_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;RawFile&#39;</span><span class="p">)</span>
+    <span class="n">_logger</span> <span class="o">=</span> <span class="n">_module_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s1">&#39;RawFile&#39;</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">):</span>
 
@@ -282,64 +284,64 @@
         
         <span class="n">raw_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header</span><span class="p">(</span><span class="n">stdout</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_read_variable_data</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
-        <span class="c"># self._to_analysis()</span>
+        <span class="c1"># self._to_analysis()</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">_read_header</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stdout</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Parse the header &quot;&quot;&quot;</span>
         
-        <span class="n">binary_line</span> <span class="o">=</span> <span class="n">b</span><span class="s">&#39;Binary:</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="n">binary_line</span> <span class="o">=</span> <span class="n">b</span><span class="s1">&#39;Binary:</span><span class="se">\n</span><span class="s1">&#39;</span>
         <span class="n">binary_location</span> <span class="o">=</span> <span class="n">stdout</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">binary_line</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">binary_location</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&#39;Cannot locate binary data&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;Cannot locate binary data&#39;</span><span class="p">)</span>
         <span class="n">raw_data_start</span> <span class="o">=</span> <span class="n">binary_location</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">binary_line</span><span class="p">)</span>
-        <span class="c"># self._logger.debug(&#39;\n&#39; + stdout[:raw_data_start].decode(&#39;utf-8&#39;))</span>
+        <span class="c1"># self._logger.debug(&#39;\n&#39; + stdout[:raw_data_start].decode(&#39;utf-8&#39;))</span>
         <span class="n">header_lines</span> <span class="o">=</span> <span class="n">stdout</span><span class="p">[:</span><span class="n">binary_location</span><span class="p">]</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
         <span class="n">raw_data</span> <span class="o">=</span> <span class="n">stdout</span><span class="p">[</span><span class="n">raw_data_start</span><span class="p">:]</span>
         <span class="n">header_line_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">header_lines</span><span class="p">)</span>
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">circuit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Circuit&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Doing analysis at TEMP&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Warning&#39;</span><span class="p">)</span>
-                         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;Warning&#39;</span><span class="p">))]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">circuit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Circuit&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Doing analysis at TEMP&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Warning&#39;</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;Warning&#39;</span><span class="p">))]</span>
         <span class="k">for</span> <span class="n">warning</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">warning</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Title&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Date&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Plotname&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Flags&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_variables</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;No. Variables&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;No. Points&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;Variables&#39;</span><span class="p">,</span> <span class="n">has_value</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s">&#39;No. of Data Columns &#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Title&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Plotname&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Flags&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_variables</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;No. Variables&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;No. Points&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Variables&#39;</span><span class="p">,</span> <span class="n">has_value</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;No. of Data Columns &#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_variables</span><span class="p">):</span>
-            <span class="n">line</span> <span class="o">=</span> <span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-            <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\t</span><span class="s">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
-            <span class="c"># 0 frequency frequency grid=3</span>
+            <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
+            <span class="c1"># 0 frequency frequency grid=3</span>
             <span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">items</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">unit</span><span class="p">)</span>
-        <span class="c"># self._read_header_field_line(header_line_iterator, &#39;Binary&#39;, has_value=False)</span>
+        <span class="c1"># self._read_header_field_line(header_line_iterator, &#39;Binary&#39;, has_value=False)</span>
         
         <span class="k">return</span> <span class="n">raw_data</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">_read_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_line_iterator</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Return the next line &quot;&quot;&quot;</span>
 
-        <span class="c"># Fixme: self._header_line_iterator, etc.</span>
+        <span class="c1"># Fixme: self._header_line_iterator, etc.</span>
 
-        <span class="n">line</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
             <span class="n">line</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">_read_header_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_line_iterator</span><span class="p">,</span> <span class="n">head_line</span><span class="p">):</span>
 
@@ -348,11 +350,11 @@
         <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">head_line</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;Unexpected line: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">line</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s2">&quot;Unexpected line: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">line</span><span class="p">))</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">_read_header_field_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_line_iterator</span><span class="p">,</span> <span class="n">expected_label</span><span class="p">,</span> <span class="n">has_value</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_read_header_field_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_line_iterator</span><span class="p">,</span> <span class="n">expected_label</span><span class="p">,</span> <span class="n">has_value</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Read an header line and check it starts with *expected_label*.</span>
 
@@ -362,140 +364,140 @@
         <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">has_value</span><span class="p">:</span>
-            <span class="c"># a title can have &#39;: &#39; after &#39;title: &#39;</span>
-            <span class="n">location</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;: &#39;</span><span class="p">)</span> <span class="c"># first occurence</span>
+            <span class="c1"># a title can have &#39;: &#39; after &#39;title: &#39;</span>
+            <span class="n">location</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;: &#39;</span><span class="p">)</span> <span class="c1"># first occurence</span>
             <span class="n">label</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="p">[:</span><span class="n">location</span><span class="p">],</span> <span class="n">line</span><span class="p">[</span><span class="n">location</span><span class="o">+</span><span class="mi">2</span><span class="p">:]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">label</span> <span class="o">=</span> <span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">label</span> <span class="o">!=</span> <span class="n">expected_label</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;Expected label </span><span class="si">%s</span><span class="s"> instead of </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">expected_label</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s2">&quot;Expected label </span><span class="si">%s</span><span class="s2"> instead of </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">expected_label</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">has_value</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">_read_variable_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Read the raw data and set the variable values. &quot;&quot;&quot;</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">==</span> <span class="s">&#39;real&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">==</span> <span class="s1">&#39;real&#39;</span><span class="p">:</span>
             <span class="n">number_of_columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_variables</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">==</span> <span class="s">&#39;complex&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">==</span> <span class="s1">&#39;complex&#39;</span><span class="p">:</span>
             <span class="n">number_of_columns</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_variables</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
         
-        <span class="n">input_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">raw_data</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">number_of_columns</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_points</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;f8&#39;</span><span class="p">)</span>
+        <span class="n">input_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">raw_data</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">number_of_columns</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_points</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f8&#39;</span><span class="p">)</span>
         <span class="n">input_data</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_points</span><span class="p">,</span> <span class="n">number_of_columns</span><span class="p">))</span>
         <span class="n">input_data</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
-        <span class="c"># np.savetxt(&#39;raw.txt&#39;, input_data)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">==</span> <span class="s">&#39;complex&#39;</span><span class="p">:</span>
+        <span class="c1"># np.savetxt(&#39;raw.txt&#39;, input_data)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">==</span> <span class="s1">&#39;complex&#39;</span><span class="p">:</span>
             <span class="n">raw_data</span> <span class="o">=</span> <span class="n">input_data</span>
-            <span class="n">input_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;complex64&#39;</span><span class="p">)</span>
+            <span class="n">input_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex64&#39;</span><span class="p">)</span>
             <span class="n">input_data</span><span class="o">.</span><span class="n">imag</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="n">variable</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="n">variable</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">fix_case</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
+<div class="viewcode-block" id="RawFile.fix_case"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile.fix_case">[docs]</a>    <span class="k">def</span> <span class="nf">fix_case</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot; Ngspice return lower case names. This method fixes the case of the variable names. &quot;&quot;&quot;</span>
 
         <span class="n">element_translation</span> <span class="o">=</span> <span class="p">{</span><span class="n">element</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span><span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">element_names</span><span class="p">()}</span>
         <span class="n">node_translation</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span><span class="n">node</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">node_names</span><span class="p">()}</span>
         <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-            <span class="n">variable</span><span class="o">.</span><span class="n">fix_case</span><span class="p">(</span><span class="n">element_translation</span><span class="p">,</span> <span class="n">node_translation</span><span class="p">)</span>
+            <span class="n">variable</span><span class="o">.</span><span class="n">fix_case</span><span class="p">(</span><span class="n">element_translation</span><span class="p">,</span> <span class="n">node_translation</span><span class="p">)</span></div>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-
-        <span class="k">return</span> <span class="p">[</span><span class="n">variable</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">abscissa</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="n">to_float</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
-                <span class="k">if</span> <span class="n">variable</span><span class="o">.</span><span class="n">is_voltage_node</span><span class="p">()]</span>
-
-    <span class="c">##############################################</span>
-
-    <span class="k">def</span> <span class="nf">branches</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="RawFile.nodes"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile.nodes">[docs]</a>    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="p">[</span><span class="n">variable</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">abscissa</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="n">to_float</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
-                <span class="k">if</span> <span class="n">variable</span><span class="o">.</span><span class="n">is_branch_current</span><span class="p">()]</span>
+                <span class="k">if</span> <span class="n">variable</span><span class="o">.</span><span class="n">is_voltage_node</span><span class="p">()]</span></div>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="RawFile.branches"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile.branches">[docs]</a>    <span class="k">def</span> <span class="nf">branches</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="p">[</span><span class="n">variable</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">abscissa</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">variable</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">abscissa</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="n">to_float</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">variable</span><span class="o">.</span><span class="n">is_branch_current</span><span class="p">()]</span></div>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">to_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
+<div class="viewcode-block" id="RawFile.elements"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile.elements">[docs]</a>    <span class="k">def</span> <span class="nf">elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">variable</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">abscissa</span><span class="p">,</span> <span class="n">to_float</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span></div>
+
+    <span class="c1">##############################################</span>
+
+<div class="viewcode-block" id="RawFile.to_analysis"><a class="viewcode-back" href="../../../api/PySpice/Spice/RawFile.html#PySpice.Spice.RawFile.RawFile.to_analysis">[docs]</a>    <span class="k">def</span> <span class="nf">to_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">fix_case</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
         
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="s">&#39;Operating Point&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="s1">&#39;Operating Point&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_operating_point_analysis</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="s">&#39;Sensitivity Analysis&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="s1">&#39;Sensitivity Analysis&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_sensitivity_analysis</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="s">&#39;DC transfer characteristic&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="s1">&#39;DC transfer characteristic&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_dc_analysis</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="s">&#39;AC Analysis&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="s1">&#39;AC Analysis&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_ac_analysis</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="s">&#39;Transient Analysis&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="s1">&#39;Transient Analysis&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_transient_analysis</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&quot;Unsupported plot name {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Unsupported plot name </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_name</span><span class="p">))</span></div>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">_to_operating_point_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="n">OperatingPoint</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">to_float</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> <span class="n">branches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">branches</span><span class="p">(</span><span class="n">to_float</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">OperatingPoint</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">to_float</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">branches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">branches</span><span class="p">(</span><span class="n">to_float</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">_to_sensitivity_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="c"># Fixme: test .SENS I (VTEST)</span>
-        <span class="c"># Fixme: separate v(vinput), analysis.R2.m</span>
+        <span class="c1"># Fixme: test .SENS I (VTEST)</span>
+        <span class="c1"># Fixme: separate v(vinput), analysis.R2.m</span>
         <span class="k">return</span> <span class="n">SensitivityAnalysis</span><span class="p">(</span><span class="n">elements</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">())</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">_to_dc_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">if</span> <span class="s">&#39;v(v-sweep)&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
-            <span class="n">sweep_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;v(v-sweep)&#39;</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="s">&#39;v(i-sweep)&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
-            <span class="n">sweep_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;v(i-sweep)&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;v(v-sweep)&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
+            <span class="n">sweep_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;v(v-sweep)&#39;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="s1">&#39;v(i-sweep)&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
+            <span class="n">sweep_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;v(i-sweep)&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c"># </span>
+            <span class="c1"># </span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
         <span class="n">sweep</span> <span class="o">=</span> <span class="n">sweep_variable</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">DcAnalysis</span><span class="p">(</span><span class="n">sweep</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="n">branches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">branches</span><span class="p">())</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">_to_ac_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="n">frequency</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">to_real</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">frequency</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">to_real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">AcAnalysis</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="n">branches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">branches</span><span class="p">())</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">_to_transient_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="n">time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">to_real</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">TransientAnalysis</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">abscissa</span><span class="o">=</span><span class="n">time</span><span class="p">),</span> <span class="n">branches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">branches</span><span class="p">(</span><span class="n">abscissa</span><span class="o">=</span><span class="n">time</span><span class="p">))</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_waveform</span><span class="p">(</span><span class="n">to_real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TransientAnalysis</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">abscissa</span><span class="o">=</span><span class="n">time</span><span class="p">),</span> <span class="n">branches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">branches</span><span class="p">(</span><span class="n">abscissa</span><span class="o">=</span><span class="n">time</span><span class="p">))</span></div>
 
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># End</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># End</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 </pre></div>
 
           </div>
@@ -506,14 +508,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -529,14 +528,14 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="../Spice.html" >PySpice.Spice</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../Spice.html" >PySpice.Spice</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+        &#169; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>

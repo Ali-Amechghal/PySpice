@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.5.5.2.2. Thévenin and Norton Theorem &mdash; PySpice 0.3.0 documentation</title>
+    <title>2.5.5.2.2. Thévenin and Norton Theorem &#8212; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../static/hidecode.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="PySpice 0.3.0 documentation" href="../../index.html" />
     <link rel="up" title="2.5.5. Fundamental Laws" href="index.html" />
     <link rel="next" title="2.5.5.2.3. Voltage and Current Divider" href="voltage-current-divider.html" />
@@ -46,9 +48,9 @@
         <li class="right" >
           <a href="millman-theorem.html" title="2.5.5.2.1. Millman’s theorem"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.5. Fundamental Laws</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.5. Fundamental Laws</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -59,102 +61,102 @@
             
   <div class="getthecode">
 <div class="getthecode-header"><span class="getthecode-filename">thévenin-norton-theorem.py</span><a href="../../downloads/thévenin-norton-theorem.py"><span>thévenin-norton-theorem.py</span></a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">####################################################################################################</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">####################################################################################################</span>
 
-<span class="c">#!# ============================</span>
-<span class="c">#!#  Thévenin and Norton Theorem</span>
-<span class="c">#!# ============================</span>
+<span class="c1">#!# ============================</span>
+<span class="c1">#!#  Thévenin and Norton Theorem</span>
+<span class="c1">#!# ============================</span>
 
-<span class="c">#!# The Thévenin&#39;s theorem holds that:</span>
-<span class="c">#!#</span>
-<span class="c">#!#  * Any linear electrical network with voltage and current sources and only resistances can be</span>
-<span class="c">#!#    replaced at terminals A-B by an equivalent voltage source Vth in series connection with an</span>
-<span class="c">#!#    equivalent resistance Rth.</span>
-<span class="c">#!#</span>
-<span class="c">#!#  * This equivalent voltage Vth is the voltage obtained at terminals A-B of the network with</span>
-<span class="c">#!#    terminals A-B open circuited.</span>
-<span class="c">#!#</span>
-<span class="c">#!#  * This equivalent resistance Rth is the resistance obtained at terminals A-B of the network</span>
-<span class="c">#!#    with all its independent current sources open circuited and all its independent voltage</span>
-<span class="c">#!#    sources short circuited.</span>
-<span class="c">#!#</span>
-<span class="c">#!# The Norton&#39;s theorem holds that:</span>
-<span class="c">#!#</span>
-<span class="c">#!#  * Any linear electrical network with voltage and current sources and only resistances can be</span>
-<span class="c">#!#    replaced at terminals A-B by an equivalent current source INO in parallel connection with an</span>
-<span class="c">#!#    equivalent resistance Rno.</span>
-<span class="c">#!#</span>
-<span class="c">#!#  * This equivalent current Ino is the current obtained at terminals A-B of the network with</span>
-<span class="c">#!#    terminals A-B short circuited.</span>
-<span class="c">#!#</span>
-<span class="c">#!#  * This equivalent resistance Rno is the resistance obtained at terminals A-B of the network</span>
-<span class="c">#!#    with all its voltage sources short circuited and all its current sources open circuited.</span>
-<span class="c">#!#</span>
-<span class="c">#!# The Norton&#39;s theorem is the dual of the Thévenin&#39;s therorem and both are related by</span>
-<span class="c">#!# these equations:</span>
-<span class="c">#!#</span>
-<span class="c">#!#  .. math::</span>
-<span class="c">#!#</span>
-<span class="c">#!#       \begin{align}</span>
-<span class="c">#!#         R_{no} &amp; = R_{th} \\</span>
-<span class="c">#!#         I_{no} &amp; = V_{th} / R_{th} \\</span>
-<span class="c">#!#         V_{th} &amp; = I_{No} R_{no}</span>
-<span class="c">#!#       \end{align}</span>
+<span class="c1">#!# The Thévenin&#39;s theorem holds that:</span>
+<span class="c1">#!#</span>
+<span class="c1">#!#  * Any linear electrical network with voltage and current sources and only resistances can be</span>
+<span class="c1">#!#    replaced at terminals A-B by an equivalent voltage source Vth in series connection with an</span>
+<span class="c1">#!#    equivalent resistance Rth.</span>
+<span class="c1">#!#</span>
+<span class="c1">#!#  * This equivalent voltage Vth is the voltage obtained at terminals A-B of the network with</span>
+<span class="c1">#!#    terminals A-B open circuited.</span>
+<span class="c1">#!#</span>
+<span class="c1">#!#  * This equivalent resistance Rth is the resistance obtained at terminals A-B of the network</span>
+<span class="c1">#!#    with all its independent current sources open circuited and all its independent voltage</span>
+<span class="c1">#!#    sources short circuited.</span>
+<span class="c1">#!#</span>
+<span class="c1">#!# The Norton&#39;s theorem holds that:</span>
+<span class="c1">#!#</span>
+<span class="c1">#!#  * Any linear electrical network with voltage and current sources and only resistances can be</span>
+<span class="c1">#!#    replaced at terminals A-B by an equivalent current source INO in parallel connection with an</span>
+<span class="c1">#!#    equivalent resistance Rno.</span>
+<span class="c1">#!#</span>
+<span class="c1">#!#  * This equivalent current Ino is the current obtained at terminals A-B of the network with</span>
+<span class="c1">#!#    terminals A-B short circuited.</span>
+<span class="c1">#!#</span>
+<span class="c1">#!#  * This equivalent resistance Rno is the resistance obtained at terminals A-B of the network</span>
+<span class="c1">#!#    with all its voltage sources short circuited and all its current sources open circuited.</span>
+<span class="c1">#!#</span>
+<span class="c1">#!# The Norton&#39;s theorem is the dual of the Thévenin&#39;s therorem and both are related by</span>
+<span class="c1">#!# these equations:</span>
+<span class="c1">#!#</span>
+<span class="c1">#!#  .. math::</span>
+<span class="c1">#!#</span>
+<span class="c1">#!#       \begin{align}</span>
+<span class="c1">#!#         R_{no} &amp; = R_{th} \\</span>
+<span class="c1">#!#         I_{no} &amp; = V_{th} / R_{th} \\</span>
+<span class="c1">#!#         V_{th} &amp; = I_{No} R_{no}</span>
+<span class="c1">#!#       \end{align}</span>
 
-<span class="c">#cm# thévenin-norton-theorem.m4</span>
+<span class="c1">#cm# thévenin-norton-theorem.m4</span>
 
-<span class="c">#!# In circuit theory terms, these theorems allows any one-port network to be reduced to a single</span>
-<span class="c">#!# voltage or current source and a single impedance.</span>
-<span class="c">#!#</span>
-<span class="c">#!# For AC circuits these theorems can be applied to reactive impedances as well as resistances.</span>
+<span class="c1">#!# In circuit theory terms, these theorems allows any one-port network to be reduced to a single</span>
+<span class="c1">#!# voltage or current source and a single impedance.</span>
+<span class="c1">#!#</span>
+<span class="c1">#!# For AC circuits these theorems can be applied to reactive impedances as well as resistances.</span>
 
-<span class="c">#?# These theorems also applies to frequency domain AC circuits consisting of reactive and resistive</span>
-<span class="c">#?# impedances.</span>
+<span class="c1">#?# These theorems also applies to frequency domain AC circuits consisting of reactive and resistive</span>
+<span class="c1">#?# impedances.</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
 <span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="n">thevenin_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Thévenin Representation&#39;</span><span class="p">)</span>
+<span class="n">thevenin_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Thévenin Representation&#39;</span><span class="p">)</span>
 
-<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;generator&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;generator&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
 <span class="n">load_node</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">load</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">load_node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">load_node</span><span class="p">)))</span>
-<span class="c">#o#</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">load_node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">load_node</span><span class="p">)))</span>
+<span class="c1">#o#</span>
 
-<span class="n">norton_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Norton Representation&#39;</span><span class="p">)</span>
+<span class="n">norton_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Norton Representation&#39;</span><span class="p">)</span>
 
-<span class="n">norton_circuit</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;load&#39;</span><span class="p">,</span>
+<span class="n">norton_circuit</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span>
                  <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Vinput</span><span class="o">.</span><span class="n">dc_value</span><span class="o">/</span><span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Rgenerator</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
-<span class="n">norton_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;generator&#39;</span><span class="p">,</span> <span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Rgenerator</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
-<span class="n">norton_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Rload</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
+<span class="n">norton_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;generator&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Rgenerator</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
+<span class="n">norton_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Rload</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
 <span class="n">load_node</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">load</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">load_node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">load_node</span><span class="p">)))</span>
-<span class="c">#o#</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">load_node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">load_node</span><span class="p">)))</span>
+<span class="c1">#o#</span>
 
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># End</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># End</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 </pre></div>
 </div>
 </div>
@@ -199,43 +201,43 @@ these equations:</p>
 <p>In circuit theory terms, these theorems allows any one-port network to be reduced to a single
 voltage or current source and a single impedance.</p>
 <p>For AC circuits these theorems can be applied to reactive impedances as well as resistances.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
 
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
 <span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">thevenin_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Thévenin Representation&#39;</span><span class="p">)</span>
+<span class="n">thevenin_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Thévenin Representation&#39;</span><span class="p">)</span>
 
-<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;generator&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;generator&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
 <span class="n">load_node</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">load</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">load_node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">load_node</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">load_node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">load_node</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Node load [voltage]:  9.90 V
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Node</span> <span class="n">load</span> <span class="p">[</span><span class="n">voltage</span><span class="p">]:</span>  <span class="mf">9.90</span> <span class="n">V</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">norton_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Norton Representation&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">norton_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Norton Representation&#39;</span><span class="p">)</span>
 
-<span class="n">norton_circuit</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s">&#39;load&#39;</span><span class="p">,</span>
+<span class="n">norton_circuit</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span>
                  <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Vinput</span><span class="o">.</span><span class="n">dc_value</span><span class="o">/</span><span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Rgenerator</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
-<span class="n">norton_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;generator&#39;</span><span class="p">,</span> <span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Rgenerator</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
-<span class="n">norton_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Rload</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
+<span class="n">norton_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;generator&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Rgenerator</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
+<span class="n">norton_circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">thevenin_circuit</span><span class="o">.</span><span class="n">Rload</span><span class="o">.</span><span class="n">resistance</span><span class="p">)</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">norton_circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
 
 <span class="n">load_node</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">load</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">load_node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">load_node</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">load_node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">load_node</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>Node load [voltage]:  9.90 V
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Node</span> <span class="n">load</span> <span class="p">[</span><span class="n">voltage</span><span class="p">]:</span>  <span class="mf">9.90</span> <span class="n">V</span>
 </pre></div>
 </div>
 </div>
@@ -262,14 +264,11 @@ voltage or current source and a single impedance.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -291,14 +290,14 @@ voltage or current source and a single impedance.</p>
         <li class="right" >
           <a href="millman-theorem.html" title="2.5.5.2.1. Millman’s theorem"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >2.5.5. Fundamental Laws</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >2.5.5. Fundamental Laws</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+        &#169; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>

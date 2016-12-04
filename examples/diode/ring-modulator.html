@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.5.2.4. Ring Modulator &mdash; PySpice 0.3.0 documentation</title>
+    <title>2.5.2.4. Ring Modulator &#8212; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../static/hidecode.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="PySpice 0.3.0 documentation" href="../../index.html" />
     <link rel="up" title="2.5.2. Diode" href="index.html" />
     <link rel="next" title="2.5.2.5. Voltage Multiplier" href="voltage-multiplier.html" />
@@ -46,9 +48,9 @@
         <li class="right" >
           <a href="rectification.html" title="2.5.2.3. Rectification"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.2. Diode</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.2. Diode</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -61,106 +63,106 @@
 <h1>2.5.2.4. Ring Modulator<a class="headerlink" href="#ring-modulator" title="Permalink to this headline">¶</a></h1>
 <div class="getthecode">
 <div class="getthecode-header"><span class="getthecode-filename">ring-modulator.py</span><a href="../../downloads/ring-modulator.py"><span>ring-modulator.py</span></a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#!# This example depicts a ring modulator</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!# This example depicts a ring modulator</span>
 
-<span class="c">#!## .. warning:: It don&#39;t simulate</span>
-<span class="c">#!#</span>
-<span class="c">#!##   doAnalyses: TRAN:  Timestep too small; time = 5.5453e-08, timestep = 1.25e-18: trouble with xring_modulator.xd2:1n4148-instance d.xring_modulator.xd2.d1</span>
+<span class="c1">#!## .. warning:: It don&#39;t simulate</span>
+<span class="c1">#!#</span>
+<span class="c1">#!##   doAnalyses: TRAN:  Timestep too small; time = 5.5453e-08, timestep = 1.25e-18: trouble with xring_modulator.xd2:1n4148-instance d.xring_modulator.xd2.d1</span>
 
-<span class="c">#i# RingModulator.py</span>
+<span class="c1">#i# RingModulator.py</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">PySpice.Probe.Plot</span> <span class="kn">import</span> <span class="n">plot</span>
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Library</span> <span class="kn">import</span> <span class="n">SpiceLibrary</span>
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
 <span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="n">libraries_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;PySpice_examples_path&#39;</span><span class="p">],</span> <span class="s">&#39;libraries&#39;</span><span class="p">)</span>
+<span class="n">libraries_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PySpice_examples_path&#39;</span><span class="p">],</span> <span class="s1">&#39;libraries&#39;</span><span class="p">)</span>
 <span class="n">spice_library</span> <span class="o">=</span> <span class="n">SpiceLibrary</span><span class="p">(</span><span class="n">libraries_path</span><span class="p">)</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">RingModulator</span> <span class="kn">import</span> <span class="n">RingModulator</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Ring Modulator&#39;</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Ring Modulator&#39;</span><span class="p">)</span>
 
-<span class="n">modulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">Sinusoidal</span><span class="p">(</span><span class="s">&#39;modulator&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">carrier</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">Sinusoidal</span><span class="p">(</span><span class="s">&#39;carrier&#39;</span><span class="p">,</span> <span class="s">&#39;carrier&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;carrier&#39;</span><span class="p">,</span> <span class="s">&#39;carrier&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">modulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">Sinusoidal</span><span class="p">(</span><span class="s1">&#39;modulator&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">carrier</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">Sinusoidal</span><span class="p">(</span><span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 
-<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">spice_library</span><span class="p">[</span><span class="s">&#39;1N4148&#39;</span><span class="p">])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">spice_library</span><span class="p">[</span><span class="s1">&#39;1N4148&#39;</span><span class="p">])</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">RingModulator</span><span class="p">(</span><span class="n">outer_inductance</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
                                  <span class="n">inner_inductance</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
                                  <span class="n">coupling</span><span class="o">=.</span><span class="mi">99</span><span class="p">,</span>
-                                 <span class="n">diode_model</span><span class="o">=</span><span class="s">&#39;1N4148&#39;</span><span class="p">,</span>
+                                 <span class="n">diode_model</span><span class="o">=</span><span class="s1">&#39;1N4148&#39;</span><span class="p">,</span>
                              <span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s">&#39;ring_modulator&#39;</span><span class="p">,</span> <span class="s">&#39;RingModulator&#39;</span><span class="p">,</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;ring_modulator&#39;</span><span class="p">,</span> <span class="s1">&#39;RingModulator&#39;</span><span class="p">,</span>
           <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
           <span class="mi">2</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
-          <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+          <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
          <span class="p">)</span>
 
-<span class="c"># outer_inductance = .01</span>
-<span class="c"># inner_inductance = .0025</span>
-<span class="c"># coupling = .9</span>
-<span class="c"># diode_model = &#39;1N4148&#39;</span>
-<span class="c"># input_inductor = circuit.L(&#39;input&#39;, 1, circuit.gnd, outer_inductance)</span>
-<span class="c"># top_inductor = circuit.L(&#39;input_top&#39;, &#39;input_top&#39;, &#39;carrier&#39;, inner_inductance)</span>
-<span class="c"># bottom_inductor = circuit.L(&#39;input_bottom&#39;, &#39;input_bottom&#39;, &#39;carrier&#39;, inner_inductance)</span>
-<span class="c"># circuit.CoupledInductor(&#39;input_top&#39;, input_inductor.name, top_inductor.name, coupling)</span>
-<span class="c"># circuit.CoupledInductor(&#39;input_bottom&#39;, input_inductor.name, bottom_inductor.name, coupling)</span>
-<span class="c"># circuit.X(&#39;D1&#39;, diode_model, &#39;input_top&#39;, &#39;output_top&#39;)</span>
-<span class="c"># circuit.X(&#39;D2&#39;, diode_model, &#39;output_top&#39;, &#39;input_bottom&#39;)</span>
-<span class="c"># circuit.X(&#39;D3&#39;, diode_model, &#39;input_bottom&#39;, &#39;output_bottom&#39;)</span>
-<span class="c"># circuit.X(&#39;D4&#39;, diode_model, &#39;output_bottom&#39;, &#39;input_top&#39;)</span>
-<span class="c"># top_inductor = circuit.L(&#39;output_top&#39;, &#39;output_top&#39;, circuit.gnd, inner_inductance)</span>
-<span class="c"># bottom_inductor = circuit.L(&#39;output_bottom&#39;, &#39;output_bottom&#39;, circuit.gnd, inner_inductance)</span>
-<span class="c"># output_inductor = circuit.L(&#39;output&#39;, &#39;output&#39;, circuit.gnd, outer_inductance)</span>
-<span class="c"># circuit.CoupledInductor(&#39;output_top&#39;, output_inductor.name, top_inductor.name, coupling)</span>
-<span class="c"># circuit.CoupledInductor(&#39;output_bottom&#39;, output_inductor.name, bottom_inductor.name, coupling)</span>
+<span class="c1"># outer_inductance = .01</span>
+<span class="c1"># inner_inductance = .0025</span>
+<span class="c1"># coupling = .9</span>
+<span class="c1"># diode_model = &#39;1N4148&#39;</span>
+<span class="c1"># input_inductor = circuit.L(&#39;input&#39;, 1, circuit.gnd, outer_inductance)</span>
+<span class="c1"># top_inductor = circuit.L(&#39;input_top&#39;, &#39;input_top&#39;, &#39;carrier&#39;, inner_inductance)</span>
+<span class="c1"># bottom_inductor = circuit.L(&#39;input_bottom&#39;, &#39;input_bottom&#39;, &#39;carrier&#39;, inner_inductance)</span>
+<span class="c1"># circuit.CoupledInductor(&#39;input_top&#39;, input_inductor.name, top_inductor.name, coupling)</span>
+<span class="c1"># circuit.CoupledInductor(&#39;input_bottom&#39;, input_inductor.name, bottom_inductor.name, coupling)</span>
+<span class="c1"># circuit.X(&#39;D1&#39;, diode_model, &#39;input_top&#39;, &#39;output_top&#39;)</span>
+<span class="c1"># circuit.X(&#39;D2&#39;, diode_model, &#39;output_top&#39;, &#39;input_bottom&#39;)</span>
+<span class="c1"># circuit.X(&#39;D3&#39;, diode_model, &#39;input_bottom&#39;, &#39;output_bottom&#39;)</span>
+<span class="c1"># circuit.X(&#39;D4&#39;, diode_model, &#39;output_bottom&#39;, &#39;input_top&#39;)</span>
+<span class="c1"># top_inductor = circuit.L(&#39;output_top&#39;, &#39;output_top&#39;, circuit.gnd, inner_inductance)</span>
+<span class="c1"># bottom_inductor = circuit.L(&#39;output_bottom&#39;, &#39;output_bottom&#39;, circuit.gnd, inner_inductance)</span>
+<span class="c1"># output_inductor = circuit.L(&#39;output&#39;, &#39;output&#39;, circuit.gnd, outer_inductance)</span>
+<span class="c1"># circuit.CoupledInductor(&#39;output_top&#39;, output_inductor.name, top_inductor.name, coupling)</span>
+<span class="c1"># circuit.CoupledInductor(&#39;output_bottom&#39;, output_inductor.name, bottom_inductor.name, coupling)</span>
 
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="c"># simulator.initial_condition(input_top=0, input_bottom=0, output_top=0, output_bottom=0)</span>
+<span class="c1"># simulator.initial_condition(input_top=0, input_bottom=0, output_top=0, output_bottom=0)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">modulator</span><span class="o">.</span><span class="n">period</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">modulator</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
 
 <span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Ring Modulator&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time [s]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Ring Modulator&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;Vmodulator&#39;</span><span class="p">])</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;Vcarrier&#39;</span><span class="p">])</span>
-<span class="c"># plot(analysis[&#39;output&#39;])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;modulator&#39;</span><span class="p">,</span> <span class="s">&#39;carrier&#39;</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;Vmodulator&#39;</span><span class="p">])</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;Vcarrier&#39;</span><span class="p">])</span>
+<span class="c1"># plot(analysis[&#39;output&#39;])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;modulator&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># End</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># End</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 </pre></div>
 </div>
 </div>
@@ -175,21 +177,21 @@
 </dl>
 <div class="getthecode">
 <div class="getthecode-header"><span class="getthecode-filename">RingModulator.py</span><a href="../../downloads/RingModulator.py"><span>RingModulator.py</span></a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">####################################################################################################</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">SubCircuitFactory</span>
 <span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="k">class</span> <span class="nc">RingModulator</span><span class="p">(</span><span class="n">SubCircuitFactory</span><span class="p">):</span>
 
-    <span class="n">__name__</span> <span class="o">=</span> <span class="s">&#39;RingModulator&#39;</span>
-    <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;input_plus&#39;</span><span class="p">,</span> <span class="s">&#39;input_minus&#39;</span><span class="p">,</span>
-                 <span class="s">&#39;carrier_plus&#39;</span><span class="p">,</span> <span class="s">&#39;carrier_minus&#39;</span><span class="p">,</span>
-                 <span class="s">&#39;output_plus&#39;</span><span class="p">,</span> <span class="s">&#39;output_minus&#39;</span><span class="p">)</span>
+    <span class="n">__name__</span> <span class="o">=</span> <span class="s1">&#39;RingModulator&#39;</span>
+    <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;input_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;input_minus&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;carrier_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier_minus&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;output_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;output_minus&#39;</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">outer_inductance</span><span class="p">,</span>
@@ -200,32 +202,32 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
 
-        <span class="n">input_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;input_plus&#39;</span><span class="p">,</span> <span class="s">&#39;input_minus&#39;</span><span class="p">,</span> <span class="n">outer_inductance</span><span class="p">)</span>
-        <span class="n">top_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s">&#39;input_top&#39;</span><span class="p">,</span> <span class="s">&#39;input_top&#39;</span><span class="p">,</span> <span class="s">&#39;carrier_plus&#39;</span><span class="p">,</span> <span class="n">inner_inductance</span><span class="p">)</span>
-        <span class="n">bottom_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s">&#39;input_bottom&#39;</span><span class="p">,</span> <span class="s">&#39;carrier_plus&#39;</span><span class="p">,</span> <span class="s">&#39;input_bottom&#39;</span><span class="p">,</span> <span class="n">inner_inductance</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CoupledInductor</span><span class="p">(</span><span class="s">&#39;input_top&#39;</span><span class="p">,</span> <span class="n">input_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">top_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">coupling</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CoupledInductor</span><span class="p">(</span><span class="s">&#39;input_bottom&#39;</span><span class="p">,</span> <span class="n">input_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">bottom_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">coupling</span><span class="p">)</span>
+        <span class="n">input_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;input_minus&#39;</span><span class="p">,</span> <span class="n">outer_inductance</span><span class="p">)</span>
+        <span class="n">top_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s1">&#39;input_top&#39;</span><span class="p">,</span> <span class="s1">&#39;input_top&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier_plus&#39;</span><span class="p">,</span> <span class="n">inner_inductance</span><span class="p">)</span>
+        <span class="n">bottom_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s1">&#39;input_bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;input_bottom&#39;</span><span class="p">,</span> <span class="n">inner_inductance</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CoupledInductor</span><span class="p">(</span><span class="s1">&#39;input_top&#39;</span><span class="p">,</span> <span class="n">input_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">top_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">coupling</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CoupledInductor</span><span class="p">(</span><span class="s1">&#39;input_bottom&#39;</span><span class="p">,</span> <span class="n">input_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">bottom_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">coupling</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s">&#39;D1&#39;</span><span class="p">,</span> <span class="n">diode_model</span><span class="p">,</span> <span class="s">&#39;input_top&#39;</span><span class="p">,</span> <span class="s">&#39;output_top&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s">&#39;D2&#39;</span><span class="p">,</span> <span class="n">diode_model</span><span class="p">,</span> <span class="s">&#39;output_top&#39;</span><span class="p">,</span> <span class="s">&#39;input_bottom&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s">&#39;D3&#39;</span><span class="p">,</span> <span class="n">diode_model</span><span class="p">,</span> <span class="s">&#39;input_bottom&#39;</span><span class="p">,</span> <span class="s">&#39;output_bottom&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s">&#39;D4&#39;</span><span class="p">,</span> <span class="n">diode_model</span><span class="p">,</span> <span class="s">&#39;output_bottom&#39;</span><span class="p">,</span> <span class="s">&#39;input_top&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;D1&#39;</span><span class="p">,</span> <span class="n">diode_model</span><span class="p">,</span> <span class="s1">&#39;input_top&#39;</span><span class="p">,</span> <span class="s1">&#39;output_top&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;D2&#39;</span><span class="p">,</span> <span class="n">diode_model</span><span class="p">,</span> <span class="s1">&#39;output_top&#39;</span><span class="p">,</span> <span class="s1">&#39;input_bottom&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;D3&#39;</span><span class="p">,</span> <span class="n">diode_model</span><span class="p">,</span> <span class="s1">&#39;input_bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;output_bottom&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;D4&#39;</span><span class="p">,</span> <span class="n">diode_model</span><span class="p">,</span> <span class="s1">&#39;output_bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;input_top&#39;</span><span class="p">)</span>
 
-        <span class="n">top_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s">&#39;output_top&#39;</span><span class="p">,</span> <span class="s">&#39;output_top&#39;</span><span class="p">,</span> <span class="s">&#39;carrier_minus&#39;</span><span class="p">,</span> <span class="n">inner_inductance</span><span class="p">)</span>
-        <span class="n">bottom_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s">&#39;output_bottom&#39;</span><span class="p">,</span> <span class="s">&#39;carrier_minus&#39;</span><span class="p">,</span> <span class="s">&#39;output_bottom&#39;</span><span class="p">,</span> <span class="n">inner_inductance</span><span class="p">)</span>
-        <span class="n">output_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="s">&#39;output_plus&#39;</span><span class="p">,</span> <span class="s">&#39;output_minus&#39;</span><span class="p">,</span> <span class="n">outer_inductance</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CoupledInductor</span><span class="p">(</span><span class="s">&#39;output_top&#39;</span><span class="p">,</span> <span class="n">output_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">top_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">coupling</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CoupledInductor</span><span class="p">(</span><span class="s">&#39;output_bottom&#39;</span><span class="p">,</span> <span class="n">output_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">bottom_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">coupling</span><span class="p">)</span>
+        <span class="n">top_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s1">&#39;output_top&#39;</span><span class="p">,</span> <span class="s1">&#39;output_top&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier_minus&#39;</span><span class="p">,</span> <span class="n">inner_inductance</span><span class="p">)</span>
+        <span class="n">bottom_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s1">&#39;output_bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier_minus&#39;</span><span class="p">,</span> <span class="s1">&#39;output_bottom&#39;</span><span class="p">,</span> <span class="n">inner_inductance</span><span class="p">)</span>
+        <span class="n">output_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;output_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;output_minus&#39;</span><span class="p">,</span> <span class="n">outer_inductance</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CoupledInductor</span><span class="p">(</span><span class="s1">&#39;output_top&#39;</span><span class="p">,</span> <span class="n">output_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">top_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">coupling</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CoupledInductor</span><span class="p">(</span><span class="s1">&#39;output_bottom&#39;</span><span class="p">,</span> <span class="n">output_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">bottom_inductor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">coupling</span><span class="p">)</span>
 
-<span class="c">####################################################################################################</span>
-<span class="c"># </span>
-<span class="c"># End</span>
-<span class="c"># </span>
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1"># </span>
+<span class="c1"># End</span>
+<span class="c1"># </span>
+<span class="c1">####################################################################################################</span>
 </pre></div>
 </div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
@@ -237,64 +239,64 @@
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
 <span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">libraries_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;PySpice_examples_path&#39;</span><span class="p">],</span> <span class="s">&#39;libraries&#39;</span><span class="p">)</span>
+<span class="n">libraries_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PySpice_examples_path&#39;</span><span class="p">],</span> <span class="s1">&#39;libraries&#39;</span><span class="p">)</span>
 <span class="n">spice_library</span> <span class="o">=</span> <span class="n">SpiceLibrary</span><span class="p">(</span><span class="n">libraries_path</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">RingModulator</span> <span class="kn">import</span> <span class="n">RingModulator</span>
 
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Ring Modulator&#39;</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Ring Modulator&#39;</span><span class="p">)</span>
 
-<span class="n">modulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">Sinusoidal</span><span class="p">(</span><span class="s">&#39;modulator&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">carrier</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">Sinusoidal</span><span class="p">(</span><span class="s">&#39;carrier&#39;</span><span class="p">,</span> <span class="s">&#39;carrier&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;carrier&#39;</span><span class="p">,</span> <span class="s">&#39;carrier&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">modulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">Sinusoidal</span><span class="p">(</span><span class="s1">&#39;modulator&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">carrier</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">Sinusoidal</span><span class="p">(</span><span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 
-<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">spice_library</span><span class="p">[</span><span class="s">&#39;1N4148&#39;</span><span class="p">])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">spice_library</span><span class="p">[</span><span class="s1">&#39;1N4148&#39;</span><span class="p">])</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">RingModulator</span><span class="p">(</span><span class="n">outer_inductance</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
                                  <span class="n">inner_inductance</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
                                  <span class="n">coupling</span><span class="o">=.</span><span class="mi">99</span><span class="p">,</span>
-                                 <span class="n">diode_model</span><span class="o">=</span><span class="s">&#39;1N4148&#39;</span><span class="p">,</span>
+                                 <span class="n">diode_model</span><span class="o">=</span><span class="s1">&#39;1N4148&#39;</span><span class="p">,</span>
                              <span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s">&#39;ring_modulator&#39;</span><span class="p">,</span> <span class="s">&#39;RingModulator&#39;</span><span class="p">,</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;ring_modulator&#39;</span><span class="p">,</span> <span class="s1">&#39;RingModulator&#39;</span><span class="p">,</span>
           <span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
           <span class="mi">2</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
-          <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+          <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
          <span class="p">)</span>
 
-<span class="c"># outer_inductance = .01</span>
-<span class="c"># inner_inductance = .0025</span>
-<span class="c"># coupling = .9</span>
-<span class="c"># diode_model = &#39;1N4148&#39;</span>
-<span class="c"># input_inductor = circuit.L(&#39;input&#39;, 1, circuit.gnd, outer_inductance)</span>
-<span class="c"># top_inductor = circuit.L(&#39;input_top&#39;, &#39;input_top&#39;, &#39;carrier&#39;, inner_inductance)</span>
-<span class="c"># bottom_inductor = circuit.L(&#39;input_bottom&#39;, &#39;input_bottom&#39;, &#39;carrier&#39;, inner_inductance)</span>
-<span class="c"># circuit.CoupledInductor(&#39;input_top&#39;, input_inductor.name, top_inductor.name, coupling)</span>
-<span class="c"># circuit.CoupledInductor(&#39;input_bottom&#39;, input_inductor.name, bottom_inductor.name, coupling)</span>
-<span class="c"># circuit.X(&#39;D1&#39;, diode_model, &#39;input_top&#39;, &#39;output_top&#39;)</span>
-<span class="c"># circuit.X(&#39;D2&#39;, diode_model, &#39;output_top&#39;, &#39;input_bottom&#39;)</span>
-<span class="c"># circuit.X(&#39;D3&#39;, diode_model, &#39;input_bottom&#39;, &#39;output_bottom&#39;)</span>
-<span class="c"># circuit.X(&#39;D4&#39;, diode_model, &#39;output_bottom&#39;, &#39;input_top&#39;)</span>
-<span class="c"># top_inductor = circuit.L(&#39;output_top&#39;, &#39;output_top&#39;, circuit.gnd, inner_inductance)</span>
-<span class="c"># bottom_inductor = circuit.L(&#39;output_bottom&#39;, &#39;output_bottom&#39;, circuit.gnd, inner_inductance)</span>
-<span class="c"># output_inductor = circuit.L(&#39;output&#39;, &#39;output&#39;, circuit.gnd, outer_inductance)</span>
-<span class="c"># circuit.CoupledInductor(&#39;output_top&#39;, output_inductor.name, top_inductor.name, coupling)</span>
-<span class="c"># circuit.CoupledInductor(&#39;output_bottom&#39;, output_inductor.name, bottom_inductor.name, coupling)</span>
+<span class="c1"># outer_inductance = .01</span>
+<span class="c1"># inner_inductance = .0025</span>
+<span class="c1"># coupling = .9</span>
+<span class="c1"># diode_model = &#39;1N4148&#39;</span>
+<span class="c1"># input_inductor = circuit.L(&#39;input&#39;, 1, circuit.gnd, outer_inductance)</span>
+<span class="c1"># top_inductor = circuit.L(&#39;input_top&#39;, &#39;input_top&#39;, &#39;carrier&#39;, inner_inductance)</span>
+<span class="c1"># bottom_inductor = circuit.L(&#39;input_bottom&#39;, &#39;input_bottom&#39;, &#39;carrier&#39;, inner_inductance)</span>
+<span class="c1"># circuit.CoupledInductor(&#39;input_top&#39;, input_inductor.name, top_inductor.name, coupling)</span>
+<span class="c1"># circuit.CoupledInductor(&#39;input_bottom&#39;, input_inductor.name, bottom_inductor.name, coupling)</span>
+<span class="c1"># circuit.X(&#39;D1&#39;, diode_model, &#39;input_top&#39;, &#39;output_top&#39;)</span>
+<span class="c1"># circuit.X(&#39;D2&#39;, diode_model, &#39;output_top&#39;, &#39;input_bottom&#39;)</span>
+<span class="c1"># circuit.X(&#39;D3&#39;, diode_model, &#39;input_bottom&#39;, &#39;output_bottom&#39;)</span>
+<span class="c1"># circuit.X(&#39;D4&#39;, diode_model, &#39;output_bottom&#39;, &#39;input_top&#39;)</span>
+<span class="c1"># top_inductor = circuit.L(&#39;output_top&#39;, &#39;output_top&#39;, circuit.gnd, inner_inductance)</span>
+<span class="c1"># bottom_inductor = circuit.L(&#39;output_bottom&#39;, &#39;output_bottom&#39;, circuit.gnd, inner_inductance)</span>
+<span class="c1"># output_inductor = circuit.L(&#39;output&#39;, &#39;output&#39;, circuit.gnd, outer_inductance)</span>
+<span class="c1"># circuit.CoupledInductor(&#39;output_top&#39;, output_inductor.name, top_inductor.name, coupling)</span>
+<span class="c1"># circuit.CoupledInductor(&#39;output_bottom&#39;, output_inductor.name, bottom_inductor.name, coupling)</span>
 
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s">&#39;load&#39;</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="c"># simulator.initial_condition(input_top=0, input_bottom=0, output_top=0, output_bottom=0)</span>
+<span class="c1"># simulator.initial_condition(input_top=0, input_bottom=0, output_top=0, output_bottom=0)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">modulator</span><span class="o">.</span><span class="n">period</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">modulator</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
 
 <span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Ring Modulator&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time [s]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Ring Modulator&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;Vmodulator&#39;</span><span class="p">])</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s">&#39;Vcarrier&#39;</span><span class="p">])</span>
-<span class="c"># plot(analysis[&#39;output&#39;])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;modulator&#39;</span><span class="p">,</span> <span class="s">&#39;carrier&#39;</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;Vmodulator&#39;</span><span class="p">])</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;Vcarrier&#39;</span><span class="p">])</span>
+<span class="c1"># plot(analysis[&#39;output&#39;])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;modulator&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -323,14 +325,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -352,14 +351,14 @@
         <li class="right" >
           <a href="rectification.html" title="2.5.2.3. Rectification"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >2.5.2. Diode</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >2.5.2. Diode</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+        &#169; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>

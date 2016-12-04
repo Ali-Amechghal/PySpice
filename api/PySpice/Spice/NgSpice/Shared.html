@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.1.7.6.1. Shared &mdash; PySpice 0.3.0 documentation</title>
+    <title>3.1.7.6.1. Shared &#8212; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../../static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="../../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../../static/hidecode.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="top" title="PySpice 0.3.0 documentation" href="../../../../index.html" />
     <link rel="up" title="3.1.7.6. NgSpice" href="../NgSpice.html" />
     <link rel="next" title="3.1.7.7. Parser" href="../Parser.html" />
@@ -46,11 +48,11 @@
         <li class="right" >
           <a href="../NgSpice.html" title="3.1.7.6. NgSpice"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="../../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
-          <li class="nav-item nav-item-3"><a href="../../Spice.html" >3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li>
-          <li class="nav-item nav-item-4"><a href="../NgSpice.html" accesskey="U">3.1.7.6. <code class="docutils literal"><span class="pre">NgSpice</span></code></a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../reference-manual.html" >3. API Documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../../Spice.html" >3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &#187;</li>
+          <li class="nav-item nav-item-4"><a href="../NgSpice.html" accesskey="U">3.1.7.6. <code class="docutils literal"><span class="pre">NgSpice</span></code></a> &#187;</li> 
       </ul>
     </div>  
 
@@ -86,30 +88,30 @@ lower level than Python. You can have look to Pypy, Cython or a C extension modu
 <dl class="class">
 <dt id="PySpice.Spice.NgSpice.Shared.NgSpiceShared">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.NgSpice.Shared.</code><code class="descname">NgSpiceShared</code><span class="sig-paren">(</span><em>ngspice_id=0</em>, <em>send_data=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#NgSpiceShared"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Set the <em>send_data</em> flag if you want to enable the output callback.</p>
 <p>Set the <em>ngspice_id</em> to an integer value if you want to run NgSpice in parallel.</p>
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.NgSpiceShared.get_isrc_data">
-<code class="descname">get_isrc_data</code><span class="sig-paren">(</span><em>current</em>, <em>time</em>, <em>node</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.get_isrc_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_isrc_data</code><span class="sig-paren">(</span><em>current</em>, <em>time</em>, <em>node</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#NgSpiceShared.get_isrc_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.get_isrc_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reimplement this callback in a subclass to provide external current source.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.NgSpiceShared.get_vsrc_data">
-<code class="descname">get_vsrc_data</code><span class="sig-paren">(</span><em>voltage</em>, <em>time</em>, <em>node</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.get_vsrc_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_vsrc_data</code><span class="sig-paren">(</span><em>voltage</em>, <em>time</em>, <em>node</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#NgSpiceShared.get_vsrc_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.get_vsrc_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reimplement this callback in a subclass to provide external voltage source.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.NgSpiceShared.load_circuit">
-<code class="descname">load_circuit</code><span class="sig-paren">(</span><em>circuit</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.load_circuit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_circuit</code><span class="sig-paren">(</span><em>circuit</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#NgSpiceShared.load_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.load_circuit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load the given circuit string.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.NgSpiceShared.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>plot_name</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>plot_name</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#NgSpiceShared.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the corresponding plot.</p>
 </dd></dl>
 
@@ -121,31 +123,31 @@ lower level than Python. You can have look to Pypy, Cython or a C extension modu
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.NgSpiceShared.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#NgSpiceShared.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the simulation in the background thread and wait until the simulation is done.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_char">
-<code class="descname">send_char</code><span class="sig-paren">(</span><em>message</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_char" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_char</code><span class="sig-paren">(</span><em>message</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#NgSpiceShared.send_char"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_char" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reimplement this callback in a subclass to process logging messages from the simulator.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_data">
-<code class="descname">send_data</code><span class="sig-paren">(</span><em>actual_vector_values</em>, <em>number_of_vectors</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_data</code><span class="sig-paren">(</span><em>actual_vector_values</em>, <em>number_of_vectors</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#NgSpiceShared.send_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reimplement this callback in a subclass to process the vector actual values.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_init_data">
-<code class="descname">send_init_data</code><span class="sig-paren">(</span><em>data</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_init_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_init_data</code><span class="sig-paren">(</span><em>data</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#NgSpiceShared.send_init_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_init_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reimplement this callback in a subclass to process the initial data.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_stat">
-<code class="descname">send_stat</code><span class="sig-paren">(</span><em>message</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_stat" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_stat</code><span class="sig-paren">(</span><em>message</em>, <em>ngspice_id</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#NgSpiceShared.send_stat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.NgSpiceShared.send_stat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reimplement this callback in a subclass to process statistic messages from the simulator.</p>
 </dd></dl>
 
@@ -160,29 +162,29 @@ lower level than Python. You can have look to Pypy, Cython or a C extension modu
 <dl class="class">
 <dt id="PySpice.Spice.NgSpice.Shared.Plot">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.NgSpice.Shared.</code><code class="descname">Plot</code><span class="sig-paren">(</span><em>plot_name</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#Plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Plot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">dict</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">dict</span></code></a></p>
 <p>This class implements a plot in a simulation output.</p>
 <p>Public Attributes:</p>
 <blockquote>
 <div><code class="xref py py-attr docutils literal"><span class="pre">plot_name</span></code></div></blockquote>
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.Plot.branches">
-<code class="descname">branches</code><span class="sig-paren">(</span><em>to_float=False</em>, <em>abscissa=None</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Plot.branches" title="Permalink to this definition">¶</a></dt>
+<code class="descname">branches</code><span class="sig-paren">(</span><em>to_float=False</em>, <em>abscissa=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#Plot.branches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Plot.branches" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.Plot.elements">
-<code class="descname">elements</code><span class="sig-paren">(</span><em>abscissa=None</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Plot.elements" title="Permalink to this definition">¶</a></dt>
+<code class="descname">elements</code><span class="sig-paren">(</span><em>abscissa=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#Plot.elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Plot.elements" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.Plot.nodes">
-<code class="descname">nodes</code><span class="sig-paren">(</span><em>to_float=False</em>, <em>abscissa=None</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Plot.nodes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">nodes</code><span class="sig-paren">(</span><em>to_float=False</em>, <em>abscissa=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#Plot.nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Plot.nodes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.Plot.to_analysis">
-<code class="descname">to_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Plot.to_analysis" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#Plot.to_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Plot.to_analysis" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -190,7 +192,7 @@ lower level than Python. You can have look to Pypy, Cython or a C extension modu
 <dl class="class">
 <dt id="PySpice.Spice.NgSpice.Shared.Vector">
 <em class="property">class </em><code class="descclassname">PySpice.Spice.NgSpice.Shared.</code><code class="descname">Vector</code><span class="sig-paren">(</span><em>name</em>, <em>type_</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#Vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Vector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>This class implements a vector in a simulation output.</p>
 <p>Public Attributes:</p>
 <blockquote>
@@ -203,12 +205,12 @@ lower level than Python. You can have look to Pypy, Cython or a C extension modu
 </div></blockquote>
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.Vector.is_branch_current">
-<code class="descname">is_branch_current</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Vector.is_branch_current" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_branch_current</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#Vector.is_branch_current"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Vector.is_branch_current" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.Vector.is_voltage_node">
-<code class="descname">is_voltage_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Vector.is_voltage_node" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_voltage_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#Vector.is_voltage_node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Vector.is_voltage_node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -218,7 +220,7 @@ lower level than Python. You can have look to Pypy, Cython or a C extension modu
 
 <dl class="method">
 <dt id="PySpice.Spice.NgSpice.Shared.Vector.to_waveform">
-<code class="descname">to_waveform</code><span class="sig-paren">(</span><em>abscissa=None</em>, <em>to_real=False</em>, <em>to_float=False</em><span class="sig-paren">)</span><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Vector.to_waveform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_waveform</code><span class="sig-paren">(</span><em>abscissa=None</em>, <em>to_real=False</em>, <em>to_float=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/PySpice/Spice/NgSpice/Shared.html#Vector.to_waveform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PySpice.Spice.NgSpice.Shared.Vector.to_waveform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a <a class="reference internal" href="../../Probe/WaveForm.html#module-PySpice.Probe.WaveForm" title="PySpice.Probe.WaveForm"><code class="xref py py-obj docutils literal"><span class="pre">PySpice.Probe.WaveForm</span></code></a> instance.</p>
 </dd></dl>
 
@@ -258,14 +260,11 @@ lower level than Python. You can have look to Pypy, Cython or a C extension modu
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -287,16 +286,16 @@ lower level than Python. You can have look to Pypy, Cython or a C extension modu
         <li class="right" >
           <a href="../NgSpice.html" title="3.1.7.6. NgSpice"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../../../../reference-manual.html" >3. API Documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="../../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &raquo;</li>
-          <li class="nav-item nav-item-3"><a href="../../Spice.html" >3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &raquo;</li>
-          <li class="nav-item nav-item-4"><a href="../NgSpice.html" >3.1.7.6. <code class="docutils literal"><span class="pre">NgSpice</span></code></a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../reference-manual.html" >3. API Documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../../PySpice.html" >3.1. <code class="docutils literal"><span class="pre">PySpice</span></code></a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../../Spice.html" >3.1.7. <code class="docutils literal"><span class="pre">Spice</span></code></a> &#187;</li>
+          <li class="nav-item nav-item-4"><a href="../NgSpice.html" >3.1.7.6. <code class="docutils literal"><span class="pre">NgSpice</span></code></a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+        &#169; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>

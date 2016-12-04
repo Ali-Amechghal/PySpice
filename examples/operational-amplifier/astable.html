@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.5.7.1. Astable &mdash; PySpice 0.3.0 documentation</title>
+    <title>2.5.7.1. Astable &#8212; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../static/hidecode.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="PySpice 0.3.0 documentation" href="../../index.html" />
     <link rel="up" title="2.5.7. Operational Amplifier" href="index.html" />
     <link rel="next" title="2.5.7.2. Operational Amplifier" href="operational-amplifier.html" />
@@ -46,9 +48,9 @@
         <li class="right" >
           <a href="index.html" title="2.5.7. Operational Amplifier"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.7. Operational Amplifier</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">2.5.7. Operational Amplifier</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -61,47 +63,47 @@
 <h1>2.5.7.1. Astable<a class="headerlink" href="#astable" title="Permalink to this headline">¶</a></h1>
 <div class="getthecode">
 <div class="getthecode-header"><span class="getthecode-filename">astable.py</span><a href="../../downloads/astable.py"><span>astable.py</span></a></div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">####################################################################################################</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <span class="kn">from</span> <span class="nn">PySpice.Probe.Plot</span> <span class="kn">import</span> <span class="n">plot</span>
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
 <span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="c"># from OperationalAmplifier import basic_comparator</span>
+<span class="c1"># from OperationalAmplifier import basic_comparator</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Astable Multivibrator&#39;</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Astable Multivibrator&#39;</span><span class="p">)</span>
 
-<span class="n">source</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;cc&#39;</span><span class="p">,</span> <span class="s">&#39;vcc&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
-<span class="c"># Time constant</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="s">&#39;comparator&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;comparator&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">nano</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-<span class="c"># Reference</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="s">&#39;reference&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#39;vcc&#39;</span><span class="p">,</span> <span class="s">&#39;reference&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">&#39;reference&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>  <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-<span class="c"># Comparator</span>
-<span class="c"># Fixme: ngspice is buggy with such subcircuit</span>
-<span class="c"># circuit.subcircuit(basic_comparator)</span>
-<span class="c"># circuit.X(&#39;comparator&#39;, &#39;BasicComparator&#39;, &#39;reference&#39;, &#39;comparator&#39;, &#39;vcc&#39;, circuit.gnd, &#39;output&#39;)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">NonLinearVoltageSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
-                               <span class="n">expression</span><span class="o">=</span><span class="s">&#39;V(reference, comparator)&#39;</span><span class="p">,</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;vcc&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="c1"># Time constant</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;comparator&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;comparator&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">nano</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="c1"># Reference</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;reference&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;vcc&#39;</span><span class="p">,</span> <span class="s1">&#39;reference&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;reference&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>  <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="c1"># Comparator</span>
+<span class="c1"># Fixme: ngspice is buggy with such subcircuit</span>
+<span class="c1"># circuit.subcircuit(basic_comparator)</span>
+<span class="c1"># circuit.X(&#39;comparator&#39;, &#39;BasicComparator&#39;, &#39;reference&#39;, &#39;comparator&#39;, &#39;vcc&#39;, circuit.gnd, &#39;output&#39;)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">NonLinearVoltageSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+                               <span class="n">expression</span><span class="o">=</span><span class="s1">&#39;V(reference, comparator)&#39;</span><span class="p">,</span>
                                <span class="n">table</span><span class="o">=</span><span class="p">((</span><span class="o">-</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
                                       <span class="p">(</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">source</span><span class="o">.</span><span class="n">dc_value</span><span class="p">))</span>
                                <span class="p">)</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="n">simulator</span><span class="o">.</span><span class="n">initial_condition</span><span class="p">(</span><span class="n">comparator</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c"># Fixme: simulator.nodes.comparator == 0</span>
+<span class="n">simulator</span><span class="o">.</span><span class="n">initial_condition</span><span class="p">(</span><span class="n">comparator</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Fixme: simulator.nodes.comparator == 0</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">end_time</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">500</span><span class="p">))</span>
 
 <span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -110,17 +112,17 @@
 <span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="c">#fig# save_figure(figure, &#39;astable.png&#39;)</span>
+<span class="c1">#fig# save_figure(figure, &#39;astable.png&#39;)</span>
 
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># End</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># End</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 </pre></div>
 </div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="kn">import</span> <span class="nn">PySpice.Logging.Logging</span> <span class="kn">as</span> <span class="nn">Logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logging</span><span class="o">.</span><span class="n">setup_logging</span><span class="p">()</span>
@@ -129,30 +131,30 @@
 <span class="kn">from</span> <span class="nn">PySpice.Spice.Netlist</span> <span class="kn">import</span> <span class="n">Circuit</span>
 <span class="kn">from</span> <span class="nn">PySpice.Unit.Units</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="c"># from OperationalAmplifier import basic_comparator</span>
+<span class="c1"># from OperationalAmplifier import basic_comparator</span>
 
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s">&#39;Astable Multivibrator&#39;</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Astable Multivibrator&#39;</span><span class="p">)</span>
 
-<span class="n">source</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s">&#39;cc&#39;</span><span class="p">,</span> <span class="s">&#39;vcc&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
-<span class="c"># Time constant</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="s">&#39;comparator&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;comparator&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">nano</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-<span class="c"># Reference</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="s">&#39;reference&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#39;vcc&#39;</span><span class="p">,</span> <span class="s">&#39;reference&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">&#39;reference&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>  <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-<span class="c"># Comparator</span>
-<span class="c"># Fixme: ngspice is buggy with such subcircuit</span>
-<span class="c"># circuit.subcircuit(basic_comparator)</span>
-<span class="c"># circuit.X(&#39;comparator&#39;, &#39;BasicComparator&#39;, &#39;reference&#39;, &#39;comparator&#39;, &#39;vcc&#39;, circuit.gnd, &#39;output&#39;)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">NonLinearVoltageSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
-                               <span class="n">expression</span><span class="o">=</span><span class="s">&#39;V(reference, comparator)&#39;</span><span class="p">,</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;vcc&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="c1"># Time constant</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;comparator&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;comparator&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">nano</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="c1"># Reference</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;reference&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;vcc&#39;</span><span class="p">,</span> <span class="s1">&#39;reference&#39;</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;reference&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>  <span class="n">kilo</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="c1"># Comparator</span>
+<span class="c1"># Fixme: ngspice is buggy with such subcircuit</span>
+<span class="c1"># circuit.subcircuit(basic_comparator)</span>
+<span class="c1"># circuit.X(&#39;comparator&#39;, &#39;BasicComparator&#39;, &#39;reference&#39;, &#39;comparator&#39;, &#39;vcc&#39;, circuit.gnd, &#39;output&#39;)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">NonLinearVoltageSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+                               <span class="n">expression</span><span class="o">=</span><span class="s1">&#39;V(reference, comparator)&#39;</span><span class="p">,</span>
                                <span class="n">table</span><span class="o">=</span><span class="p">((</span><span class="o">-</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
                                       <span class="p">(</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">source</span><span class="o">.</span><span class="n">dc_value</span><span class="p">))</span>
                                <span class="p">)</span>
 
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="n">simulator</span><span class="o">.</span><span class="n">initial_condition</span><span class="p">(</span><span class="n">comparator</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c"># Fixme: simulator.nodes.comparator == 0</span>
+<span class="n">simulator</span><span class="o">.</span><span class="n">initial_condition</span><span class="p">(</span><span class="n">comparator</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Fixme: simulator.nodes.comparator == 0</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">end_time</span><span class="o">=</span><span class="n">micro</span><span class="p">(</span><span class="mi">500</span><span class="p">))</span>
 
 <span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -188,14 +190,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -217,14 +216,14 @@
         <li class="right" >
           <a href="index.html" title="2.5.7. Operational Amplifier"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >2.5.7. Operational Amplifier</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >2.5.7. Operational Amplifier</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+        &#169; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>

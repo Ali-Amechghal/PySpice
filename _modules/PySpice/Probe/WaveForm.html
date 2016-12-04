@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PySpice.Probe.WaveForm &mdash; PySpice 0.3.0 documentation</title>
+    <title>PySpice.Probe.WaveForm &#8212; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="../../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="PySpice 0.3.0 documentation" href="../../../index.html" />
     <link rel="up" title="Module code" href="../../index.html" /> 
   </head>
@@ -38,8 +40,8 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -49,136 +51,136 @@
           <div class="body" role="main">
             
   <h1>Source code for PySpice.Probe.WaveForm</h1><div class="highlight"><pre>
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># PySpice - A Spice Package for Python</span>
-<span class="c"># Copyright (C) 2014 Fabrice Salvaire</span>
-<span class="c">#</span>
-<span class="c"># This program is free software: you can redistribute it and/or modify</span>
-<span class="c"># it under the terms of the GNU General Public License as published by</span>
-<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
-<span class="c"># (at your option) any later version.</span>
-<span class="c">#</span>
-<span class="c"># This program is distributed in the hope that it will be useful,</span>
-<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="c"># GNU General Public License for more details.</span>
-<span class="c">#</span>
-<span class="c"># You should have received a copy of the GNU General Public License</span>
-<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span></span><span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># PySpice - A Spice Package for Python</span>
+<span class="c1"># Copyright (C) 2014 Fabrice Salvaire</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># op: value</span>
-<span class="c"># transient: time</span>
-<span class="c"># dc: v-sweep</span>
-<span class="c"># ac: frequency</span>
-<span class="c"># sens: element parameters</span>
-<span class="c">#</span>
-<span class="c"># Probes</span>
-<span class="c">#</span>
-<span class="c"># Nodes:</span>
-<span class="c">#   Voltage versus gnd</span>
-<span class="c">#   real or complex</span>
-<span class="c">#   static or (temporale/transient, v-sweep, frequency)</span>
-<span class="c">#</span>
-<span class="c">#   static waveform: (node-&gt;, unit, value)</span>
-<span class="c">#   waveform: (node-&gt;, unit, values, abscissa-&gt;)</span>
-<span class="c">#</span>
-<span class="c">#   analysis.1.v !</span>
-<span class="c">#   analysis.in.v !</span>
-<span class="c">#   analysis[&#39;1&#39;].v</span>
-<span class="c">#   analysis.n1.v</span>
-<span class="c">#</span>
-<span class="c"># Source:</span>
-<span class="c">#   Current</span>
-<span class="c">#</span>
-<span class="c">#   analysis.Vinput.i</span>
-<span class="c">#</span>
-<span class="c"># Vinput -&gt; lower case</span>
-<span class="c">#</span>
-<span class="c"># axe.plot(x, y, *args, **kwargs)</span>
-<span class="c">#</span>
-<span class="c">###################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># op: value</span>
+<span class="c1"># transient: time</span>
+<span class="c1"># dc: v-sweep</span>
+<span class="c1"># ac: frequency</span>
+<span class="c1"># sens: element parameters</span>
+<span class="c1">#</span>
+<span class="c1"># Probes</span>
+<span class="c1">#</span>
+<span class="c1"># Nodes:</span>
+<span class="c1">#   Voltage versus gnd</span>
+<span class="c1">#   real or complex</span>
+<span class="c1">#   static or (temporale/transient, v-sweep, frequency)</span>
+<span class="c1">#</span>
+<span class="c1">#   static waveform: (node-&gt;, unit, value)</span>
+<span class="c1">#   waveform: (node-&gt;, unit, values, abscissa-&gt;)</span>
+<span class="c1">#</span>
+<span class="c1">#   analysis.1.v !</span>
+<span class="c1">#   analysis.in.v !</span>
+<span class="c1">#   analysis[&#39;1&#39;].v</span>
+<span class="c1">#   analysis.n1.v</span>
+<span class="c1">#</span>
+<span class="c1"># Source:</span>
+<span class="c1">#   Current</span>
+<span class="c1">#</span>
+<span class="c1">#   analysis.Vinput.i</span>
+<span class="c1">#</span>
+<span class="c1"># Vinput -&gt; lower case</span>
+<span class="c1">#</span>
+<span class="c1"># axe.plot(x, y, *args, **kwargs)</span>
+<span class="c1">#</span>
+<span class="c1">###################################################################################################</span>
 
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># Analysis versus Simulation</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># Analysis versus Simulation</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="WaveForm"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.WaveForm">[docs]</a><span class="k">class</span> <span class="nc">WaveForm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span></div>
+<div class="viewcode-block" id="WaveForm"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.WaveForm">[docs]</a><span class="k">class</span> <span class="nc">WaveForm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">abscissa</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="n">obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span>
 
         <span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
-        <span class="n">obj</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span> <span class="c"># str(title)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span> <span class="c1"># str(title)</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">abscissa</span> <span class="o">=</span> <span class="n">abscissa</span>
 
         <span class="k">return</span> <span class="n">obj</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__array_finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
 
-        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&#39;unit&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&#39;title&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">abscissa</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&#39;abscissa&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">abscissa</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;abscissa&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="s">&#39;variable {self.name} [{self.unit}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;variable </span><span class="si">{self.name}</span><span class="s1"> [</span><span class="si">{self.unit}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">&#39;{self.name} [{self.unit}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{self.name}</span><span class="s1"> [</span><span class="si">{self.unit}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">str_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="WaveForm.str_data"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.WaveForm.str_data">[docs]</a>    <span class="k">def</span> <span class="nf">str_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__repr__</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__repr__</span><span class="p">()</span></div></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="Analysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.Analysis">[docs]</a><span class="k">class</span> <span class="nc">Analysis</span><span class="p">:</span></div>
+<div class="viewcode-block" id="Analysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.Analysis">[docs]</a><span class="k">class</span> <span class="nc">Analysis</span><span class="p">:</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="p">(),</span> <span class="n">branches</span><span class="o">=</span><span class="p">(),</span> <span class="n">elements</span><span class="o">=</span><span class="p">()):</span>
 
-        <span class="c"># Fixme: branches are elements in fact, and elements is not yet supported ...</span>
+        <span class="c1"># Fixme: branches are elements in fact, and elements is not yet supported ...</span>
 
-        <span class="c"># Fixme: to func?</span>
+        <span class="c1"># Fixme: to func?</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">=</span> <span class="p">{</span><span class="n">waveform</span><span class="o">.</span><span class="n">name</span><span class="p">:</span><span class="n">waveform</span> <span class="k">for</span> <span class="n">waveform</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">branches</span> <span class="o">=</span> <span class="p">{</span><span class="n">waveform</span><span class="o">.</span><span class="n">name</span><span class="p">:</span><span class="n">waveform</span> <span class="k">for</span> <span class="n">waveform</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">elements</span> <span class="o">=</span> <span class="p">{</span><span class="n">waveform</span><span class="o">.</span><span class="n">name</span><span class="p">:</span><span class="n">waveform</span> <span class="k">for</span> <span class="n">waveform</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">}</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 
@@ -191,33 +193,33 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__getitem__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
 <div class="viewcode-block" id="OperatingPoint"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.OperatingPoint">[docs]</a><span class="k">class</span> <span class="nc">OperatingPoint</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
     <span class="k">pass</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="SensitivityAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.SensitivityAnalysis">[docs]</a><span class="k">class</span> <span class="nc">SensitivityAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span></div>
+<div class="viewcode-block" id="SensitivityAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.SensitivityAnalysis">[docs]</a><span class="k">class</span> <span class="nc">SensitivityAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elements</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">elements</span><span class="o">=</span><span class="n">elements</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">elements</span><span class="o">=</span><span class="n">elements</span><span class="p">)</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="DcAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.DcAnalysis">[docs]</a><span class="k">class</span> <span class="nc">DcAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span></div>
+<div class="viewcode-block" id="DcAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.DcAnalysis">[docs]</a><span class="k">class</span> <span class="nc">DcAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 
@@ -231,9 +233,9 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
-    <span class="c"># Fixme: can be current sweep too</span>
+    <span class="c1"># Fixme: can be current sweep too</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_sweep</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">):</span>
 
@@ -241,17 +243,17 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_v_sweep</span> <span class="o">=</span> <span class="n">v_sweep</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">v_sweep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_sweep</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_sweep</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="AcAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.AcAnalysis">[docs]</a><span class="k">class</span> <span class="nc">AcAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span></div>
+<div class="viewcode-block" id="AcAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.AcAnalysis">[docs]</a><span class="k">class</span> <span class="nc">AcAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">):</span>
 
@@ -259,17 +261,17 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span> <span class="o">=</span> <span class="n">frequency</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span></div>
 
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
 
-<div class="viewcode-block" id="TransientAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.TransientAnalysis">[docs]</a><span class="k">class</span> <span class="nc">TransientAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span></div>
+<div class="viewcode-block" id="TransientAnalysis"><a class="viewcode-back" href="../../../api/PySpice/Probe/WaveForm.html#PySpice.Probe.WaveForm.TransientAnalysis">[docs]</a><span class="k">class</span> <span class="nc">TransientAnalysis</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">branches</span><span class="p">):</span>
 
@@ -277,17 +279,17 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_time</span> <span class="o">=</span> <span class="n">time</span>
 
-    <span class="c">##############################################</span>
+    <span class="c1">##############################################</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time</span></div>
 
-<span class="c">####################################################################################################</span>
-<span class="c">#</span>
-<span class="c"># End</span>
-<span class="c">#</span>
-<span class="c">####################################################################################################</span>
+<span class="c1">####################################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># End</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################################################</span>
 </pre></div>
 
           </div>
@@ -298,14 +300,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -321,13 +320,13 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+        &#169; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>

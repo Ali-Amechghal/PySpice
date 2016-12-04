@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.5.9. Power Supply &mdash; PySpice 0.3.0 documentation</title>
+    <title>2.5.9. Power Supply &#8212; PySpice 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="../../static/PySpice.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -25,9 +25,11 @@
     <script type="text/javascript" src="../../static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../static/hidecode.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="PySpice 0.3.0 documentation" href="../../index.html" />
     <link rel="up" title="2. Examples" href="../index.html" />
-    <link rel="next" title="2.5.9.1. Hp54501A Cem" href="hp54501a-cem.html" />
+    <link rel="next" title="2.5.9.1. Capacitive Half Wave Rectification Post Zener" href="capacitive-half-wave-rectification-post-zener.html" />
     <link rel="prev" title="2.5.8.1. Capacitor Inductor" href="../passive/capacitor-inductor.html" /> 
   </head>
   <body role="document">
@@ -41,13 +43,13 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="hp54501a-cem.html" title="2.5.9.1. Hp54501A Cem"
+          <a href="capacitive-half-wave-rectification-post-zener.html" title="2.5.9.1. Capacitive Half Wave Rectification Post Zener"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../passive/capacitor-inductor.html" title="2.5.8.1. Capacitor Inductor"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">2. Examples</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">2. Examples</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -58,12 +60,14 @@
             
   <div class="section" id="power-supply">
 <h1>2.5.9. Power Supply<a class="headerlink" href="#power-supply" title="Permalink to this headline">¶</a></h1>
-<p>This section has 2 examples and 1 related examples.</p>
+<p>This section has 4 examples and 1 related examples.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="hp54501a-cem.html">2.5.9.1. Hp54501A Cem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capacitive-half-wave-rectification-post-zener.html">2.5.9.1. Capacitive Half Wave Rectification Post Zener</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capacitive-half-wave-rectification-pre-zener.html">2.5.9.2. Capacitive Half Wave Rectification Pre Zener</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flycheck_capacitive-half-wave-rectification-pre-zener.html">2.5.9.3. Flycheck_Capacitive Half Wave Rectification Pre Zener</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hp54501a-cem.html">2.5.9.4. Hp54501A Cem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diode/rectification.html">2.5.2.3. Rectification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="transform-less-power-supply.html">2.5.9.2. Transform Less Power Supply</a></li>
 </ul>
 </div>
 </div>
@@ -78,8 +82,8 @@
   <p class="topless"><a href="../passive/capacitor-inductor.html"
                         title="previous chapter">2.5.8.1. Capacitor Inductor</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="hp54501a-cem.html"
-                        title="next chapter">2.5.9.1. Hp54501A Cem</a></p>
+  <p class="topless"><a href="capacitive-half-wave-rectification-post-zener.html"
+                        title="next chapter">2.5.9.1. Capacitive Half Wave Rectification Post Zener</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -90,14 +94,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -114,18 +115,18 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="hp54501a-cem.html" title="2.5.9.1. Hp54501A Cem"
+          <a href="capacitive-half-wave-rectification-post-zener.html" title="2.5.9.1. Capacitive Half Wave Rectification Post Zener"
              >next</a> |</li>
         <li class="right" >
           <a href="../passive/capacitor-inductor.html" title="2.5.8.1. Capacitor Inductor"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">PySpice 0.3.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >2. Examples</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+        &#169; Copyright 2015, Fabrice Salvaire.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>
