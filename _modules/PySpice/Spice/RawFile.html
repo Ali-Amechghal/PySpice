@@ -17,7 +17,8 @@
         VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../static/jquery.js"></script>
@@ -26,9 +27,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../static/hidecode.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="top" title="PySpice 0.3.0 documentation" href="../../../index.html" />
-    <link rel="up" title="PySpice.Spice" href="../Spice.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -146,7 +145,7 @@
 
 <span class="c1">####################################################################################################</span>
 
-<span class="n">_module_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">_module_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="c1">####################################################################################################</span>
 
@@ -292,7 +291,7 @@
 
         <span class="sd">&quot;&quot;&quot; Parse the header &quot;&quot;&quot;</span>
         
-        <span class="n">binary_line</span> <span class="o">=</span> <span class="n">b</span><span class="s1">&#39;Binary:</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">binary_line</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;Binary:</span><span class="se">\n</span><span class="s1">&#39;</span>
         <span class="n">binary_location</span> <span class="o">=</span> <span class="n">stdout</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">binary_line</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">binary_location</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;Cannot locate binary data&#39;</span><span class="p">)</span>
@@ -305,7 +304,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">circuit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Circuit&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Doing analysis at TEMP&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Warning&#39;</span><span class="p">)</span>
-                         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;Warning&#39;</span><span class="p">))]</span>
+                         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Warning&#39;</span><span class="p">))]</span>
         <span class="k">for</span> <span class="n">warning</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">warning</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header_field_line</span><span class="p">(</span><span class="n">header_line_iterator</span><span class="p">,</span> <span class="s1">&#39;Title&#39;</span><span class="p">)</span>
@@ -535,7 +534,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
     </div>
   </body>
 </html>

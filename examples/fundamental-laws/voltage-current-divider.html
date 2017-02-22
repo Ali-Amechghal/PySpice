@@ -17,7 +17,8 @@
         VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../static/jquery.js"></script>
@@ -27,8 +28,6 @@
     <script type="text/javascript" src="../../static/hidecode.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="PySpice 0.3.0 documentation" href="../../index.html" />
-    <link rel="up" title="2.5.5. Fundamental Laws" href="index.html" />
     <link rel="next" title="2.5.6. Ngspice Shared" href="../ngspice-shared/index.html" />
     <link rel="prev" title="2.5.5.2.2. Thévenin and Norton Theorem" href="thévenin-norton-theorem.html" /> 
   </head>
@@ -176,8 +175,8 @@ impedance ratio:</p>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Node {}: {:5.2f} V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="c1"># Fixme: format value + unit</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Node</span> <span class="mi">2</span> <span class="p">[</span><span class="n">voltage</span><span class="p">]:</span>  <span class="mf">3.33</span> <span class="n">V</span>
-<span class="n">Node</span> <span class="mi">1</span> <span class="p">[</span><span class="n">voltage</span><span class="p">]:</span> <span class="mf">10.00</span> <span class="n">V</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Node</span> <span class="mi">1</span> <span class="p">[</span><span class="n">voltage</span><span class="p">]:</span> <span class="mf">10.00</span> <span class="n">V</span>
+<span class="n">Node</span> <span class="mi">2</span> <span class="p">[</span><span class="n">voltage</span><span class="p">]:</span>  <span class="mf">3.33</span> <span class="n">V</span>
 </pre></div>
 </div>
 <p>Similarly we can build a circuit that scale a current by an impedance ratio:</p>
@@ -225,7 +224,7 @@ impedance ratio:</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/examples/fundamental-laws/voltage-current-divider.txt"
+      <li><a href="../../_sources/examples/fundamental-laws/voltage-current-divider.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -265,7 +264,7 @@ impedance ratio:</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
     </div>
   </body>
 </html>

@@ -40,7 +40,7 @@ We will first compute the spectrum of the sum of two sinusoidal waveforms.
     
     yf = fft(y)
     tf = np.linspace(.0, 1./(2.*dt), N/2)
-    spectrum = 2./N * np.abs(yf[0:N/2])
+    spectrum = 2./N * np.abs(yf[0:N//2])
     
     figure1 = plt.figure(1, (20, 10))
     plt.plot(tf, spectrum, 'o-')
@@ -95,7 +95,7 @@ The Fourier series is given by:
     
     yf = fft(y)
     tf = np.linspace(.0, 1./(2.*dt), N/2)
-    spectrum = 2./N * np.abs(yf[0:N/2])
+    spectrum = 2./N * np.abs(yf[0:N//2])
     
     plt.subplot(212)
     plt.plot(tf, spectrum)

@@ -17,7 +17,8 @@
         VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../static/jquery.js"></script>
@@ -27,8 +28,6 @@
     <script type="text/javascript" src="../../static/hidecode.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="PySpice 0.3.0 documentation" href="../../index.html" />
-    <link rel="up" title="2.5.2. Diode" href="index.html" />
     <link rel="next" title="2.5.2.5. Voltage Multiplier" href="voltage-multiplier.html" />
     <link rel="prev" title="2.5.2.3. Rectification" href="rectification.html" /> 
   </head>
@@ -140,19 +139,19 @@
 
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
-<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="c1"># simulator.initial_condition(input_top=0, input_bottom=0, output_top=0, output_bottom=0)</span>
-<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">modulator</span><span class="o">.</span><span class="n">period</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">modulator</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
-
-<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Ring Modulator&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;Vmodulator&#39;</span><span class="p">])</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;Vcarrier&#39;</span><span class="p">])</span>
-<span class="c1"># plot(analysis[&#39;output&#39;])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;modulator&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">### simulator = circuit.simulator(temperature=25, nominal_temperature=25)</span>
+<span class="c1">### # simulator.initial_condition(input_top=0, input_bottom=0, output_top=0, output_bottom=0)</span>
+<span class="c1">### analysis = simulator.transient(step_time=modulator.period/1000, end_time=modulator.period)</span>
+<span class="c1">###</span>
+<span class="c1">### figure = plt.figure(1, (20, 10))</span>
+<span class="c1">### plt.title(&#39;Ring Modulator&#39;)</span>
+<span class="c1">### plt.xlabel(&#39;Time [s]&#39;)</span>
+<span class="c1">### plt.ylabel(&#39;Voltage [V]&#39;)</span>
+<span class="c1">### plt.grid()</span>
+<span class="c1">### plot(analysis[&#39;Vmodulator&#39;])</span>
+<span class="c1">### plot(analysis[&#39;Vcarrier&#39;])</span>
+<span class="c1">### # plot(analysis[&#39;output&#39;])</span>
+<span class="c1">### plt.legend((&#39;modulator&#39;, &#39;carrier&#39;, &#39;output&#39;), loc=(.05,.1))</span>
 
 <span class="c1">####################################################################################################</span>
 
@@ -186,21 +185,21 @@
 
 <span class="k">class</span> <span class="nc">RingModulator</span><span class="p">(</span><span class="n">SubCircuitFactory</span><span class="p">):</span>
 
-    <span class="n">__name__</span> <span class="o">=</span> <span class="s1">&#39;RingModulator&#39;</span>
+    <span class="vm">__name__</span> <span class="o">=</span> <span class="s1">&#39;RingModulator&#39;</span>
     <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;input_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;input_minus&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;carrier_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier_minus&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;output_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;output_minus&#39;</span><span class="p">)</span>
 
     <span class="c1">##############################################</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">outer_inductance</span><span class="p">,</span>
                  <span class="n">inner_inductance</span><span class="p">,</span>
                  <span class="n">coupling</span><span class="p">,</span>
                  <span class="n">diode_model</span><span class="p">,</span>
                 <span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="n">input_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;input_minus&#39;</span><span class="p">,</span> <span class="n">outer_inductance</span><span class="p">)</span>
         <span class="n">top_inductor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="s1">&#39;input_top&#39;</span><span class="p">,</span> <span class="s1">&#39;input_top&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier_plus&#39;</span><span class="p">,</span> <span class="n">inner_inductance</span><span class="p">)</span>
@@ -284,19 +283,19 @@
 
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">kilo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
-<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="c1"># simulator.initial_condition(input_top=0, input_bottom=0, output_top=0, output_bottom=0)</span>
-<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">modulator</span><span class="o">.</span><span class="n">period</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">modulator</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
-
-<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Ring Modulator&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;Vmodulator&#39;</span><span class="p">])</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;Vcarrier&#39;</span><span class="p">])</span>
-<span class="c1"># plot(analysis[&#39;output&#39;])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;modulator&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">### simulator = circuit.simulator(temperature=25, nominal_temperature=25)</span>
+<span class="c1">### # simulator.initial_condition(input_top=0, input_bottom=0, output_top=0, output_bottom=0)</span>
+<span class="c1">### analysis = simulator.transient(step_time=modulator.period/1000, end_time=modulator.period)</span>
+<span class="c1">###</span>
+<span class="c1">### figure = plt.figure(1, (20, 10))</span>
+<span class="c1">### plt.title(&#39;Ring Modulator&#39;)</span>
+<span class="c1">### plt.xlabel(&#39;Time [s]&#39;)</span>
+<span class="c1">### plt.ylabel(&#39;Voltage [V]&#39;)</span>
+<span class="c1">### plt.grid()</span>
+<span class="c1">### plot(analysis[&#39;Vmodulator&#39;])</span>
+<span class="c1">### plot(analysis[&#39;Vcarrier&#39;])</span>
+<span class="c1">### # plot(analysis[&#39;output&#39;])</span>
+<span class="c1">### plt.legend((&#39;modulator&#39;, &#39;carrier&#39;, &#39;output&#39;), loc=(.05,.1))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -318,7 +317,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/examples/diode/ring-modulator.txt"
+      <li><a href="../../_sources/examples/diode/ring-modulator.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -358,7 +357,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2015, Fabrice Salvaire.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
     </div>
   </body>
 </html>
