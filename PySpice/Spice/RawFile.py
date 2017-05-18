@@ -80,7 +80,7 @@ Time, node voltages and source branch currents:
 # * i(e.xdz1.ev1)
 
 ####################################################################################################
-
+import platform
 import logging
 import numpy as np
 
@@ -239,6 +239,10 @@ class RawFile:
         """ Parse the header """
         
         binary_line = b'Binary:\n'
+        # Ali : if its a windows os use a \r\n
+        is_windows = any(platform.win32_ver())
+        if(is_windows == True) : binary_line = b'Binary:\r\n'
+        
         binary_location = stdout.find(binary_line)
         if binary_location < 0:
             raise NameError('Cannot locate binary data')
